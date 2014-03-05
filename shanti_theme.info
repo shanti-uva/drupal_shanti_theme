@@ -1,0 +1,4 @@
+name = Shanti Theme
+description = Theme used for the shanti application page embedded in a drupal site
+core = 7.x
+
