@@ -1,105 +1,128 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <?php $theme_path = drupal_get_path('theme', 'shanti_theme'); ?>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta charset="utf-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Shanti App</title>
-  <meta name="description" content="">
-  <meta name="viewport" content="width=device-width">
-
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width" />
   <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,400italic">
   <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.css">
   <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/fonts/kmap-icons/css/kmaps-icons.css">
   <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
   <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css" class="skinswitcher">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/search-panel.css" media="all" type="text/css">
+  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/search-panel.css" media="all">
   <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/main.css">
-
   <script src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>  
 </head>
 <body>
-  <!--[if lt IE 7]>
-    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-  <![endif]-->
-
-
-  <div class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container-fluid">
+  <a href=".main-content" class="sr-only">Skip to main content</a>
+  <div class="navbar navbar-default navbar-static-top" role="navigation" style="background:#fff;">
+      
       <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navtop">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#"><img src="<?php print $theme_path; ?>/images/shanti_logo.png"></a>
+        </button>        
+        <h1><a href="" class="navbar-brand" title="SHANTI homepage link"><img src="<?php print $theme_path; ?>/images/shanti_logo.png" alt="shanti logo" />
+            <span>Scholarly Collections at the University of Virginia</span></a></h1>
       </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav header-text">
-          <li style="position:relative;left:-30px;top:3px;margin:0;padding:0;">Scholarly Collections at the University of Virginia</li>
+      
+      <div class="navbar-collapse collapse pull-right" id="navtop">
+        
+        <ul class="nav navbar-nav pull-left">
+          <li class="explore"><a href="#" id="toggle-collections">EXPLORE<i class="icon km-lg km-2x km-directions"></i></a></li>
+          <li class="login"><a href="">LOGIN<i class="icon km-lg km-2x"></i></a></li>
+          <li class="dropdown options">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">OPTIONS<i class="icon km-lg km-2x km-arrowselect"></i></a>
+                <ul class="dropdown-menu dropdown-menu-right dropdown-features">
+                  
+                  <li class="drop-title">Perspective</li>
+                    <li class="select"><a href=""><i class="icon"></i>General</a></li>
+                    <li class="last"><a href=""><i class="icon"></i>Other</a></li>
+                    
+                  <li class="drop-title">Subject Language</li>
+                    <li><a href=""><i class="icon"></i>Chinese Characters (simplified)</a></li>
+                    <li><a href=""><i class="icon"></i>Chinese Characters (traditional)</a></li>
+                    <li><a href=""><i class="icon"></i>Devangiri Script</a></li>
+                    <li class="select"><a href=""><i class="icon"></i>Popular Standard (romanization)</a></li>
+                    <li><a href=""><i class="icon"></i>Scholarly Standard (romanization)</a></li>
+                    <li><a href=""><i class="icon"></i>Tibetan Script (simplified)</a></li>
+                    <li class="last"><a href=""><i class="icon"></i>Tibetan Script (romanization)</a></li>
+                  
+                  <li class="drop-title">Show Subject Details</li>                        
+                    <li class="select"><a href=""><i class="icon"></i>Yes</a></li>
+                    <li class="last"><a href=""><i class="icon"></i>No</a></li>
+                </ul> 
+          </li>
+          <li class="dropdown lang">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">ENG<i class="icon km-lg km-2x km-arrowselect"></i></a>
+                <ul class="dropdown-menu pull-left dropdown-features">
+                      <li><a href=""><i class="icon"></i>Tibetan</a></li>
+                      <li><a href=""><i class="icon"></i>Chinese</a></li>
+                      <li class="select"><a href=""><i class="icon"></i>English</a></li>
+                      <li class="last"><a href=""><i class="icon"></i>French</a></li>
+                </ul>
+          </li>
         </ul>
-        <ul class="nav navbar-nav navbar-right left-margins">
-          <li style="border-left: 1px solid #E7E7E7;"><a href="#opencollect" data-toggle="collapse">EXPLORE<i class="icon km-lg km-2x icon-directions"></i></a></li>
-          <li><a href="#">LOGIN<i class="icon km-lg km-2x"></i></a></li>
-          <li><a href="#">ENG<i class="icon km-lg km-2x icon-arrowselect"></i></a></li>
-        </ul>
+      
       </div>
-    </div>
-  </div><!-- END navbar-static-top --> 
+  </div><!-- END navbar --> 
+  
   <div class="container-fluid">
-    <div id="opencollect" class="row collections collapse">
+    <div class="row-fluid collections collapse" id="opencollect">
       <div class="lightblue-bg">
         <div class="col-sm-8 col-sm-offset-2 lightblue-bg">
           <h4>EXPLORE COLLECTIONS</h4>
-          <div class="row four-collections">
+          <div class="four-collections">
             <div class="col-sm-3">
-              <ul class="fa-ul">
-                <li><a href="#"><i class="fa-li fa fa-anchor"></i>Subjects</a></li>
-                <li><a href="#"><i class="fa-li fa fa-map-marker"></i>Places</a></li>
-                <li><a href="#"><i class="fa-li fa fa-user"></i>Agents</a></li>
-                <li><a href="#"><i class="fa-li fa fa-calendar"></i>Events</a></li>
+              <ul class="km-ul">
+                <li><a href="#"><i class="icon km-2x km-subjects"></i>Subjects</a></li>
+                <li><a href="#"><i class="icon km-2x km-places"></i>Places</a></li>
+                <li><a href="#"><i class="icon km-2x km-agents"></i>Agents</a></li>
+                <li><a href="#"><i class="icon km-2x km-events"></i>Events</a></li>
               </ul>
             </div>
             <div class="col-sm-3">
-              <ul class="fa-ul">
-                <li><a href="#"><i class="fa-li fa fa-picture-o"></i>Photos</a></li>
-                <li><a href="#"><i class="fa-li fa fa-forward"></i>Audio-Video</a></li>
-                <li><a href="#"><i class="fa-li fa fa-eye"></i>Visuals</a></li>
+              <ul class="km-ul">
+                <li><a href="#"><i class="icon km-2x km-photos"></i>Photos</a></li>
+                <li><a href="#"><i class="icon km-2x km-audiovideo"></i>Audio-Video</a></li>
+                <li><a href="#"><i class="icon km-2x km-visuals"></i>Visuals</a></li>
               </ul>
             </div>
             <div class="col-sm-3">
-              <ul class="fa-ul">
-                <li><a href="#"><i class="fa-li fa fa-clipboard"></i>Essays</a></li>
-                <li><a href="#"><i class="fa-li fa fa-file-text"></i>Texts</a></li>
-                <li><a href="#"><i class="fa-li fa fa-compass"></i>Maps</a></li>
+              <ul class="km-ul">
+                <li><a href="#"><i class="icon km-2x km-essays"></i>Essays</a></li>
+                <li><a href="#"><i class="icon km-2x km-texts"></i>Texts</a></li>
+                <li><a href="#"><i class="icon km-2x km-maps"></i>Maps</a></li>
               </ul>
             </div>
             <div class="col-sm-3">
-              <ul class="fa-ul last">
-                <li><a href="#"><i class="fa-li fa fa-users"></i>Community</a></li>
-                <li><a href="#"><i class="fa-li fa fa-list-ul"></i>Terms</a></li>
-                <li><a href="#"><i class="fa-li fa fa-book"></i>Sources</a></li>
+              <ul class="km-ul last">
+                <li><a href="#"><i class="icon km-2x km-community"></i>Community</a></li>
+                <li><a href="#"><i class="icon km-2x km-terms"></i>Terms</a></li>
+                <li><a href="#"><i class="icon km-2x km-sources"></i>Sources</a></li>
               </ul>
             </div>
           </div>
         </div>
         <div class="closecollection">
-          <a href="#opencollect" data-toggle="collapse"><i class="fa fa-times-circle"></i></a>
+          <i class="icon km-close"></i>
         </div>
       </div>
     </div>
-
-    <div class="row titlearea">
+  
+    <div class="row-fluid titlearea">
       <div class="col-sm-12">
-        <div class="page-title"><i class="fa fa-map-marker"></i> Lhasa</div>
-        <div class="breadcrumbs_wrapper">
+        <div class="page-title"><i class="icon km-places km-lg"></i> <span style="position:relative;top:5px;">Lhasa</span></div>
+        <div class="breadcrumbs-wrapper">
           <ol class="breadcrumb">
-            <span class="tag-before-breadcrumb">Places: &nbsp;</span>
+            <li><span class="tag-before-breadcrumb">Places:</span></li>
             <li><a href="#">World</a></li>
             <li><a href="#">Asia</a></li>
             <li><a href="#">Greater Himalayas & Tibetan Plateau</a></li>
@@ -111,25 +134,31 @@
         </div>
       </div>
     </div>
-    <div class="row main-content" style="position:relative;">
+  </div> <!-- END header-banner -->
+  
+  <!-- BEGIN content -->
+  <div class="container-fluid">
+    <div class="row main-content">
+    
       <div class="col-sm-2 content-sidebar">
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#tab-overview" data-toggle="pill"><i class="icon km-lg km-2x icon-overview"></i>Overview</a></li>
-          <li><a href="#tab-essays" data-toggle="pill"><i class="icon km-lg km-2x icon-essays"></i>Essays<span class="badge">1</span></a></li>
-          <li><a href="#tab-subjects" data-toggle="pill"><i class="icon km-lg km-2x icon-subjects"></i>Subjects<span class="badge">3</span></a></li>
-          <li><a href="#tab-places" data-toggle="pill"><i class="icon km-lg km-2x icon-places"></i>Places</a></li>
-          <li><a href="#tab-agents" data-toggle="pill"><i class="icon km-lg km-2x icon-agents"></i>Agents</a></li>
-          <li><a href="#tab-events" data-toggle="pill"><i class="icon km-lg km-2x icon-events"></i>Events</a></li>
-          <li><a href="#tab-photos" data-toggle="pill"><i class="icon km-lg km-2x icon-photos"></i>Photos<span class="badge">396</span></a></li>
-          <li><a href="#tab-audio-video" data-toggle="pill"><i class="icon km-lg km-2x icon-audiovideo"></i>Audio-Video</a></li>
-          <li><a href="#tab-visuals" data-toggle="pill"><i class="icon km-lg km-2x icon-visuals"></i>Visuals</a></li>
-          <li><a href="#tab-texts" data-toggle="pill"><i class="icon km-lg km-2x icon-texts"></i>Texts</a></li>
-          <li><a href="#tab-maps" data-toggle="pill"><i class="icon km-lg km-2x icon-maps"></i>Maps</a></li>
-          <li><a href="#tab-community" data-toggle="pill"><i class="icon km-lg km-2x icon-community"></i>Community</a></li>
-          <li><a href="#tab-terms" data-toggle="pill"><i class="icon km-lg km-2x icon-terms"></i>Terms</a></li>
-          <li><a href="#tab-sources" data-toggle="pill"><i class="icon km-lg km-2x icon-sources"></i>Sources</a></li>
+          <li class="active"><a href="#tab-overview" data-toggle="pill"><i class="icon km-lg km-2x km-overview"></i>Overview</a></li>
+          <li><a href="#tab-essays" data-toggle="pill"><i class="icon km-lg km-2x km-essays"></i>Essays<span class="badge">1</span></a></li>
+          <li><a href="#tab-subjects" data-toggle="pill"><i class="icon km-lg km-2x km-subjects"></i>Subjects<span class="badge">3</span></a></li>
+          <li><a href="#tab-places" data-toggle="pill"><i class="icon km-lg km-2x km-places"></i>Places</a></li>
+          <li><a href="#tab-agents" data-toggle="pill"><i class="icon km-lg km-2x km-agents"></i>Agents</a></li>
+          <li><a href="#tab-events" data-toggle="pill"><i class="icon km-lg km-2x km-events"></i>Events</a></li>
+          <li><a href="#tab-photos" data-toggle="pill"><i class="icon km-lg km-2x km-photos"></i>Photos<span class="badge">396</span></a></li>
+          <li><a href="#tab-audio-video" data-toggle="pill"><i class="icon km-lg km-2x km-audiovideo"></i>Audio-Video</a></li>
+          <li><a href="#tab-visuals" data-toggle="pill"><i class="icon km-lg km-2x km-visuals"></i>Visuals</a></li>
+          <li><a href="#tab-texts" data-toggle="pill"><i class="icon km-lg km-2x km-texts"></i>Texts</a></li>
+          <li><a href="#tab-maps" data-toggle="pill"><i class="icon km-lg km-2x km-maps"></i>Maps</a></li>
+          <li><a href="#tab-community" data-toggle="pill"><i class="icon km-lg km-2x km-community"></i>Community</a></li>
+          <li><a href="#tab-terms" data-toggle="pill"><i class="icon km-lg km-2x km-terms"></i>Terms</a></li>
+          <li><a href="#tab-sources" data-toggle="pill"><i class="icon km-lg km-2x km-sources"></i>Sources</a></li>
         </ul>
-      </div><!-- END content-sidebar --> 
+      </div>
+       
       <div class="col-sm-10 content-page">
         <div class="tab-content">
           <div class="tab-pane active" id="tab-overview">
@@ -142,7 +171,7 @@
             </p>
             <h6>Map</h6>
             <div class="google-maps">
-              <iframe src="https://mapsengine.google.com/map/embed?mid=zCEqriyJd8A0.kM1pQfphj0Ns" width="640" height="480" frameborder="0" style="border:0"></iframe>
+               <iframe src="https://mapsengine.google.com/map/embed?mid=zCEqriyJd8A0.kM1pQfphj0Ns" width="640" height="480" style="border:0"></iframe>
             </div>
             <div class="panel-group" id="accordion">
               <div class="panel panel-default">
@@ -277,26 +306,26 @@
             
         <!-- BEGIN Search Panel --> 
         <div id="kmaps-search">               
-            <div style="width:310px">
+            <div>
             
-            <h3 class="search-header off">Search <a href="#" id="closeSearch" onclick="$('#kmaps-search').closeMbExtruder();"> </a></h3>
+            <!-- <h3 class="search-header off" style="display:none">Search <a href="#" id="closeSearch" onclick="$('#kmaps-search').closeMbExtruder();"> </a></h3> -->
                 
                 <!-- BEGIN search section -->                   
                 <div id="search-section">                   
-                  <form class="form">
+                  <form role="form" class="form">
                   <fieldset>                        
-                    <legend style="display:none;">Collections Search Form</legend>                  
+                    <legend style="display:none;">Search Form</legend>                  
                                           
                   <div class="search-form-view form-group">
-                      <textarea class="form-control" rows="3" placeholder="Enter search terms..."></textarea>                                                               
-                      <div class="search-utils">
-                          <button class="btn btn-primary btn-med" type="submit" style="margin:2px 0 10px 10px">Submit Search</button>
-                          <a href="#" class="advanced-link advanced-trigger" title="show and hide advanced search options"><i class="fa"></i>Advanced Options</a>
+                      <textarea id="searchform" class="form-control" rows="3" placeholder="Enter Search..."></textarea>                                                               
+                      <div class="search-utils btn-group">
+                          <button class="btn btn-primary btn-sm" type="submit">Submit Search</button>
                       </div>
+                      <a href="#" class="advanced-link advanced-trigger" title="Advanced search options"><i class="icon"></i>Advanced</a>
                   </div>  
                       
                      <!-- advanced search hidden ontent -->
-                     <div class="advanced-link-view" style="background-color:#f0f0f0;display:none;">                              
+                     <div class="advanced-link-view" style="display:none;">                             
                               <div class="form-group"> 
                                 <label class="radio-inline" for="radios-0">
                                   <input type="radio" name="radios" id="radios-0" value="1" checked="checked">All Text</label> 
@@ -313,10 +342,10 @@
                                   <input type="radio" name="radios2" id="radios-4" value="5">Exactly</label>                              
                               </div>
                               
-                              <div class="form-group">
+                              <div class="form-group last">
                                 <label class="checkbox-inline" for="checkbox-1">
                                   <input type="checkbox" name="checkbox" id="checkbox-1" value="6">Show only entries with essays</label>                              
-                              </div>
+                              </div>                            
                       </div>
                       
                   </fieldset>
@@ -327,8 +356,8 @@
                 <!-- START TABS / View section -->                                  
                 <div id="view-section">            
                   <ul class="nav nav-tabs" id="search-tabs">
-                    <li class="active"><a href="#treeview" data-toggle="tab">Tree View</a></li>
-                    <li><a href="#listview" data-toggle="tab">List View</a></li>
+                    <li class="treeview active"><a href="#treeview" data-toggle="tab">Tree</a></li>
+                    <li class="listview"><a href="#listview" data-toggle="tab">List</a></li>
                   </ul>
                   
                   
@@ -336,65 +365,67 @@
                     
                     <!-- TAB - tree view -->
                     <div id="treeview" class="tab-pane active">       
-                        <div id="tree"></div>                   
+                        <div id="tree"></div><!-- tree nav container -->              
                     </div>
                     
                     <!-- TAB - list view -->
-                    <div id="listview" class="tab-pane">                    
-                    <div class="table-responsive">
-                     <table class="table table-condensed table-results">
-                      <thead>
-                        <th>Name</th>
-                        <th>Feature Type</th>
-                      </thead>
-                      <tbody>
-                      <tr>
-                        <td><a href="#" title="">Jokhang</a></td>
-                        <td><div>Temple</div></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#" title="">Khartrak</a></td>
-                        <td><div>Council</div></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#" title="">Lhasa</a></td>
-                        <td><div>Cultural Region</div></td>
-                      </tr>
-                        <tr>
-                        <td><a href="#" title="">Lhasa</a></td>
-                        <td><div>City</div></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#" title="">Lhasa</a></td>
-                        <td><div>ADM2</div></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#" title="">Lhasa</a></td>
-                        <td><div>Township (without urban registered population)</div></td>
-                      </tr>
-                        <tr>
-                        <td><a href="#" title="">Lhasa Stream</a></td>
-                        <td><div>Large Stream</div></td>
-                      </tr>
-                      <tr>
-                        <td><a href="#" title="">Lhasa Yerpa</a></td>
-                        <td><div>Sacred Places</div></td>
-                      </tr>
-                      <tbody>
-                    </table>            
-                   </div>
+                    <div id="listview" class="tab-pane">    
+                      <div>               
+                        <div class="table-responsive">
+                         <table class="table table-condensed table-results">
+                          <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Feature Type</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td><a href="#" title="">Jokhang</a></td>
+                            <td><div>Temple</div></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Khartrak</a></td>
+                            <td><div>Council</div></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><div>Cultural Region</div></td>
+                          </tr>
+                            <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><div>City</div></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><div>ADM2</div></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><div>Township (without urban registered population)</div></td>
+                          </tr>
+                            <tr>
+                            <td><a href="#" title="">Lhasa Stream</a></td>
+                            <td><div>Large Stream</div></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Lhasa Yerpa</a></td>
+                            <td><div>Sacred Places</div></td>
+                          </tr>
+                          <tbody>
+                        </table>                                    
+                       </div>
+                     </div>
                    </div>                     
-                   </div> 
-                </div><!-- END view section -->
+                   
+                 </div> 
+              </div><!-- END view section -->
+              
             </div>    
         </div><!-- END kmaps-search --> 
         
-
     </div><!-- END main-content row -->
   </div><!-- END container-fluid -->
-
-
-  
   
   <div class="footer">
     <div>
@@ -404,7 +435,7 @@
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script type="text/javascript">window.jQuery || document.write('<script src="<?php print $theme_path; ?>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js" type="text/javascript"></script>
+  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap.min.js"></script>
   <!-- sliding search panel Extruder resources -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/inc/jquery.hoverIntent.min.js"></script>
