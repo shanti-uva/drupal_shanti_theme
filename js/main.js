@@ -49,10 +49,23 @@ jQuery(function($) {
 					// loading: "icon-spinner icon-spin"
 				}
 			},
-      source: {url: "sites/all/themes/shanti_theme/src/json/nested-formatted.json", debugDelay: 1000},
-			lazyload: function(event, ctx) {
-				ctx.result = {url: "sites/all/themes/shanti_theme/src/json/ajax-sub2.json", debugDelay: 1000};
-			}
+      source: {
+        url: "http://subjects.kmaps.virginia.edu/features/nested.json",
+        dataType: "json"
+      },
+      postProcess: function(event, data) {
+        console.log(data);
+        var dataString = JSON.stringify(data.response.features);
+        data.result = JSON.parse(dataString, function(k, v) {
+          if (k==="id") {
+            this.key = v;
+          } else if (k==="feature") {
+            this.children = v;
+          } else {
+            return v;
+          }
+        });
+      }
 		});
 });
 
@@ -86,7 +99,6 @@ jQuery(function($) {
 	//    }
 	// );
 });
-
 
 
 
