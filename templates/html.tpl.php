@@ -122,14 +122,6 @@
         <div class="page-title"><i class="icon km-places km-lg"></i> <span style="position:relative;top:5px;">Lhasa</span></div>
         <div class="breadcrumbs-wrapper">
           <ol class="breadcrumb">
-            <li><span class="tag-before-breadcrumb">Places:</span></li>
-            <li><a href="#">World</a></li>
-            <li><a href="#">Asia</a></li>
-            <li><a href="#">Greater Himalayas & Tibetan Plateau</a></li>
-            <li><a href="#">China</a></li>
-            <li><a href="#">Tibet Autonomous Region</a></li>
-            <li><a href="#">Lhasa</a></li>
-            <li class="active">Lhasa</li>
           </ol>
         </div>
       </div>
@@ -162,75 +154,6 @@
       <div class="col-sm-10 content-page">
         <div class="tab-content">
           <div class="tab-pane active" id="tab-overview">
-            <h6>Overview</h6>
-            <p>Lhasa is the most important city in modern and historical Tibet religiously and politically. Located in the geographical center of central Tibet, it is home of the sacred center of Tibet in the Jokhang Temple and the famed Potala Palace from which the Dalai Lamas ruled over Tibet.
-            </p>
-            <h6>Feature Types</h6>
-            <p>
-              <a href="#">City</a>, <a href="#">ADM3</a>, <a href="#">Capital of 1st order administrative division</a> 
-            </p>
-            <h6>Map</h6>
-            <div class="google-maps">
-               <iframe src="https://mapsengine.google.com/map/embed?mid=zCEqriyJd8A0.kM1pQfphj0Ns" width="640" height="480" style="border:0"></iframe>
-            </div>
-            <div class="panel-group" id="accordion">
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h6>
-                    <a href="#collapseOne" data-toggle="collapse" data-parent="#accordion">
-                      <i class="fa fa-fw fa-plus-circle"></i> Names
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseOne" class="panel-collapse collapse in">
-                  <div class="panel-body">
-                    <p>Lorem ipsum Deserunt labore anim officia eiusmod adipisicing labore exercitation ea minim id dolor enim magna Ut esse consequat occaecat aliqua mollit commodo anim quis in tempor deserunt ut laborum sit in dolor cillum nulla eu adipisicing enim minim irure laborum consequat nisi ea ad est amet voluptate labore cillum non sed laborum ex veniam occaecat ad consectetur Duis sit qui magna consectetur velit tempor labore nulla officia Ut consequat Excepteur magna dolor eu deserunt magna est occaecat amet nostrud dolore ut dolore culpa in occaecat est velit aliquip velit culpa in dolore reprehenderit ullamco officia et ea deserunt nostrud ullamco sed eu non est et aliqua dolor dolor pariatur dolor non nisi veniam id est consequat non pariatur commodo aliquip sit in velit fugiat tempor Duis voluptate nostrud enim commodo cupidatat eiusmod culpa qui anim eiusmod adipisicing esse occaecat in officia in ad Ut anim irure officia qui laboris eu nulla sunt dolore consectetur elit enim nulla aute pariatur ullamco pariatur ex aliqua ea in exercitation tempor voluptate nisi laborum in deserunt esse aute qui nulla aliquip do dolor pariatur aliquip ut sunt voluptate dolore culpa veniam consectetur in nisi labore reprehenderit consectetur commodo in magna aute amet magna ad nulla esse ullamco veniam incididunt id sed laborum consectetur incididunt quis fugiat in aliquip dolor enim sunt proident id velit ut est in sed sit.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h6>
-                    <a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion">
-                      <i class="fa fa-fw fa-plus-circle"></i> Etymology
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseTwo" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>Lorem ipsum Ad voluptate quis magna Duis aute magna. Lorem ipsum Quis elit minim consectetur nostrud nulla nostrud laborum eiusmod veniam. Lorem ipsum Officia ut cupidatat adipisicing ad culpa enim reprehenderit minim culpa labore enim. Lorem ipsum Labore eiusmod adipisicing Excepteur eiusmod qui proident enim proident. Lorem ipsum Fugiat sunt ut aliquip in enim occaecat magna minim id dolore aliqua. Lorem ipsum Irure eu reprehenderit laboris Duis adipisicing qui do.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h6>
-                    <a href="#collapseThree" data-toggle="collapse" data-parent="#accordion">
-                      <i class="fa fa-fw fa-plus-circle"></i> IDs
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseThree" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>Lorem ipsum Anim do sit proident aliqua id quis exercitation laboris in commodo est veniam culpa nisi in veniam velit in Excepteur ex Ut voluptate dolor aute eu in incididunt velit irure Duis.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="panel panel-default">
-                <div class="panel-heading">
-                  <h6>
-                    <a href="#collapseFour" data-toggle="collapse" data-parent="#accordion">
-                      <i class="fa fa-fw fa-plus-circle"></i> Location
-                    </a>
-                  </h6>
-                </div>
-                <div id="collapseFour" class="panel-collapse collapse">
-                  <div class="panel-body">
-                    <p>Lorem ipsum Tempor proident id sint esse in laborum incididunt anim in dolor officia elit voluptate non occaecat magna sunt nulla qui dolore consectetur in consequat esse incididunt sed mollit dolore occaecat minim ex in cupidatat cupidatat mollit enim id esse aliquip ea do deserunt culpa Ut magna ullamco consectetur eu culpa pariatur consectetur eu labore ut est sunt mollit tempor laboris consequat dolor laborum eu ad laboris amet mollit veniam consequat pariatur irure quis in in cillum nostrud mollit deserunt adipisicing Excepteur in commodo laborum ea deserunt sunt adipisicing ullamco officia dolore laboris pariatur sunt Ut magna adipisicing dolore voluptate eiusmod est eiusmod tempor enim eu eu aliqua ut quis nisi dolore deserunt eiusmod in Ut occaecat cupidatat amet proident reprehenderit non sed esse deserunt aliqua dolor proident qui fugiat adipisicing fugiat enim in labore qui adipisicing consequat sint Duis officia proident anim officia amet ut do Excepteur ea dolor dolore exercitation ut adipisicing cillum dolor eu Ut velit eu nulla irure enim incididunt voluptate eiusmod tempor sunt eu id qui consectetur dolor et sit incididunt tempor est incididunt est aute dolore Excepteur quis laboris aliquip ex laboris elit aliqua id aute consectetur dolore et officia est ea elit sunt dolore mollit ea aute consectetur aute anim dolor aliquip sed sunt.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="tab-pane" id="tab-essays">
@@ -443,7 +366,9 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/inc/mbExtruder.js"></script> 
   <!-- fancy tree resources -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.glyph.js"></script>  
+  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.glyph.js"></script>
+  <!-- Hashchange event -->
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <!-- kmaps -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> 
   

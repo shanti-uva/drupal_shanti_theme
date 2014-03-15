@@ -54,7 +54,7 @@ jQuery(function($) {
         dataType: "json"
       },
       postProcess: function(event, data) {
-        console.log(data);
+        //console.log(data);
         var dataString = JSON.stringify(data.response.features);
         data.result = JSON.parse(dataString, function(k, v) {
           if (k==="id") {
@@ -65,6 +65,10 @@ jQuery(function($) {
             return v;
           }
         });
+      },
+      activate: function(event, data) {
+        //alert(JSON.stringify(data.node.title));
+        window.location.hash = "features/" + data.node.key;
       }
 		});
 });
@@ -100,7 +104,45 @@ jQuery(function($) {
 	// );
 });
 
+// *** Hash Change events ***
+jQuery(function($) {
+  $(window).hashchange( function() {
+    var mHash = location.hash.split("#")[1];
+    var mUrl = "http://subjects.kmaps.virginia.edu/" + mHash;
 
+    $.get(mUrl, processData);
+  });
+
+  $(window).trigger('hashchange');
+});
+
+/**
+ * Function that will process the returned data and create the various sections of the page.
+ * @param  {[type]} data [description]
+ * @return {[type]}      [description]
+ */
+function processData(data) {
+  var $subData = $(data).find("#FeatureDetails");
+  //$("#tab-overview").html($subData);
+
+  //Create Breadcrumbs
+
+  //Remove all elements and start adding them again.
+  $("ol.breadcrumb li").remove();
+  $("ol.breadcrumb").append('<li><span class="tag-before-breadcrumb">Places:</span></li>');
+  $(".breadcrumbs a", $subData).each(function(bIndex, bElement) {
+    bElement.href = "#" + bElement.href.substring(bElement.href.indexOf("features"));
+    $("ol.breadcrumb").append(
+      $('<li>').append(bElement)
+    );
+  });
+
+  //Get the element that we want and display to overview.
+  $("#tab-overview").empty();
+  $("#tab-overview").append(
+    $('<h6>').append($subData.find("> h2").contents())
+  );
+}
 
 
 
