@@ -119,7 +119,7 @@
   
     <div class="row-fluid titlearea">
       <div class="col-sm-12">
-        <div class="page-title"><i class="icon km-places km-lg"></i> <span style="position:relative;top:5px;">Lhasa</span></div>
+        <div class="page-title"><i class="icon km-subjects km-lg"></i> <span style="position:relative;top:5px;">Subjects</span></div>
         <div class="breadcrumbs-wrapper">
           <ol class="breadcrumb">
           </ol>

@@ -107,7 +107,7 @@ jQuery(function($) {
 // *** Hash Change events ***
 jQuery(function($) {
   $(window).hashchange( function() {
-    var mHash = location.hash.split("#")[1];
+    var mHash = location.hash.split("#")[1] || 'features/2823';
     var mUrl = "http://subjects.kmaps.virginia.edu/" + mHash;
 
     $.get(mUrl, processData);
@@ -127,9 +127,9 @@ function processData(data) {
 
   //Create Breadcrumbs
 
-  //Remove all elements and start adding them again.
+  //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadcrumb li").remove();
-  $("ol.breadcrumb").append('<li><span class="tag-before-breadcrumb">Places:</span></li>');
+  $("ol.breadcrumb").append('<li><span class="tag-before-breadcrumb">Subjects:</span></li>');
   $(".breadcrumbs a", $subData).each(function(bIndex, bElement) {
     bElement.href = "#" + bElement.href.substring(bElement.href.indexOf("features"));
     $("ol.breadcrumb").append(
@@ -142,6 +142,10 @@ function processData(data) {
   $("#tab-overview").append(
     $('<h6>').append($subData.find("> h2").contents())
   );
+
+  //Remove unwanted elements and display wanted elements for the overview page
+  $(">h2, .breadcrumbs", $subData).remove();
+  $("#tab-overview").append($subData);
 }
 
 
