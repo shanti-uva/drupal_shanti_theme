@@ -1,112 +1,152 @@
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]><!--> 
+<html class="no-js"> <!--<![endif]-->
 <head>
   <?php $theme_path = drupal_get_path('theme', 'shanti_theme'); ?>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shanti App</title>
-  <meta name="description" content="" />
-  <meta name="viewport" content="width=device-width" />
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,400italic">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.css">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/fonts/kmap-icons/css/kmaps-icons.css">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css" class="skinswitcher">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/search-panel.css" media="all">
-  <link rel="stylesheet" type="text/css" href="<?php print $theme_path; ?>/css/main.css">
-  <script src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>  
+  <meta name="description" content="template">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/kmaps-icons/css/kmaps-icons.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css" class="skinswitcher">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css" media="all">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/js/forms/check/skins/minimal/red.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
+  <!-- IE HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-  <a href=".main-content" class="sr-only">Skip to main content</a>
-  <div class="navbar navbar-default navbar-static-top" role="navigation" style="background:#fff;">
-      
-      <div class="navbar-header">
+  <a href="#main-content" class="sr-only">Skip to main content</a>
+  <div class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">  
+       <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navtop">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>        
-        <h1><a href="" class="navbar-brand" title="SHANTI homepage link"><img src="<?php print $theme_path; ?>/images/shanti_logo.png" alt="shanti logo" />
-            <span>Scholarly Collections at the University of Virginia</span></a></h1>
+        <h1 class="navbar-title"><a href="" class="navbar-brand" title="SHANTI homepage link"><img src="<?php print $theme_path; ?>/images/shanti_logo.png" alt="shanti logo" />
+          <span><span class="hidden">SHANTI</span>Scholarly Collections at the University of Virginia</span></a></h1>
       </div>
       
-      <div class="navbar-collapse collapse pull-right" id="navtop">
-        
-        <ul class="nav navbar-nav pull-left">
-          <li class="explore"><a href="#" id="toggle-collections">EXPLORE<i class="icon km-lg km-2x km-directions"></i></a></li>
-          <li class="login"><a href="">LOGIN<i class="icon km-lg km-2x"></i></a></li>
+      <div class="navbar-collapse collapse" id="navtop">
+      <form role="form" class="form">
+       <fieldset>         
+        <ul class="nav navbar-nav navbar-right">
+          <li class="explore"><a href="#" id="toggle-collections">EXPLORE<i class="icon km-directions"></i></a></li>
+          <li class="login"><a href="">LOGIN</a></li>
           <li class="dropdown options">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">OPTIONS<i class="icon km-lg km-2x km-arrowselect"></i></a>
-                <ul class="dropdown-menu dropdown-menu-right dropdown-features">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">OPTIONS<i class="icon km-arrowselect"></i></a>
+                <ul class="dropdown-menu dropdown-features">
                   
-                  <li class="drop-title">Perspective</li>
-                    <li class="select"><a href=""><i class="icon"></i>General</a></li>
-                    <li class="last"><a href=""><i class="icon"></i>Other</a></li>
+                  <li class="drop-hdr">Perspective</li>
+                    <li class="form-group"><label class="radio-inline" for="options1a">
+                        <input type="radio" name="options1" id="options1a" value="options1a" checked>General</label>
+                    </li>
+                    <li class="last form-group"><label class="radio-inline" for="options1b">
+                        <input type="radio" name="options1" id="options1b" value="options1b">Tibetan</label>
+                    </li>
                     
-                  <li class="drop-title">Subject Language</li>
-                    <li><a href=""><i class="icon"></i>Chinese Characters (simplified)</a></li>
-                    <li><a href=""><i class="icon"></i>Chinese Characters (traditional)</a></li>
-                    <li><a href=""><i class="icon"></i>Devangiri Script</a></li>
-                    <li class="select"><a href=""><i class="icon"></i>Popular Standard (romanization)</a></li>
-                    <li><a href=""><i class="icon"></i>Scholarly Standard (romanization)</a></li>
-                    <li><a href=""><i class="icon"></i>Tibetan Script (simplified)</a></li>
-                    <li class="last"><a href=""><i class="icon"></i>Tibetan Script (romanization)</a></li>
+                  <li class="drop-hdr">Subject Language</li>
+                    <li class="form-group"><label class="radio-inline" for="options2a">
+                        <input type="radio" name="options2" id="options2a" value="options2a">Chinese Characters (simplified)</label>
+                    </li>
+                    <li class="form-group"><label class="radio-inline" for="options2b">
+                        <input type="radio" name="options2" id="options2b" value="options2b">Chinese Characters (traditional)</label>
+                    </li>
+                    <li class="form-group"><label class="radio-inline" for="options2c">
+                        <input type="radio" name="options2" id="options2c" value="options2c">Devangiri Script</label>
+                    </li>
+                    <li class="form-group"><label class="radio-inline" for="options2d">
+                        <input type="radio" name="options2" id="options2d" value="options2d" checked>Popular Standard (romanization)</label>
+                    </li>
+                    <li class="form-group"><label class="radio-inline" for="options2e">
+                        <input type="radio" name="options2" id="options2e" value="options2e">Scholarly Standard (romanization)</label>
+                    </li>                   
+                    <li class="form-group"><label class="radio-inline" for="options2f">
+                        <input type="radio" name="options2" id="options2f" value="options2f">Tibetan Script (simplified)</label>
+                    </li>                   
+                    <li class="last form-group"><label class="radio-inline" for="options2g">
+                        <input type="radio" name="options2" id="options2g" value="options2g">Tibetan Script (romanization)</label>
+                    </li>
                   
-                  <li class="drop-title">Show Subject Details</li>                        
-                    <li class="select"><a href=""><i class="icon"></i>Yes</a></li>
-                    <li class="last"><a href=""><i class="icon"></i>No</a></li>
+                  <li class="drop-hdr">Show Subject Details</li>                        
+                    <li class="form-group"><label class="radio-inline" for="options3a">
+                        <input type="radio" name="options3" id="options3a" value="options3a" checked>Yes</label>
+                    </li>
+                    <li class="last form-group"><label class="radio-inline" for="options3b">
+                        <input type="radio" name="options3" id="options3b" value="options3b">No</label>
+                    </li>
                 </ul> 
           </li>
-          <li class="dropdown lang">
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">ENG<i class="icon km-lg km-2x km-arrowselect"></i></a>
-                <ul class="dropdown-menu pull-left dropdown-features">
-                      <li><a href=""><i class="icon"></i>Tibetan</a></li>
-                      <li><a href=""><i class="icon"></i>Chinese</a></li>
-                      <li class="select"><a href=""><i class="icon"></i>English</a></li>
-                      <li class="last"><a href=""><i class="icon"></i>French</a></li>
-                </ul>
+          <li class="dropdown lang">                    
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">ENG<i class="icon km-arrowselect"></i></a>
+                  <ul class="dropdown-menu dropdown-features">
+                    <li class="form-group"><label class="radio-inline" for="optionslang1">
+                        <input type="radio" name="radios" id="optionslang1" value="lang1">Tibetan</label>
+                    </li>
+                    <li class="form-group"><label class="radio-inline" for="optionslang2">
+                        <input type="radio" name="radios" id="optionslang2" value="lang2" checked>English</label>
+                    </li>
+                    <li class="form-group"><label class="radio-inline" for="optionslang3">
+                        <input type="radio" name="radios" id="optionslang3" value="lang3">French</label>
+                    </li>
+                    <li class="last form-group"><label class="radio-inline" for="optionslang4">
+                        <input type="radio" name="radios" id="optionslang4" value="lang4">Chinese</label>
+                    </li>
+                  </ul>      
           </li>
         </ul>
+       </fieldset>  
+       </form>           
+      </div><!-- END navbar-collapse -->
       
-      </div>
-  </div><!-- END navbar --> 
+    </div>
+  </div><!-- END navbar -->
   
-  <div class="container-fluid">
-    <div class="row-fluid collections collapse" id="opencollect">
+  <div class="container-fluid"> <!-- BEGIN dropdown panel -->
+    <div class="row collections collapse" id="opencollect">
       <div class="lightblue-bg">
         <div class="col-sm-8 col-sm-offset-2 lightblue-bg">
           <h4>EXPLORE COLLECTIONS</h4>
           <div class="four-collections">
             <div class="col-sm-3">
-              <ul class="km-ul">
-                <li><a href="#"><i class="icon km-2x km-subjects"></i>Subjects</a></li>
-                <li><a href="#"><i class="icon km-2x km-places"></i>Places</a></li>
-                <li><a href="#"><i class="icon km-2x km-agents"></i>Agents</a></li>
-                <li><a href="#"><i class="icon km-2x km-events"></i>Events</a></li>
+              <ul>
+                <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
+                <li><a href="#"><i class="icon km-places"></i>Places</a></li>
+                <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
+                <li><a href="#"><i class="icon km-events"></i>Events</a></li>
               </ul>
             </div>
             <div class="col-sm-3">
-              <ul class="km-ul">
-                <li><a href="#"><i class="icon km-2x km-photos"></i>Photos</a></li>
-                <li><a href="#"><i class="icon km-2x km-audiovideo"></i>Audio-Video</a></li>
-                <li><a href="#"><i class="icon km-2x km-visuals"></i>Visuals</a></li>
+              <ul>
+                <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
+                <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
+                <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
               </ul>
             </div>
             <div class="col-sm-3">
-              <ul class="km-ul">
-                <li><a href="#"><i class="icon km-2x km-essays"></i>Essays</a></li>
-                <li><a href="#"><i class="icon km-2x km-texts"></i>Texts</a></li>
-                <li><a href="#"><i class="icon km-2x km-maps"></i>Maps</a></li>
+              <ul>
+                <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
+                <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
+                <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
               </ul>
             </div>
             <div class="col-sm-3">
-              <ul class="km-ul last">
-                <li><a href="#"><i class="icon km-2x km-community"></i>Community</a></li>
-                <li><a href="#"><i class="icon km-2x km-terms"></i>Terms</a></li>
-                <li><a href="#"><i class="icon km-2x km-sources"></i>Sources</a></li>
+              <ul class="last">
+                <li><a href="#"><i class="icon km-community"></i>Community</a></li>
+                <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
+                <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
               </ul>
             </div>
           </div>
@@ -115,14 +155,13 @@
           <i class="icon km-close"></i>
         </div>
       </div>
-    </div>
+    </div><!-- END dropdown panel -->
   
-    <div class="row-fluid titlearea">
+    <div class="row titlearea">
       <div class="col-sm-12">
-        <div class="page-title"><i class="icon km-subjects km-lg"></i> <span style="position:relative;top:5px;">Subjects</span></div>
+        <div class="page-title"><i class="icon km-subjects km-lg"></i>Subjects</div>
         <div class="breadcrumbs-wrapper">
-          <ol class="breadcrumb">
-          </ol>
+          <ol class="breadcrumb"></ol>
         </div>
       </div>
     </div>
@@ -130,28 +169,28 @@
   
   <!-- BEGIN content -->
   <div class="container-fluid">
-    <div class="row main-content">
+    <div class="row" id="main-content">
     
       <div class="col-sm-2 content-sidebar">
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#tab-overview" data-toggle="pill"><i class="icon km-lg km-2x km-overview"></i>Overview</a></li>
-          <li><a href="#tab-essays" data-toggle="pill"><i class="icon km-lg km-2x km-essays"></i>Essays<span class="badge">1</span></a></li>
-          <li><a href="#tab-subjects" data-toggle="pill"><i class="icon km-lg km-2x km-subjects"></i>Subjects<span class="badge">3</span></a></li>
-          <li><a href="#tab-places" data-toggle="pill"><i class="icon km-lg km-2x km-places"></i>Places</a></li>
-          <li><a href="#tab-agents" data-toggle="pill"><i class="icon km-lg km-2x km-agents"></i>Agents</a></li>
-          <li><a href="#tab-events" data-toggle="pill"><i class="icon km-lg km-2x km-events"></i>Events</a></li>
-          <li><a href="#tab-photos" data-toggle="pill"><i class="icon km-lg km-2x km-photos"></i>Photos<span class="badge">396</span></a></li>
-          <li><a href="#tab-audio-video" data-toggle="pill"><i class="icon km-lg km-2x km-audiovideo"></i>Audio-Video</a></li>
-          <li><a href="#tab-visuals" data-toggle="pill"><i class="icon km-lg km-2x km-visuals"></i>Visuals</a></li>
-          <li><a href="#tab-texts" data-toggle="pill"><i class="icon km-lg km-2x km-texts"></i>Texts</a></li>
-          <li><a href="#tab-maps" data-toggle="pill"><i class="icon km-lg km-2x km-maps"></i>Maps</a></li>
-          <li><a href="#tab-community" data-toggle="pill"><i class="icon km-lg km-2x km-community"></i>Community</a></li>
-          <li><a href="#tab-terms" data-toggle="pill"><i class="icon km-lg km-2x km-terms"></i>Terms</a></li>
-          <li><a href="#tab-sources" data-toggle="pill"><i class="icon km-lg km-2x km-sources"></i>Sources</a></li>
+          <li class="active"><a href="#tab-overview" data-toggle="pill"><i class="icon km-overview"></i>Overview</a></li>
+          <li><a href="#tab-essays" data-toggle="pill"><i class="icon km-essays"></i>Essays<span class="badge">1</span></a></li>
+          <li><a href="#tab-subjects" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">3</span></a></li>
+          <li><a href="#tab-places" data-toggle="pill"><i class="icon km-places"></i>Places</a></li>
+          <li><a href="#tab-agents" data-toggle="pill"><i class="icon km-agents"></i>Agents</a></li>
+          <li><a href="#tab-events" data-toggle="pill"><i class="icon km-events"></i>Events</a></li>
+          <li><a href="#tab-photos" data-toggle="pill"><i class="icon km-photos"></i>Photos<span class="badge">396</span></a></li>
+          <li><a href="#tab-audio-video" data-toggle="pill"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
+          <li><a href="#tab-visuals" data-toggle="pill"><i class="icon km-visuals"></i>Visuals</a></li>
+          <li><a href="#tab-texts" data-toggle="pill"><i class="icon km-texts"></i>Texts</a></li>
+          <li><a href="#tab-maps" data-toggle="pill"><i class="icon km-maps"></i>Maps</a></li>
+          <li><a href="#tab-community" data-toggle="pill"><i class="icon km-community"></i>Community</a></li>
+          <li><a href="#tab-terms" data-toggle="pill"><i class="icon km-terms"></i>Terms</a></li>
+          <li><a href="#tab-sources" data-toggle="pill"><i class="icon km-sources"></i>Sources</a></li>
         </ul>
       </div>
        
-      <div class="col-sm-10 content-page">
+      <div class="col-sm-10 content-section">
         <div class="tab-content">
           <div class="tab-pane active" id="tab-overview">
           </div>
@@ -229,58 +268,65 @@
             
         <!-- BEGIN Search Panel --> 
         <div id="kmaps-search">               
-            <div>
-            
-            <!-- <h3 class="search-header off" style="display:none">Search <a href="#" id="closeSearch" onclick="$('#kmaps-search').closeMbExtruder();"> </a></h3> -->
-                
-                <!-- BEGIN search section -->                   
-                <div id="search-section">                   
-                  <form role="form" class="form">
-                  <fieldset>                        
-                    <legend style="display:none;">Search Form</legend>                  
+            <!-- BEGIN search section -->                   
+            <div id="input-section" style="display:none;">                    
+              <form role="form" class="form">
+               <fieldset>                       
+                <legend class="hidden">Search Form</legend>                 
                                           
-                  <div class="search-form-view form-group">
-                      <textarea id="searchform" class="form-control" rows="3" placeholder="Enter Search..."></textarea>                                                               
-                      <div class="search-utils btn-group">
-                          <button class="btn btn-primary btn-sm" type="submit">Submit Search</button>
-                      </div>
-                      <a href="#" class="advanced-link advanced-trigger" title="Advanced search options"><i class="icon"></i>Advanced</a>
-                  </div>  
+                  <div class="input-group">
+                      <input id="searchform" class="form-control" type="text" placeholder="Enter Search...">
+                      <span class="input-group-btn">
+                        <button id="searchbutton" type="button" class="btn btn-default"><i class="glyphicon glyphicon-chevron-right"></i></button>
+                      </span>
+                  </div>
+                  
+                  <div><a href="#" class="advanced-link advanced-trigger" title="advanced search options"><i class="icon"></i>Advanced</a></div>                    
                       
                      <!-- advanced search hidden ontent -->
-                     <div class="advanced-link-view" style="display:none;">                             
+                     <div class="advanced-view" style="display:none;">                              
                               <div class="form-group"> 
                                 <label class="radio-inline" for="radios-0">
-                                  <input type="radio" name="radios" id="radios-0" value="1" checked="checked">All Text</label> 
+                                  <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                                    All Text</label> 
                                 <label class="radio-inline" for="radios-1">
-                                  <input type="radio" name="radios" id="radios-1" value="2">Name </label> 
+                                  <input type="radio" name="radios" id="radios-1" value="2">
+                                    Name </label> 
                               </div>
                                                           
                               <div class="form-group">
                                 <label class="radio-inline" for="radios-2">
-                                  <input type="radio" name="radios2" id="radios-2" value="3" checked="checked">Contains</label> 
+                                  <input type="radio" name="radios2" id="radios-2" value="3" checked="checked">
+                                    Contains</label> 
                                 <label class="radio-inline" for="radios-3">
-                                  <input type="radio" name="radios2" id="radios-3" value="4">Starts With</label>
+                                  <input type="radio" name="radios2" id="radios-3" value="4">
+                                    Starts With</label>
                                 <label class="radio-inline" for="radios-4">
-                                  <input type="radio" name="radios2" id="radios-4" value="5">Exactly</label>                              
+                                  <input type="radio" name="radios2" id="radios-4" value="5">
+                                    Exactly</label>                             
                               </div>
                               
-                              <div class="form-group last">
+                              <div class="form-group">
                                 <label class="checkbox-inline" for="checkbox-1">
-                                  <input type="checkbox" name="checkbox" id="checkbox-1" value="6">Show only entries with essays</label>                              
-                              </div>                            
-                      </div>
-                      
-                  </fieldset>
-                  </form>                         
-                </div>  <!-- END search section -->
+                                  <input type="checkbox" name="checkbox" id="checkbox-1" value="6">
+                                    Show only entries with essays</label> 
+                              </div>
+                              <div class="form-group last">                                   
+                                <label class="checkbox-inline" for="checkbox-2">
+                                  <input type="checkbox" name="checkbox" id="checkbox-2" value="7">
+                                    Show feature details</label>                              
+                              </div>
+                              </div>                                                  
+               </fieldset>
+             </form>                          
+            </div>  <!-- END search section -->
                 
                 
                 <!-- START TABS / View section -->                                  
                 <div id="view-section">            
                   <ul class="nav nav-tabs" id="search-tabs">
-                    <li class="treeview active"><a href="#treeview" data-toggle="tab">Tree</a></li>
-                    <li class="listview"><a href="#listview" data-toggle="tab">List</a></li>
+                    <li class="treeview active"><a href="#treeview" data-toggle="tab"><i class="icon km-tree"></i>Tree</a></li>
+                    <li class="listview"><a href="#listview" data-toggle="tab"><i class="icon km-list"></i>List</a></li>
                   </ul>
                   
                   
@@ -288,52 +334,91 @@
                     
                     <!-- TAB - tree view -->
                     <div id="treeview" class="tab-pane active">       
-                        <div id="tree"></div><!-- tree nav container -->              
+                        <div id="tree" class="long-wrap"></div><!-- tree nav container -->              
                     </div>
                     
                     <!-- TAB - list view -->
                     <div id="listview" class="tab-pane">    
-                      <div>               
+                      <div class="long-wrap">               
                         <div class="table-responsive">
                          <table class="table table-condensed table-results">
                           <thead>
                               <tr>
                                 <th>Name</th>
-                                <th>Feature Type</th>
+                                <th>Id</th>
+                                <th>Caption</th>
                               </tr>
                           </thead>
                           <tbody>
                           <tr>
                             <td><a href="#" title="">Jokhang</a></td>
-                            <td><div>Temple</div></td>
+                            <td><span>Temple</span></td>
+                            <td><span></span></td>
                           </tr>
                           <tr>
                             <td><a href="#" title="">Khartrak</a></td>
-                            <td><div>Council</div></td>
+                            <td><span>Council</span></td>
+                            <td><span></span></td>
                           </tr>
                           <tr>
                             <td><a href="#" title="">Lhasa</a></td>
-                            <td><div>Cultural Region</div></td>
+                            <td><span>Cultural Region</span></td>
+                            <td><span></span></td>
                           </tr>
                             <tr>
                             <td><a href="#" title="">Lhasa</a></td>
-                            <td><div>City</div></td>
+                            <td><span>City</span></td>
+                            <td><span></span></td>
                           </tr>
                           <tr>
                             <td><a href="#" title="">Lhasa</a></td>
-                            <td><div>ADM2</div></td>
+                            <td><span>ADM2</span></td>
+                            <td><span></span></td>
                           </tr>
                           <tr>
                             <td><a href="#" title="">Lhasa</a></td>
-                            <td><div>Township (without urban registered population)</div></td>
+                            <td><span>Township (without urban registered population)</span></td>
+                            <td><span></span></td>
                           </tr>
                             <tr>
                             <td><a href="#" title="">Lhasa Stream</a></td>
-                            <td><div>Large Stream</div></td>
+                            <td><span>Large Stream</span></td>
+                            <td><span></span></td>
                           </tr>
                           <tr>
                             <td><a href="#" title="">Lhasa Yerpa</a></td>
-                            <td><div>Sacred Places</div></td>
+                            <td><span>Sacred Places</span></td>
+                            <td><span></span></td>
+                          </tr>
+                                                    <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><span>Cultural Region</span></td>
+                            <td><span></span></td>
+                          </tr>
+                            <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><span>City</span></td>
+                            <td><span></span></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><span>ADM2</span></td>
+                            <td><span></span></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Lhasa</a></td>
+                            <td><span>Township (without urban registered population)</span></td>
+                            <td><span></span></td>
+                          </tr>
+                            <tr>
+                            <td><a href="#" title="">Lhasa Stream</a></td>
+                            <td><span>Large Stream</span></td>
+                            <td><span></span></td>
+                          </tr>
+                          <tr>
+                            <td><a href="#" title="">Lhasa Yerpa</a></td>
+                            <td><span>Sacred Places</span></td>
+                            <td><span></span></td>
                           </tr>
                           <tbody>
                         </table>                                    
@@ -343,8 +428,6 @@
                    
                  </div> 
               </div><!-- END view section -->
-              
-            </div>    
         </div><!-- END kmaps-search --> 
         
     </div><!-- END main-content row -->
@@ -355,22 +438,37 @@
       <p>&copy; COPYRIGHT 2014</p>
     </div>
   </div>  
-
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script> 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script type="text/javascript">window.jQuery || document.write('<script src="<?php print $theme_path; ?>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-  <script type="text/javascript"  src="https://ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery-ui.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap.min.js"></script>
-  <!-- sliding search panel Extruder resources -->
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/inc/jquery.hoverIntent.min.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/inc/jquery.mb.flipText.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/inc/mbExtruder.js"></script> 
-  <!-- fancy tree resources -->
+  <!-- searchpanel -->
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/extruder/mbExtruder.js"></script> 
+  <!-- tree -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.glyph.js"></script>
+  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.glyph.js"></script>  
+  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.filter.js"></script>
+  <!-- input -->
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/check/icheck.js"></script>
+
+  <!-- highlight -->
+  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.highlight.js"></script>
+
+  <!-- tablesorter -->
+  <script type="text/javascript" src="http://tablesorter.com/__jquery.tablesorter.min.js"></script>
+
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
+
   <!-- kmaps -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> 
   
+  <script>
+  jQuery(function ($) {
+      $("#input-section").css("display","block");
+  });
+  </script>
+    
 </body>
 </html>
