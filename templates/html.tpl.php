@@ -173,20 +173,20 @@
     
       <div class="col-sm-2 content-sidebar">
         <ul class="nav nav-pills nav-stacked">
-          <li class="active"><a href="#tab-overview" data-toggle="pill"><i class="icon km-overview"></i>Overview</a></li>
-          <li><a href="#tab-essays" data-toggle="pill"><i class="icon km-essays"></i>Essays<span class="badge">1</span></a></li>
-          <li><a href="#tab-subjects" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">3</span></a></li>
-          <li><a href="#tab-places" data-toggle="pill"><i class="icon km-places"></i>Places</a></li>
-          <li><a href="#tab-agents" data-toggle="pill"><i class="icon km-agents"></i>Agents</a></li>
-          <li><a href="#tab-events" data-toggle="pill"><i class="icon km-events"></i>Events</a></li>
-          <li><a href="#tab-photos" data-toggle="pill"><i class="icon km-photos"></i>Photos<span class="badge">396</span></a></li>
-          <li><a href="#tab-audio-video" data-toggle="pill"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
-          <li><a href="#tab-visuals" data-toggle="pill"><i class="icon km-visuals"></i>Visuals</a></li>
-          <li><a href="#tab-texts" data-toggle="pill"><i class="icon km-texts"></i>Texts</a></li>
-          <li><a href="#tab-maps" data-toggle="pill"><i class="icon km-maps"></i>Maps</a></li>
-          <li><a href="#tab-community" data-toggle="pill"><i class="icon km-community"></i>Community</a></li>
-          <li><a href="#tab-terms" data-toggle="pill"><i class="icon km-terms"></i>Terms</a></li>
-          <li><a href="#tab-sources" data-toggle="pill"><i class="icon km-sources"></i>Sources</a></li>
+          <li class="active overview"><a href="#tab-overview" data-toggle="pill"><i class="icon km-overview"></i>Overview</a></li>
+          <li class="essays"><a href="#tab-essays" data-toggle="pill"><i class="icon km-essays"></i>Essays<span class="badge">1</span></a></li>
+          <li class="subjects"><a href="#tab-subjects" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">3</span></a></li>
+          <li class="places"><a href="#tab-places" data-toggle="pill"><i class="icon km-places"></i>Places<span class="badge">396</span></a></li>
+          <li class="agents"><a href="#tab-agents" data-toggle="pill"><i class="icon km-agents"></i>Agents<span class="badge">396</span></a></li>
+          <li class="events"><a href="#tab-events" data-toggle="pill"><i class="icon km-events"></i>Events<span class="badge">396</span></a></li>
+          <li class="photos"><a href="#tab-photos" data-toggle="pill"><i class="icon km-photos"></i>Photos<span class="badge">396</span></a></li>
+          <li class="audio-video"><a href="#tab-audio-video" data-toggle="pill"><i class="icon km-audiovideo"></i>Audio-Video<span class="badge">396</span></a></li>
+          <li class="visuals"><a href="#tab-visuals" data-toggle="pill"><i class="icon km-visuals"></i>Visuals<span class="badge">396</span></a></li>
+          <li class="texts"><a href="#tab-texts" data-toggle="pill"><i class="icon km-texts"></i>Texts<span class="badge">396</span></a></li>
+          <li class="maps"><a href="#tab-maps" data-toggle="pill"><i class="icon km-maps"></i>Maps<span class="badge">396</span></a></li>
+          <li class="community"><a href="#tab-community" data-toggle="pill"><i class="icon km-community"></i>Community<span class="badge">396</span></a></li>
+          <li class="terms"><a href="#tab-terms" data-toggle="pill"><i class="icon km-terms"></i>Terms<span class="badge">396</span></a></li>
+          <li class="sources"><a href="#tab-sources" data-toggle="pill"><i class="icon km-sources"></i>Sources<span class="badge">396</span></a></li>
         </ul>
       </div>
        

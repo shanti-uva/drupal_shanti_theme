@@ -302,6 +302,7 @@ label, input[type=button], input[type=submit],button{ cursor:pointer;}
   margin-top:0;
   white-space:nowrap;
   border-left: 10px solid #ccc;
+  display: none;
 }
 .content-sidebar ul.nav-pills li.active {
 	border-left: 10px solid #DC3C47;

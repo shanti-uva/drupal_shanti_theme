@@ -208,7 +208,12 @@ function processData(data) {
     );
   });
 
+  //First Hide all the elements from the left hand navigation and then show relevant ones
+  $(".content-sidebar ul.nav-pills li").hide();
+
   //Get the element that we want and display to overview.
+  //Show overview tab on the left hand column
+  $(".content-sidebar ul.nav-pills li.overview").show();
   $("#tab-overview").empty();
   $("#tab-overview").append(
     $('<h6>').append($subData.find("> h2").contents())
@@ -217,4 +222,79 @@ function processData(data) {
   //Remove unwanted elements and display wanted elements for the overview page
   $(">h2, .breadcrumbs", $subData).remove();
   $("#tab-overview").append($subData);
+
+  //console.log($(">ul li", $subData))
+
+  //Create left subnavigation elements to be used to fulfill various sections
+  $(">ul li", $subData).each(function(i, elem) {
+    var mtext = $(this).text();
+    if(mtext.indexOf("Picture") !== -1) {
+      processPhotos(mtext);
+    }
+    if(mtext.indexOf("Video") !== -1) {
+      processVideos(mtext);
+    }
+    if(mtext.indexOf("Texts") !== -1) {
+      processTexts(mtext);
+    }
+  });
 }
+
+function processPhotos(mtext) {
+  $("ul.nav li a[href='#tab-photos'] .badge").text(mtext.match(/(\d+)/)[1]);
+  $(".content-sidebar ul.nav-pills li.photos").show();
+  /*$("#tab-photos").empty();
+  $("#tab-photos").append(
+    '<p>This is a new test</p>'
+  );*/
+}
+
+function processVideos(mtext) {
+  $("ul.nav li a[href='#tab-audio-video'] .badge").text(mtext.match(/(\d+)/)[1]);
+  $(".content-sidebar ul.nav-pills li.audio-video").show();
+  /*$("#tab-photos").empty();
+  $("#tab-photos").append(
+    '<p>This is a new test</p>'
+  );*/
+}
+
+function processTexts(mtext) {
+  $("ul.nav li a[href='#tab-texts'] .badge").text(mtext.match(/(\d+)/)[1]);
+  $(".content-sidebar ul.nav-pills li.texts").show();
+  /*$("#tab-photos").empty();
+  $("#tab-photos").append(
+    '<p>This is a new test</p>'
+  );*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
