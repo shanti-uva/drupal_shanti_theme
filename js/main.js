@@ -54,21 +54,8 @@ jQuery(function ($) {
             }
         },
         source: {
-            url: "http://subjects.kmaps.virginia.edu/features/nested.json",
+            url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json",
             dataType: "json"
-        },
-        postProcess: function(event, data) {
-            //console.log(data);
-            var dataString = JSON.stringify(data.response.features);
-            data.result = JSON.parse(dataString, function(k, v) {
-                if (k==="id") {
-                    this.key = v;
-                } else if (k==="feature") {
-                    this.children = v;
-                } else {
-                    return v;
-                }
-            });
         },
         activate: function(event, data) {
             //alert(JSON.stringify(data.node.title));
@@ -179,7 +166,7 @@ jQuery(function($) {
 jQuery(function($) {
   $(window).hashchange( function() {
     var mHash = location.hash.split("#")[1] || 'features/2823';
-    var mUrl = "http://subjects.kmaps.virginia.edu/" + mHash;
+    var mUrl = "http://dev-subjects.kmaps.virginia.edu/" + mHash + ".json";
 
     $.get(mUrl, processData);
   });
@@ -193,51 +180,60 @@ jQuery(function($) {
  * @return {[type]}      [description]
  */
 function processData(data) {
-  var $subData = $(data).find("#FeatureDetails");
-  //$("#tab-overview").html($subData);
-
-  //Create Breadcrumbs
+  //Make the overview tab active
+  $("ul.nav li").removeClass("active");
+  $(".content-section .tab-pane").removeClass("active");
+  $("ul.nav li.overview").addClass("active");
+  $("#tab-overview").addClass("active");
 
   //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadcrumb li").remove();
   $("ol.breadcrumb").append('<li><span class="tag-before-breadcrumb">Subjects:</span></li>');
-  $(".breadcrumbs a", $subData).each(function(bIndex, bElement) {
-    bElement.href = "#" + bElement.href.substring(bElement.href.indexOf("features"));
-    $("ol.breadcrumb").append(
-      $('<li>').append(bElement)
-    );
-  });
+  $.each(data.feature.ancestors, populateBreadcrumbs);
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
   $(".content-sidebar ul.nav-pills li").hide();
 
   //Get the element that we want and display to overview.
   //Show overview tab on the left hand column
+  $tabOverview = $("#tab-overview");
+  $tabOverview.empty();
+  $tabOverview.append('<h6>' + data.feature.header + '</h6>');
+  if (data.feature.summaries.length > 0) {$tabOverview.append(data.feature.summaries[0].content)}
   $(".content-sidebar ul.nav-pills li.overview").show();
-  $("#tab-overview").empty();
-  $("#tab-overview").append(
-    $('<h6>').append($subData.find("> h2").contents())
-  );
 
-  //Remove unwanted elements and display wanted elements for the overview page
-  $(">h2, .breadcrumbs", $subData).remove();
-  $("#tab-overview").append($subData);
-
-  //console.log($(">ul li", $subData))
-
-  //Create left subnavigation elements to be used to fulfill various sections
-  $(">ul li", $subData).each(function(i, elem) {
-    var mtext = $(this).text();
-    if(mtext.indexOf("Picture") !== -1) {
-      processPhotos(mtext);
-    }
-    if(mtext.indexOf("Video") !== -1) {
-      processVideos(mtext);
-    }
-    if(mtext.indexOf("Texts") !== -1) {
-      processTexts(mtext);
-    }
+  //Related content section
+  $("ul.nav li a[href='#tab-related'] .badge").text(data.feature.associated_resources[0]);
+  $(".content-sidebar ul.nav-pills li.related").show();
+  $('a[href="#tab-related"]').one('show.bs.tab', function(e) {
+    $tabRelated = $("#tab-related");
+    $tabRelated.empty();
+    $tabRelated.append('<h6>' + data.feature.header + '</h6>');
+    var relatedUrl = "http://dev-subjects.kmaps.virginia.edu/features/" + data.feature.id + "/related.json";
+    $.get(relatedUrl, relatedResources);
   });
+}
+
+function populateBreadcrumbs(bInd, bVal) {
+  $breadcrumbOl = $("ol.breadcrumb");
+  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a></li>');
+}
+
+function relatedResources(data) {
+  $tabRelated = $("#tab-related");
+  var contentR = '<ul>';
+  $.each(data.feature_relation_types, function(rInd, rElm) {
+    contentR += '<li>' + rElm.label + ' the following ' + 
+    (rElm.features.length == 1 ? "subject (1):" : "subjects (" + rElm.features.length + "):");
+    contentR += '<ul>';
+    $.each(rElm.features, function(rrInd, rrElm) {
+      contentR += '<li><a href="#features/' + rrElm.id + '">' + rrElm.header + ' (From the General Perspective)</a></li>';
+    });
+    contentR += '</ul>';
+    contentR += '</li>'; 
+  });
+  contentR += '</ul>';
+  $tabRelated.append(contentR);
 }
 
 function processPhotos(mtext) {

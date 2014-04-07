@@ -174,6 +174,7 @@
       <div class="col-sm-2 content-sidebar">
         <ul class="nav nav-pills nav-stacked">
           <li class="active overview"><a href="#tab-overview" data-toggle="pill"><i class="icon km-overview"></i>Overview</a></li>
+          <li class="related"><a href="#tab-related" data-toggle="pill"><i class="icon km-sources"></i>Related<span class="badge">396</span></a></li>
           <li class="essays"><a href="#tab-essays" data-toggle="pill"><i class="icon km-essays"></i>Essays<span class="badge">1</span></a></li>
           <li class="subjects"><a href="#tab-subjects" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">3</span></a></li>
           <li class="places"><a href="#tab-places" data-toggle="pill"><i class="icon km-places"></i>Places<span class="badge">396</span></a></li>
@@ -193,6 +194,11 @@
       <div class="col-sm-10 content-section">
         <div class="tab-content">
           <div class="tab-pane active" id="tab-overview">
+          </div>
+
+          <div class="tab-pane" id="tab-related">
+            <h6>Essays</h6>
+            <p>Lorem ipsum Cupidatat nostrud qui do in commodo laborum aliquip pariatur id cupidatat non esse ad dolor quis id mollit non quis sint elit aliquip incididunt sint eiusmod irure consequat deserunt incididunt laboris incididunt occaecat cillum aute incididunt magna sed deserunt proident occaecat Ut officia dolor ea Excepteur in minim deserunt adipisicing ullamco voluptate Ut consectetur cillum enim qui aute commodo officia consequat Ut nostrud adipisicing et adipisicing aliquip consequat sit sint dolor irure cupidatat cupidatat dolor id in fugiat culpa fugiat consectetur esse sed dolor fugiat nisi consequat labore ea aliquip in irure occaecat magna veniam reprehenderit sit sit tempor est adipisicing consequat sint ut amet anim cupidatat in labore ullamco qui magna officia quis fugiat dolore consectetur do proident ex sunt sint consectetur cupidatat consectetur cillum dolor ut consequat Excepteur et incididunt qui exercitation cupidatat sit laboris sit anim consequat Ut eu dolore amet cillum proident sint minim ea laboris elit Excepteur.</p>
           </div>
 
           <div class="tab-pane" id="tab-essays">
