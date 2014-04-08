@@ -180,11 +180,8 @@ jQuery(function($) {
  * @return {[type]}      [description]
  */
 function processData(data) {
-  //Make the overview tab active
-  $("ul.nav li").removeClass("active");
-  $(".content-section .tab-pane").removeClass("active");
-  $("ul.nav li.overview").addClass("active");
-  $("#tab-overview").addClass("active");
+
+  $("a[href='#tab-overview']").click();
 
   //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadcrumb li").remove();
@@ -209,6 +206,7 @@ function processData(data) {
     $tabRelated = $("#tab-related");
     $tabRelated.empty();
     $tabRelated.append('<h6>' + data.feature.header + '</h6>');
+    console.log(data.feature.id);
     var relatedUrl = "http://dev-subjects.kmaps.virginia.edu/features/" + data.feature.id + "/related.json";
     $.get(relatedUrl, relatedResources);
   });
