@@ -180,7 +180,7 @@ jQuery(function($) {
  * @return {[type]}      [description]
  */
 function processData(data) {
-
+  //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
 
   //Remove all elements from Breadcrumbs and start adding them again.
