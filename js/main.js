@@ -180,6 +180,9 @@ jQuery(function($) {
  * @return {[type]}      [description]
  */
 function processData(data) {
+  //Removes previous binds for the show related tabs.
+  $('a[href="#tab-related"]').unbind('show.bs.tab');
+
   //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
 
