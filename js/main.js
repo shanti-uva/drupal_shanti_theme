@@ -200,24 +200,69 @@ function processData(data) {
   $tabOverview.empty();
   $tabOverview.append('<h6>' + data.feature.header + '</h6>');
   if (data.feature.summaries.length > 0) {$tabOverview.append(data.feature.summaries[0].content)}
+  if (data.feature.illustrations.length > 0) {
+    $.get(data.feature.illustrations[0].url, showOverviewImage);
+  }
   $(".content-sidebar ul.nav-pills li.overview").show();
 
   //Related content section
-  $("ul.nav li a[href='#tab-related'] .badge").text(data.feature.associated_resources[0]);
-  $(".content-sidebar ul.nav-pills li.related").show();
-  $('a[href="#tab-related"]').one('show.bs.tab', function(e) {
-    $tabRelated = $("#tab-related");
-    $tabRelated.empty();
-    $tabRelated.append('<h6>' + data.feature.header + '</h6>');
-    console.log(data.feature.id);
-    var relatedUrl = "http://dev-subjects.kmaps.virginia.edu/features/" + data.feature.id + "/related.json";
-    $.get(relatedUrl, relatedResources);
-  });
+  if (data.feature.associated_resources.related_feature_count > 0) {
+    $("ul.nav li a[href='#tab-related'] .badge").text(data.feature.associated_resources.related_feature_count);
+    $(".content-sidebar ul.nav-pills li.related").show();
+    $('a[href="#tab-related"]').one('show.bs.tab', function(e) {
+      $tabRelated = $("#tab-related");
+      $tabRelated.empty();
+      $tabRelated.append('<h6>' + data.feature.header + '</h6>');
+      var relatedUrl = "http://dev-subjects.kmaps.virginia.edu/features/" + data.feature.id + "/related.json";
+      $.get(relatedUrl, relatedResources);
+    });
+  }
+
+  //Related essays (descriptions) section
+  if (data.feature.associated_resources.description_count > 0) {
+    $("ul.nav li a[href='#tab-essays'] .badge").text(data.feature.associated_resources.description_count);
+    $(".content-sidebar ul.nav-pills li.essays").show();
+  }
+
+  //Related Places section
+  if (data.feature.associated_resources.place_count > 0) {
+    $("ul.nav li a[href='#tab-places'] .badge").text(data.feature.associated_resources.place_count);
+    $(".content-sidebar ul.nav-pills li.places").show();
+  }
+
+  //Related Photos (picture) section
+  if (data.feature.associated_resources.picture_count > 0) {
+    $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
+    $(".content-sidebar ul.nav-pills li.photos").show();
+  }
+
+  //Related Audio-Video (videos) section
+  if (data.feature.associated_resources.video_count > 0) {
+    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count);
+    $(".content-sidebar ul.nav-pills li.audio-video").show();
+  }
+
+  //Related Texts section
+  if (data.feature.associated_resources.document_count > 0) {
+    $("ul.nav li a[href='#tab-texts'] .badge").text(data.feature.associated_resources.document_count);
+    $(".content-sidebar ul.nav-pills li.texts").show();
+  }
 }
 
 function populateBreadcrumbs(bInd, bVal) {
   $breadcrumbOl = $("ol.breadcrumb");
   $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a></li>');
+}
+
+function showOverviewImage(data) {
+  var retString = '<figure class="cap-bot">';
+  retString += '<img src="' + data.picture.images[3].url + '" class="img-responsive img-thumbnail" alt="' + 
+    (data.picture.captions.length > 0 ? data.picture.captions[0].title : "") + '">';
+  retString += '<figcaption>' + (data.picture.captions.length > 0 ? "<div class=\"center-caption\">" + data.picture.captions[0].title + "</div>" : "") + 
+    (data.picture.descriptions.length > 0 ? data.picture.descriptions[0].title : "") + '</figcaption>';
+  retString += '</figure>';
+
+  $("#tab-overview").append(retString);
 }
 
 function relatedResources(data) {
