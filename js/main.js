@@ -180,8 +180,14 @@ jQuery(function($) {
  * @return {[type]}      [description]
  */
 function processData(data) {
+  //Global variable to hold all the related resources count
+  shanti_related_counts = data.feature.associated_resources;
+
   //Removes previous binds for the show related tabs.
   $('a[href="#tab-related"]').unbind('show.bs.tab');
+
+  //Removes previous binds for the show related photos tab.
+  $('a[href="#tab-photos"]').unbind('show.bs.tab');
 
   //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
@@ -234,6 +240,13 @@ function processData(data) {
   if (data.feature.associated_resources.picture_count > 0) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
     $(".content-sidebar ul.nav-pills li.photos").show();
+    $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
+      $tabPhotos = $("#tab-photos");
+      $tabPhotos.empty();
+      $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
+      var photosURL = "http://dev-mms.thlib.org/topics/" + data.feature.id + "/pictures.json";
+      $.get(photosURL, relatedPhotos);
+    });
   }
 
   //Related Audio-Video (videos) section
@@ -265,6 +278,7 @@ function showOverviewImage(data) {
   $("#tab-overview").append(retString);
 }
 
+//Function to populate related tab
 function relatedResources(data) {
   $tabRelated = $("#tab-related");
   var contentR = '<ul>';
@@ -276,10 +290,25 @@ function relatedResources(data) {
       contentR += '<li><a href="#features/' + rrElm.id + '">' + rrElm.header + ' (From the General Perspective)</a></li>';
     });
     contentR += '</ul>';
-    contentR += '</li>'; 
+    contentR += '</li>';
   });
   contentR += '</ul>';
   $tabRelated.append(contentR);
+}
+
+//Function to populate photos tab
+function relatedPhotos(data) {
+  var contentPh = '<div class="related-photos">';
+  $.each(data.topic.media, function(rInd, rElm) {
+    contentPh += '<div class="each-photo">';
+    contentPh += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
+    contentPh += '<img src="' + rElm.images[0].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">'
+    contentPh += '</a>';
+    contentPh += '</div>';
+  });
+
+  contentPh += '</div>';
+  $("#tab-photos").append(contentPh);
 }
 
 function processPhotos(mtext) {
