@@ -312,6 +312,7 @@ function relatedResources(data) {
 
 //Function to populate photos tab
 function relatedPhotos(data) {
+  
   var contentPh = '<div class="related-photos">';
   $.each(data.topic.media, function(rInd, rElm) {
     contentPh += '<div class="each-photo">';
@@ -377,7 +378,37 @@ function relatedPhotos(data) {
 
 //Function to process and show the paginated photos
 function paginatedPhotos(data) {
-  
+  var paginatedContent = $("#tab-photos .related-photos");
+
+  var contentPh = '';
+  $.each(data.topic.media, function(rInd, rElm) {
+    contentPh += '<div class="each-photo">';
+    contentPh += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
+    contentPh += '<img src="' + rElm.images[0].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentPh += '</a>';
+    contentPh += '</div>';
+
+    //Modal for each photo
+    contentPh += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentPh += '<div class="modal-dialog">';
+    contentPh += '<div class="modal-content">';
+    contentPh += '<div class="modal-header">';
+    contentPh += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+    contentPh += '<h4 class="modal-title" id="myModalLabel">' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '</h4>';
+    contentPh += '</div>';
+    contentPh += '<div class="modal-body">';
+    contentPh += '<img src="' + rElm.images[4].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentPh += '<p><strong>Resource #:</strong> ' + rElm.id + '</p>';
+    contentPh += '<p><strong>Description:</strong></p>';
+    contentPh += (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "");
+    contentPh += '<p><strong>Copyright holder:</strong> ' + (rElm.copyrights.length > 0 ? rElm.copyrights[0].copyright_holder.title : "") + '</p>';
+    contentPh += '<p><strong>Photographer:</strong> ' + (rElm.hasOwnProperty('photographer') ? rElm.photographer.fullname : "") + '</p>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+  });
+  paginatedContent.empty().html(contentPh);
 }
 
 function processPhotos(mtext) {
