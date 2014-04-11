@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shanti App</title>
   <meta name="description" content="template">
-  <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/kmaps-icons/css/kmaps-icons.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
@@ -450,6 +450,7 @@
   <script type="text/javascript">window.jQuery || document.write('<script src="<?php print $theme_path; ?>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery-ui.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap.min.js"></script>
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
   <!-- searchpanel -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/extruder/mbExtruder.js"></script> 
   <!-- tree -->

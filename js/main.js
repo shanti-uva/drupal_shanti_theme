@@ -181,7 +181,10 @@ jQuery(function($) {
  */
 function processData(data) {
   //Global variable to hold all the related resources count
-  shanti_related_counts = data.feature.associated_resources;
+  shanti = {
+    shanti_related_counts: data.feature.associated_resources,
+    shanti_id: data.feature.id
+  };
 
   //Removes previous binds for the show related tabs.
   $('a[href="#tab-related"]').unbind('show.bs.tab');
@@ -245,7 +248,18 @@ function processData(data) {
       $tabPhotos.empty();
       $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
       var photosURL = "http://dev-mms.thlib.org/topics/" + data.feature.id + "/pictures.json";
-      $.get(photosURL, relatedPhotos);
+      shanti.photosURL = photosURL;
+      //$.get(photosURL, relatedPhotos);
+      $.ajax({
+        url: photosURL,
+        beforeSend: function(xhr) {
+          $('li.photos i').removeClass('icon km-photos').addClass('fa fa-spinner fa-spin');
+        }
+      })
+      .done(relatedPhotos)
+      .always(function() {
+        $('li.photos i').removeClass('fa fa-spinner fa-spin').addClass('icon km-photos');
+      });
     });
   }
 
@@ -302,13 +316,68 @@ function relatedPhotos(data) {
   $.each(data.topic.media, function(rInd, rElm) {
     contentPh += '<div class="each-photo">';
     contentPh += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
-    contentPh += '<img src="' + rElm.images[0].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">'
+    contentPh += '<img src="' + rElm.images[0].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
     contentPh += '</a>';
+    contentPh += '</div>';
+
+    //Modal for each photo
+    contentPh += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentPh += '<div class="modal-dialog">';
+    contentPh += '<div class="modal-content">';
+    contentPh += '<div class="modal-header">';
+    contentPh += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+    contentPh += '<h4 class="modal-title" id="myModalLabel">' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '</h4>';
+    contentPh += '</div>';
+    contentPh += '<div class="modal-body">';
+    contentPh += '<img src="' + rElm.images[4].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentPh += '<p><strong>Resource #:</strong> ' + rElm.id + '</p>';
+    contentPh += '<p><strong>Description:</strong></p>';
+    contentPh += (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "");
+    contentPh += '<p><strong>Copyright holder:</strong> ' + (rElm.copyrights.length > 0 ? rElm.copyrights[0].copyright_holder.title : "") + '</p>';
+    contentPh += '<p><strong>Photographer:</strong> ' + (rElm.photographer.hasOwnProperty('fullname') ? rElm.photographer.fullname : "") + '</p>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+    contentPh += '</div>';
     contentPh += '</div>';
   });
 
   contentPh += '</div>';
+  contentPh += '<ul id="photo-pagination"></ul>';
+  contentPh += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
   $("#tab-photos").append(contentPh);
+  $("#photo-pagination").bootstrapPaginator({
+    size: "large",
+    bootstrapMajorVersion: 3,
+    currentPage: 1,
+    numberOfPages: 5,
+    totalPages: Math.ceil(shanti.shanti_related_counts.picture_count / (data.topic.media.length + 0.0)),
+    pageUrl: function(type, page, current) {
+      return shanti.photosURL + '?page=' + page;
+    },
+    onPageClicked: function(e, origEvent, type, page) {
+      origEvent.preventDefault();
+      e.stopImmediatePropagation();
+      var currentTarget = $(e.currentTarget);
+      $.ajax({
+        url: shanti.photosURL + '?page=' + page,
+        beforeSend: function(xhr) {
+          $('.paginated-spin i.fa').addClass('fa-spin');
+          $('.paginated-spin').show();
+        }
+      })
+      .done(paginatedPhotos)
+      .always(function() {
+        $('.paginated-spin i').removeClass('fa-spin');
+        currentTarget.bootstrapPaginator("show", page);
+        $('.paginated-spin').hide();
+      });
+    }
+  });
+}
+
+//Function to process and show the paginated photos
+function paginatedPhotos(data) {
+  
 }
 
 function processPhotos(mtext) {

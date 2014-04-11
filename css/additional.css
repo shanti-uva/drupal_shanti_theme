@@ -62,15 +62,54 @@ figcaption .center-caption {
 
 /* Photos subsection */
 
+#tab-photos .related-photos {
+  overflow: auto;
+}
+
 #tab-photos .each-photo {
   width: 100px;
   float: left;
   margin-right: 15px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
+}
+
+#photo-pagination {
+  float: left;
+}
+
+#tab-photos .paginated-spin {
+  float: left;
+  display: inline-block;
+  margin: 20px;
+  padding-top: 15px;
+  display: none;
+}
+
+#tab-photos #photo-pagination>li>a {
+  color: #DC3C47;
+}
+
+#tab-photos #photo-pagination>.active>a,
+#tab-photos #photo-pagination>.active>span,
+#tab-photos #photo-pagination>.active>a:hover,
+#tab-photos #photo-pagination>.active>span:hover,
+#tab-photos #photo-pagination>.active>a:focus,
+#tab-photos #photo-pagination>.active>span:focus {
+  background-color: #DC3C47;
+  border-color: #DC3C47;
+  color: white;
+}
+
+.each-photo a.thumbnail:hover {
+  border-color: #DC3C47;
 }
 
 
+/* Fix for the spinner icon */
 
+.content-sidebar ul.nav-pills li a i.fa:before {
+  top: 0;
+}
 
 
 
