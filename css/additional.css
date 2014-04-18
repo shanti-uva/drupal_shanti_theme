@@ -1,5 +1,9 @@
 /* Additional styles */
 
+.content-sidebar ul.nav-pills li {
+  display: none;
+}
+
 /* Overview subsection */
 
 figcaption .center-caption {
@@ -100,7 +104,8 @@ figcaption .center-caption {
   color: white;
 }
 
-.each-photo a.thumbnail:hover {
+.each-photo a.thumbnail:hover,
+.each-av a.thumbnail:hover {
   border-color: #DC3C47;
 }
 
@@ -111,7 +116,18 @@ figcaption .center-caption {
   top: 0;
 }
 
+/* Audio Video Subsection */
 
+#tab-audio-video .related-audio-video {
+  overflow: auto;
+}
+
+#tab-audio-video .each-av {
+  width: 76px;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
 
 
 

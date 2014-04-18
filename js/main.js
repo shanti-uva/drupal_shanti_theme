@@ -1,5 +1,6 @@
 var Settings = {
-     baseUrl: "http://dev-subjects.kmaps.virginia.edu"
+     baseUrl: "http://dev-subjects.kmaps.virginia.edu",
+     mmsUrl: "http://dev-mms.thlib.org"
 }
 
 
@@ -753,6 +754,9 @@ function processData(data) {
   //Removes previous binds for the show related photos tab.
   $('a[href="#tab-photos"]').unbind('show.bs.tab');
 
+  //Removes previous binds for the show related audio-video tab.
+  $('a[href="#tab-audio-video"]').unbind('show.bs.tab');
+
   //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
 
@@ -766,7 +770,7 @@ function processData(data) {
 
   //Get the element that we want and display to overview.
   //Show overview tab on the left hand column
-  $tabOverview = $("#tab-overview");
+  var $tabOverview = $("#tab-overview");
   $tabOverview.empty();
   $tabOverview.append('<h6>' + data.feature.header + '</h6>');
   if (data.feature.summaries.length > 0) {$tabOverview.append(data.feature.summaries[0].content)}
@@ -780,7 +784,7 @@ function processData(data) {
     $("ul.nav li a[href='#tab-related'] .badge").text(data.feature.associated_resources.related_feature_count);
     $(".content-sidebar ul.nav-pills li.related").show();
     $('a[href="#tab-related"]').one('show.bs.tab', function(e) {
-      $tabRelated = $("#tab-related");
+      var $tabRelated = $("#tab-related");
       $tabRelated.empty();
       $tabRelated.append('<h6>' + data.feature.header + '</h6>');
       var relatedUrl = Settings.baseUrl + "/features/" + data.feature.id + "/related.json";
@@ -805,10 +809,10 @@ function processData(data) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
     $(".content-sidebar ul.nav-pills li.photos").show();
     $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
-      $tabPhotos = $("#tab-photos");
+      var $tabPhotos = $("#tab-photos");
       $tabPhotos.empty();
       $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
-      var photosURL = "http://dev-mms.thlib.org/topics/" + data.feature.id + "/pictures.json";
+      var photosURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/pictures.json";
       shanti.photosURL = photosURL;
       //$.get(photosURL, relatedPhotos);
       $.ajax({
@@ -828,6 +832,13 @@ function processData(data) {
   if (data.feature.associated_resources.video_count > 0) {
     $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count);
     $(".content-sidebar ul.nav-pills li.audio-video").show();
+    $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
+      var $tabAudioVideo = $("#tab-audio-video");
+      $tabAudioVideo.empty();
+      $tabAudioVideo.append('<h6>' + 'Videos in ' + data.feature.header + '</h6>');
+      var audioVideoUrl = Settings.mmsUrl + "/topics/" + data.feature.id + "/videos.json";
+      $.get(audioVideoUrl, relatedVideos);
+    });
   }
 
   //Related Texts section
@@ -855,7 +866,7 @@ function showOverviewImage(data) {
 
 //Function to populate related tab
 function relatedResources(data) {
-  $tabRelated = $("#tab-related");
+  var $tabRelated = $("#tab-related");
   var contentR = '<ul>';
   $.each(data.feature_relation_types, function(rInd, rElm) {
     contentR += '<li>' + rElm.label + ' the following ' + 
@@ -970,6 +981,43 @@ function paginatedPhotos(data) {
     contentPh += '</div>';
   });
   paginatedContent.empty().html(contentPh);
+}
+
+//Function to process and show related videos
+function relatedVideos(data) {
+  var contentAV = '<div class="related-audio-video">';
+
+  $.each(data.topic.media, function(rInd, rElm) {
+    contentAV += '<div class="each-av">';
+    contentAV += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
+    contentAV += '<img src="' + rElm.images[0].url + '" alt="Flash video">';
+    contentAV += '</a>';
+    contentAV += '</div>';
+
+    //Modal for each video
+    contentAV += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentAV += '<div class="modal-dialog">';
+    contentAV += '<div class="modal-content">';
+    contentAV += '<div class="modal-header">';
+    contentAV += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+    contentAV += '<h4 class="modal-title" id="myModalLabel">' + (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "") + '</h4>';
+    contentAV += '</div>';
+    contentAV += '<div class="modal-body">';
+    contentAV += '<video id="video_file_' + rElm.id + '" class="video-js vjs-default-skin vjs-big-play-centered" ' +
+                 'controls preload="auto" width="' + rElm.images[2].width + '" height="' + rElm.images[2].height + '" ' + 
+                 'poster="' + rElm.images[1].url + '" ' + 
+                 'data-setup=\'{"controls" : true, "autoplay" : true, "preload" : "auto"}\'>';
+    contentAV += '<source src="' + rElm.images[2].url + '" type="video/x-flv" />';
+    contentAV += '</video>';
+    contentAV += '</div>';
+    contentAV += '</div>';
+    contentAV += '</div>';
+    contentAV += '</div>';
+  });
+
+  contentAV += '</div>';
+
+  $("#tab-audio-video").append(contentAV);
 }
 
 function processPhotos(mtext) {
