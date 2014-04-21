@@ -1,6 +1,7 @@
 var Settings = {
      baseUrl: "http://dev-subjects.kmaps.virginia.edu",
-     mmsUrl: "http://dev-mms.thlib.org"
+     mmsUrl: "http://dev-mms.thlib.org",
+     placesUrl: "http://dev-places.kmaps.virginia.edu"
 }
 
 
@@ -757,6 +758,9 @@ function processData(data) {
   //Removes previous binds for the show related audio-video tab.
   $('a[href="#tab-audio-video"]').unbind('show.bs.tab');
 
+  //Remove previous binds for the show related places tab.
+  $('a[href="#tab-places"]').unbind('show.bs.tab');
+
   //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
 
@@ -802,6 +806,14 @@ function processData(data) {
   if (data.feature.associated_resources.place_count > 0) {
     $("ul.nav li a[href='#tab-places'] .badge").text(data.feature.associated_resources.place_count);
     $(".content-sidebar ul.nav-pills li.places").show();
+    $('a[href="#tab-places"]').one('show.bs.tab', function(e) {
+      var $tabPlaces = $("#tab-places");
+      $tabPlaces.empty();
+      $tabPlaces.append('<h6>Features Associated with ' + data.feature.header + '</h6>');
+      var placesURL = Settings.placesUrl + '/topics/' + data.feature.id + '.json';
+      shanti.placesURL = placesURL;
+      $.get(placesURL, relatedPlaces);
+    });
   }
 
   //Related Photos (picture) section
@@ -1005,8 +1017,7 @@ function relatedVideos(data) {
     contentAV += '<div class="modal-body">';
     contentAV += '<video id="video_file_' + rElm.id + '" class="video-js vjs-default-skin vjs-big-play-centered" ' +
                  'controls preload="auto" width="' + rElm.images[2].width + '" height="' + rElm.images[2].height + '" ' + 
-                 'poster="' + rElm.images[1].url + '" ' + 
-                 'data-setup=\'{"controls" : true, "autoplay" : true, "preload" : "auto"}\'>';
+                 'poster="' + rElm.images[1].url + '">';
     contentAV += '<source src="' + rElm.images[2].url + '" type="video/x-flv" />';
     contentAV += '</video>';
     contentAV += '</div>';
@@ -1018,6 +1029,20 @@ function relatedVideos(data) {
   contentAV += '</div>';
 
   $("#tab-audio-video").append(contentAV);
+}
+
+//Function to process and show related places
+function relatedPlaces(data) {
+  var contentPl = '<ul class="related-places">';
+  $.each(data.features, function(rInd, rElm) {
+    contentPl += '<li>';
+    contentPl += '<a href="' + Settings.placesUrl + '/features/' + rElm.id + '">';
+    contentPl += rElm.header;
+    contentPl += '</a>';
+    contentPl += '</li>';
+  });
+  contentPl += '</ul>';
+  $("#tab-places").append(contentPl);
 }
 
 function processPhotos(mtext) {
