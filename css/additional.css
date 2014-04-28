@@ -77,11 +77,13 @@ figcaption .center-caption {
   margin-bottom: 10px;
 }
 
-#photo-pagination {
+#photo-pagination,
+#places-pagination {
   float: left;
 }
 
-#tab-photos .paginated-spin {
+#tab-photos .paginated-spin,
+#tab-places .paginated-spin {
   float: left;
   display: inline-block;
   margin: 20px;
@@ -89,7 +91,8 @@ figcaption .center-caption {
   display: none;
 }
 
-#tab-photos #photo-pagination>li>a {
+#tab-photos #photo-pagination>li>a,
+#tab-places #places-pagination>li>a {
   color: #DC3C47;
 }
 
@@ -98,7 +101,13 @@ figcaption .center-caption {
 #tab-photos #photo-pagination>.active>a:hover,
 #tab-photos #photo-pagination>.active>span:hover,
 #tab-photos #photo-pagination>.active>a:focus,
-#tab-photos #photo-pagination>.active>span:focus {
+#tab-photos #photo-pagination>.active>span:focus,
+#tab-places #places-pagination>.active>a,
+#tab-places #places-pagination>.active>span,
+#tab-places #places-pagination>.active>a:hover,
+#tab-places #places-pagination>.active>span:hover,
+#tab-places #places-pagination>.active>a:focus,
+#tab-places #places-pagination>.active>span:focus {
   background-color: #DC3C47;
   border-color: #DC3C47;
   color: white;

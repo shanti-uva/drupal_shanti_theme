@@ -764,6 +764,9 @@ function processData(data) {
   //Remove previous binds for the show related texts tab.
   $('a[href="#tab-texts"]').unbind('show.bs.tab');
 
+  //Remove previous binds for the show related essays tab.
+  $('a[href="#tab-essays"]').unbind('show.bs.tab');
+
   //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
 
@@ -803,6 +806,12 @@ function processData(data) {
   if (data.feature.associated_resources.description_count > 0) {
     $("ul.nav li a[href='#tab-essays'] .badge").text(data.feature.associated_resources.description_count);
     $(".content-sidebar ul.nav-pills li.essays").show();
+    $('a[href="#tab-essays"]').one('show.bs.tab', function(e) {
+      var $tabEssays = $("#tab-essays");
+      $tabEssays.empty();
+      var essaysURL = Settings.baseUrl + '/features/' + data.feature.id + '/descriptions.json';
+      $.get(essaysURL, relatedEssays);
+    });
   }
 
   //Related Places section
@@ -1085,7 +1094,71 @@ function relatedPlaces(data) {
     contentPl += '</li>';
   });
   contentPl += '</ul>';
+  contentPl += '<ul id="places-pagination"></ul>';
   $("#tab-places").append(contentPl);
+
+  $("#places-pagination").bootstrapPaginator({
+    size: "large",
+    bootstrapMajorVersion: 3,
+    currentPage: 1,
+    numberOfPages: 5,
+    totalPages: data.total_pages,
+    pageUrl: function(type, page, current) {
+      return shanti.placesURL + '?page=' + page;
+    },
+    onPageClicked: function(e, origEvent, type, page) {
+      origEvent.preventDefault();
+      e.stopImmediatePropagation();
+      var currentTarget = $(e.currentTarget);
+      $.ajax({
+        url: shanti.placesURL + '?page=' + page,
+        beforeSend: function(xhr) {
+          $('.paginated-spin i.fa').addClass('fa-spin');
+          $('.paginated-spin').show();
+        }
+      })
+      .done(paginatedPlaces)
+      .always(function() {
+        $('.paginated-spin i').removeClass('fa-spin');
+        currentTarget.bootstrapPaginator("show", page);
+        $('.paginated-spin').hide();
+      });
+    }
+  });
+}
+
+//Function to process and show paginated places
+function paginatedPlaces(data) {
+  var paginatedPlaces = $("#tab-places .related-places");
+
+  var contentPl = '';
+  $.each(data.features, function(rInd, rElm) {
+    contentPl += '<li>';
+    contentPl += '<a href="' + Settings.placesUrl + '/features/' + rElm.id + '">';
+    contentPl += rElm.header;
+    contentPl += '</a>';
+    contentPl += '</li>';
+  });
+
+  paginatedPlaces.empty().html(contentPl);
+}
+
+//Function to process and show related Essays
+function relatedEssays(data) {
+  var contentES = '<div class="related-essays">';
+
+  $.each(data.descriptions, function(rInd, rElm) {
+    var monthNames = [ "January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December" ];
+    var createdDate = new Date(Date.parse(rElm.created_at));
+    var showDate = monthNames[createdDate.getMonth()] + ' ' + createdDate.getDate() + ', ' + createdDate.getFullYear();
+    contentES += '<h6>' + rElm.title + ' <small>by ' + rElm.author.fullname + ' (' + showDate + ')</small>' + '</h6>';
+    contentES += rElm.content;
+  });
+
+  contentES += '</div>';
+
+  $("#tab-essays").append(contentES);
 }
 
 function processPhotos(mtext) {
