@@ -836,7 +836,7 @@ function processData(data) {
       var $tabPhotos = $("#tab-photos");
       $tabPhotos.empty();
       $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
-      var photosURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/pictures.json";
+      var photosURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/pictures.json?per_page=30";
       shanti.photosURL = photosURL;
       //$.get(photosURL, relatedPhotos);
       $.ajax({
@@ -954,16 +954,16 @@ function relatedPhotos(data) {
     bootstrapMajorVersion: 3,
     currentPage: 1,
     numberOfPages: 5,
-    totalPages: Math.ceil(shanti.shanti_related_counts.picture_count / (data.topic.media.length + 0.0)),
+    totalPages: data.topic.total_pages,
     pageUrl: function(type, page, current) {
-      return shanti.photosURL + '?page=' + page;
+      return shanti.photosURL + '&page=' + page;
     },
     onPageClicked: function(e, origEvent, type, page) {
       origEvent.preventDefault();
       e.stopImmediatePropagation();
       var currentTarget = $(e.currentTarget);
       $.ajax({
-        url: shanti.photosURL + '?page=' + page,
+        url: shanti.photosURL + '&page=' + page,
         beforeSend: function(xhr) {
           $('.paginated-spin i.fa').addClass('fa-spin');
           $('.paginated-spin').show();
