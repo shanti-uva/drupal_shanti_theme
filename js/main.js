@@ -761,6 +761,9 @@ function processData(data) {
   //Remove previous binds for the show related places tab.
   $('a[href="#tab-places"]').unbind('show.bs.tab');
 
+  //Remove previous binds for the show related texts tab.
+  $('a[href="#tab-texts"]').unbind('show.bs.tab');
+
   //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
 
@@ -857,6 +860,13 @@ function processData(data) {
   if (data.feature.associated_resources.document_count > 0) {
     $("ul.nav li a[href='#tab-texts'] .badge").text(data.feature.associated_resources.document_count);
     $(".content-sidebar ul.nav-pills li.texts").show();
+    $('a[href="#tab-texts"]').one('show.bs.tab', function(e) {
+      var $tabTexts = $("#tab-texts");
+      $tabTexts.empty();
+      $tabTexts.append('<h6>Texts in ' + data.feature.header + '</h6>');
+      var textsURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/documents.json";
+      $.get(textsURL, relatedTexts);
+    });
   }
 }
 
@@ -1029,6 +1039,39 @@ function relatedVideos(data) {
   contentAV += '</div>';
 
   $("#tab-audio-video").append(contentAV);
+}
+
+//Function to process and show related texts
+function relatedTexts(data) {
+  var contentTX = '<div class="related-texts">';
+
+  $.each(data.topic.media, function(rInd, rElm) {
+    contentTX += '<div class="each-text">';
+    contentTX += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
+    contentTX += '<img src="' + rElm.images[1].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentTX += '</a>';
+    contentTX += '</div>';
+
+    //Modal for each photo
+    contentTX += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentTX += '<div class="modal-dialog">';
+    contentTX += '<div class="modal-content">';
+    contentTX += '<div class="modal-header">';
+    contentTX += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+    contentTX += '<h4 class="modal-title" id="myModalLabel">' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '</h4>';
+    contentTX += '</div>';
+    contentTX += '<div class="modal-body">';
+    contentTX += '<img src="' + rElm.images[6].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentTX += '<p><strong>Resource #:</strong> ' + rElm.id + '</p>';
+    contentTX += '</div>';
+    contentTX += '</div>';
+    contentTX += '</div>';
+    contentTX += '</div>';
+  });
+
+  contentTX += '</div>';
+
+  $("#tab-texts").append(contentTX);
 }
 
 //Function to process and show related places

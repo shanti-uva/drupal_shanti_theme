@@ -105,7 +105,8 @@ figcaption .center-caption {
 }
 
 .each-photo a.thumbnail:hover,
-.each-av a.thumbnail:hover {
+.each-av a.thumbnail:hover,
+.each-text a.thumbnail:hover {
   border-color: #DC3C47;
 }
 
@@ -129,7 +130,18 @@ figcaption .center-caption {
   margin-bottom: 10px;
 }
 
+/* Texts Subsection */
 
+#tab-texts .related-texts {
+  overflow: auto;
+}
+
+#tab-texts .each-text {
+  width: 120px;
+  float: left;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
 
 
 
