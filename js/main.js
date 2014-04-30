@@ -767,12 +767,15 @@ function processData(data) {
   //Remove previous binds for the show related essays tab.
   $('a[href="#tab-essays"]').unbind('show.bs.tab');
 
+  //Change the page title to that of the new page being loaded
+  $(".page-title span").html(data.feature.header);
+
   //Make the overview tab the default tab on URL Change.
   $("a[href='#tab-overview']").click();
 
   //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadcrumb li").remove();
-  $("ol.breadcrumb").append('<li><span class="tag-before-breadcrumb">Subjects:</span></li>');
+  $("ol.breadcrumb").append('<li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>');
   $.each(data.feature.ancestors, populateBreadcrumbs);
 
   //First Hide all the elements from the left hand navigation and then show relevant ones

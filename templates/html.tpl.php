@@ -116,17 +116,10 @@
       
     <header class="col-sm-12 titlearea">
      <div>
-      <h1 class="page-title"><i class="icon km-places"></i><span>Lhasa</span></h1>
+      <h1 class="page-title"><i class="icon km-subjects"></i><span>Collections</span></h1>
         <nav class="breadcrumbs-wrapper" role="navigation">
           <ol class="breadcrumb">
-            <li><span class="tag-before-breadcrumb">Places:</span></li>
-            <li><a href="#">World</a></li>
-            <li><a href="#">Asia</a></li>
-            <li><a href="#">Greater Himalayas & Tibetan Plateau</a></li>
-            <li><a href="#">China</a></li>
-            <li><a href="#">Tibet Autonomous Region</a></li>
-            <li><a href="#">Lhasa</a></li>
-            <li class="active">Lhasa</li>
+            <li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>
           </ol>
         </nav>
       </div>
@@ -135,7 +128,7 @@
     <aside class="col-sm-2 content-sidebar">
       <ul class="nav nav-pills nav-stacked">
         <li class="active overview"><a href="#tab-overview" data-toggle="pill"><i class="icon km-overview"></i>Overview</a></li>
-        <li class="related"><a href="#tab-related" data-toggle="pill"><i class="icon km-sources"></i>Related<span class="badge">5</span></a></li>
+        <li class="related"><a href="#tab-related" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">5</span></a></li>
         <li class="essays"><a href="#tab-essays" data-toggle="pill"><i class="icon km-essays"></i>Essays<span class="badge">1</span></a></li>
         <li class="subjects"><a href="#tab-subjects" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">3</span></a></li>
         <li class="places"><a href="#tab-places" data-toggle="pill"><i class="icon km-places"></i>Places<span class="badge">3</span></a></li>
