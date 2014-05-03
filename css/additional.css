@@ -80,14 +80,35 @@ figcaption .center-caption {
 #photo-pagination,
 #places-pagination {
   float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+#photo-pagination li,
+#places-pagination li {
+  display: inline;
+  padding: 0 5px;
+}
+
+#photo-pagination li input.page-input,
+#places-pagination li input.page-input {
+  width: 45px;
+  text-align: center;
+  height: 22px;
+}
+
+li.first-page,
+li.last-page,
+li.previous-page,
+li.next-page {
+  font-size: smaller;
 }
 
 #tab-photos .paginated-spin,
 #tab-places .paginated-spin {
   float: left;
   display: inline-block;
-  margin: 20px;
-  padding-top: 15px;
+  margin-top: 10px;
   display: none;
 }
 

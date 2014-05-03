@@ -949,36 +949,65 @@ function relatedPhotos(data) {
   });
 
   contentPh += '</div>';
-  contentPh += '<ul id="photo-pagination"></ul>';
+  contentPh += '<ul id="photo-pagination">';
+  contentPh += '<li class="first-page"><a href="' + shanti.photosURL + '&page=1' + '">&lt;&lt;</a></li>';
+  contentPh += '<li class="previous-page"><a href="' + shanti.photosURL + '&page=1' + '">&lt;</a></li>';
+  contentPh += '<li>PAGE</li>';
+  contentPh += '<li><input type="text" value="1" class="page-input"></li>';
+  contentPh += '<li>OF ' + data.topic.total_pages + '</li>';
+  contentPh += '<li class="next-page"><a href="' + shanti.photosURL + '&page=2' + '">&gt;</a></li>';
+  contentPh += '<li class="last-page"><a href="' + shanti.photosURL + '&page=' + data.topic.total_pages + '">&gt;&gt;</a></li>';
+  contentPh += '</ul>';
   contentPh += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
   $("#tab-photos").append(contentPh);
-  $("#photo-pagination").bootstrapPaginator({
-    size: "large",
-    bootstrapMajorVersion: 3,
-    currentPage: 1,
-    numberOfPages: 5,
-    totalPages: data.topic.total_pages,
-    pageUrl: function(type, page, current) {
-      return shanti.photosURL + '&page=' + page;
-    },
-    onPageClicked: function(e, origEvent, type, page) {
-      origEvent.preventDefault();
-      e.stopImmediatePropagation();
-      var currentTarget = $(e.currentTarget);
-      $.ajax({
-        url: shanti.photosURL + '&page=' + page,
-        beforeSend: function(xhr) {
-          $('.paginated-spin i.fa').addClass('fa-spin');
-          $('.paginated-spin').show();
-        }
-      })
-      .done(paginatedPhotos)
-      .always(function() {
-        $('.paginated-spin i').removeClass('fa-spin');
-        currentTarget.bootstrapPaginator("show", page);
-        $('.paginated-spin').hide();
-      });
-    }
+
+  //Add the event listener for the first-page element
+  $("li.first-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    $.ajax({
+      url: currentTarget,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val('1');
+      $('li.previous-page a').attr('href', currentTarget);
+      var nextTarget = currentTarget.substr(0, currentTarget.length - 1) + 2;
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the previous-page element
+  $("li.previous-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    currentTarget = currentTarget.substr(0, currentTarget.length - 1);
+    var newpage = parseInt($('li input.page-input').val()) - 1;
+    if (newpage < 1) { newpage = 1}
+    currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(data.topic.total_pages) ? data.topic.total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $(e.currentTarget).attr('href', previousTarget);
+      $('li.next-page a').attr('href', nextTarget);
+    });
   });
 }
 
