@@ -978,7 +978,7 @@ function relatedPhotos(data) {
       $('.paginated-spin').hide();
       $('li input.page-input').val('1');
       $('li.previous-page a').attr('href', currentTarget);
-      var nextTarget = currentTarget.substr(0, currentTarget.length - 1) + 2;
+      var nextTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1) + 2;
       $('li.next-page a').attr('href', nextTarget);
     });
   });
@@ -987,10 +987,10 @@ function relatedPhotos(data) {
   $("li.previous-page a").click(function(e) {
     e.preventDefault();
     var currentTarget = $(e.currentTarget).attr('href');
-    currentTarget = currentTarget.substr(0, currentTarget.length - 1);
+    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
     var newpage = parseInt($('li input.page-input').val()) - 1;
-    if (newpage < 1) { newpage = 1}
-    currentURL = currentTarget + newpage;
+    if (newpage < 1) { newpage = 1; }
+    var currentURL = currentTarget + newpage;
     var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
     var nextTarget = currentTarget + ((newpage + 1) > parseInt(data.topic.total_pages) ? data.topic.total_pages : (newpage + 1));
     $.ajax({
@@ -1007,6 +1007,83 @@ function relatedPhotos(data) {
       $('li input.page-input').val(newpage);
       $(e.currentTarget).attr('href', previousTarget);
       $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the next-page element
+  $("li.next-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
+    var newpage = parseInt($('li input.page-input').val()) + 1;
+    if (newpage > parseInt(data.topic.total_pages)) { newpage = parseInt(data.topic.total_pages); }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(data.topic.total_pages) ? data.topic.total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $(e.currentTarget).attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the pager text input element
+  $("li input.page-input").change(function(e) {
+    e.preventDefault();
+    var currentTarget = shanti.photosURL + '&page=';
+    var newpage = parseInt($(this).val());
+    if (newpage > parseInt(data.topic.total_pages)) { newpage = parseInt(data.topic.total_pages); }
+    if (newpage < 1) { newpage = 1; }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(data.topic.total_pages) ? data.topic.total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the event listener for the last-page element
+  $("li.last-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    var newpage = parseInt(data.topic.total_pages);
+    var previousTarget = shanti.photosURL + (newpage - 1);
+    $.ajax({
+      url: currentTarget,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $('li.next-page a').attr('href', currentTarget);
     });
   });
 }
