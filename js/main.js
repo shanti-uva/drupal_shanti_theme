@@ -728,10 +728,17 @@ jQuery(function ($) {
 // *** Hash Change events ***
 jQuery(function($) {
   $(window).hashchange( function() {
-    var mHash = location.hash.split("#")[1] || 'features/2823';
-    var mUrl = Settings.baseUrl + "/" + mHash + ".json";
+    if (location.pathname.indexOf('subjects') !== -1) {
+      var mHash = location.hash.split("#")[1] || 'features/2823';
+      var mUrl = Settings.baseUrl + "/" + mHash + ".json";
+      $.get(mUrl, processSubjectsData);
+    }
 
-    $.get(mUrl, processData);
+    if (location.pathname.indexOf('places') !== -1) {
+      var mHash = location.hash.split("#")[1] || 'features/13735';
+      var mUrl = Settings.placesUrl + "/" + mHash + ".json";
+      $.get(mUrl, processPlacesData);
+    }
   });
 
   $(window).trigger('hashchange');
@@ -742,7 +749,7 @@ jQuery(function($) {
  * @param  {[type]} data [description]
  * @return {[type]}      [description]
  */
-function processData(data) {
+function processSubjectsData(data) {
   //Global variable to hold all the related resources count
   shanti = {
     shanti_related_counts: data.feature.associated_resources,
@@ -1298,6 +1305,11 @@ function processTexts(mtext) {
 }
 
 
+
+//Places callbacks. Need to move to another file
+function processPlacesData(data) {
+  
+}
 
 
 
