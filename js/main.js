@@ -9,24 +9,21 @@ var Settings = {
 jQuery(function ($) {
   $( '#menu' ).multilevelpushmenu({
     menuWidth: 250,
-    menuHeight: '32em', // this height set by longest menu length, preferences
+    menuHeight: '32em', // this height is determined by tallest menu, Preferences
     mode: 'cover',
     direction: 'rtl',
     backItemIcon: 'fa fa-angle-left',
     groupIcon: 'fa fa-angle-right',
     collapsed: true
   });
-  
-  $('.navbar-default .navbar-nav>li.lang, .navbar-default .navbar-nav>li:last').addClass('highlight');
-  // $('.multilevelpushmenu_wrapper>div>ul>li').append($("<a class=\"link-blocker\"></a>"));  
-  
+
   // --- expand
   $( '.menu-toggle' ).click(function(){
     $('.menu-toggle').toggleClass('show-topmenu');
-    $('#menu').multilevelpushmenu( 'expand' );    
-  
+    $('#menu').multilevelpushmenu( 'expand' );
+
     if($('.menu-toggle').hasClass('show-topmenu')) {
-      $(this).multilevelpushmenu( 'collapse' );         
+      $('#menu').multilevelpushmenu( 'collapse' );
     }
   });
   // --- align the text
@@ -39,11 +36,12 @@ jQuery(function ($) {
       event.stopPropagation();
       $('#menu').toggle();
   });
+  
   $(document).click( function(){
       $('#menu').hide();
       $('.menu-toggle').removeClass('show-topmenu');
       $('#menu').multilevelpushmenu( 'collapse' );
-  });
+  });   
 });
 
 
@@ -51,7 +49,7 @@ jQuery(function ($) {
 // jQuery(function ($) {
 
   // var menulist = $('#menu ul').css('display') == 'block'
-  
+
   // $(menulist).filter(function() {
     // return $(menulist).css('display') == 'block';
   // })
@@ -62,18 +60,106 @@ jQuery(function ($) {
 
 
 
+// --- breadcrumbs 
+jQuery(function ($) {
+  $(".breadwrap").jBreadCrumb({   
+        minimumCompressionElements: 4,
+        endElementsToLeaveOpen: 3,
+        beginingElementsToLeaveOpen: 0,
+        timeExpansionAnimation: 500,
+        timeCompressionAnimation: 500,
+        timeInitialCollapse: 600,
+        previewWidth: 10  
+  });
+});
+
+
+
 // *** SEARCH *** initiate sliding container, toggle collections & search options
 jQuery(function ($) {
   // --- prevent flash onload
   $(".input-section, .view-section, .view-section .nav-tabs>li>a").css("display","block");
-  
+
   $("#kmaps-search").buildMbExtruder({
       positionFixed: false,
       position: "right",
-      width: 295,
+      closeOnExternalClick:false,
+      closeOnClick:false,
+      width: 295, // width is set in two places, here and the css
       top: 0
   });
 
+
+  $("#menu-main").buildMbExtruder({
+      positionFixed: false,
+      position: "right",
+      width: 280, // width is set in two places, here and the css
+      top: 0
+
+  }); 
+
+  $("#menu-collections").buildMbExtruder({
+      positionFixed: false,
+      position: "right",
+      width:280, // width is set in two places, here and the css
+      top: 0
+
+  });
+
+
+  
+  $(".menu-maintoggle").click(function () {   
+      if($("#menu-main.extruder").hasClass("isOpened")){    
+        $("#menu-main").closeMbExtruder();
+        $(".menu-maintoggle").removeClass("show-topmenu");
+      } else {
+        $("#menu-main").openMbExtruder();
+        $("#kmaps-search").closeMbExtruder();
+        $("#menu-collections").closeMbExtruder();
+        $(".menu-maintoggle").addClass("show-topmenu");
+        $(".menu-exploretoggle,.kmaps-searchtoggle").removeClass("show-topmenu");
+        return false;
+      }
+  });
+
+  
+  $(".menu-exploretoggle").click(function () {   
+      if($("#menu-collections.extruder").hasClass("isOpened")){   
+        $("#menu-collections").closeMbExtruder();
+        $(".menu-exploretoggle").removeClass("show-topmenu");
+      } else {
+        
+        // $(".menu-commons-wrap, .menu-options-wrap").css('display','none');
+        $(".menu-collections-wrap").css('display','block');
+        $("#menu-collections").openMbExtruder();
+        $("#menu-main").closeMbExtruder();
+        $("#kmaps-search").closeMbExtruder();
+        $(".menu-exploretoggle").addClass("show-topmenu");  
+        $(".menu-maintoggle,.kmaps-searchtoggle").removeClass("show-topmenu");      
+        return false;
+      }
+
+  });
+
+  $(".kmaps-searchtoggle").click(function () {   
+      if($("#kmaps-search.extruder").hasClass("isOpened")){   
+        $("#kmaps-search").closeMbExtruder();
+        $(".kmaps-searchtoggle").removeClass("show-topmenu");
+      } else {
+        $("#menu-main").closeMbExtruder();
+        $("#menu-collections").closeMbExtruder();
+        $("#kmaps-search").openMbExtruder();
+        $(".kmaps-searchtoggle").addClass("show-topmenu");
+        $(".menu-maintoggle,.menu-exploretoggle").removeClass("show-topmenu");
+        // $(".menu-collections-wrap .accordion-toggle").addClass("collapsed");
+        // $(".menu-collections-wrap .panel-collapse").removeClass("in").css('height','0');
+        return false;
+      }
+
+  }); 
+
+
+  
   // --- collections toggle
   $("li.explore").addClass("closed");
   $(".explore>a, .closecollection").click(function(){
@@ -90,16 +176,17 @@ jQuery(function ($) {
       $(".advanced-view").toggleClass("show-options");
       $(".view-wrap").toggleClass("short-wrap"); // ----- toggle class for managing view-section height
   });
+  
 });
 
 
 
 // *** SEARCH *** adapt search panel height to viewport
-jQuery(function($) { 
-  var winHeight = $(window).height(); 
+jQuery(function($) {
+  var winHeight = $(window).height();
   var panelHeight = winHeight -100; // ----- height of container for search panel - minus length above and below in px
   var viewHeight = winHeight -217; // ----- height for view-section & search options - CLOSED
-  var shortHeight = winHeight -485; // ----- height for view-section & search options - OPEN      
+  var shortHeight = winHeight -457; // ----- height for view-section & search options - OPEN
 
   // set initial div height
   $("div.text").css({ "height": panelHeight });
@@ -117,11 +204,6 @@ jQuery(function($) {
     $(".view-wrap").css({ "height": viewHeight });
     $("#kmaps-search .view-wrap.short-wrap").css({ "height": shortHeight });
   });
-
-    if($("#btnResetSearch").hasClass("show")){ 
-      $("#kmaps-search .view-wrap.short-wrap").css({ "height": "518px" });
-    } 
-    
 });
 
 
@@ -151,20 +233,6 @@ jQuery(function($) {
   // Bind event listener
   $(".extruder-content").resize(checkWidth);
 
-  // $(window).on("resize",function(){ location.reload(); } ); // forces height refersh on browser-size change
-
-  // $(".ui-resizable-w").mousedown(function() {
-  //      $(window).mousemove(function() {
-  //        $(window).on("resize",function(){ location.reload(); } );
-  //      });
-  // })
-
-  if (!$(".extruder.right").hasClass("isOpened")) {
-        $(".flap").click( function() {
-          $(".extruder .text").css("width","100%");
-        });
-  }
-   
 });
 
 
@@ -173,8 +241,18 @@ jQuery(function($) {
 
 // *** SEARCH *** toggle button
 jQuery(function($) {
+   // $(window).on("resize",function(){ location.reload(); } ); // forces height refresh on browser-size change
+   // drag handle for panel width
+//   $(".extruder.right").resize(function() {
+//        $(window).reload(false)
+//   })
+
   if (!$(".extruder.right").hasClass("isOpened")) {
-        $(".flap").prepend("<span style='font-size:20px; position:absolute; left:19px; top:13px; z-index:10;'><i class='icon km-search'></i></span>");
+        $(".flap").click( function() {
+          $(".extruder .text").css("width","100%");
+        });
+          // styles inline for now, forces
+        $(".flap").prepend("<span style='font-size:22px; position:absolute; left:18px; top:12px; z-index:10;'><i class='icon km-search-kmaps'></i></span>");
         $(".flap").addClass("on-flap");
   }
 
@@ -224,12 +302,12 @@ function decorateElementWithPopover(elem, node) {
                 var document_count = Number($(xml).find('document_count').text());
 
                 // perhaps instead of vertical bars this should be done as spans then styled via css
-                if (related_count) counts.html("<span class='associated'><i class='icon km-places'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
+                if (related_count) counts.html("<span class='associated'><i class='icon km-sources'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
                 if (description_count) counts.append("<span class='associated'><i class='icon km-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
-                if (place_count) counts.append("<span class='associated'><i class='icon km-texts'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
+                if (place_count) counts.append("<span class='associated'><i class='icon km-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
                 if (picture_count) counts.append("<span class='associated'><i class='icon km-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
                 if (video_count) counts.append("<span class='associated'><i class='icon km-audiovideo'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
-                if (document_count) counts.append("<span class='associated'><i class='icon km-essays'></i><span class='badge' + (document_count)?' alert-success':'>" + document_count + "</span></span>");
+                if (document_count) counts.append("<span class='associated'><i class='icon km-texts'></i><span class='badge' + (document_count)?' alert-success':'>" + document_count + "</span></span>");
 
             }
         });
@@ -239,7 +317,9 @@ function decorateElementWithPopover(elem, node) {
 
 var searchUtil = {
     clearSearch: function() {
-        $('#tree').fancytree('getActiveNode').setActive(false);
+        if ($('#tree').fancytree('getActiveNode')) {
+            $('#tree').fancytree('getActiveNode').setActive(false);
+        }
         $('#tree').fancytree('getTree').clearFilter();
         $('#tree').fancytree("getRootNode").visit(function (node) {
             node.setExpanded(false);
@@ -299,25 +379,32 @@ jQuery(function ($) {
 
     // set the dataTable defaults
     $.extend( true, $.fn.dataTable.defaults,        {
-        "sDom": "<'row'<'col-xs-6'i><'col-xs-6'p>>" +
-            "t" +
-            "<'row'>",
-        "iTabIndex": 1,
+//        "sDom": "<'row'<'col-xs-6'i><'col-xs-6'p>>" +
+//            "t" +
+//            "<'row'>",
+//        "iTabIndex": 1,
         "oLanguage": {
             "sEmptyTable": "No results.  Enter new search query above.",
-            "oPaginate": {
-                "sPrevious": "&lt;",
-                "sNext": "&gt;"
-            }
+                "sScrollY": "300px",
+                "sScrollX": "100%",
+                "sScrollXInner": "150%",
+                "bScrollCollapse": true,
+              "bPaginate": false
+//  "oPaginate": {
+//                "sPrevious": "&lt;",
+//                "sNext": "&gt;"
+//            }
         },
+        "oPaginate": false,
+        "bPaginate": false,
         // this hides the pagination navigation when there is only one page.
         "fnDrawCallback": function() {
-            var dtable = $('table.table-results').dataTable();
-            if (dtable.fnSettings().fnRecordsDisplay() <= dtable.fnSettings()._iDisplayLength) {
-                $('div.dataTables_paginate').hide();
-            } else {
-                $('.dataTables_paginate').show();
-            }
+//            var dtable = $('table.table-results').dataTable();
+//            if (dtable.fnSettings().fnRecordsDisplay() <= dtable.fnSettings()._iDisplayLength) {
+//                $('div.dataTables_paginate').hide();
+//            } else {
+//                $('.dataTables_paginate').show();
+//            }
             $('.title-field').trunk8({ tooltip:false });// .popover();
         },
         "fnInitComplete": function() {
@@ -331,8 +418,8 @@ jQuery(function ($) {
       selectMode: 2,
       debugLevel: 0,
       autoScroll: true,
-      closeOnExternalClick:false,
-      flapMargin:0,
+      // closeOnExternalClick:false,
+      // flapMargin:0,
       filter: { mode: 'hide' },
       glyph: {
           map: {
@@ -360,24 +447,24 @@ jQuery(function ($) {
       },
       focus: function(event, data){ data.node.scrollIntoView(true); },
       renderNode: function(event,data) {
-        if (!data.node.isStatusNode) {
-          decorateElementWithPopover(data.node.span, data.node);
-        }
+          if (!data.node.isStatusNode) {
+              decorateElementWithPopover(data.node.span, data.node);
+          }
       },
       cookieId: "kmaps1tree", // set cookies for search-browse tree, the first fancytree loaded
       idPrefix: "kmaps1tree"
    });
 
     var handleSearch = function handleSearch() {
-      // clear previous styling
-      // (can't simply unwrap because that leaves text nodes in extraneous chunks)
-      $('span.fancytree-title').each(
-          function () {
-              $(this).text($(this).text());
-          }
-      );
+        // clear previous styling
+        // (can't simply unwrap because that leaves text nodes in extraneous chunks)
+        $('span.fancytree-title').each(
+            function () {
+                $(this).text($(this).text());
+            }
+        );
 
-      var txt = $("#searchform").val();
+        var txt = $("#searchform").val();
         if (!txt) {
             searchUtil.clearSearch();
             notify.clear();
@@ -387,69 +474,81 @@ jQuery(function ($) {
         } else {
             notify.clear();
             $('table.table-results').dataTable().fnDestroy();
-            var tree = $('#tree').fancytree('getTree').applyFilter(txt);
-            // $('span.fancytree-match').removeClass('fancytree-match');
-            $('span.fancytree-title').highlight(txt, { element: 'mark' });
-            // Retrieve matches
-            var list = $('#tree').fancytree('getRootNode').findAll(function (n) {
-                return n.match;
+            $.ajax({
+                type: "GET",
+                url: Settings.baseUrl + "/features/by_name/" + txt + ".json?per_page=3000",
+                dataType: "json",
+                timeout: 5000,
+                beforeSend: function () {
+//                    alert('beforeSend');
+                },
+                error: function (e) {
+                    alert("Error: " + JSON.stringify(e))
+                    ;
+                },
+                success: function (ret) {
+//                    alert("json: " + JSON.stringify(resultHash));
+
+                    var txt = $("#searchform").val();
+                    var resultHash = {};
+                    $(ret.features).each(function () {
+                        resultHash[this.id] = true;
+                    });
+
+
+                    var tree = $('#tree').fancytree('getTree').applyFilter(function (node) {
+                        return (typeof resultHash[node.key] !== 'undefined');
+                    });
+                    // $('span.fancytree-match').removeClass('fancytree-match');
+                    $('span.fancytree-title').highlight(txt, { element: 'mark' });
+                    // Retrieve matches
+                    var list = $('#tree').fancytree('getRootNode').findAll(function (n) {
+                        return n.match;
+                    });
+
+                    if (list.length === 0) {
+                        notify.warn("warnnoresults", "There are no matches.  <br>Try to modify your search.");
+                    }
+                    // clear the current list.
+
+                    $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
+                    // populate list
+                    var table = $('div.listview div div.table-responsive table.table-results');
+                    $.each(list, function (x, y) {
+
+                        table.append(
+                            $('<tr>')
+                                .append(decorateElementWithPopover($('<td>'), y)
+                                    .append(
+                                        $('<span class="title-field">').text(y.title).attr('kid', y.key)
+                                            .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false })
+                                    )
+                                )
+                        );
+                    });
+
+                    $("table.table-results tbody tr").click(function (event) {
+                        var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
+                        $('.row_selected').removeClass('row_selected');
+                        $(event.target).closest('tr').addClass('row_selected');
+                        $("#tree").animate({ scrollTop: 0 }, "slow");
+                        $('#tree')
+                            .fancytree('getTree')
+                            .activateKey(
+                                kid
+                            ).scrollIntoView();
+                    });
+
+                    $('table.table-results').dataTable();
+
+
+                }
             });
-
-            if (list.length === 0) {
-                notify.warn("warnnoresults", "There are no matches.  <br>Try to modify your search.");
-            }
-            // clear the current list.
-
-            $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
-            // populate list
-            var table = $('div.listview div div.table-responsive table.table-results');
-            $.each(list, function (x, y) {
-//                var path = "/" + $.makeArray(y.getParentList(false,true).map(function(n) {
-//                    return n.title;
-//                })).join("/");
-
-                table.append(
-                    $('<tr>')
-                        .append(decorateElementWithPopover($('<td>'), y)
-                            .append(
-                                $('<span class="title-field">').text(y.title).attr('kid', y.key)
-                                    .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false })
-                            )
-                        )
-
-                );
-
-//                table.append(
-//                   $("<tr>" +
-//                        "<td><span rel='popover' title='" + y.title + "' data-content='" + path + (y.data.caption?("<blockquote>" + y.data.caption + "</blockquote>"):"") + "' class='title-field'>" + y.title + "</span></td>" +
-//                        "</tr>").highlight(txt,{ element: 'mark' })
-//                )
-            });
-
-
-
-            $("table.table-results tbody tr").click(function (event) {
-
-                var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
-
-                // notify.warn('debug',"kid: " +  kid);
-
-                $('.row_selected').removeClass('row_selected');
-                $(event.target).closest('tr').addClass('row_selected');
-                $("#tree").animate({ scrollTop: 0 }, "slow");
-                $('#tree')
-                    .fancytree('getTree')
-                    .activateKey(
-                        kid
-                    ).scrollIntoView();
-            });
-
-            $('table.table-results').dataTable();
-
+            return false;
         }
-        return false;
-  };
-  $("#searchbutton").click(handleSearch);
+    };
+
+    $("#searchbutton").click(handleSearch);
   $('#searchform').attr('autocomplete','off'); // turn off browser autocomplete
   $("form.form").submit(handleSearch);
   $("#searchform").keyup( function(e) {
@@ -487,12 +586,36 @@ jQuery(function ($) {
 
 
 // *** SEARCH *** clear search input & support for placeholder
-jQuery(function($) {        
-  // Initialize Fancytree
+jQuery(function($) {
   $("#feature-tree").fancytree({
     extensions: ["glyph", "edit", "filter"],
     checkbox: true,
-    selectMode: 2,
+    selectMode: 3, // multiselect enabled
+    select: function(event, data) {
+        // Get a list of all selected nodes, and convert to a key array:
+        var selKeys = $.map(data.tree.getSelectedNodes(), function(node){
+          return node.key;
+        });
+        $("#echoSelection3").text(selKeys.join(", "));
+
+        // Get a list of all selected TOP nodes
+        var selRootNodes = data.tree.getSelectedNodes(true);
+        // ... and convert to a key array:
+        var selRootKeys = $.map(selRootNodes, function(node){
+          return node.key;
+        });
+        $("#echoSelectionRootKeys3").text(selRootKeys.join(", "));
+        $("#echoSelectionRoots3").text(selRootNodes.join(", "));
+      },
+      dblclick: function(event, data) {
+        data.node.toggleSelected();
+      },
+      keydown: function(event, data) {
+        if( event.which === 32 ) {
+          data.node.toggleSelected();
+          return false;
+        }
+      },
     glyph: {
       map: {
         // doc: "glyphicon glyphicon-file",
@@ -512,14 +635,15 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-        // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
-    
+    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
+    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
+    // source: treeData,
     filter: {
-        //  mode: "hide"
+        mode: "hide"
     },
     activate: function(event, data) {
         //  alert("activate " + data.node);
-    },      
+    },
     lazyLoad: function(event, ctx) {
         ctx.result = {url: "ajax-sub2.json", debugDelay: 1000};
      },
@@ -539,66 +663,22 @@ jQuery(function($) {
     cookieId: "kmaps2tree", // set cookies for features, the second fancytree
     idPrefix: "kmaps2tree"
   });
-  
 
-  var tree2 = $("#feature-tree").fancytree("getTree");
-    
-  var fsname = $("#feature-name");  // feature type id 
-  $(fsname).data("holderf",$(fsname).attr("placeholder"));      
-  
-  // --- everything below is for the main searchform with the clear all button
-    
-  $(fsname).focusin(function(){
-      $(this).dropdown();
-      $(this).attr("placeholder","");
-      $("button.feature-reset").css("text-indent","0").show(100); // switched to negative indent since hide() not working consistently
-      $(".feature-treeButtons").slideDown( 300 );
-      $(this).dropdown();
-  }); 
-  $(fsname).focusout(function(){
-      $(this).attr("placeholder",$(fsname).data("holderf"));  
-      $("button.feature-reset").hide();
-      $(this).dropdown();
-  });
-  $("button.feature-reset").click(function(){
-    $(fsname).attr("placeholder",$(fsname).data("holderf"));
-    $("#feature-tree").fancytree();
-    $(this).css("text-indent","-9999px"); // switched to negative indent since hide() not working consistently
-  }); 
-  $(fsname).focusout(function(){
-      var strf = "Filter by Feature Name";
-      var txtf = $(fsname).val();
-  
-      if (strf.indexOf(txtf) > -1) {
-        $("button.feature-reset").hide();
-        $(".feature-treeButtons").slideUp( 300 );
-      return true;
-      } else {
-        $("button.feature-reset").show(100);
-        $(".feature-treeButtons").slideDown( 300 );
-      return false;
-      }   
-  });
-  // --- feature type id
+  // --- input styles for search panel
+  // ----------------------------------
+  // --- kms, KMAPS MAIN SEARCH INPUT ---
   var kms = $("#searchform"); // the main search input
-  $(kms).data("holder",$(kms).attr("placeholder"));     
-  
-  // --- everything below is for the main searchform with the clear all button
+  $(kms).data("holder",$(kms).attr("placeholder"));
+
+  // --- features inputs - focusin / focusout
   $(kms).focusin(function(){
       $(kms).attr("placeholder","");
       $("button.searchreset").show("fast");
   });
   $(kms).focusout(function(){
-      $(kms).attr("placeholder",$(kms).data("holder")); 
-      $("button.searchreset").hide();        
-  }); 
-  $("button.searchreset").click(function(){
-    $(kms).attr("placeholder","");
-    $(kms).attr("placeholder",$(kms).data("holder"));
-    $("button.searchreset").hide();
-        searchUtil.clearSearch();
-  });   
-  $(kms).focusout(function() {
+      $(kms).attr("placeholder",$(kms).data("holder"));
+      $("button.searchreset").hide();
+
     var str = "Enter Search...";
     var txt = $(kms).val();
 
@@ -610,14 +690,48 @@ jQuery(function($) {
     return false;
     }
   });
+  // --- close and clear all
+  $("button.searchreset").click(function(){
+    $(kms).attr("placeholder",$(kms).data("holder"));
+    $("button.searchreset").hide();
+    $(".alert").hide();
+        searchUtil.clearSearch();
+        tree.clearFilter();
+  });
 
+  // --- fname, KMAPS FEATURES ---
+  // ----------------------------------
+  var tree2 = $("#feature-tree").fancytree("getTree");
+  var fname = $("#feature-name"); // feature type id
+  $(fname).data("holderf",$(fname).attr("placeholder"));
 
+  // --- features inputs - focusin / focusout
+  $(fname).focusin(function(){
+      $(this).dropdown();
+      $(this).attr("placeholder","");
+      $("button.feature-reset").show(100); // switched to negative indent since hide() not working consistently
+  });
+  $(fname).focusout(function(){
+      $(this).attr("placeholder",$(fname).data("holderf"));
+      $("button.feature-reset").hide();
+      $(this).dropdown();
 
-  
-  
-  /*
-   * Event handlers for input interface
-   */
+      var strf = "Filter by Feature Name";
+      var txtf = $(fname).val();
+      if (strf.indexOf(txtf) > -1) {
+        $("button.feature-reset").hide();
+      return true;
+      } else {
+        $("button.feature-reset").show(100);
+      return false;
+      }
+  });
+  // --- features inputs - keydown / keyup / click
+  $("input[name=features]").keydown(function(e){
+      $(fname).dropdown();
+      $(".filter").show(100);
+      return;
+  });
   $("input[name=features]").keyup(function(e){
     var match = $(this).val();
     if(e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === ""){
@@ -626,30 +740,28 @@ jQuery(function($) {
     }
     // Pass text as filter string (will be matched as substring in the node title)
     var n = tree2.applyFilter(match);
-      $("button#btnResetSearch, .feature-reset").attr("disabled", false); 
-      $("span#matches").text("(" + n + " matches)"); 
+      $("button#btnResetSearch, .feature-reset").attr("disabled", false);
+      $("span#matches").text("(" + n + " matches)");
   }).focus();
-
-  $("input#hideMode").change(function(e){
-    tree2.options.filter.mode = $("div.icheckbox_minimal-red").hasClass("checked") ? "hide" : "dimm";
-    tree2.clearFilter();
-    $("input[name=features]").keyup();
-    //  tree2.render();
-  });
-  
+  // close and clear all
   $("button#btnResetSearch, .feature-reset").click(function(event){
+    $(fname).attr("placeholder",$(fname).data("holderf"));
     $("input[name=features]").val("");
     $("span#matches").text("");
-    
+    $(".filter").hide();
+     tree2.clearFilter();
     $("#feature-tree").fancytree();
-    $(".feature-treeButtons").slideUp( 300 ); 
-    $("button.feature-reset").css("text-indent","-9999px"); // switched to negative indent since hide() not working consistently
-    $(this).addClass("show");
-  });
-  
+    $("button.feature-reset").hide(); // switched to negative indent since hide() not working consistently
+    // $(this).addClass("show");
+  }).attr("disabled", true);
+
+  // controls clicking in dropdown & feature input
+  $(function () { 
+    $(document).on('click', '#feature-name, .dropdown-menu.feature-menu', function(e) {
+       e.stopPropagation()
+    })
+  }); 
 });
-
-
 
 
 
@@ -668,11 +780,45 @@ jQuery(function ($) {
       });
   });
 
-  $(".selectpicker").selectpicker(); // initiates jq-bootstrap-select
+  $(".selectpicker").selectpicker(); // initiates util bootstrap-select
 
 });
 
 
+// *** SEARCH *** feature types
+jQuery(function ($) {
+  // manually initiate dropdown w/bstrap
+  $(".dropdown-toggle").dropdown();
+
+  
+  // controls clicking in dropdown & feature input
+  $(function () {
+    $(document).on('click', '#feature-name, .dropdown-menu.features-open', function(e) {
+       e.stopPropagation()
+    })
+  });
+  $(".feature-help").toggle(
+    function () {
+          $(".feature-message").slideDown( 300 ).delay( 9000 ).slideUp( 300 );
+      },
+    function () {
+          $(".feature-message").slideUp( 300 );
+      }
+  );
+});
+
+
+
+// *** GLOBAL *** ie browser alert, equal-heights, off-canvas panel
+jQuery(function ($) {
+  // show-hide the IE message for older browsers
+  // this could be improved with conditional for - lte IE7 - so it does not self-hide
+  $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
+  
+  // equalHeights
+  $(".main-col").equalHeights();  
+});
+ 
 
 // *** CONTENT *** top link
 jQuery(function ($) {
@@ -685,7 +831,6 @@ jQuery(function ($) {
           jQuery('.back-to-top').fadeOut(duration);
       }
   });
-
   jQuery('.back-to-top').click(function(event) {
       event.preventDefault();
       jQuery('html, body').animate({scrollTop: 0}, duration);
@@ -694,34 +839,43 @@ jQuery(function ($) {
 });
 
 
-// *** SEARCH *** feature types
+ 
+
+
+
+// --- width tracker for temp use ---
 jQuery(function ($) {
-  // manually initiate dropdown w/bstrap
-  $(".dropdown-toggle").dropdown();
-  // controls clicking in dropdown & feature input
-  $(function () { 
-    $(document).on('click', '#feature-name, .dropdown-menu.features-open', function(e) {
-       e.stopPropagation()
-    })
-  }); 
-  $(".feature-help").toggle( 
-    function () {
-          $(".feature-message").slideDown( 300 ).delay( 9000 ).slideUp( 300 );  
-      },
-    function () {
-          $(".feature-message").slideUp( 300 ); 
-      }
-  );
-});
-  
+    $(function(){
+        placeWindowWidth('#width-tracker');
 
+        $(window).on('resize', function(){
+            updateWindowWidth('#width-tracker');
+        });
 
-// *** GLOBAL ** conditional IE message
-jQuery(function ($) { 
-  // show-hide the IE message for older browsers
-  // this could be improved with conditional for - lte IE7 - so it does not self-hide
-  $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
+    });
+    function placeWindowWidth(selector){
+        if (typeof selector != 'string') return false;
+
+        if (! $(selector).length) {
+            var s = '<div id="' + selector.substr(1, selector.length - 1) + '"><div>Window width:</div><span></span></div>';
+            $('body').append(s);
+        }
+
+        updateWindowWidth(selector);
+    }
+    function updateWindowWidth(selector){
+        var s = $(selector);
+        var w = $(window).width();
+        if (!s.length) return false;
+
+        if (s.children('span')) {
+            s.children('span').text(w + 'px');
+        } else {
+            s.html(w + 'px');
+        }
+    }
 });
+
 
 /* Additions by Gerard Ketuma */
 
@@ -781,12 +935,12 @@ function processSubjectsData(data) {
   $("a[href='#tab-overview']").click();
 
   //Remove all elements from Breadcrumbs and start adding them again.
-  $("ol.breadcrumb li").remove();
-  $("ol.breadcrumb").append('<li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>');
+  $("ol.breadCrumb li").remove();
+  $("ol.breadCrumb").append('<li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>');
   $.each(data.feature.ancestors, populateBreadcrumbs);
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
-  $(".content-sidebar ul.nav-pills li").hide();
+  $(".content-resources ul.nav-pills li").hide();
 
   //Get the element that we want and display to overview.
   //Show overview tab on the left hand column
@@ -797,12 +951,12 @@ function processSubjectsData(data) {
   if (data.feature.illustrations.length > 0) {
     $.get(data.feature.illustrations[0].url, showOverviewImage);
   }
-  $(".content-sidebar ul.nav-pills li.overview").show();
+  $(".content-resources ul.nav-pills li.overview").show();
 
   //Related content section
   if (data.feature.associated_resources.related_feature_count > 0) {
     $("ul.nav li a[href='#tab-related'] .badge").text(data.feature.associated_resources.related_feature_count);
-    $(".content-sidebar ul.nav-pills li.related").show();
+    $(".content-resources ul.nav-pills li.related").show();
     $('a[href="#tab-related"]').one('show.bs.tab', function(e) {
       var $tabRelated = $("#tab-related");
       $tabRelated.empty();
@@ -815,7 +969,7 @@ function processSubjectsData(data) {
   //Related essays (descriptions) section
   if (data.feature.associated_resources.description_count > 0) {
     $("ul.nav li a[href='#tab-essays'] .badge").text(data.feature.associated_resources.description_count);
-    $(".content-sidebar ul.nav-pills li.essays").show();
+    $(".content-resources ul.nav-pills li.essays").show();
     $('a[href="#tab-essays"]').one('show.bs.tab', function(e) {
       var $tabEssays = $("#tab-essays");
       $tabEssays.empty();
@@ -827,7 +981,7 @@ function processSubjectsData(data) {
   //Related Places section
   if (data.feature.associated_resources.place_count > 0) {
     $("ul.nav li a[href='#tab-places'] .badge").text(data.feature.associated_resources.place_count);
-    $(".content-sidebar ul.nav-pills li.places").show();
+    $(".content-resources ul.nav-pills li.places").show();
     $('a[href="#tab-places"]').one('show.bs.tab', function(e) {
       var $tabPlaces = $("#tab-places");
       $tabPlaces.empty();
@@ -841,7 +995,7 @@ function processSubjectsData(data) {
   //Related Photos (picture) section
   if (data.feature.associated_resources.picture_count > 0) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
-    $(".content-sidebar ul.nav-pills li.photos").show();
+    $(".content-resources ul.nav-pills li.photos").show();
     $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
       var $tabPhotos = $("#tab-photos");
       $tabPhotos.empty();
@@ -865,7 +1019,7 @@ function processSubjectsData(data) {
   //Related Audio-Video (videos) section
   if (data.feature.associated_resources.video_count > 0) {
     $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count);
-    $(".content-sidebar ul.nav-pills li.audio-video").show();
+    $(".content-resources ul.nav-pills li.audio-video").show();
     $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
       var $tabAudioVideo = $("#tab-audio-video");
       $tabAudioVideo.empty();
@@ -878,7 +1032,7 @@ function processSubjectsData(data) {
   //Related Texts section
   if (data.feature.associated_resources.document_count > 0) {
     $("ul.nav li a[href='#tab-texts'] .badge").text(data.feature.associated_resources.document_count);
-    $(".content-sidebar ul.nav-pills li.texts").show();
+    $(".content-resources ul.nav-pills li.texts").show();
     $('a[href="#tab-texts"]').one('show.bs.tab', function(e) {
       var $tabTexts = $("#tab-texts");
       $tabTexts.empty();
@@ -890,7 +1044,7 @@ function processSubjectsData(data) {
 }
 
 function populateBreadcrumbs(bInd, bVal) {
-  $breadcrumbOl = $("ol.breadcrumb");
+  $breadcrumbOl = $("ol.breadCrumb");
   $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a></li>');
 }
 
@@ -1279,7 +1433,7 @@ function relatedEssays(data) {
 
 function processPhotos(mtext) {
   $("ul.nav li a[href='#tab-photos'] .badge").text(mtext.match(/(\d+)/)[1]);
-  $(".content-sidebar ul.nav-pills li.photos").show();
+  $(".content-resources ul.nav-pills li.photos").show();
   /*$("#tab-photos").empty();
   $("#tab-photos").append(
     '<p>This is a new test</p>'
@@ -1288,7 +1442,7 @@ function processPhotos(mtext) {
 
 function processVideos(mtext) {
   $("ul.nav li a[href='#tab-audio-video'] .badge").text(mtext.match(/(\d+)/)[1]);
-  $(".content-sidebar ul.nav-pills li.audio-video").show();
+  $(".content-resources ul.nav-pills li.audio-video").show();
   /*$("#tab-photos").empty();
   $("#tab-photos").append(
     '<p>This is a new test</p>'
@@ -1297,7 +1451,7 @@ function processVideos(mtext) {
 
 function processTexts(mtext) {
   $("ul.nav li a[href='#tab-texts'] .badge").text(mtext.match(/(\d+)/)[1]);
-  $(".content-sidebar ul.nav-pills li.texts").show();
+  $(".content-resources ul.nav-pills li.texts").show();
   /*$("#tab-photos").empty();
   $("#tab-photos").append(
     '<p>This is a new test</p>'
@@ -1310,8 +1464,6 @@ function processTexts(mtext) {
 function processPlacesData(data) {
   
 }
-
-
 
 
 

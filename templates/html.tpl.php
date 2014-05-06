@@ -23,109 +23,110 @@
 </head>
 <body>
   <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -<i class="icon km-close"></i></p><![endif]-->
-  <div class="wrap">
-  <a href=".main-content" class="sr-only">
-    Skip to main content</a>
-  <header role="banner">
+  <div class="wrap-all">
+  <a href=".main-content" class="sr-only">Skip to main content</a>
+  <header class="header-banner" role="banner">
     <div class="navbar navbar-default navbar-static-top" role="navigation">  
-      <nav class="navbar-header" role="navigation">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navtop">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>        
-      </nav>      
-      <h1 class="navbar-title"><a href="" class="navbar-brand" title="SHANTI homepage link"><img src="<?php print $theme_path; ?>/images/shanti_logo.png" alt="shanti logo"><span><span class="hidden">SHANTI</span>Scholarly Collections at the University of Virginia</span></a></h1>              
+      
+      <div class="menu-buttons">
+        <span class="kmaps-searchtoggle menu-icon"><a href="#"><i class='icon km-search-kmaps'></i></a></span>
+        <span class="menu-toggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
+        <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
+        <span class="menu-exploretoggle menu-explore"><a href="#"><span>Explore </span>Collections<i class="icon km-directions"></i></a></span>
+      </div>
+
+      <div class="navbar-header">
+        <h1 class="navbar-title"><a href="#" class="navbar-brand" title="SHANTI Homepage"><i class="icon km-logo-kmaps"></i><em>SHANTI</em>
+          <span>Scholarly Collections at the University of Virginia</span></a>
+        </h1>
+      </div>
+
       <nav class="navbar-collapse collapse navtop" role="navigation">
        <form role="form" class="form">
        <fieldset>         
         <ul class="nav navbar-nav navbar-right">
           <li class="explore"><a href="#">Explore Collections<i class="icon km-directions"></i></a></li>
-          <li class="dropdown lang">                    
+          <li class="dropdown lang highlight">                    
               <a href="" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
-                  <ul class="dropdown-menu dropdown-features" role="menu">
-                    <li class="form-group"><label class="radio-inline" for="optionlang1">
-                        <input type="radio" name="radios" id="optionlang1" value="lang1">Tibetan</label>
-                    </li>
-                    <li class="form-group"><label class="radio-inline" for="optionlang2">
-                        <input type="radio" name="radios" id="optionlang2" value="lang2" checked>English</label>
-                    </li>
-                    <li class="form-group"><label class="radio-inline" for="optionlang3">
-                        <input type="radio" name="radios" id="optionlang3" value="lang3">French</label>
-                    </li>
-                    <li class="last form-group"><label class="radio-inline" for="optionlang4">
-                        <input type="radio" name="radios" id="optionlang4" value="lang4">Chinese</label>
-                    </li>
-                  </ul>      
-          </li>
-          <li class="menu-toggle">
-              <a href="#"><i class="icon km-menu"></i></a>
+              <ul class="dropdown-menu dropdown-features" role="menu">
+                <li class="form-group"><label class="radio-inline" for="optionlang1">
+                    <input type="radio" name="radios" id="optionlang1" value="lang1">Tibetan</label>
+                </li>
+                <li class="form-group"><label class="radio-inline" for="optionlang2">
+                    <input type="radio" name="radios" id="optionlang2" value="lang2" checked>English</label>
+                </li>
+                <li class="form-group"><label class="radio-inline" for="optionlang3">
+                    <input type="radio" name="radios" id="optionlang3" value="lang3">French</label>
+                </li>
+                <li class="last form-group"><label class="radio-inline" for="optionlang4">
+                    <input type="radio" name="radios" id="optionlang4" value="lang4">Chinese</label>
+                </li>
+              </ul>
           </li>
         </ul>
        </fieldset>  
        </form>           
      </nav><!-- END navbar-collapse -->
     </div><!-- END navbar -->
+
+    <!-- BEGIN navigation dropdown panel -->  
+    <section class="row collections collapse opencollect">
+      <nav class="container-fluid" role="navigation"> 
+         <div class="col-sm-8 col-sm-offset-2">          
+            <h4>EXPLORE COLLECTIONS</h4>
+            <div class="four-collections">
+              <div class="col-sm-3">
+                <ul>
+                  <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
+                  <li><a href="#"><i class="icon km-places"></i>Places</a></li>
+                  <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
+                  <li><a href="#"><i class="icon km-events"></i>Events</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3">
+                <ul>
+                  <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
+                  <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
+                  <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3">
+                <ul>
+                  <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
+                  <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
+                  <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
+                </ul>
+              </div>
+              <div class="col-sm-3">
+                <ul class="last">
+                  <li><a href="#"><i class="icon km-community"></i>Community</a></li>
+                  <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
+                  <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
+                </ul>
+              </div>
+            </div>          
+         </div>
+          <span class="closecollection"> <i class="icon km-close"></i> </span>
+      </nav>
+    </section><!-- END dropdown panel -->
   </header><!-- END container-fluid -->
   
-  <!-- BEGIN navigation dropdown panel -->  
-  <section class="row collections collapse opencollect">
-    <nav class="container-fluid" role="navigation"> 
-       <div class="col-sm-8 col-sm-offset-2">          
-          <h4>EXPLORE COLLECTIONS</h4>
-          <div class="four-collections">
-            <div class="col-sm-3">
-              <ul>
-                <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
-                <li><a href="#"><i class="icon km-places"></i>Places</a></li>
-                <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
-                <li><a href="#"><i class="icon km-events"></i>Events</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-3">
-              <ul>
-                <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
-                <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
-                <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-3">
-              <ul>
-                <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
-                <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
-                <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-3">
-              <ul class="last">
-                <li><a href="#"><i class="icon km-community"></i>Community</a></li>
-                <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
-                <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
-              </ul>
-            </div>
-          </div>          
-       </div>
-        <span class="closecollection"> <i class="icon km-close"></i> </span>
-    </nav>
-  </section><!-- END dropdown panel -->
-  
   <!-- BEGIN content -->
-  <main class="container-fluid" role="main">
+  <main class="main-wrapper container-fluid" role="main">
     <article class="row main-content">
       
     <header class="col-sm-12 titlearea">
      <div>
       <h1 class="page-title"><i class="icon km-subjects"></i><span>Collections</span></h1>
-        <nav class="breadcrumbs-wrapper" role="navigation">
-          <ol class="breadcrumb">
-            <li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>
-          </ol>
-        </nav>
+      <nav class="breadwrap" role="navigation">
+        <ol class="breadcrumb">
+          <li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>
+        </ol>
+      </nav>
       </div>
     </header>
               
-    <aside class="col-sm-2 content-sidebar">
+    <aside class="col-sm-3 content-resources main-col">
       <ul class="nav nav-pills nav-stacked">
         <li class="active overview"><a href="#tab-overview" data-toggle="pill"><i class="icon km-overview"></i>Overview</a></li>
         <li class="related"><a href="#tab-related" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">5</span></a></li>
@@ -145,7 +146,7 @@
       </ul>
     </aside> 
                       
-    <section  class="col-sm-10 content-section">
+    <section  class="col-xs-12 col-sm-9 content-section main-col">
       <div class="tab-content">
         <article class="tab-pane active" id="tab-overview">
         </article>
@@ -232,6 +233,157 @@
 
 
 
+  <section id="menu-collections" class="menu-accordion" role="navigation">    
+      <nav class="panel-group accordion" id="menu-accordion">                         
+      
+            <div class="panel panel-default menu-collections-wrap1">
+              <h6 class="panel-heading"><a href="#collapseCollections1" data-toggle="collapse" data-parent="#menu-accordion" class="accordion-toggle"><i class="icon"></i> 
+                    Kmaps Collections</a>
+              </h6>
+              <div id="collapseCollections1" class="panel-collapse collapse in">
+                <div class="panel-body menu-collections">
+                  <ul>
+                    <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
+                    <li><a href="#"><i class="icon km-places"></i>Places</a></li>
+                    <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
+                    <li><a href="#"><i class="icon km-events"></i>Events</a></li>
+                    <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
+                    <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
+                    <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
+                    <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
+                    <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
+                    <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
+                    <li><a href="#"><i class="icon km-community"></i>Community</a></li>
+                    <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
+                    <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
+                    <li class="bottom-trim"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+      </nav>      
+  </section>
+
+  
+  
+  <section id="menu-main" class="menu-accordion" role="navigation">   
+      <nav class="panel-group accordion" id="menu-accordion-main">                                
+            
+            <div class="panel panel-default menu-collections-wrap">
+              <h6 class="panel-heading"><a href="#collapseCollections" data-toggle="collapse" data-parent="#menu-accordion-main" class="accordion-toggle collapsed"><i class="icon"></i> 
+                    Kmaps Collections</a>
+              </h6>
+              <div id="collapseCollections" class="panel-collapse collapse">
+                <div class="panel-body menu-collections">
+                  <ul>
+                    <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
+                    <li><a href="#"><i class="icon km-places"></i>Places</a></li>
+                    <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
+                    <li><a href="#"><i class="icon km-events"></i>Events</a></li>
+                    <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
+                    <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
+                    <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
+                    <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
+                    <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
+                    <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
+                    <li><a href="#"><i class="icon km-community"></i>Community</a></li>
+                    <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
+                    <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
+                    <li class="bottom-trim"></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default menu-commons-wrap">
+              <h6 class="panel-heading"><a href="#collapseCommons" data-toggle="collapse" data-parent="#menu-accordion-main" class="accordion-toggle"><i class="icon"></i> 
+                    Main Menu</a></h6>
+              <div id="collapseCommons" class="panel-collapse collapse in">
+                <div class="panel-body menu-common">
+                  <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          
+            <div class="panel panel-default menu-options-wrap">
+              <h6 class="panel-heading"><a href="#collapseOptions" data-toggle="collapse" data-parent="#menu-accordion-main" class="accordion-toggle collapsed"><i class="icon"></i> 
+                  View Preferences</a></h6>
+              <div id="collapseOptions" class="panel-collapse collapse">
+                <div class="panel-body menu-options">
+                
+                  <ul>          
+                    <!-- header -->              
+                    <li class="drop-hdr"><em>Site Language</em></li>
+                      <li class="form-group"><label class="radio-inline" for="option0a">
+                        <input type="radio" name="option0" id="option0a" value="option0a" checked>English</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option0b">
+                        <input type="radio" name="option0" id="option0b" value="option0b">French</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option0c">
+                        <input type="radio" name="option0" id="option0c" value="option0c">Tibetan</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option0d">
+                        <input type="radio" name="option0" id="option0d" value="option0d">Chinese</label>
+                      </li>                     
+                      <li class="form-group last"></li>
+                      
+                    <!-- header -->              
+                    <li class="drop-hdr"><em>Perspective</em></li>
+                      <li class="form-group"><label class="radio-inline" for="option1a">
+                        <input type="radio" name="option1" id="option1a" value="option1a" checked>General</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option1b">
+                        <input type="radio" name="option1" id="option1b" value="option1b">Other</label>
+                      </li>
+                      <li class="form-group last"></li>
+                    
+                    <!-- header -->
+                    <li class="drop-hdr"><em>Subject Language</em></li>
+                      <li class="form-group"><label class="radio-inline" for="option2a">
+                        <input type="radio" name="option2" id="option2a" value="option2a">Chinese Characters (simplified)</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option2b">
+                        <input type="radio" name="option2" id="option2b" value="option2b">Chinese Characters (traditional)</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option2c">
+                        <input type="radio" name="option2" id="option2c" value="option2c">Devangiri Script</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option2d">
+                        <input type="radio" name="option2" id="option2d" value="option2d" checked>Popular Standard (romanization)</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option2e">
+                        <input type="radio" name="option2" id="option2e" value="option2e">Scholarly Standard (romanization)</label>
+                      </li>                   
+                      <li class="form-group"><label class="radio-inline" for="option2f">
+                        <input type="radio" name="option2" id="option2f" value="option2f">Tibetan Script (simplified)</label>
+                      </li>                   
+                      <li class="form-group"><label class="radio-inline" for="option2g">
+                        <input type="radio" name="option2" id="option2g" value="option2g">Tibetan Script (romanization)</label>
+                      </li>
+                      <li class="form-group last"></li>
+                    
+                    <!-- header -->
+                    <li class="drop-hdr"><em>Show Subject Details</em></li>                     
+                      <li class="form-group"><label class="radio-inline" for="option3a">
+                        <input type="radio" name="option3" id="option3a" value="option3a" checked>Yes</label>
+                      </li>
+                      <li class="form-group"><label class="radio-inline" for="option3b">
+                        <input type="radio" name="option3" id="option3b" value="option3b">No</label>
+                      </li>
+                      <li class="form-group last"></li>
+                      <li class="bottom-trim"></li>
+                  </ul>
+                                                  
+                </div>
+              </div>
+            </div>
+      </nav>        
+  </section>
 
   <!-- BEGIN Search Panel --> 
   <section id="kmaps-search">               
@@ -250,11 +402,12 @@
 
             </div>
 
-            <a href="#" class="advanced-link toggle-link" title="advanced search options"><i class="icon"></i>Advanced</a>  
+            <a href="#" class="advanced-link toggle-link"><i class="icon"></i>Advanced</a>  
+            <div id="notification-wrapper"></div>
                 
                <!-- advanced search hidden ontent -->
                <div class="advanced-view" style="display:none;">
-                <div id="notification-wrapper"></div>
+                
                                               
                   <div class="form-group"> 
                     <label class="radio-inline" for="radios-0">
@@ -293,26 +446,16 @@
                   
                   
                   <!-- feature tree, under contruction -->
-                  <div class="form-group km-input feature-group dropdown">                                        
+                  <div class="form-group km-input feature-group dropdown">
+                        <a href="#" class="feature-toggle toggle-link" data-toggle="dropdown"><i class="icon"></i>Show Features</a>     
+                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                       
 
-                  <div class="feature-treeButtons">
-                      <label>Filter:</label> <span id="matches"></span>                     
-                      <label class="radio-inline" for="hideMode"> 
-                      <input type="checkbox" id="hideMode">Hide Null</label>
-                  </div>
-
-                  <div style="position:relative;">                  
-                        <a href="#" class="dropdown-toggle feature-link toggle-link" data-toggle="dropdown"><i class="icon"></i>Browse Features</a>                                                                                             
-                        <input class="form-control kms-fname" id="feature-name" name="features" type="text" placeholder="Filter by Feature Name"> 
-                      
                         
-                        <div class="dropdown-menu features-open">
+                        <input class="form-control feature-name" id="feature-name" name="features" type="text" placeholder="Filter by Feature Name">  
+                                              
+                        <div class="dropdown-menu feature-menu">
                             <div class="tree-wrap"> 
-                                                      
-                                  <!-- <a href="#" class="feature-help"><i class="icon km-info"></i></a>
-                                  <p class="feature-message">Please select one or more feature types from the list below. For each type, click on the left 
-                                  box to select the type and its subcategories; click on the right box to select only the type without its subcategories.</p> -->
-                                                                          
+
                               <div class="feature-container">                             
                                 <div id="feature-tree"></div> <!-- features tree, under construction -->                              
                               </div> 
@@ -326,7 +469,6 @@
                         </div> <!-- END dropdown-menu -->
                         
                         <button id="feature-reset" class="feature-reset">&times;</button>
-                    </div> 
                   </div> <!-- END feature-group -->
                   
                   
@@ -368,7 +510,7 @@
                           
           <!-- TAB - tree view -->
           <div class="treeview tab-pane active">        
-              <div id="tree" class="view-wrap"><!-- tree navigation | view-wrap controls container height --></div>             
+              <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
           </div>          
           <!-- TAB - list view -->
           <div class="listview tab-pane">   
@@ -389,98 +531,99 @@
       </section><!-- END view section -->
   </section><!-- END kmaps-search -->
 
+ 
 
-
+  
   <section id="menu" style="display:none;">
-  <nav role="navigation">                
-   <ul>
-     <li><h3><em>Main Menu</em></h3> 
-        <a class="link-blocker"></a>
-     </li>
-     <li class="myaccount">
-        <a href="#">My Account</a>
-        <h2>My Account</h2>       
-        <ul>
-          <li><a href="#">Logout</a></li>  
-          <li>
-            <a href="#">Edit Account Details</a>              
-            <h2>Account Details</h2>               
-               <ul class="myaccount-details">
-                <li><a href="#">Account Settings</a></li>  
-                <li><a href="#">Profile</a></li>   
-                <li><a href="#">Related Link</a></li>
-                <li><a href="#">Another Link</a></li>
-              </ul>           
-          </li>
-          <li><a href="#">Community Networks</a></li>
-        </ul>
+    <nav role="navigation">                
+     <ul>
+       <li><h3><em>Main Menu</em></h3> 
+          <a class="link-blocker"></a>
+       </li>
+       <li class="myaccount">
+          <a href="#">My Account</a>
+          <h2>My Account</h2>       
+          <ul>
+            <li><a href="#">Logout</a></li>  
+            <li>
+              <a href="#">Edit Account Details</a>              
+              <h2>Account Details</h2>               
+                 <ul class="myaccount-details">
+                  <li><a href="#">Account Settings</a></li>  
+                  <li><a href="#">Profile</a></li>   
+                  <li><a href="#">Related Link</a></li>
+                  <li><a href="#">Another Link</a></li>
+                </ul>           
+            </li>
+            <li><a href="#">Community Networks</a></li>
+          </ul>
+          
+       </li>                  
+       <li>
+          <a href="#">Preferences</a>
+          <h2>Preferences</h2>
+          <ul>          
+            <!-- header -->              
+            <li class="drop-hdr"><em>Perspective</em></li>
+              <li class="form-group"><label class="radio-inline" for="option1a">
+                <input type="radio" name="option1" id="option1a" value="option1a" checked>General</label>
+              </li>
+              <li class="form-group"><label class="radio-inline" for="option1b">
+                <input type="radio" name="option1" id="option1b" value="option1b">Tibetan</label>
+              </li>
+              <li class="form-group last"></li>
+            
+            <!-- header -->
+            <li class="drop-hdr"><em>Subject Language</em></li>
+              <li class="form-group"><label class="radio-inline" for="option2a">
+                <input type="radio" name="option2" id="option2a" value="option2a">Chinese Characters (simplified)</label>
+              </li>
+              <li class="form-group"><label class="radio-inline" for="option2b">
+                <input type="radio" name="option2" id="option2b" value="option2b">Chinese Characters (traditional)</label>
+              </li>
+              <li class="form-group"><label class="radio-inline" for="option2c">
+                <input type="radio" name="option2" id="option2c" value="option2c">Devangiri Script</label>
+              </li>
+              <li class="form-group"><label class="radio-inline" for="option2d">
+                <input type="radio" name="option2" id="option2d" value="option2d" checked>Popular Standard (romanization)</label>
+              </li>
+              <li class="form-group"><label class="radio-inline" for="option2e">
+                <input type="radio" name="option2" id="option2e" value="option2e">Scholarly Standard (romanization)</label>
+              </li>                   
+              <li class="form-group"><label class="radio-inline" for="option2f">
+                <input type="radio" name="option2" id="option2f" value="option2f">Tibetan Script (simplified)</label>
+              </li>                   
+              <li class="form-group"><label class="radio-inline" for="option2g">
+                <input type="radio" name="option2" id="option2g" value="option2g">Tibetan Script (romanization)</label>
+              </li>
+              <li class="form-group last"></li>
+            
+            <!-- header -->
+            <li class="drop-hdr"><em>Show Subject Details</em></li>                     
+              <li class="form-group"><label class="radio-inline" for="option3a">
+                <input type="radio" name="option3" id="option3a" value="option3a" checked>Yes</label>
+              </li>
+              <li class="form-group"><label class="radio-inline" for="option3b">
+                <input type="radio" name="option3" id="option3b" value="option3b">No</label>
+              </li>
+              <li class="form-group last"></li>
+          </ul>                         
+        </li>   
+         
+        <li><a href="#">Help</a></li>
         
-     </li>                  
-     <li>
-        <a href="#">Preferences</a>
-        <h2>Preferences</h2>
-        <ul>          
-          <!-- header -->              
-          <li class="drop-hdr"><em>Perspective</em></li>
-            <li class="form-group"><label class="radio-inline" for="option1a">
-              <input type="radio" name="option1" id="option1a" value="option1a" checked>General</label>
-            </li>
-            <li class="form-group"><label class="radio-inline" for="option1b">
-              <input type="radio" name="option1" id="option1b" value="option1b">Tibetan</label>
-            </li>
-            <li class="form-group last"></li>
-          
-          <!-- header -->
-          <li class="drop-hdr"><em>Subject Language</em></li>
-            <li class="form-group"><label class="radio-inline" for="option2a">
-              <input type="radio" name="option2" id="option2a" value="option2a">Chinese Characters (simplified)</label>
-            </li>
-            <li class="form-group"><label class="radio-inline" for="option2b">
-              <input type="radio" name="option2" id="option2b" value="option2b">Chinese Characters (traditional)</label>
-            </li>
-            <li class="form-group"><label class="radio-inline" for="option2c">
-              <input type="radio" name="option2" id="option2c" value="option2c">Devangiri Script</label>
-            </li>
-            <li class="form-group"><label class="radio-inline" for="option2d">
-              <input type="radio" name="option2" id="option2d" value="option2d" checked>Popular Standard (romanization)</label>
-            </li>
-            <li class="form-group"><label class="radio-inline" for="option2e">
-              <input type="radio" name="option2" id="option2e" value="option2e">Scholarly Standard (romanization)</label>
-            </li>                   
-            <li class="form-group"><label class="radio-inline" for="option2f">
-              <input type="radio" name="option2" id="option2f" value="option2f">Tibetan Script (simplified)</label>
-            </li>                   
-            <li class="form-group"><label class="radio-inline" for="option2g">
-              <input type="radio" name="option2" id="option2g" value="option2g">Tibetan Script (romanization)</label>
-            </li>
-            <li class="form-group last"></li>
-          
-          <!-- header -->
-          <li class="drop-hdr"><em>Show Subject Details</em></li>                     
-            <li class="form-group"><label class="radio-inline" for="option3a">
-              <input type="radio" name="option3" id="option3a" value="option3a" checked>Yes</label>
-            </li>
-            <li class="form-group"><label class="radio-inline" for="option3b">
-              <input type="radio" name="option3" id="option3b" value="option3b">No</label>
-            </li>
-            <li class="form-group last"></li>
-        </ul>                         
-      </li>   
-       
-      <li><a href="#">Help</a></li>
-      
-      <li><a href="#">Contact Us</a></li>
-   </ul>    
-  </nav>
-  </section>
-  </div>
+        <li><a href="#">Contact Us</a></li>
+     </ul>    
+    </nav>
+  </section><!-- END menu -->
+  </div><!-- END wrap-all -->
 
 
   <footer class="footer">
     <div>
       <p>&copy; COPYRIGHT 2014</p>
     </div>
-  </footer> 
+  </footer>
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script type="text/javascript">window.jQuery || document.write('<script src="<?php print $theme_path; ?>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
@@ -488,14 +631,14 @@
   
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap.min.js"></script> 
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jquery.multilevelpushmenu.min.js"></script>
-
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jquery.jBreadCrumb.1.1.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/extruder/mbExtruder.js"></script><!-- searchpanel(3) --> 
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.js"></script><!-- tree -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.glyph.js"></script><!-- tree -->  
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.filter.js"></script><!-- tree -->
 
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.edit.js"></script> <!-- is this needed ? -->
-
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/equalHeights.js"></script> <!-- sidecolumn resources full-height -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/check/icheck.min.js"></script><!-- forms -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/select/bootstrap-select.min.js"></script><!-- forms -->  
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.highlight.js"></script><!-- highlight -->
