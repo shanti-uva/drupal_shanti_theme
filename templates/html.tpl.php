@@ -4,7 +4,10 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <?php $theme_path = drupal_get_path('theme', 'shanti_theme'); ?>
+  <?php
+    $theme_path = drupal_get_path('theme', 'shanti_theme');
+    $subject =  preg_match('/subjects/', $_SERVER['REQUEST_URI']) === 1 ? true : false;
+  ?>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -117,10 +120,10 @@
       
     <header class="col-sm-12 titlearea">
      <div>
-      <h1 class="page-title"><i class="icon km-subjects"></i><span>Collections</span></h1>
+      <h1 class="page-title"><i class="icon <?php print $subject ? "km-subjects" : "km-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
       <nav class="breadwrap" role="navigation">
         <ol class="breadcrumb">
-          <li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>
+          <li><a href=""><span class="tag-before-breadcrumb"><?php print $subject ? "Subjects:" : "Places"; ?></span></a></li>
         </ol>
       </nav>
       </div>
@@ -651,6 +654,7 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
   <script src="//vjs.zencdn.net/4.5/video.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   
 </body>
 </html>

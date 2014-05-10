@@ -1,5 +1,5 @@
 var Settings = {
-     baseUrl: "http://dev-subjects.kmaps.virginia.edu",
+     baseUrl: location.pathname.indexOf('subjects') !== -1 ? "http://dev-subjects.kmaps.virginia.edu" : "http://dev-places.kmaps.virginia.edu",
      mmsUrl: "http://dev-mms.thlib.org",
      placesUrl: "http://dev-places.kmaps.virginia.edu"
 }
@@ -61,17 +61,17 @@ jQuery(function ($) {
 
 
 // --- breadcrumbs 
-jQuery(function ($) {
-  $(".breadwrap").jBreadCrumb({   
-        minimumCompressionElements: 4,
-        endElementsToLeaveOpen: 3,
-        beginingElementsToLeaveOpen: 0,
-        timeExpansionAnimation: 500,
-        timeCompressionAnimation: 500,
-        timeInitialCollapse: 600,
-        previewWidth: 10  
-  });
-});
+// jQuery(function ($) {
+//   $(".breadwrap").jBreadCrumb({   
+//         minimumCompressionElements: 4,
+//         endElementsToLeaveOpen: 3,
+//         beginingElementsToLeaveOpen: 0,
+//         timeExpansionAnimation: 500,
+//         timeCompressionAnimation: 500,
+//         timeInitialCollapse: 600,
+//         previewWidth: 10  
+//   });
+// });
 
 
 
