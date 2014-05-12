@@ -1,0 +1,12 @@
+.titlearea,
+.titlearea .page-title .icon {
+  background-color: #4CA6FB;
+}
+
+.content-resources ul.nav-pills li.active {
+  border-left-color: #4CA6FB;
+}
+
+.content-resources ul.nav-pills li {
+  display: none;
+}

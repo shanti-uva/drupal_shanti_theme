@@ -20,6 +20,9 @@
   <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
+  <?php if(!$subject): ?>
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
+  <?php endif ?>
   <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -80,8 +83,8 @@
             <div class="four-collections">
               <div class="col-sm-3">
                 <ul>
-                  <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
-                  <li><a href="#"><i class="icon km-places"></i>Places</a></li>
+                  <li><a href="<?php print base_path(); ?>subjects"><i class="icon km-subjects"></i>Subjects</a></li>
+                  <li><a href="<?php print base_path(); ?>places"><i class="icon km-places"></i>Places</a></li>
                   <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
                   <li><a href="#"><i class="icon km-events"></i>Events</a></li>
                 </ul>
@@ -133,9 +136,9 @@
       <ul class="nav nav-pills nav-stacked">
         <li class="active overview"><a href="#tab-overview" data-toggle="pill"><i class="icon km-overview"></i>Overview</a></li>
         <li class="related"><a href="#tab-related" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">5</span></a></li>
+        <li class="places"><a href="#tab-places" data-toggle="pill"><i class="icon km-places"></i>Places<span class="badge">3</span></a></li>
         <li class="essays"><a href="#tab-essays" data-toggle="pill"><i class="icon km-essays"></i>Essays<span class="badge">1</span></a></li>
         <li class="subjects"><a href="#tab-subjects" data-toggle="pill"><i class="icon km-subjects"></i>Subjects<span class="badge">3</span></a></li>
-        <li class="places"><a href="#tab-places" data-toggle="pill"><i class="icon km-places"></i>Places<span class="badge">3</span></a></li>
         <li class="agents"><a href="#tab-agents" data-toggle="pill"><i class="icon km-agents"></i>Agents<span class="badge">3</span></a></li>
         <li class="events"><a href="#tab-events" data-toggle="pill"><i class="icon km-events"></i>Events<span class="badge">3</span></a></li>
         <li class="photos"><a href="#tab-photos" data-toggle="pill"><i class="icon km-photos"></i>Photos<span class="badge">3</span></a></li>
