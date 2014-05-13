@@ -487,7 +487,7 @@ jQuery(function ($) {
           url: Settings.baseUrl + "/features/fancy_nested.json",
           cache: false,
           debugDelay: 1000,
-          timeout: 5000,
+          timeout: 30000,
           error: function(e) {
               console.log(JSON.stringify(e));
               notify.warn("networkerror","Error retrieving tree from kmaps server.");
