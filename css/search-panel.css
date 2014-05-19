@@ -427,7 +427,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 /* .listview td.sorting_1 { min-width: 12em;} */
 .view-section div.title-field { position: static;float: none;/*width: 85%;*//*max-height: 1.3em;*//*white-space: nowrap;*//*overflow: hidden;*//*text-overflow: ellipsis;*/}
 .view-section .row {/*margin: 1em 1em 1em 1em;*/}
-.view-section .popover-content {font-family: sans-serif;font-size: smaller;}
+.view-section .popover-content {font-family: sans-serif;font-size: smaller; word-wrap : break-word;}
 .view-section .popover-content > blockquote p {font-size: 13px;}
 .view-section .popover-content > blockquote {
     border-left: none;
