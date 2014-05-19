@@ -29,7 +29,17 @@ function processPlacesData(data) {
   $tabOverview.empty();
   $tabOverview.append('<h6>' + data.feature.header + '</h6>');
   if (data.feature.feature_types.length > 0) {
-    $tabOverview.append('<p><strong>Feature Type: </strong>' + data.feature.feature_types[0].title + '</p>');
+    var featureTitle = '<p><strong>Feature Type: </strong>';
+    $.each(data.feature.feature_types, function(ind, val) {
+      featureTitle += '<a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
+      featureTitle += val.title;
+      featureTitle += '</a>';
+      if (ind < (data.feature.feature_types.length - 1)) {
+        featureTitle += '; ';  
+      }
+    });
+    featureTitle += '</p>';
+    $tabOverview.append(featureTitle);
   }
   $(".content-resources ul.nav-pills li.overview").show();
 
@@ -51,7 +61,7 @@ function processPlacesData(data) {
     $(".content-resources ul.nav-pills li.essays").show();
   }
 
-  //Related essays (descriptions) section
+  //Related subjects (descriptions) section
   if (data.feature.associated_resources.subject_count > 0) {
     $("ul.nav li a[href='#tab-subjects'] .badge").text(data.feature.associated_resources.description_count);
     $(".content-resources ul.nav-pills li.subjects").show();
@@ -68,6 +78,23 @@ function populatePlacesBreadcrumbs(bInd, bVal) {
 //Function to show the related places within kmap places
 function placesWithinPlaces(data) {
   var $tabPlaces = $("#tab-places");
+  var relationTree = {};
+  $.each(data.feature_relation_types, function(ind1, val1) {
+    $.each(val1.features, function(ind2, val2) {
+      $.each(val2.feature_types, function(ind3, val3) {
+        if (relationTree.hasOwnProperty(val3.title)) {
+          relationTree[val3.title][val2.id] = val2.header;
+        } else {
+          relationTree[val3.title] = {
+            'id': val3.id
+          };
+          relationTree[val3.title][val2.id] = val2.header;
+        }
+      });
+    });
+  });
+
+  console.log(relationTree);
   var contentPlaces = '<h6>' + shantiPlaces.places_header + ' ' + data.feature_relation_types[0].label + ' the following features:</h6>';
 
   $tabPlaces.append(contentPlaces);

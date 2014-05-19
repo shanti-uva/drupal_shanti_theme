@@ -364,6 +364,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   padding-left: 0;
   padding-right: 0;
 }
+.content-resources ul.nav-pills li {
+  display: none;
+}
 .content-resources ul.nav-pills {  
   font-weight: 600;
   font-size: 1em;
