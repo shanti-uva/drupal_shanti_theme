@@ -1141,13 +1141,13 @@ function showOverviewImage(data) {
 //Function to populate related tab
 function relatedResources(data) {
   var $tabRelated = $("#tab-related");
-  var contentR = '<ul>';
+  var contentR = '<ul class="list-unstyled list-group">';
   $.each(data.feature_relation_types, function(rInd, rElm) {
-    contentR += '<li>' + rElm.label + ' the following ' + 
+    contentR += '<li class="list-group-item">' + capitaliseFirstLetter(rElm.label) + ' the following ' + 
     (rElm.features.length == 1 ? "subject (1):" : "subjects (" + rElm.features.length + "):");
-    contentR += '<ul>';
+    contentR += '<ul class="list-group">';
     $.each(rElm.features, function(rrInd, rrElm) {
-      contentR += '<li><a href="#features/' + rrElm.id + '">' + rrElm.header + ' (From the General Perspective)</a></li>';
+      contentR += '<li class="list-group-item"><a href="#features/' + rrElm.id + '">' + rrElm.header + ' (From the General Perspective)</a></li>';
     });
     contentR += '</ul>';
     contentR += '</li>';
@@ -1537,11 +1537,10 @@ function processTexts(mtext) {
   );*/
 }
 
-
-
-//Places callbacks. Need to move to another file
-function processPlacesData(data) {
-  
+//Function to capitalize first letter
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 
