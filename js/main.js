@@ -288,7 +288,7 @@ function decorateElementWithPopover(elem, node) {
             type: "GET",
             url: Settings.baseUrl + "/features/" + node.key + ".xml",
             dataType: "xml",
-            timeout: 5000,
+            timeout: 30000,
             beforeSend: function(){
                 counts.html("<span class='assoc-resources-loading'>loading...</span>");
             },
@@ -490,7 +490,7 @@ jQuery(function ($) {
           url: Settings.baseUrl + "/features/fancy_nested.json",
           cache: false,
           debugDelay: 1000,
-          timeout: 5000,
+          timeout: 30000,
           error: function(e) {
               console.log(JSON.stringify(e));
               notify.warn("networkerror","Error retrieving tree from kmaps server.");
@@ -553,7 +553,7 @@ jQuery(function ($) {
                 type: "GET",
                 url: searchurl,
                 dataType: "json",
-                timeout: 10000,
+                timeout: 30000,
                 error: function (e) {
                     notify.warn("searcherror","Error retrieving search: " + e.statusText + " (" + e.status + ")");
                 },
