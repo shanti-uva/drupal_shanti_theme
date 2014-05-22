@@ -30,10 +30,10 @@ function processPlacesData(data) {
   //Show overview tab on the left hand column
   var $tabOverview = $("#tab-overview");
   $tabOverview.empty();
-  $tabOverview.append('<h6>' + data.feature.header + '</h6>');
-  $tabOverview.append('<h6>OVERVIEW:</h6>');
+  //$tabOverview.append('<h6>' + data.feature.header + '</h6>');
+  $tabOverview.append('<h6>OVERVIEW</h6>');
   if (data.feature.feature_types.length > 0) {
-    var featureTitle = '<p><strong>Feature Type: </strong>';
+    var featureTitle = '<p><h6 class="custom-inline">FEATURE TYPE &nbsp;&nbsp;</h6>';
     $.each(data.feature.feature_types, function(ind, val) {
       featureTitle += '<a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
       featureTitle += val.title;
@@ -47,8 +47,11 @@ function processPlacesData(data) {
   }
 
   var overviewContent = '';
-  overviewContent += '<h6>Map</h6>';
-  overviewContent += '<div class="google-maps"><iframe src="https://mapsengine.google.com/map/embed?mid=zCEqriyJd8A0.kM1pQfphj0Ns" width="640" height="480" style="border:0"></iframe></div>';
+  if (data.feature.closest_fid_with_shapes) {
+    overviewContent += '<div class="google-maps">';
+    overviewContent += '<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=http:%2F%2Fplaces.thlib.org%2Ffeatures%2Fgis_resources%2F' + data.feature.closest_fid_with_shapes + '.kmz&amp;ie=UTF8&amp;t=m&amp;output=embed"></iframe>';
+    overviewContent += '</div>';
+  }
   overviewContent += '<aside class="panel-group" id="accordion">';
   overviewContent += '<section class="panel panel-default">';
   overviewContent += '<div class="panel-heading">';
