@@ -130,6 +130,8 @@ function processPlacesData(data) {
       if(data.names[0].etymology) {
         etycontent += '<strong class="custom-inline">Etymology for ' + data.names[0].name + ': </strong>';
         etycontent += data.names[0].etymology;
+      } else {
+        etycontent += 'None';
       }
       $("#collapseTwo .panel-body").append(etycontent);
     });
