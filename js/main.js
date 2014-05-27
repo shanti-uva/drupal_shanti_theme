@@ -1103,7 +1103,7 @@ function processSubjectsData(data) {
       var $tabAudioVideo = $("#tab-audio-video");
       $tabAudioVideo.empty();
       $tabAudioVideo.append('<h6>' + 'Videos in ' + data.feature.header + '</h6>');
-      var audioVideoUrl = Settings.mmsUrl + "/topics/" + data.feature.id + "/videos.json";
+      var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + data.feature.id;
       $.get(audioVideoUrl, relatedVideos);
     });
   }
@@ -1367,26 +1367,24 @@ function paginatedPhotos(data) {
 function relatedVideos(data) {
   var contentAV = '<div class="related-audio-video">';
 
-  $.each(data.topic.media, function(rInd, rElm) {
+  $.each(data.media, function(rInd, rElm) {
     contentAV += '<div class="each-av">';
-    contentAV += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
-    contentAV += '<img src="' + rElm.images[0].url + '" alt="Flash video">';
+    contentAV += '<a href="#pid' + rElm.nid + '" class="thumbnail" data-toggle="modal">';
+    contentAV += '<img src="' + rElm.thumbnail + '" alt="Video">';
     contentAV += '</a>';
     contentAV += '</div>';
 
     //Modal for each video
-    contentAV += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentAV += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.nid + '">';
     contentAV += '<div class="modal-dialog">';
     contentAV += '<div class="modal-content">';
     contentAV += '<div class="modal-header">';
     contentAV += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-    contentAV += '<h4 class="modal-title" id="myModalLabel">' + (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "") + '</h4>';
+    contentAV += '<h4 class="modal-title" id="myModalLabel">' + (rElm.title ? rElm.title : "") + '</h4>';
     contentAV += '</div>';
     contentAV += '<div class="modal-body">';
-    contentAV += '<video id="video_file_' + rElm.id + '" class="video-js vjs-default-skin vjs-big-play-centered" ' +
-                 'controls preload="auto" width="' + rElm.images[2].width + '" height="' + rElm.images[2].height + '" ' + 
-                 'poster="' + rElm.images[1].url + '">';
-    contentAV += '<source src="' + rElm.images[2].url + '" type="video/x-flv" />';
+    contentAV += '<video controls name="media">';
+    contentAV += '<source src="' + rElm.video_url + '" type="video/mp4" />';
     contentAV += '</video>';
     contentAV += '</div>';
     contentAV += '</div>';
