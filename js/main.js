@@ -1,7 +1,10 @@
 var Settings = {
      baseUrl: location.pathname.indexOf('subjects') !== -1 ? "http://dev-subjects.kmaps.virginia.edu" : "http://dev-places.kmaps.virginia.edu",
      mmsUrl: "http://dev-mms.thlib.org",
-     placesUrl: "http://dev-places.kmaps.virginia.edu"
+     placesUrl: "http://dev-places.kmaps.virginia.edu",
+     subjectsUrl: "http://dev-subjects.kmaps.virginia.edu",
+     placesPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/places',
+     subjectsPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/subjects'
 }
 
 
@@ -285,7 +288,7 @@ function decorateElementWithPopover(elem, node) {
             type: "GET",
             url: Settings.baseUrl + "/features/" + node.key + ".xml",
             dataType: "xml",
-            timeout: 5000,
+            timeout: 30000,
             beforeSend: function(){
                 counts.html("<span class='assoc-resources-loading'>loading...</span>");
             },
@@ -551,7 +554,7 @@ jQuery(function ($) {
                 type: "GET",
                 url: searchurl,
                 dataType: "json",
-                timeout: 10000,
+                timeout: 30000,
                 error: function (e) {
                     notify.warn("searcherror","Error retrieving search: " + e.statusText + " (" + e.status + ")");
                 },
@@ -1111,7 +1114,7 @@ function processSubjectsData(data) {
       var $tabAudioVideo = $("#tab-audio-video");
       $tabAudioVideo.empty();
       $tabAudioVideo.append('<h6>' + 'Videos in ' + data.feature.header + '</h6>');
-      var audioVideoUrl = Settings.mmsUrl + "/topics/" + data.feature.id + "/videos.json";
+      var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + data.feature.id;
       $.get(audioVideoUrl, relatedVideos);
     });
   }
@@ -1149,13 +1152,13 @@ function showOverviewImage(data) {
 //Function to populate related tab
 function relatedResources(data) {
   var $tabRelated = $("#tab-related");
-  var contentR = '<ul>';
+  var contentR = '<ul class="list-unstyled list-group">';
   $.each(data.feature_relation_types, function(rInd, rElm) {
-    contentR += '<li>' + rElm.label + ' the following ' + 
+    contentR += '<li class="list-group-item">' + capitaliseFirstLetter(rElm.label) + ' the following ' + 
     (rElm.features.length == 1 ? "subject (1):" : "subjects (" + rElm.features.length + "):");
-    contentR += '<ul>';
+    contentR += '<ul class="list-group">';
     $.each(rElm.features, function(rrInd, rrElm) {
-      contentR += '<li><a href="#features/' + rrElm.id + '">' + rrElm.header + ' (From the General Perspective)</a></li>';
+      contentR += '<li class="list-group-item"><a href="#features/' + rrElm.id + '">' + rrElm.header + ' (From the General Perspective)</a></li>';
     });
     contentR += '</ul>';
     contentR += '</li>';
@@ -1375,26 +1378,24 @@ function paginatedPhotos(data) {
 function relatedVideos(data) {
   var contentAV = '<div class="related-audio-video">';
 
-  $.each(data.topic.media, function(rInd, rElm) {
+  $.each(data.media, function(rInd, rElm) {
     contentAV += '<div class="each-av">';
-    contentAV += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
-    contentAV += '<img src="' + rElm.images[0].url + '" alt="Flash video">';
+    contentAV += '<a href="#pid' + rElm.nid + '" class="thumbnail" data-toggle="modal">';
+    contentAV += '<img src="' + rElm.thumbnail + '" alt="Video">';
     contentAV += '</a>';
     contentAV += '</div>';
 
     //Modal for each video
-    contentAV += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentAV += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.nid + '">';
     contentAV += '<div class="modal-dialog">';
     contentAV += '<div class="modal-content">';
     contentAV += '<div class="modal-header">';
     contentAV += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-    contentAV += '<h4 class="modal-title" id="myModalLabel">' + (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "") + '</h4>';
+    contentAV += '<h4 class="modal-title" id="myModalLabel">' + (rElm.title ? rElm.title : "") + '</h4>';
     contentAV += '</div>';
     contentAV += '<div class="modal-body">';
-    contentAV += '<video id="video_file_' + rElm.id + '" class="video-js vjs-default-skin vjs-big-play-centered" ' +
-                 'controls preload="auto" width="' + rElm.images[2].width + '" height="' + rElm.images[2].height + '" ' + 
-                 'poster="' + rElm.images[1].url + '">';
-    contentAV += '<source src="' + rElm.images[2].url + '" type="video/x-flv" />';
+    contentAV += '<video controls name="media">';
+    contentAV += '<source src="' + rElm.video_url + '" type="video/mp4" />';
     contentAV += '</video>';
     contentAV += '</div>';
     contentAV += '</div>';
@@ -1545,11 +1546,10 @@ function processTexts(mtext) {
   );*/
 }
 
-
-
-//Places callbacks. Need to move to another file
-function processPlacesData(data) {
-  
+//Function to capitalize first letter
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 

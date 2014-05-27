@@ -9,6 +9,13 @@ function processPlacesData(data) {
   //Removes previous binds for the show related places tab.
   $('a[href="#tab-places"]').unbind('show.bs.tab');
 
+  //Remove previous binds for the related essays tab.
+  $('a[href="#tab-essays"]').unbind('show.bs.tab');
+
+  //Remove previous binds for the accordion
+  $("#collapseOne").unbind('show.bs.collapse');
+  $("#collapseTwo").unbind('show.bs.collapse');
+
   //Change the page title to that of the new page being loaded
   $(".page-title span").html(data.feature.header);
 
@@ -27,10 +34,109 @@ function processPlacesData(data) {
   //Show overview tab on the left hand column
   var $tabOverview = $("#tab-overview");
   $tabOverview.empty();
-  $tabOverview.append('<h6>' + data.feature.header + '</h6>');
+  //$tabOverview.append('<h6>' + data.feature.header + '</h6>');
+  $tabOverview.append('<h6>OVERVIEW</h6>');
   if (data.feature.feature_types.length > 0) {
-    $tabOverview.append('<p><strong>Feature Type: </strong>' + data.feature.feature_types[0].title + '</p>');
+    var featureTitle = '<p><h6 class="custom-inline">FEATURE TYPE &nbsp;&nbsp;</h6>';
+    $.each(data.feature.feature_types, function(ind, val) {
+      featureTitle += '<a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
+      featureTitle += val.title;
+      featureTitle += '</a>';
+      if (ind < (data.feature.feature_types.length - 1)) {
+        featureTitle += '; ';  
+      }
+    });
+    featureTitle += '</p>';
+    $tabOverview.append(featureTitle);
   }
+
+  var overviewContent = '';
+  if (data.feature.closest_fid_with_shapes) {
+    overviewContent += '<div class="google-maps">';
+    overviewContent += '<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=http:%2F%2Fplaces.thlib.org%2Ffeatures%2Fgis_resources%2F' + data.feature.closest_fid_with_shapes + '.kmz&amp;ie=UTF8&amp;t=m&amp;output=embed"></iframe>';
+    overviewContent += '</div>';
+  }
+  overviewContent += '<aside class="panel-group" id="accordion">';
+  overviewContent += '<section class="panel panel-default">';
+  overviewContent += '<div class="panel-heading">';
+  overviewContent += '<h6>';
+  overviewContent += '<a href="#collapseOne" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">';
+  overviewContent += '<i class="icon km-fw km-minus"></i> Names';
+  overviewContent += '</a>';
+  overviewContent += '</h6>';
+  overviewContent += '</div>';
+  overviewContent += '<div id="collapseOne" class="panel-collapse collapse">';
+  overviewContent += '<div class="panel-body">';
+  overviewContent += '</div>';
+  overviewContent += '</div>';
+  overviewContent += '</section>';
+
+  overviewContent += '<section class="panel panel-default">';
+  overviewContent += '<div class="panel-heading">';
+  overviewContent += '<h6>';
+  overviewContent += '<a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">';
+  overviewContent += '<i class="icon km-fw km-minus"></i> ETYMOLOGY';
+  overviewContent += '</a>';
+  overviewContent += '</h6>';
+  overviewContent += '</div>';
+  overviewContent += '<div id="collapseTwo" class="panel-collapse collapse">';
+  overviewContent += '<div class="panel-body">';
+  overviewContent += '</div>';
+  overviewContent += '</div>';
+  overviewContent += '</section>';
+
+  overviewContent += '</aside>';
+  $tabOverview.append(overviewContent);
+
+  //Trigger remote call for overview accordion Names
+  $("#collapseOne").one('show.bs.collapse', function() {
+    var namesURL = Settings.baseUrl + "/features/" + data.feature.id + "/names.json";
+    $.get(namesURL, function(data) {
+      var namesContent = '<ul>';
+      $.each(data.names, function(ind1, val1) {
+        namesContent += '<li>';
+        namesContent += val1.name + ' (' + val1.language + ', ' + val1.writing_system + ', ' + val1.relationship + ')';
+        if(val1.names.length > 0) {
+          namesContent += '<ul>';
+          $.each (val1.names, function(ind2, val2) {
+            namesContent += '<li>';
+            namesContent += val2.name + ' (' + val2.language + ', ' + val2.writing_system + ', ' + val2.relationship + ')';
+            if(val2.names.length > 0) {
+              namesContent += '<ul>';
+              $.each (val2.names, function(ind3, val3) {
+                namesContent += '<li>';
+                namesContent += val3.name + ' (' + val3.language + ', ' + val3.writing_system + ', ' + val3.relationship + ')';
+
+                namesContent += '</li>';
+              });
+              namesContent += '</ul>';
+            }
+            namesContent += '</li>';
+          });
+          namesContent += '</ul>';
+        }
+        namesContent += '</li>';
+      });
+      namesContent += '</ul>';
+      $("#collapseOne .panel-body").append(namesContent);
+    });
+  });
+
+  //Trigger remote call for overview accordion Names
+  $("#collapseTwo").one('show.bs.collapse', function() {
+    var namesURL = Settings.baseUrl + "/features/" + data.feature.id + "/names.json";
+    $.get(namesURL, function(data) {
+      var etycontent = '';
+      if(data.names[0].etymology) {
+        etycontent += '<strong class="custom-inline">Etymology for ' + data.names[0].name + ': </strong>';
+        etycontent += data.names[0].etymology;
+      } else {
+        etycontent += 'None';
+      }
+      $("#collapseTwo .panel-body").append(etycontent);
+    });
+  });
+
   $(".content-resources ul.nav-pills li.overview").show();
 
   //Related places within places.
@@ -49,12 +155,35 @@ function processPlacesData(data) {
   if (data.feature.associated_resources.description_count > 0) {
     $("ul.nav li a[href='#tab-essays'] .badge").text(data.feature.associated_resources.description_count);
     $(".content-resources ul.nav-pills li.essays").show();
+    $('a[href="#tab-essays"]').one('show.bs.tab', function(e) {
+      var $tabEssays = $("#tab-essays");
+      $tabEssays.empty();
+      var essaysURL = Settings.baseUrl + '/features/' + data.feature.id + '/descriptions/' + data.feature.descriptions[0].id + '.json';
+      $.get(essaysURL, relatedPlacesEssays);
+    });
   }
 
-  //Related essays (descriptions) section
+  //Related subjects (descriptions) section
   if (data.feature.associated_resources.subject_count > 0) {
-    $("ul.nav li a[href='#tab-subjects'] .badge").text(data.feature.associated_resources.description_count);
+    $("ul.nav li a[href='#tab-subjects'] .badge").text(data.feature.associated_resources.subject_count);
     $(".content-resources ul.nav-pills li.subjects").show();
+    var subjectsContent = '';
+    var $tabSubjects = $('#tab-subjects');
+    $tabSubjects.empty();
+    $tabSubjects.append('<h6>RELATED SUBJECTS</h6>');
+    if (data.feature.feature_types.length > 0) {
+      var subjectsContent = '<p><h6 class="custom-inline">FEATURE TYPES: &nbsp;&nbsp;</h6>';
+      $.each(data.feature.feature_types, function(ind, val) {
+        subjectsContent += '<a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
+        subjectsContent += val.title;
+        subjectsContent += '</a>';
+        if (ind < (data.feature.feature_types.length - 1)) {
+          subjectsContent += '; ';  
+        }
+      });
+      subjectsContent += '</p>';
+      $tabSubjects.append(subjectsContent);
+    }
   }
 
 }
@@ -68,16 +197,82 @@ function populatePlacesBreadcrumbs(bInd, bVal) {
 //Function to show the related places within kmap places
 function placesWithinPlaces(data) {
   var $tabPlaces = $("#tab-places");
-  var contentPlaces = '<h6>' + shantiPlaces.places_header + ' ' + data.feature_relation_types[0].label + ' the following features:</h6>';
+  var relationTree = {};
+  $.each(data.feature_relation_types, function(ind1, val1) {
+    relationTree[ind1] = {};
+    $.each(val1.features, function(ind2, val2) {
+      $.each(val2.feature_types, function(ind3, val3) {
+        if(Object.prototype.toString.call(relationTree[ind1][val3.title]) === '[object Array]') {
+          relationTree[ind1][val3.title].push({
+            'header_id': val2.id,
+            'header': val2.header
+          });
+        } else {
+          relationTree[ind1][val3.title] = [];
+          relationTree[ind1][val3.title].push({
+            'header_id': val2.id,
+            'header': val2.header
+          });
+        }
+      });
+    });
+    relationTree[ind1]['label'] = val1.label;
+  });
+
+  var contentPlaces = '<h6>RELATED PLACES</h6>';
+  $.each(relationTree, function(ind1, val1) {
+    contentPlaces += '<h6>' + shantiPlaces.places_header + ' ' + val1.label + ' the following features:</h6>';
+    delete val1.label;
+    contentPlaces += '<ul class="list-unstyled list-group">';
+    $.each(val1, function(ind2, val2) {
+      contentPlaces += '<li class="list-group-item">' + ind2;
+      contentPlaces += '<ul class="list-group">';
+      $.each(val2, function(ind3, val3) {
+        contentPlaces += '<li class="list-group-item"><a href="' + Settings.placesPath + '#features/' + val3.header_id + '">';
+        contentPlaces += val3.header;
+        contentPlaces += '</a></li>';
+      });
+      contentPlaces += '</ul>';
+      contentPlaces += '</li>';
+    });
+    contentPlaces += '</ul>';
+  });
 
   $tabPlaces.append(contentPlaces);
 }
 
+//Function to show related places Essays
+function relatedPlacesEssays(data) {
+  var contentES = '<div class="related-essays">';
 
+  var monthNames = [ "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December" ];
+  var createdDate = new Date(Date.parse(data.description.created_at));
+  var showDate = monthNames[createdDate.getMonth()] + ' ' + createdDate.getDate() + ', ' + createdDate.getFullYear();
+  contentES += '<h6>' + data.description.title + ' <small>by ' + data.description.author.fullname + ' (' + showDate + ')</small>' + '</h6>';
+  contentES += data.description.content;
 
+  contentES += '</div>';
 
+  $("#tab-essays").append(contentES);
+}
 
-
+//Recursive function to build and return nested names
+function buildNames(obj) {
+  var retContent = '';
+  if(obj.names && obj.names.length > 0) {
+    retContent += '<ul>';
+    $.each(obj.names, function(ind, val) {
+      retContent += '<li>';
+      retContent += val.name + ' (' + val.language + ', ' + val.writing_system + ', ' + val.relationship + ')';
+      retContent += '</li>';
+    });
+    retContent += '</ul>';
+    return retContent;
+  } else {
+    return retContent;
+  }
+}
 
 
 
