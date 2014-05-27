@@ -484,6 +484,7 @@ jQuery(function ($) {
           }
       },
       source: {
+//          url: "/fancy_nested.json",
           url: Settings.baseUrl + "/features/fancy_nested.json",
           cache: false,
           debugDelay: 1000,
@@ -561,9 +562,13 @@ jQuery(function ($) {
                     var txt = $("#searchform").val();
                     var resultHash = {};
                     $(ret.features).each(function () {
-                        resultHash[this.id] = true;
+                        console.log(JSON.stringify(this));
+                        if (this.feature_types && this.feature_types.length > 0) {
+                            resultHash[this.id] = this.feature_types[0].title;
+                        } else {
+                            resultHash[this.id] = true;
+                        }
                     });
-
 
                     var tree = $('#tree').fancytree('getTree').applyFilter(function (node) {
                         return (typeof resultHash[node.key] !== 'undefined');
@@ -578,22 +583,28 @@ jQuery(function ($) {
                     if (list.length === 0) {
                         notify.warn("warnnoresults", "There are no matches.  <br>Try to modify your search.");
                     }
+
                     // clear the current list.
 
                     $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
+                    //                    $('div.th div div.table-responsive table.table-results tr').not(':first').remove();
+
+                    // NEED TO REBUILD THE LIST TO HAVE VARIABLE COLUMNS
+
                     // populate list
                     var table = $('div.listview div div.table-responsive table.table-results');
                     $.each(list, function (x, y) {
-
-                        table.append(
+                        table.find('tbody').append(
                             $('<tr>')
                                 .append(decorateElementWithPopover($('<td>'), y)
                                     .append(
                                         $('<span class="title-field">').text(y.title).attr('kid', y.key)
-                                            .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false })
+                                            .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false }))
                                     )
-                                )
+                                .append($('<td>' + resultHash[y.key] + '</td>')
+                        )
                         );
+
                     });
 
                     $("table.table-results tbody tr").click(function (event) {

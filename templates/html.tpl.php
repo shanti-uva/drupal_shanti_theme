@@ -538,6 +538,7 @@
                   <thead>
                       <tr>
                         <th>Name</th>
+                        <th>Feature Type</th>
                       </tr>
                   </thead>
                   <tbody></tbody>
