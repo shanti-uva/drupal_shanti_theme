@@ -12,6 +12,10 @@ function processPlacesData(data) {
   //Remove previous binds for the related essays tab.
   $('a[href="#tab-essays"]').unbind('show.bs.tab');
 
+  //Remove previous binds for the accordion
+  $("#collapseOne").unbind('show.bs.collapse');
+  $("#collapseTwo").unbind('show.bs.collapse');
+
   //Change the page title to that of the new page being loaded
   $(".page-title span").html(data.feature.header);
 
@@ -61,18 +65,75 @@ function processPlacesData(data) {
   overviewContent += '</a>';
   overviewContent += '</h6>';
   overviewContent += '</div>';
-  overviewContent += '<div id="collapseOne" class="panel-collapse collapse in">';
+  overviewContent += '<div id="collapseOne" class="panel-collapse collapse">';
   overviewContent += '<div class="panel-body">';
-  overviewContent += '<ol>';
-  $.each(data.feature.names, function(ind, val) {
-    overviewContent += '<li>' + val.name + '</li>';
-  });
-  overviewContent += '</ol>';
   overviewContent += '</div>';
   overviewContent += '</div>';
   overviewContent += '</section>';
+
+  overviewContent += '<section class="panel panel-default">';
+  overviewContent += '<div class="panel-heading">';
+  overviewContent += '<h6>';
+  overviewContent += '<a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">';
+  overviewContent += '<i class="icon km-fw km-minus"></i> ETYMOLOGY';
+  overviewContent += '</a>';
+  overviewContent += '</h6>';
+  overviewContent += '</div>';
+  overviewContent += '<div id="collapseTwo" class="panel-collapse collapse">';
+  overviewContent += '<div class="panel-body">';
+  overviewContent += '</div>';
+  overviewContent += '</div>';
+  overviewContent += '</section>';
+
   overviewContent += '</aside>';
   $tabOverview.append(overviewContent);
+
+  //Trigger remote call for overview accordion Names
+  $("#collapseOne").one('show.bs.collapse', function() {
+    var namesURL = Settings.baseUrl + "/features/" + data.feature.id + "/names.json";
+    $.get(namesURL, function(data) {
+      var namesContent = '<ul>';
+      $.each(data.names, function(ind1, val1) {
+        namesContent += '<li>';
+        namesContent += val1.name + ' (' + val1.language + ', ' + val1.writing_system + ', ' + val1.relationship + ')';
+        if(val1.names.length > 0) {
+          namesContent += '<ul>';
+          $.each (val1.names, function(ind2, val2) {
+            namesContent += '<li>';
+            namesContent += val2.name + ' (' + val2.language + ', ' + val2.writing_system + ', ' + val2.relationship + ')';
+            if(val2.names.length > 0) {
+              namesContent += '<ul>';
+              $.each (val2.names, function(ind3, val3) {
+                namesContent += '<li>';
+                namesContent += val3.name + ' (' + val3.language + ', ' + val3.writing_system + ', ' + val3.relationship + ')';
+
+                namesContent += '</li>';
+              });
+              namesContent += '</ul>';
+            }
+            namesContent += '</li>';
+          });
+          namesContent += '</ul>';
+        }
+        namesContent += '</li>';
+      });
+      namesContent += '</ul>';
+      $("#collapseOne .panel-body").append(namesContent);
+    });
+  });
+
+  //Trigger remote call for overview accordion Names
+  $("#collapseTwo").one('show.bs.collapse', function() {
+    var namesURL = Settings.baseUrl + "/features/" + data.feature.id + "/names.json";
+    $.get(namesURL, function(data) {
+      var etycontent = '';
+      if(data.names[0].etymology) {
+        etycontent += '<strong class="custom-inline">Etymology for ' + data.names[0].name + ': </strong>';
+        etycontent += data.names[0].etymology;
+      }
+      $("#collapseTwo .panel-body").append(etycontent);
+    });
+  });
 
   $(".content-resources ul.nav-pills li.overview").show();
 
@@ -109,7 +170,7 @@ function processPlacesData(data) {
     $tabSubjects.empty();
     $tabSubjects.append('<h6>RELATED SUBJECTS</h6>');
     if (data.feature.feature_types.length > 0) {
-      var subjectsContent = '<p><strong>FEATURE TYPES: </strong>';
+      var subjectsContent = '<p><h6 class="custom-inline">FEATURE TYPES: &nbsp;&nbsp;</h6>';
       $.each(data.feature.feature_types, function(ind, val) {
         subjectsContent += '<a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
         subjectsContent += val.title;
@@ -194,7 +255,22 @@ function relatedPlacesEssays(data) {
   $("#tab-essays").append(contentES);
 }
 
-
+//Recursive function to build and return nested names
+function buildNames(obj) {
+  var retContent = '';
+  if(obj.names && obj.names.length > 0) {
+    retContent += '<ul>';
+    $.each(obj.names, function(ind, val) {
+      retContent += '<li>';
+      retContent += val.name + ' (' + val.language + ', ' + val.writing_system + ', ' + val.relationship + ')';
+      retContent += '</li>';
+    });
+    retContent += '</ul>';
+    return retContent;
+  } else {
+    return retContent;
+  }
+}
 
 
 
