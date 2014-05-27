@@ -107,9 +107,9 @@ function processPlacesData(data) {
     var subjectsContent = '';
     var $tabSubjects = $('#tab-subjects');
     $tabSubjects.empty();
-    $tabSubjects.append('<h6>Subjects associated with feature ' + data.feature.header + ':</h6>');
+    $tabSubjects.append('<h6>RELATED SUBJECTS</h6>');
     if (data.feature.feature_types.length > 0) {
-      var subjectsContent = '<p><strong>Feature Types: </strong>';
+      var subjectsContent = '<p><strong>FEATURE TYPES: </strong>';
       $.each(data.feature.feature_types, function(ind, val) {
         subjectsContent += '<a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
         subjectsContent += val.title;
@@ -156,7 +156,7 @@ function placesWithinPlaces(data) {
     relationTree[ind1]['label'] = val1.label;
   });
 
-  var contentPlaces = '';
+  var contentPlaces = '<h6>RELATED PLACES</h6>';
   $.each(relationTree, function(ind1, val1) {
     contentPlaces += '<h6>' + shantiPlaces.places_header + ' ' + val1.label + ' the following features:</h6>';
     delete val1.label;
