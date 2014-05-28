@@ -523,7 +523,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 }
 .view-section .popover-content span.associated:first-child .badge{ }
 
-.view-section .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; min-width:35px; height:35px !important; margin:0 0 5px 0; padding-right:4px;  border-left:1px solid #ddd; }
+.view-section .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:35px !important; margin:0 0 5px 0; padding-right:4px;  border-left:1px solid #ddd; }
 .view-section .popover-content span.associated+span.associated{ }
 .view-section .popover-content span.associated:first-child{
 	margin-right:-14px;
@@ -537,7 +537,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	position:absolute;
 	bottom:19px;
 	color:#777;
-	margin-left:5px;
+	margin:0 5px;
 }
 /*--- END trunk8 */
 /*-----------------*/
