@@ -473,7 +473,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	border-left: 10px solid #cb3a46;
 }
 .content-resources ul.nav-pills li a{ 
-	padding-left:15px; 
+	padding-left:10px; 
 	padding-top:8px;
 	background: #fff; 
 	font-size:0.75em; 
@@ -505,16 +505,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .content-resources ul.nav-pills li a i{ 
 	font-family: 'kmaps-icons';
 	speak: none;
-	font-style: normal;
-	font-weight: normal;
-	font-variant: normal;
-	text-transform: none;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	margin-right:0.5em; 
+	margin-right:.56em; 
 	font-size:1.68em; 
-	position:relative;
-	top:-2px;
+  line-height:1em;
 }
 
 
@@ -552,9 +545,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   vertical-align: baseline;
   border-radius: 10px;
   color:#fff;
-	background:#808080;
+	background:#777;
 }
-.content-resources ul.nav-pills > .active > a > span.badge { background:#555;}
+.content-resources ul.nav-pills > .active > a > span.badge { background:#505050;}
 .content-resources ul.nav-pills > li > a > span.badge:empty {display: none;}
 
 /*--- END side col ---*/
