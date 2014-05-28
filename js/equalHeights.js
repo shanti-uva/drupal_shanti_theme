@@ -1,13 +1,6 @@
 
 /**
  * Equal Heights Plugin
- * 
- * Equalize the heights of elements. Great for columns or any elements
- * that need to be the same size (floats, etc).
- *
- * Based on Rob Glazebrook's (cssnewbie.com) script
- *
- * Additions
  *  - ability to include a break point (the minimum viewport width at which the script does anything)
  *  - binds the script to run on load, orientation change (for mobile), and when resizing the window
  *
@@ -57,3 +50,4 @@
  	}
 
  })(jQuery);
+ 

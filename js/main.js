@@ -49,6 +49,17 @@ jQuery(function ($) {
 
 
 
+
+
+$(document).ready(function () {
+  $('[data-toggle=offcanvas]').click(function () {
+    $('.row-offcanvas').toggleClass('active');
+  });
+});
+
+
+
+
 // jQuery(function ($) {
 
   // var menulist = $('#menu ul').css('display') == 'block'
@@ -64,17 +75,18 @@ jQuery(function ($) {
 
 
 // --- breadcrumbs 
-// jQuery(function ($) {
-//   $(".breadwrap").jBreadCrumb({   
-//         minimumCompressionElements: 4,
-//         endElementsToLeaveOpen: 3,
-//         beginingElementsToLeaveOpen: 0,
-//         timeExpansionAnimation: 500,
-//         timeCompressionAnimation: 500,
-//         timeInitialCollapse: 600,
-//         previewWidth: 10  
-//   });
-// });
+jQuery(function ($) {
+  $(".breadwrap").jBreadCrumb({   
+        minimumCompressionElements: 4,
+        easing: "easeOutQuad",
+        endElementsToLeaveOpen: 3,
+        beginingElementsToLeaveOpen: 0,
+        timeExpansionAnimation: 500,
+        timeCompressionAnimation: 500,
+        timeInitialCollapse: 600,
+        previewWidth: 10  
+  });
+});
 
 
 
@@ -92,104 +104,30 @@ jQuery(function ($) {
       top: 0
   });
 
-
-  $("#menu-main").buildMbExtruder({
-      positionFixed: false,
-      position: "right",
-      width: 280, // width is set in two places, here and the css
-      top: 0
-
-  }); 
-
-  $("#menu-collections").buildMbExtruder({
-      positionFixed: false,
-      position: "right",
-      width:280, // width is set in two places, here and the css
-      top: 0
-
-  });
-
-
-  
-  $(".menu-maintoggle").click(function () {   
-      if($("#menu-main.extruder").hasClass("isOpened")){    
-        $("#menu-main").closeMbExtruder();
-        $(".menu-maintoggle").removeClass("show-topmenu");
-      } else {
-        $("#menu-main").openMbExtruder();
-        $("#kmaps-search").closeMbExtruder();
-        $("#menu-collections").closeMbExtruder();
-        $(".menu-maintoggle").addClass("show-topmenu");
-        $(".menu-exploretoggle,.kmaps-searchtoggle").removeClass("show-topmenu");
-        return false;
-      }
-  });
-
-  
-  $(".menu-exploretoggle").click(function () {   
-      if($("#menu-collections.extruder").hasClass("isOpened")){   
-        $("#menu-collections").closeMbExtruder();
-        $(".menu-exploretoggle").removeClass("show-topmenu");
-      } else {
-        
-        // $(".menu-commons-wrap, .menu-options-wrap").css('display','none');
-        $(".menu-collections-wrap").css('display','block');
-        $("#menu-collections").openMbExtruder();
-        $("#menu-main").closeMbExtruder();
-        $("#kmaps-search").closeMbExtruder();
-        $(".menu-exploretoggle").addClass("show-topmenu");  
-        $(".menu-maintoggle,.kmaps-searchtoggle").removeClass("show-topmenu");      
-        return false;
-      }
-
-  });
-
-  $(".kmaps-searchtoggle").click(function () {   
-      if($("#kmaps-search.extruder").hasClass("isOpened")){   
-        $("#kmaps-search").closeMbExtruder();
-        $(".kmaps-searchtoggle").removeClass("show-topmenu");
-      } else {
-        $("#menu-main").closeMbExtruder();
-        $("#menu-collections").closeMbExtruder();
-        $("#kmaps-search").openMbExtruder();
-        $(".kmaps-searchtoggle").addClass("show-topmenu");
-        $(".menu-maintoggle,.menu-exploretoggle").removeClass("show-topmenu");
-        // $(".menu-collections-wrap .accordion-toggle").addClass("collapsed");
-        // $(".menu-collections-wrap .panel-collapse").removeClass("in").css('height','0');
-        return false;
-      }
-
-  }); 
-
-
-  
-  // --- collections toggle
-  $("li.explore").addClass("closed");
-  $(".explore>a, .closecollection").click(function(){
-      $(".opencollect").slideToggle('fast');
-      $(".closed").toggleClass("open", 'fast');
-      // $("#kmaps-search").toggleClass("hidden", 300);
-      $("#kmaps-search").toggleClass("open-collections", 200);
-  });
-
-  // --- advanced search toggle icons, open/close, view change height
-  $(".advanced-link").click(function () {
-      $(this).toggleClass("show-advanced",'fast');
-      $(".advanced-view").slideToggle('fast');
-      $(".advanced-view").toggleClass("show-options");
-      $(".view-wrap").toggleClass("short-wrap"); // ----- toggle class for managing view-section height
-  });
-  
 });
 
 
 
+
 // *** SEARCH *** adapt search panel height to viewport
-jQuery(function($) {
+// function for auto-adjusting height of search panel
+ function kmaps_searchHeight() {
+    var height = $(window).height();
+    var kmapsrch = (height) - 100;
+    var viewheight = (height) - 232;
+    
+    kmapsrch = parseInt(kmapsrch) + 'px';
+    $("#kmaps-search").find(".text").css('height',kmapsrch);
+    
+    viewheight = parseInt(viewheight) + 'px';
+    $("#kmaps-search").find(".view-wrap").css('height',viewheight);
+ }
+ 
+ jQuery(function($) {
   var winHeight = $(window).height();
   var panelHeight = winHeight -100; // ----- height of container for search panel - minus length above and below in px
-  var viewHeight = winHeight -217; // ----- height for view-section & search options - CLOSED
-  var shortHeight = winHeight -457; // ----- height for view-section & search options - OPEN
+  var viewHeight = winHeight -235; // ----- height for view-section & search options - CLOSED
+  var shortHeight = winHeight -503; // ----- height for view-section & search options - OPEN
 
   // set initial div height
   $("div.text").css({ "height": panelHeight });
@@ -207,6 +145,10 @@ jQuery(function($) {
     $(".view-wrap").css({ "height": viewHeight });
     $("#kmaps-search .view-wrap.short-wrap").css({ "height": shortHeight });
   });
+
+	// --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
+    kmaps_searchHeight();
+    $(window).bind('load orientationchange resize', kmaps_searchHeight);
 });
 
 
@@ -235,7 +177,10 @@ jQuery(function($) {
   checkWidth();
   // Bind event listener
   $(".extruder-content").resize(checkWidth);
-
+  // show-hide resource side-column
+  $("button.view-resources").click( function() {
+          $(this).toggleClass( "show",'fast' );
+   });
 });
 
 
@@ -255,7 +200,7 @@ jQuery(function($) {
           $(".extruder .text").css("width","100%");
         });
           // styles inline for now, forces
-        $(".flap").prepend("<span style='font-size:22px; position:absolute; left:18px; top:12px; z-index:10;'><i class='icon km-search-kmaps'></i></span>");
+        $(".flap").prepend("<span style='font-size:21px; position:absolute; left:17px; top:12px; z-index:10;'><i class='icon km-search-kmaps'></i></span>");
         $(".flap").addClass("on-flap");
   }
 
@@ -674,10 +619,11 @@ jQuery(function ($) {
 
 });
 
-
-// *** SEARCH *** clear search input & support for placeholder
+// -------------------------
+// *** BEGIN feature trees
 jQuery(function($) {
-  $("#feature-tree").fancytree({
+	// *** feature type ***
+	  $("#feature-tree1").fancytree({
     extensions: ["glyph", "edit", "filter"],
     checkbox: true,
     selectMode: 3, // multiselect enabled
@@ -726,7 +672,7 @@ jQuery(function($) {
       }
     },
     // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
-		source: {url: "./js/fancy_nested.json", debugDelay: 1000},
+    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
     // source: treeData,
     filter: {
         mode: "hide"
@@ -750,9 +696,175 @@ jQuery(function($) {
         return false;
       }
     },
-    cookieId: "kmaps2tree", // set cookies for features, the second fancytree
-    idPrefix: "kmaps2tree"
+    cookieId: "feature1tree", // set cookies for features, the second fancytree
+    idPrefix: "feature1tree"
   });
+
+
+
+  $("#feature-tree2").fancytree({
+    extensions: ["glyph", "edit", "filter"],
+    checkbox: true,
+    selectMode: 3, // multiselect enabled
+    select: function(event, data) {
+        // Get a list of all selected nodes, and convert to a key array:
+        var selKeys = $.map(data.tree.getSelectedNodes(), function(node){
+          return node.key;
+        });
+        $("#echoSelection3").text(selKeys.join(", "));
+
+        // Get a list of all selected TOP nodes
+        var selRootNodes = data.tree.getSelectedNodes(true);
+        // ... and convert to a key array:
+        var selRootKeys = $.map(selRootNodes, function(node){
+          return node.key;
+        });
+        $("#echoSelectionRootKeys3").text(selRootKeys.join(", "));
+        $("#echoSelectionRoots3").text(selRootNodes.join(", "));
+      },
+      dblclick: function(event, data) {
+        data.node.toggleSelected();
+      },
+      keydown: function(event, data) {
+        if( event.which === 32 ) {
+          data.node.toggleSelected();
+          return false;
+        }
+      },
+    glyph: {
+      map: {
+        // doc: "glyphicon glyphicon-file",
+        // docOpen: "glyphicon glyphicon-file",
+        checkbox: "glyphicon glyphicon-unchecked",
+        checkboxSelected: "glyphicon glyphicon-check",
+        checkboxUnknown: "glyphicon glyphicon-share",
+        error: "glyphicon glyphicon-warning-sign",
+        expanderClosed: "glyphicon glyphicon-plus-sign",
+        expanderLazy: "glyphicon glyphicon-plus-sign",
+        // expanderLazy: "glyphicon glyphicon-expand",
+        expanderOpen: "glyphicon glyphicon-minus-sign",
+        // expanderOpen: "glyphicon glyphicon-collapse-down",
+        // folder: "glyphicon glyphicon-folder-close",
+        // folderOpen: "glyphicon glyphicon-folder-open",
+        loading: "glyphicon glyphicon-refresh"
+        // loading: "icon-spinner icon-spin"
+      }
+    },
+    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
+    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
+    // source: treeData,
+    filter: {
+        mode: "hide"
+    },
+    activate: function(event, data) {
+        //  alert("activate " + data.node);
+    },
+    lazyLoad: function(event, ctx) {
+        ctx.result = {url: "ajax-sub2.json", debugDelay: 1000};
+     },
+    click: function(e, data) {
+      // We should not toggle, if target was "checkbox", because this
+      // would result in double-toggle (i.e. no toggle)
+      if( $.ui.fancytree.getEventTargetType(e) == "title" ){
+        data.node.toggleSelected();
+      }
+    },
+    keydown: function(e, data) {
+      if( e.which === 32 ) {
+        data.node.toggleSelected();
+        return false;
+      }
+    },
+    cookieId: "feature2tree", // set cookies for features, the second fancytree
+    idPrefix: "feature2tree"
+  });
+
+
+
+
+
+  $("#feature-tree3").fancytree({
+    extensions: ["glyph", "edit", "filter"],
+    checkbox: true,
+    selectMode: 3, // multiselect enabled
+    select: function(event, data) {
+        // Get a list of all selected nodes, and convert to a key array:
+        var selKeys = $.map(data.tree.getSelectedNodes(), function(node){
+          return node.key;
+        });
+        $("#echoSelection3").text(selKeys.join(", "));
+
+        // Get a list of all selected TOP nodes
+        var selRootNodes = data.tree.getSelectedNodes(true);
+        // ... and convert to a key array:
+        var selRootKeys = $.map(selRootNodes, function(node){
+          return node.key;
+        });
+        $("#echoSelectionRootKeys3").text(selRootKeys.join(", "));
+        $("#echoSelectionRoots3").text(selRootNodes.join(", "));
+      },
+      dblclick: function(event, data) {
+        data.node.toggleSelected();
+      },
+      keydown: function(event, data) {
+        if( event.which === 32 ) {
+          data.node.toggleSelected();
+          return false;
+        }
+      },
+    glyph: {
+      map: {
+        // doc: "glyphicon glyphicon-file",
+        // docOpen: "glyphicon glyphicon-file",
+        checkbox: "glyphicon glyphicon-unchecked",
+        checkboxSelected: "glyphicon glyphicon-check",
+        checkboxUnknown: "glyphicon glyphicon-share",
+        error: "glyphicon glyphicon-warning-sign",
+        expanderClosed: "glyphicon glyphicon-plus-sign",
+        expanderLazy: "glyphicon glyphicon-plus-sign",
+        // expanderLazy: "glyphicon glyphicon-expand",
+        expanderOpen: "glyphicon glyphicon-minus-sign",
+        // expanderOpen: "glyphicon glyphicon-collapse-down",
+        // folder: "glyphicon glyphicon-folder-close",
+        // folderOpen: "glyphicon glyphicon-folder-open",
+        loading: "glyphicon glyphicon-refresh"
+        // loading: "icon-spinner icon-spin"
+      }
+    },
+    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
+    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
+    // source: treeData,
+    filter: {
+        mode: "hide"
+    },
+    activate: function(event, data) {
+        //  alert("activate " + data.node);
+    },
+    lazyLoad: function(event, ctx) {
+        ctx.result = {url: "ajax-sub2.json", debugDelay: 1000};
+     },
+    click: function(e, data) {
+      // We should not toggle, if target was "checkbox", because this
+      // would result in double-toggle (i.e. no toggle)
+      if( $.ui.fancytree.getEventTargetType(e) == "title" ){
+        data.node.toggleSelected();
+      }
+    },
+    keydown: function(e, data) {
+      if( e.which === 32 ) {
+        data.node.toggleSelected();
+        return false;
+      }
+    },
+    cookieId: "feature3tree", // set cookies for features, the second fancytree
+    idPrefix: "feature3tree"
+  });
+
+	// *** END extruder
+
+
+
+
 
   // --- input styles for search panel
   // ----------------------------------
@@ -786,72 +898,213 @@ jQuery(function($) {
     $("button.searchreset").hide();
     $(".alert").hide();
         searchUtil.clearSearch();
-        $('#tree').fancytree('getTree').clearFilter();
+        tree.clearFilter();
   });
+  
+  
 
   // --- fname, KMAPS FEATURES ---
   // ----------------------------------
-  var tree2 = $("#feature-tree").fancytree("getTree");
-  var fname = $("#feature-name"); // feature type id
-  $(fname).data("holderf",$(fname).attr("placeholder"));
+  var tree1 = $("#feature-tree1").fancytree("getTree");
+  var tree2 = $("#feature-tree2").fancytree("getTree");
+  var tree3 = $("#feature-tree3").fancytree("getTree");
+  var feature1 = $("#feature-type");
+  var feature2 = $("#feature-subject");
+  var feature3 = $("#feature-region");
+  $(feature1).data("holderf1",$(feature1).attr("placeholder"));
+  $(feature2).data("holderf2",$(feature2).attr("placeholder"));
+  $(feature3).data("holderf3",$(feature3).attr("placeholder"));
 
-  // --- features inputs - focusin / focusout
-  $(fname).focusin(function(){
+
+
+
+  // --- features inputs - focusin / focusout with two buttons that clear selection
+  
+  // --- feature-type
+  $(feature1).focusin(function(){
       $(this).dropdown();
       $(this).attr("placeholder","");
-      $("button.feature-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("button#feature1b-reset").show(100); // switched to negative indent since hide() not working consistently
   });
-  $(fname).focusout(function(){
-      $(this).attr("placeholder",$(fname).data("holderf"));
-      $("button.feature-reset").hide();
+  $(feature1).focusout(function(){
+      $(this).attr("placeholder",$(feature1).data("holderf1"));
+      $("button#feature1b-reset").hide();
       $(this).dropdown();
 
-      var strf = "Filter by Feature Name";
-      var txtf = $(fname).val();
+      var strf = "Filter by Feature Type";
+      var txtf = $(feature1).val();
       if (strf.indexOf(txtf) > -1) {
-        $("button.feature-reset").hide();
+        $("button#feature1b-reset").hide();
       return true;
       } else {
-        $("button.feature-reset").show(100);
+        $("button#feature1b-reset").show(100);
       return false;
       }
   });
   // --- features inputs - keydown / keyup / click
-  $("input[name=features]").keydown(function(e){
-      $(fname).dropdown();
+  $("input[name=feature-type]").keydown(function(e){
+      $(feature1).dropdown();
       $(".filter").show(100);
       return;
   });
-  $("input[name=features]").keyup(function(e){
+  $("input[name=feature-type]").keyup(function(e){
     var match = $(this).val();
     if(e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === ""){
-      $("button#btnResetSearch, .feature-reset").click();
+      $("button#feature1b-reset").click();
       return;
     }
     // Pass text as filter string (will be matched as substring in the node title)
-    var n = tree2.applyFilter(match);
-      $("button#btnResetSearch, .feature-reset").attr("disabled", false);
+    var n = tree1.applyFilter(match);
+      // $("#feature1a-reset, #feature1b-reset").attr("disabled", false);
       $("span#matches").text("(" + n + " matches)");
   }).focus();
   // close and clear all
-  $("button#btnResetSearch, .feature-reset").click(function(event){
-    $(fname).attr("placeholder",$(fname).data("holderf"));
-    $("input[name=features]").val("");
+  $("button#feature1b-reset").click(function(event){
+    $(feature1).attr("placeholder",$(feature1).data("holderf1"));
+    $("input[name=feature-type]").val("");
     $("span#matches").text("");
     $(".filter").hide();
-     tree2.clearFilter();
-    $("#feature-tree").fancytree();
-    $("button.feature-reset").hide(); // switched to negative indent since hide() not working consistently
+     tree1.clearFilter();
+    $("button#feature-tree1").fancytree();
+    $("button#feature1b-reset").hide(); // switched to negative indent since hide() not working consistently
     // $(this).addClass("show");
   }).attr("disabled", true);
 
   // controls clicking in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-name, .dropdown-menu.feature-menu', function(e) {
+    $(document).on('click', '#feature-type, .dropdown-menu.feature-menu', function(e) {
        e.stopPropagation()
     })
   }); 
+
+
+
+
+
+  // --- feature-type
+  $(feature2).focusin(function(){
+      $(this).dropdown();
+      $(this).attr("placeholder","");
+      $("#feature2b-reset").show(100); // switched to negative indent since hide() not working consistently
+  });
+  $(feature2).focusout(function(){
+      $(this).attr("placeholder",$(feature2).data("holderf2"));
+      $("#feature2b-reset").hide();
+      $(this).dropdown();
+
+      var strf = "Filter by Feature Subject";
+      var txtf = $(feature2).val();
+      if (strf.indexOf(txtf) > -1) {
+        $("#feature2b-reset").hide();
+      return true;
+      } else {
+        $("#feature2b-reset").show(100);
+      return false;
+      }
+  });
+  // --- features inputs - keydown / keyup / click
+  $("input[name=feature-subject]").keydown(function(e){
+      $(feature2).dropdown();
+      $(".filter").show(100);
+      return;
+  });
+  $("input[name=feature-subject]").keyup(function(e){
+    var match = $(this).val();
+    if(e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === ""){
+      $("#feature2a-reset, #feature2b-reset").click();
+      return;
+    }
+    // Pass text as filter string (will be matched as substring in the node title)
+    var n = tree2.applyFilter(match);
+      $("#feature2a-reset, #feature2b-reset").attr("disabled", false);
+      $("#matches").text("(" + n + " matches)");
+  }).focus();
+  // close and clear all
+  $("#feature2a-reset, #feature2b-reset").click(function(event){
+    $(feature2).attr("placeholder",$(feature2).data("holderf2"));
+    $("input[name=feature-subject]").val("");
+    $("#matches").text("");
+    $(".filter").hide();
+     tree2.clearFilter();
+    $("#feature-tree2").fancytree();
+    $("#feature2b-reset").hide(); // switched to negative indent since hide() not working consistently
+    // $(this).addClass("show");
+  }).attr("disabled", true);
+
+  // controls clicking in dropdown & feature input
+  $(function () { 
+    $(document).on('click', '#feature-subject, .dropdown-menu.feature-menu', function(e) {
+       e.stopPropagation()
+    })
+  }); 
+
+
+
+
+
+
+  // --- feature-type
+  $(feature3).focusin(function(){
+      $(this).dropdown();
+      $(this).attr("placeholder","");
+      $("#feature3b-reset").show(100); // switched to negative indent since hide() not working consistently
+  });
+  $(feature3).focusout(function(){
+      $(this).attr("placeholder",$(feature3).data("holderf3"));
+      $("#feature3b-reset").hide();
+      $(this).dropdown();
+
+      var strf = "Filter by Feature Region";
+      var txtf = $(feature3).val();
+      if (strf.indexOf(txtf) > -1) {
+        $("#feature3b-reset").hide();
+      return true;
+      } else {
+        $("#feature3b-reset").show(100);
+      return false;
+      }
+  });
+  // --- features inputs - keydown / keyup / click
+  $("input[name=feature-region]").keydown(function(e){
+      $(feature3).dropdown();
+      $(".filter").show(100);
+      return;
+  });
+  $("input[name=feature-region]").keyup(function(e){
+    var match = $(this).val();
+    if(e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === ""){
+      $("#feature3a-reset, #feature3b-reset").click();
+      return;
+    }
+    // Pass text as filter string (will be matched as substring in the node title)
+    var n = tree3.applyFilter(match);
+      $("#feature3a-reset, #feature3b-reset").attr("disabled", false);
+      $("#matches").text("(" + n + " matches)");
+  }).focus();
+  // close and clear all
+  $("#feature3a-reset, #feature3b-reset").click(function(event){
+    $(feature3).attr("placeholder",$(feature3).data("holderf3"));
+    $("input[name=feature-region]").val("");
+    $("#matches").text("");
+    $(".filter").hide();
+     tree3.clearFilter();
+    $("#feature-tree3").fancytree();
+    $("#feature3b-reset").hide(); // switched to negative indent since hide() not working consistently
+    // $(this).addClass("show");
+  }).attr("disabled", true);
+
+  // controls clicking in dropdown & feature input
+  $(function () { 
+    $(document).on('click', '#feature-region, .dropdown-menu.feature-menu', function(e) {
+       e.stopPropagation()
+    })
+  }); 
+
 });
+
+
+
+
 
 
 
@@ -879,14 +1132,7 @@ jQuery(function ($) {
 jQuery(function ($) {
   // manually initiate dropdown w/bstrap
   $(".dropdown-toggle").dropdown();
-
   
-  // controls clicking in dropdown & feature input
-  $(function () {
-    $(document).on('click', '#feature-name, .dropdown-menu.features-open', function(e) {
-       e.stopPropagation()
-    })
-  });
   $(".feature-help").toggle(
     function () {
           $(".feature-message").slideDown( 300 ).delay( 9000 ).slideUp( 300 );
@@ -899,20 +1145,12 @@ jQuery(function ($) {
 
 
 
-// *** GLOBAL *** ie browser alert, equal-heights, off-canvas panel
-jQuery(function ($) {
-  // show-hide the IE message for older browsers
-  // this could be improved with conditional for - lte IE7 - so it does not self-hide
-  $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
-  
-  // equalHeights
-  $(".main-col").equalHeights();  
-});
+
  
 
 // *** CONTENT *** top link
 jQuery(function ($) {
-  var offset = 220;
+  var offset = 420;
   var duration = 500;
   jQuery(window).scroll(function() {
       if (jQuery(this).scrollTop() > offset) {
@@ -929,42 +1167,10 @@ jQuery(function ($) {
 });
 
 
- 
 
 
 
-// --- width tracker for temp use ---
-jQuery(function ($) {
-    $(function(){
-        placeWindowWidth('#width-tracker');
 
-        $(window).on('resize', function(){
-            updateWindowWidth('#width-tracker');
-        });
-
-    });
-    function placeWindowWidth(selector){
-        if (typeof selector != 'string') return false;
-
-        if (! $(selector).length) {
-            var s = '<div id="' + selector.substr(1, selector.length - 1) + '"><div>Window width:</div><span></span></div>';
-            $('body').append(s);
-        }
-
-        updateWindowWidth(selector);
-    }
-    function updateWindowWidth(selector){
-        var s = $(selector);
-        var w = $(window).width();
-        if (!s.length) return false;
-
-        if (s.children('span')) {
-            s.children('span').text(w + 'px');
-        } else {
-            s.html(w + 'px');
-        }
-    }
-});
 
 
 /* Additions by Gerard Ketuma */
@@ -1551,6 +1757,160 @@ function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+
+
+
+
+
+
+// *** SEARCH *** initiate sliding container, toggle collections & search options
+jQuery(function ($) {
+
+  $("#menu-main").buildMbExtruder({
+      positionFixed: false,
+      position: "right",
+      width: 280, // width is set in two places, here and the css
+      
+      hidePanelsOnClose:false,
+      accordionPanels:false,
+      onExtOpen:function(){  },
+      onExtContentLoad:function(){ $(".menu-main").metisMenu(); },
+      onExtClose:function(){},
+      
+      // onExtContentLoad:function(){$("../menus-ajax.html").openPanel();},
+      top: 0
+
+  }); 
+
+  $("#menu-collections").buildMbExtruder({
+      positionFixed: false,
+      position: "right",
+      width:280, // width is set in two places, here and the css
+
+      hidePanelsOnClose:false,
+      accordionPanels:false,
+      onExtOpen:function(){ $(".menu-main").metisMenu(); },
+      onExtContentLoad:function(){  },
+      onExtClose:function(){},
+
+      top: 0
+
+  });
+
+	// $("#menu-main .extruder-content").css( {'background':'#888 !important'} );
+	
+	// this is for the responsive button
+  $(".kmaps-searchtoggle").click(function () {   
+      if($("#kmaps-search.extruder").hasClass("isOpened")){   
+        $("#kmaps-search").closeMbExtruder();
+        $(".kmaps-searchtoggle").removeClass("show-topmenu");
+        
+      } else {
+      
+        $("#menu-main").closeMbExtruder();
+        $("#menu-collections").closeMbExtruder();
+        $("#kmaps-search").openMbExtruder();
+        $(".kmaps-searchtoggle").addClass("show-topmenu");
+        $(".menu-maintoggle,.menu-exploretoggle").removeClass("show-topmenu");
+        // $("#menu-main").load("./menus-ajax.html");
+        
+        // $(".menu-collections-wrap .accordion-toggle").addClass("collapsed");
+        // $(".menu-collections-wrap .panel-collapse").removeClass("in").css('height','0');
+        return false;
+      }
+  });
+  
+  
+  $(".menu-maintoggle").click(function () {   
+      if($("#menu-main.extruder").hasClass("isOpened")){    
+        $("#menu-main").closeMbExtruder();
+        $(".menu-maintoggle").removeClass("show-topmenu");
+      
+      } else {
+      
+        $("#menu-main").openMbExtruder();
+        $("#kmaps-search").closeMbExtruder();
+        $("#menu-collections").closeMbExtruder();
+        $(".menu-commons, .menu-options, .menu-collections").css('display','block');
+        
+        $(".menu-commons").addClass("active");
+        
+        $(".menu-collections").removeClass("active");
+        $(".menu-collections > ul").removeClass("in");
+        
+        // $("#menu-main").load("/menus-ajax.html #menu-accordion");
+        $(".menu-maintoggle").addClass("show-topmenu");
+        $(".menu-exploretoggle, .kmaps-searchtoggle").removeClass("show-topmenu");
+        return false;
+      }
+  });
+
+
+  $(".menu-exploretoggle").click(function () {   
+      if($("#menu-collections.extruder").hasClass("isOpened")){   
+        $("#menu-collections").closeMbExtruder();
+        $(".menu-exploretoggle").removeClass("show-topmenu");
+                
+      } else {
+        
+        $(".menu-commons, .menu-options").css('display','none');
+        $(".menu-collections").css('display','block');
+        
+        $(".menu-collections").addClass("active");
+        $(".menu-collections > ul").addClass("in");
+        
+        $("#menu-collections").openMbExtruder();
+        $("#menu-main").closeMbExtruder();        
+        $("#kmaps-search").closeMbExtruder();
+        
+        $(".menu-exploretoggle").addClass("show-topmenu");  
+        $(".menu-maintoggle,.kmaps-searchtoggle").removeClass("show-topmenu");      
+        return false;
+      }
+  });
+  
+  // --- desktop version - big dropdown collections toggle
+  $("li.explore").addClass("closed");
+  $(".explore>a, .closecollection").click(function(){
+      $(".opencollect").slideToggle('fast');
+      $(".closed").toggleClass("open", 'fast');
+      // $("#kmaps-search").toggleClass("hidden", 300);
+      $("#kmaps-search").toggleClass("open-collections", 200);
+  });
+
+  // --- advanced search toggle icons, open/close, view change height
+  $(".advanced-link").click(function () {
+      $(this).toggleClass("show-advanced",'fast');
+      $(".advanced-view").slideToggle('fast');
+      $(".advanced-view").toggleClass("show-options");
+      $(".view-wrap").toggleClass("short-wrap"); // ----- toggle class for managing view-section height
+  });
+    
+});
+
+
+// *** GLOBAL *** ie browser alert, equal-heights, off-canvas panel
+jQuery(function ($) {
+  // show-hide the IE message for older browsers
+  // this could be improved with conditional for - lte IE7 - so it does not self-hide
+  $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
+
+  
+  $(".main-col.active").equalHeights(); 
+  $(".content-resources > ul").find("a").click(function (event) { 
+  		$(".main-col.active").equalHeights(); 
+  });
+  
+});
+
+
+
+
+
+
+
+
 
 
 
