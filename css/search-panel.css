@@ -451,6 +451,9 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .view-section table.table-results thead tr th{ color:#333;}
 .view-section table.table-results thead tr th:hover,
 .view-section table.table-results thead tr th:hover:after{ color:#dc3c47; cursor:pointer;}
+
+.view-section .table>thead:first-child>tr:first-child>th{ float:left;}
+
 /* .view-section table.table-results tr:nth-child(even) {background: #fcfcfc;} */
 .view-section table.table-results tbody>tr>td blockquote,
 .view-section table.table-results tbody>tr>td quote{ font-size: 0.5em !important;}
