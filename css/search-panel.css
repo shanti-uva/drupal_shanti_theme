@@ -510,17 +510,22 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .view-section .popover-content .badge {
     line-height: 9px;
     margin-left: 4px;
+    margin:0 auto;
     position: relative;
     top: 19px;
-    font-size: 9px;
+    font-size: 10px;
     font-family: sans-serif;
     letter-spacing: 0.06em;
-    border:1px solid #ccc;
-    background:#f9f9f9; color:#555; 
+    border:1px solid #c0c0c0;
+    background:#f9f9f9; 
+    color:#444;
+    padding:2px 3px;
+    line-height:7px; 
+    height:15px;
 }
 .view-section .popover-content span.associated:first-child .badge{ }
 
-.view-section .popover-content span.associated{ /* background:#f0f0f0; */ float:right; position:relative; top:-5px; height:35px !important; margin:0 0 5px 0; padding-right:4px;  border-left:1px solid #ddd; }
+.view-section .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-5px; width:35px; min-width:35px; height:35px !important; margin:0 0 5px 0; padding-right:4px;  border-left:1px solid #ddd; }
 .view-section .popover-content span.associated+span.associated{ }
 .view-section .popover-content span.associated:first-child{
 	margin-right:-14px;
@@ -533,7 +538,6 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	font-size:1.68em;
 	position:absolute;
 	bottom:19px;
-	margin-left:10px;
 	color:#777;
 }
 /*--- END trunk8 */

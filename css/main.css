@@ -695,7 +695,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 
 
-
+/*----------------------------*/
+/*----- BEGIN NAVIGATION -----*/
+/*----------------------------*/
 
 /*---- top-menu wrapper ----*/
 #menu{ position:absolute;z-index:200;top:50px;right:0px;border:none;padding:0;overflow:visible;}
@@ -1036,14 +1038,18 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
 }
 
 
+/*----------------------------*/
+/*----- END NAVIGATION -------*/
+/*----------------------------*/
 
 
 
 
 
 
-
-
+/*------------------------------*/
+/*----- BEGIN RESPONSIVE -------*/
+/*------------------------------*/
 
 @media screen and (max-width: 399px) {
 
