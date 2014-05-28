@@ -125,8 +125,8 @@
      <div>
       <h1 class="page-title"><i class="icon <?php print $subject ? "km-subjects" : "km-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
       <nav class="breadwrap" role="navigation">
-        <ol class="breadcrumb">
-          <li><a href=""><span class="tag-before-breadcrumb"><?php print $subject ? "Subjects:" : "Places"; ?></span></a></li>
+        <ol class="breadCrumb">
+          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
         </ol>
       </nav>
       </div>
