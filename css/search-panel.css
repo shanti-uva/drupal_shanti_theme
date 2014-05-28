@@ -107,7 +107,7 @@ object.flip_label{ display:none;}
 .input-section .input-group input.form-control:focus{ border: 1px solid #9097d3; -webkit-box-shadow: 0 0 4px #949bd8;box-shadow: 0 0 4px #949bd8;}
 
 /*--- button group ---*/
-.input-section .input-group .input-group-btn{ width:45px; /* set button width and position */ position:absolute; top:9px; right:13px; background:transparent; padding:0; margin:0;}
+.input-section .input-group .input-group-btn{ width:45px !important; /* set button width and position */ position:absolute; top:9px; right:13px; z-index:200; background:transparent; padding:0; margin:0;}
 
 /*--- button ---*/
 .input-section .input-group .btn.btn-default{ 
