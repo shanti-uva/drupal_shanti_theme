@@ -34,7 +34,7 @@
   <header class="header-banner">
     <div class="navbar navbar-default navbar-static-top" role="navigation">  
       
-      <div class="menu-buttons">
+      <div class="menu-buttons" role="navigation">
         <span class="kmaps-searchtoggle menu-icon"><a href="#"><i class='icon km-search-kmaps'></i></a></span>
         <span class="menu-toggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
         <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
@@ -47,10 +47,10 @@
         </h1>
       </div>
 
-      <nav class="navbar-collapse collapse navtop" role="navigation">
-       <form role="form" class="form">
+      <nav class="navbar-collapse collapse navtop">
+       <form class="form">
        <fieldset>         
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" role="navigation">
           <li class="explore"><a href="#">Explore Collections<i class="icon km-directions"></i></a></li>
           <li class="dropdown lang highlight">                    
               <a href="" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
@@ -122,25 +122,25 @@
 
   
   <!-- BEGIN content -->
-  <main class="main-wrapper container" style="position:relative;">
+  <main class="main-wrapper container">
     <article class="main-content" role="main">
      
     <div class="row">   
 	    <header class="col-xs-12 titlearea">
-	     <div role="banner">
-      <h1 class="page-title"><i class="icon <?php print $subject ? "km-subjects" : "km-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
-      <nav class="breadwrap" role="navigation">
-        <ol class="breadCrumb">
-          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
-        </ol>
-      </nav>
-      </div>
-    </header>
+	      <div role="banner">
+		      <h1 class="page-title"><i class="icon <?php print $subject ? "km-subjects" : "km-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
+		      <nav class="breadwrap" role="navigation">
+		        <ol class="breadCrumb">
+		          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
+		        </ol>
+		      </nav>
+        </div>
+			</header>
     </div>
     
-    <div class="row row-offcanvas row-offcanvas-left">  
-             
-    <aside class="content-resources col-xs-6 col-sm-3 col-lg-1 sidebar-offcanvas">
+    <!-- CONTENT SECTION: Two Columns: content-resources and content-section -->
+    <div class="row row-offcanvas row-offcanvas-left">              
+    <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
      <div class="main-col active">
       <ul class="nav nav-pills nav-stacked">
         <li class="overview active"><a href="#tab-overview" data-toggle="pill">
@@ -288,10 +288,10 @@
          <fieldset>                       
             <div class="search-group">                        
 		            <div class="input-group">
-				            <input id="searchform" class="form-control kms" type="text" placeholder="Enter Search...">
-				            <span class="input-group-btn">
+				            <input type="text" class="form-control kms" id="searchform" placeholder="Enter Search...">
+				            <span class="input-group-btns">
+				              <button type="button" class="btn btn-default" id="searchbutton"><i class="icon"></i></button>
 				              <button type="reset" class="searchreset">&times;</button>
-				              <button id="searchbutton" type="button" class="btn btn-default"><i class="icon"></i></button>
 				            </span>
 		            </div>
 		            
@@ -354,8 +354,8 @@
                               </div> 
                                                           
                               <div class="feature-submit">
-                                <button id="feature1-select" type="button" class="btn btn-default">Select</button>
-                                <button id="feature1a-reset" class="btn btn-default clear-form">Cancel <span>&times;</span></button>
+                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
+                                <button type="reset" id="feature1a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
                               </div>
                                                           
                             </div>                      
@@ -377,8 +377,8 @@
                               </div> 
                                                           
                               <div class="feature-submit">
-                                <button id="feature2-select" type="button" class="btn btn-default">Select</button>
-                                <button id="feature2a-reset" class="btn btn-default clear-form">Cancel <span>&times;</span></button>
+                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
+                                <button type="reset" id="feature2a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
                               </div>
                                                           
                             </div>                      
@@ -400,8 +400,8 @@
                               </div> 
                                                           
                               <div class="feature-submit">
-                                <button id="feature3-select" type="button" class="btn btn-default">Select</button>
-                                <button id="feature3a-reset" class="btn btn-default clear-form">Cancel <span>&times;</span></button>
+                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
+                                <button type="reset" id="feature3a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
                               </div>
                                                           
                             </div>                      
@@ -551,7 +551,7 @@
   </div><!-- END wrap-all -->
 
 
-  <footer class="footer container">
+  <footer class="container footer">
   	<div class="row">
 	    <div class="col-xs-12">
 	      <p>&copy; COPYRIGHT 2014</p>
