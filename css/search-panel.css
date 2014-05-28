@@ -452,6 +452,9 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .view-section table.table-results thead tr th:hover,
 .view-section table.table-results thead tr th:hover:after{ color:#dc3c47; cursor:pointer;}
 
+.view-section .table>thead>tr{ border-bottom:2px solid #ddd;}
+.view-section .table>thead>tr>th{ border-bottom:none;}
+
 .view-section .table>thead:first-child>tr:first-child>th{ float:left;}
 
 /* .view-section table.table-results tr:nth-child(even) {background: #fcfcfc;} */
@@ -523,10 +526,10 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 }
 .view-section .popover-content span.associated:first-child .badge{ }
 
-.view-section .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:35px !important; margin:0 0 5px 0; padding-right:4px;  border-left:1px solid #ddd; }
+.view-section .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:35px !important; margin:0 0 5px 0; border-left:1px solid #ddd; }
 .view-section .popover-content span.associated+span.associated{ }
 .view-section .popover-content span.associated:first-child{
-	margin-right:-14px;
+	margin-right:-15px;
 }
 .view-section .popover-content span.associated+span.associated:before {}
 .view-section .listview h3.popover-title {font-size: medium;}
