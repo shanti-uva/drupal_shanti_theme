@@ -484,7 +484,7 @@ jQuery(function ($) {
             var essck = $('#essayscope')[0].checked?1:0;
 
             var searchargs = {
-                name: nameck,
+                // name: nameck,
                 caption: sumck,
                 summary: sumck,
                 id: 1,
