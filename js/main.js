@@ -113,8 +113,8 @@ jQuery(function ($) {
 // function for auto-adjusting height of search panel
  function kmaps_searchHeight() {
     var height = $(window).height();
-    var kmapsrch = (height) - 100;
-    var viewheight = (height) - 232;
+    var kmapsrch = (height) - 80;
+    var viewheight = (height) - 212;
     
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);

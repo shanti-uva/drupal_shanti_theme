@@ -47,10 +47,10 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .menu-icon{ display:inline-block; float:right; padding:0; border-left:1px solid #d0d0d0;}
 .menu-icon a{ text-align:center;background:#eee;color:#444; display:inline-block; width:60px;height:50px; vertical-align:middle; padding:12px 0 0 0;margin:0;}
 .menu-icon a:hover{ text-decoration:none;}
-.menu-icon i{ padding:0; margin:0; color:#707070; font-size:2em; line-height:0.93em;}
+.menu-icon i{ padding:0; margin:0; color:#505050; font-size:2em; line-height:0.93em;}
 .menu-icon i:before{ content: "\e605";}
-.menu-icon a:hover i:before{ color:#555;}
-.menu-icon a:active i:before{ color:#000;}
+.menu-icon a:hover i:before{ color:#707070;}
+.menu-icon a:active i:before{ color:#555;}
 .menu-icon.show-topmenu a{ background:#39373f; color:#fff;}
 .menu-icon.show-topmenu a i:before{ color:#fff;}
 
@@ -903,24 +903,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 /* .menu-accordion .sidebar-nav-item {padding-left: 5px;}
 .menu-accordion .sidebar-nav-item-icon {padding-right: 5px;} */
 
-ul.menu-main li a .icon{
-	margin-right:12px;
-	font-size:1.25em;
-	position:relative;
-	top:2px;
-}
-
-ul.menu-main>li>a:first-child {
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; 
-	font-weight:normal; 
-	font-style:italic;
-	font-size:1.5em; 
-	line-height:1.5em; 
-	height:2.44em;
-}
-
-
-
 
 
 
@@ -955,18 +937,35 @@ ul.menu-main li.form-group label:hover{ color:#eee; }
 ul.menu-main li.form-group .radio-inline{ padding:0; display:block; }
 ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right:7px; font-size:.88em; } /* graphic replacement */
 
-.menu-main .arrow { float: right; }
-.menu-main > li a .glyphicon.arrow { font-size: .75em; position:relative; right:-15px; top:7px;	}
-.menu-main .glyphicon.arrow:before { content:"\e079";}
-.menu-main .active > a > .glyphicon.arrow:before { content:"\e114";}
-.menu-main .fa.arrow:before { content:"\f104";}
-.menu-main .active > a > .fa.arrow:before { content:"\f107";}
-.menu-main .plus-times { float:right ;position:relative; top:3px; }
-.menu-main .fa.plus-times:before {content: "\f067";}
-.menu-main .active > a > .fa.plus-times { -webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg); filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); }
-.menu-main .plus-minus { float: right; }
-.menu-main .fa.plus-minus:before { content: "\f067"; }
-.menu-main .active > a > .fa.plus-minus:before { content: "\f068"; }
+ul.menu-main .arrow { float: right; }
+ul.menu-main > li a .glyphicon.arrow { font-size: .75em; position:relative; right:-15px; top:7px;	}
+ul.menu-main .glyphicon.arrow:before { content:"\e079";}
+ul.menu-main .active > a > .glyphicon.arrow:before { content:"\e114";}
+ul.menu-main .fa.arrow:before { content:"\f104";}
+ul.menu-main .active > a > .fa.arrow:before { content:"\f107";}
+ul.menu-main .plus-times { float:right ;position:relative; top:3px; }
+ul.menu-main .fa.plus-times:before {content: "\f067";}
+ul.menu-main .active > a > .fa.plus-times { -webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);-ms-transform: rotate(45deg);-o-transform: rotate(45deg);transform: rotate(45deg); filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1); }
+ul.menu-main .plus-minus { float: right; }
+ul.menu-main .fa.plus-minus:before { content: "\f067"; }
+ul.menu-main .active > a > .fa.plus-minus:before { content: "\f068"; }
+
+
+ul.menu-main li a .icon{
+	margin-right:12px;
+	font-size:1.25em;
+	position:relative;
+	top:2px;
+}
+
+ul.menu-main>li>a:first-child {
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; 
+	font-weight:normal; 
+	font-style:italic;
+	font-size:1.5em; 
+	line-height:1.5em; 
+	height:2.44em;
+}
 /*----------------------------*/
 /*----- END NAVIGATION -------*/
 /*----------------------------*/
@@ -1170,7 +1169,7 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
 
   .navbar-header h1.navbar-title a span{ font-size:0.93em; position:relative; top:-5px; }
 
-  .main-content .content-section { max-width: 800px; }
+  .main-content .content-section { max-width: 750px; }
   
 	.collections ul li a { font-size: 0.75em; line-height:2em;}	
  	.collections h4 {
