@@ -76,41 +76,28 @@
     </div><!-- END navbar -->
 
     <!-- BEGIN navigation dropdown panel -->  
-    <section class="container collections collapse opencollect">
-      <nav role="navigation"> 
-         <div class="col-xs-12 col-md-8 col-md-offset-2">          
+    <section class="container collapse opencollect collections">
+      <nav class="row" role="navigation"> 
+         <div class="col-sm-12">          
             <h4>EXPLORE COLLECTIONS</h4>
-            <div class="four-collections">
-              <div class="col-xs-4 col-md-3">
-                <ul>
-                  <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
-                  <li><a href="#"><i class="icon km-places"></i>Places</a></li>
-                  <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
-                  <li><a href="#"><i class="icon km-events"></i>Events</a></li>
-                </ul>
-              </div>
-              <div class="col-xs-4 col-sm-3">
-                <ul>
-                  <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
-                  <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
-                  <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
-                </ul>
-              </div>
-              <div class="col-xs-4 col-sm-3">
-                <ul>
-                  <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
-                  <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
-                  <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
-                </ul>
-              </div>
-              <div class="col-xs-4 col-sm-3">
-                <ul class="last">
-                  <li><a href="#"><i class="icon km-community"></i>Community</a></li>
-                  <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
-                  <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
-                </ul>
-              </div>
-            </div>          
+            	<div class="kmaps-collections">
+			          <ul>
+			            <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
+			            <li><a href="#"><i class="icon km-places"></i>Places</a></li>
+			            <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
+			            <li><a href="#"><i class="icon km-events"></i>Events</a></li>
+			            <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
+			            <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
+			            <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
+			            <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
+			            <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
+			            <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
+			            <li><a href="#"><i class="icon km-community"></i>Community</a></li>
+			            <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
+			            <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
+			            <li class="bottom-trim"></li>
+								</ul>
+						</div>
          </div>
           <span class="closecollection"> <i class="icon km-close"></i> </span>
       </nav>
