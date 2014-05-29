@@ -107,7 +107,7 @@ object.flip_label{ display:none;}
 .input-section .input-group input.form-control:focus{ border: 1px solid #9097d3; -webkit-box-shadow: 0 0 4px #949bd8;box-shadow: 0 0 4px #949bd8;}
 
 /*--- button group ---*/
-.input-section .input-group .input-group-btns{ width:45px !important; /* set button width and position */ position:absolute; top:9px; right:13px; z-index:200; background:transparent; padding:0; margin:0;}
+.input-section .input-group .input-group-btns{ width:45px !important; /* set button width and position */ position:absolute; top:9px; right:13px; z-index:10; background:transparent; padding:0; margin:0;}
 
 /*--- button ---*/
 .input-section .input-group .btn.btn-default{ 
@@ -392,11 +392,12 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 }
 .advanced-view .form-group.km-input .form-control:hover{ border: 1px solid #ccc; color:#777;}
 .advanced-view .form-group.km-input .form-control:focus{ border: 1px solid #9097d3; -webkit-box-shadow: 0 0 4px #949bd8; box-shadow: 0 0 4px #949bd8;}
-
-
 /*--- END advanced ---*/
+
 /*----------------------------------------------------*/
 /*--- END :: Input & View ----------------------------*/
+
+
 
 
 /*---- START View Section :: Tabs - Table - Tree -----*/
@@ -447,10 +448,10 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .view-section table.table-results thead tr th,
 .view-section table.table-results tbody>tr>td{ line-height:20px;text-align:left; /*display:block;*/}
 .view-section table.table-results tbody tr:hover{ background: #fff;}
-.view-section table.table-results thead tr th:after{ color:#555; font-family: 'kmaps-icons'; content: "\e620"; font-size: 14px; margin-left:0; position:relative; top:2px;}
+/* .view-section table.table-results thead tr th:after{ color:#555; font-family: 'kmaps-icons'; content: "\e620"; font-size: 14px; margin-left:0; position:relative; top:2px; */}
 .view-section table.table-results thead tr th{ color:#333;}
 .view-section table.table-results thead tr th:hover,
-.view-section table.table-results thead tr th:hover:after{ color:#dc3c47; cursor:pointer;}
+.view-section table.table-results thead tr th:hover:after{ /*color:#dc3c47; cursor:pointer;*/}
 
 .view-section .table>thead>tr{ border-bottom:2px solid #ddd;}
 .view-section .table>thead>tr>th{ border-bottom:none;}
@@ -462,7 +463,7 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .view-section table.table-results tbody>tr>td quote{ font-size: 0.5em !important;}
 
 th.sorting_asc,
-table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-width:0; }
+table.dataTable thead .sorting_asc{ /*background:none;border:none;width:0;min-width:0;*/ }
 
 
 
