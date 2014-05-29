@@ -164,13 +164,13 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   overflow: auto;
   position: relative;
 }
-.collections .kmaps-collections {
+.collections .row { margin:0;}
+.collections ul {
   margin: 0 auto;
   text-align:center;
-}
-.collections ul {
   list-style-type: none;
-  margin-bottom:25px;
+  margin-bottom:15px !important;
+  float:left;
 }
 .collections ul li {
   margin: 0;
@@ -195,14 +195,14 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .collections h4 {
 	color:#eee;
   text-align: center;
-  margin: 15px 0;
+  margin: 15px 0 15px !important;
   letter-spacing: 0.32em;
 }
 .collections .closecollection {
   color: #aaa;
   font-size: 1.5em;
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 15px;
   cursor:pointer;
   display:inline-block;
@@ -1141,7 +1141,7 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
 	.navbar-default h1 i.icon{ font-size:1.63em; line-height:1.68em; position:relative; top:1px;; }
   .navbar-header h1.navbar-title a span{ font-size:0.83em; position:relative; top:-5px; }	 
 
-  .collections ul:first-child{ margin-left:10%; }
+  .collections ul:first-child{ margin-left:5%; }
 	.collections ul li { line-height:1.75em; width:20% }
   .collections ul li a { font-size: 0.82em; line-height:1.75em;}
 
@@ -1164,8 +1164,6 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
   .navbar-header h1.navbar-title a span{ font-size:0.93em; position:relative; top:-5px; }
 
   .main-content .content-section { max-width: 800px; }
-
-	.collections ul:first-child{ margin-left:3%; }
 		
 }
 

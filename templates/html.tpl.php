@@ -78,7 +78,7 @@
     <!-- BEGIN navigation dropdown panel -->  
     <section class="container collapse opencollect collections">
       <nav class="row" role="navigation"> 
-         <div class="col-sm-12">          
+         <div class="col-sm-12 col-md-10 col-md-offset-1">          
             <h4>EXPLORE COLLECTIONS</h4>
             	<div class="kmaps-collections">
 			          <ul>
