@@ -521,7 +521,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     background:#f9f9f9; 
     color:#444;
     padding:2px 6px;
-    line-height:7px; 
+    line-height:10px; 
     height:15px;
 }
 .view-section .popover-content span.associated:first-child .badge{ }
