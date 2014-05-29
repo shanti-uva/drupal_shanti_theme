@@ -457,14 +457,14 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .view-section .table>thead>tr{ border-bottom:2px solid #ddd;}
 .view-section .table>thead>tr>th{ border-bottom:none;}
 
-/* .view-section .table>thead:first-child>tr:first-child>th{ float:left;} */
+.view-section .table>thead:first-child>tr:first-child>th{ float:left;}
 
 .view-section table.table-results tr:nth-child(even) {background: #fcfcfc;}
 .view-section table.table-results tbody>tr>td blockquote,
 .view-section table.table-results tbody>tr>td quote{ font-size: 0.5em !important;}
 
 th.sorting_asc,
-table.dataTable thead .sorting_asc{ /*background:none;border:none;width:0;min-width:0;*/ }
+table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-width:0; }
 
 
 
