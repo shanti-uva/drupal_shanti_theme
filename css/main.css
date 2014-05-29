@@ -1061,6 +1061,10 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
   	line-height:1.68em;
   }	
 
+  .collections ul:first-child{ margin-left:5%; } /* collections menu if displaynone at min-768 but settings here helps avoid flash */
+	.collections ul li { line-height:1.75em; width:20%; }
+  .collections ul li a { font-size: 0.68em; line-height:2.25em;}
+  
 }
 
 
@@ -1141,10 +1145,12 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
 	.navbar-default h1 i.icon{ font-size:1.63em; line-height:1.68em; position:relative; top:1px;; }
   .navbar-header h1.navbar-title a span{ font-size:0.83em; position:relative; top:-5px; }	 
 
-  .collections ul:first-child{ margin-left:5%; }
-	.collections ul li { line-height:1.75em; width:20%; }
-  .collections ul li a { font-size: 0.68em; line-height:1.68em;}
-
+	.collections h4 {
+		color:#eee;
+		font-size:1em;
+	  letter-spacing: 0.25em;
+	}
+	
 }
 
 
@@ -1164,9 +1170,12 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
   .navbar-header h1.navbar-title a span{ font-size:0.93em; position:relative; top:-5px; }
 
   .main-content .content-section { max-width: 800px; }
+  
+	.collections ul li a { font-size: 0.75em; line-height:2em;}	
+ 	.collections h4 {
+		font-size:1.25em;
+	}
 	
-	.collections ul li { line-height:1.75em; }
-  .collections ul li a { font-size: 0.82em; line-height:1.75em;}	
 }
 
 
@@ -1176,6 +1185,7 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
 
 @media screen and (min-width: 1280px) {
 	
+	.collections ul li a { font-size: 0.82em; line-height:1.75em;}
 }
 
 

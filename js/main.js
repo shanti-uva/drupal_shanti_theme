@@ -477,7 +477,7 @@ jQuery(function ($) {
 
             // notify.warn('debug',$('#termscope')[0].checked);
 
-            var nameck = $('#termscope')[0].checked?1:0;
+           //  var nameck = $('#termscope')[0].checked?1:0; 05-28 markf
 
             var sumck = $('#summaryscope')[0].checked?1:0;
 
