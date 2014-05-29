@@ -445,7 +445,7 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .view-section table.table-results a{ font-style:italic;}
 .view-section table.table-results tbody>tr,
 .view-section table.table-results thead tr th,
-.view-section table.table-results tbody>tr>td{ line-height:20px;text-align:left; display:block;}
+.view-section table.table-results tbody>tr>td{ line-height:20px;text-align:left; /*display:block;*/}
 .view-section table.table-results tbody tr:hover{ background: #fff;}
 .view-section table.table-results thead tr th:after{ color:#555; font-family: 'kmaps-icons'; content: "\e620"; font-size: 14px; margin-left:0; position:relative; top:2px;}
 .view-section table.table-results thead tr th{ color:#333;}
@@ -511,7 +511,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 }
 .view-section .popover-title .kmapid-display:before {color: #888;/*content: "kmapid: "*/}
 .view-section .popover-content .badge {
-    margin:0 4px;
+    margin:0 5px;
     position: relative;
     top: 19px;
     font-size: 10px;
