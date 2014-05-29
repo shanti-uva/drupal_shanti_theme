@@ -1149,6 +1149,7 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
 		color:#eee;
 		font-size:1em;
 	  letter-spacing: 0.25em;
+	  margin-top:8px !important;
 	}
 	
 }
@@ -1173,7 +1174,7 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
   
 	.collections ul li a { font-size: 0.75em; line-height:2em;}	
  	.collections h4 {
-		font-size:1.25em;
+		font-size:1.12em;
 	}
 	
 }
@@ -1185,7 +1186,7 @@ ul.menu-main li.form-group .radio-inline>div{ position:relative; top:-2px; right
 
 @media screen and (min-width: 1280px) {
 	
-	.collections ul li a { font-size: 0.82em; line-height:1.75em;}
+	.collections ul li a { font-size: 0.82em;}
 }
 
 
