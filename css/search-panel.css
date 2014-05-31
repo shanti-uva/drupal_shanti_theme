@@ -507,7 +507,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     color: #888;
 }
 
-.view-section .popover-content .info-wrap {min-width: 18em;}
+.view-section .popover-content .info-wrap {min-width: 18em;background:#f00;}
 .view-section .popover-content .counts-display { display:block; height: 40px; padding:5px; }
 .view-section .popover-title .kmapid-display {
     display: block;
@@ -550,7 +550,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	position:absolute;
 	bottom:19px;
 	color:#777;
-	margin:0 6px;
+	margin:0 0 0 7px;
 }
 /*--- END trunk8 */
 /*-----------------*/

@@ -525,12 +525,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	height:15px;
 	text-shadow: 1px 1px #707070;
   display: inline-block;
-  min-width: 18px;
-  padding: 3px 7px;
-  font-weight: 700;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
   color:#fff;
 	background:#777;
 }
@@ -1059,7 +1053,7 @@ ul.menu-main>li>a:first-child {
   	line-height:1.68em;
   }	
 
-  .collections ul:first-child{ margin-left:5%; } /* collections menu if displaynone at min-768 but settings here helps avoid flash */
+  .collections ul:first-child{ margin-left:2%; } /* collections menu if displaynone at min-768 but settings here helps avoid flash */
 	.collections ul li { line-height:1.75em; width:20%; }
   .collections ul li a { font-size: 0.68em; line-height:2.25em;}
   
