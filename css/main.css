@@ -564,7 +564,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   width:100%;
   /*margin:-10px -20px 0 -2px;*/
 }
-.accordion .panel h6{ 
+#accordion .panel h6{ 
 	font-size:1em; 
 	line-height:3.75em;
   border-top:1px solid #fff;
@@ -573,7 +573,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   padding-left:20px;
   height:60px;
 }
-.accordion h6 a {
+#accordion h6 a {
 	color:#444;
 	font-size:1em; 
 	line-height:3.93em;  
@@ -581,7 +581,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	text-decoration: none;
 	display:block;
 }
-.accordion .panel h6 .icon {
+#accordion .panel h6 .icon {
   font-size: 0.63em;    
   background: #fff;
   color: #444;    
@@ -599,14 +599,14 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   box-shadow: 0 0 4px 3px #ddd;
   border-collapse:separate;
 }
-.accordion .panel .accordion-toggle .icon:before {
+#accordion .panel .accordion-toggle .icon:before {
   position: relative;
   top: 4px;
   left: 0;
   font-family: 'Glyphicons Halflings';
   content: '\2212';
 }
-.accordion .panel .accordion-toggle.collapsed .icon:before {
+#accordion .panel .accordion-toggle.collapsed .icon:before {
   content: '\002b';
 }
 /* END accordion */

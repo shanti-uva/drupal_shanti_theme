@@ -1,5 +1,6 @@
 //Function to process kmaps places
 function processPlacesData(data) {
+  console.log(data);
   //Global variable to hold all the related resources count
   shantiPlaces = {
     places_id: data.feature.id,
@@ -26,6 +27,7 @@ function processPlacesData(data) {
   $("ol.breadCrumb li").remove();
   $("ol.breadCrumb").append('<li><a href=""><span class="tag-before-breadcrumb">Places:</span></a></li>');
   $.each(data.feature.parents, populatePlacesBreadcrumbs);
+  $("ol.breadCrumb").append('<li>' + data.feature.header + '</li>');
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
   $(".content-resources ul.nav-pills li").hide();
@@ -34,8 +36,9 @@ function processPlacesData(data) {
   //Show overview tab on the left hand column
   var $tabOverview = $("#tab-overview");
   $tabOverview.empty();
-  //$tabOverview.append('<h6>' + data.feature.header + '</h6>');
-  $tabOverview.append('<h6>OVERVIEW</h6>');
+  if (data.feature.summaries.length > 0) {
+    $tabOverview.append('<div class="summary-overview">' + data.feature.summaries[0].content + '</div>');
+  }
   if (data.feature.feature_types.length > 0) {
     var featureTitle = '<p><h6 class="custom-inline">FEATURE TYPE &nbsp;&nbsp;</h6>';
     $.each(data.feature.feature_types, function(ind, val) {
@@ -51,6 +54,13 @@ function processPlacesData(data) {
   }
 
   var overviewContent = '';
+
+  if (data.feature.illustrations.length > 0) {
+    overviewContent += '<div>';
+    overviewContent += '<img class="img-responsive img-thumbnail" src="' + data.feature.illustrations[0].url + '">';
+    overviewContent += '</div>';
+  }
+
   if (data.feature.closest_fid_with_shapes) {
     overviewContent += '<div class="google-maps">';
     overviewContent += '<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=http:%2F%2Fplaces.thlib.org%2Ffeatures%2Fgis_resources%2F' + data.feature.closest_fid_with_shapes + '.kmz&amp;ie=UTF8&amp;t=m&amp;output=embed"></iframe>';
@@ -131,7 +141,7 @@ function processPlacesData(data) {
         etycontent += '<strong class="custom-inline">Etymology for ' + data.names[0].name + ': </strong>';
         etycontent += data.names[0].etymology;
       } else {
-        etycontent += 'None';
+        etycontent += '';
       }
       $("#collapseTwo .panel-body").append(etycontent);
     });
@@ -170,7 +180,7 @@ function processPlacesData(data) {
     var subjectsContent = '';
     var $tabSubjects = $('#tab-subjects');
     $tabSubjects.empty();
-    $tabSubjects.append('<h6>RELATED SUBJECTS</h6>');
+    $tabSubjects.append('<h6 class="center-me">RELATED SUBJECTS</h6>');
     if (data.feature.feature_types.length > 0) {
       var subjectsContent = '<p><h6 class="custom-inline">FEATURE TYPES: &nbsp;&nbsp;</h6>';
       $.each(data.feature.feature_types, function(ind, val) {
@@ -219,9 +229,9 @@ function placesWithinPlaces(data) {
     relationTree[ind1]['label'] = val1.label;
   });
 
-  var contentPlaces = '<h6>RELATED PLACES</h6>';
+  var contentPlaces = '<h6 class="center-me">RELATED PLACES</h6>';
   $.each(relationTree, function(ind1, val1) {
-    contentPlaces += '<h6>' + shantiPlaces.places_header + ' ' + val1.label + ' the following features:</h6>';
+    contentPlaces += '<h6>' + shantiPlaces.places_header + ' ' + val1.label + ' (' + val1[Object.keys(val1)[0]].length + '):</h6>';
     delete val1.label;
     contentPlaces += '<ul class="list-unstyled list-group">';
     $.each(val1, function(ind2, val2) {
@@ -249,8 +259,14 @@ function relatedPlacesEssays(data) {
   "July", "August", "September", "October", "November", "December" ];
   var createdDate = new Date(Date.parse(data.description.created_at));
   var showDate = monthNames[createdDate.getMonth()] + ' ' + createdDate.getDate() + ', ' + createdDate.getFullYear();
-  contentES += '<h6>' + data.description.title + ' <small>by ' + data.description.author.fullname + ' (' + showDate + ')</small>' + '</h6>';
-  contentES += data.description.content;
+  if (data.description.title) {
+    contentES += '<h6>' + (data.description.title ? data.description.title : "") + ' <small>by ' + (data.description.author ? data.description.author.fullname : "") + ' (' + showDate + ')</small>' + '</h6>';
+  }
+  if (!data.description.title) {
+    contentES += '<div class="summary-overview">' + data.description.content + '</div>';
+  } else {
+    contentES += data.description.content;
+  }
 
   contentES += '</div>';
 
