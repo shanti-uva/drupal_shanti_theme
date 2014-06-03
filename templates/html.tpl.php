@@ -190,18 +190,15 @@
         </article>
         <!-- END tab-pane active -->
 
-        <article class="tab-pane main-col" id="tab-related">
-        </article>
-
-        <article class="tab-pane main-col" id="tab-places">
+        <article class="tab-pane main-col" id="tab-subjects">
         </article>
 
         <article class="tab-pane main-col" id="tab-essays">
         </article>
 
-        <article class="tab-pane main-col" id="tab-subjects">
+        <article class="tab-pane main-col" id="tab-places">
         </article>
-        
+                        
         <article class="tab-pane main-col" id="tab-agents">
         </article>
 
