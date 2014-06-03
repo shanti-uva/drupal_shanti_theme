@@ -50,7 +50,28 @@ jQuery(function ($) {
 
 
 
+// *** NAVIGATION *** accordion toggle
+$.fn.accordionFx = function() {
+    return this.each(function(i, accordion) {
+        $(".accordion-toggle", accordion).click(function(ev) {
+            var link = ev.target;
+            var header = $(link).closest(".panel-heading");
+            var chevState = $("i.glyphicon", header)
+                .toggleClass('glyphicon-minus glyphicon-plus');
+            $("i.glyphicon", accordion)
+                .not(chevState)
+                .removeClass("glyphicon-minus")
+                .addClass("glyphicon-plus");
+        });
+    });
+};
 
+$(document).ready(function () {
+	$('#accordion').accordionFx();
+});
+
+
+// *** CONTENT *** hide responsive column for resources
 $(document).ready(function () {
   $('[data-toggle=offcanvas]').click(function () {
     $('.row-offcanvas').toggleClass('active');
@@ -74,7 +95,7 @@ $(document).ready(function () {
 
 
 
-// --- breadcrumbs 
+// *** NAVIGTION *** breadcrumbs 
 jQuery(function ($) {
   $(".breadwrap").jBreadCrumb({   
         minimumCompressionElements: 4,
@@ -336,7 +357,7 @@ jQuery(function ($) {
 //                position: 'relative'
 //            });
             // I suppose some of this styling should go into a css file instead
-            mask = $('<div class="overlay-mask"><div style="text-align:center"><i class="glyphicon glyphicon-time" style="font-size: 5em"></i></div></div>');
+            mask = $('<div class="overlay-mask"><div><i class="glyphicon glyphicon-time"></i></div></div>');
             mask.css({
                 position: 'absolute',
                 width: '100%',
@@ -392,7 +413,7 @@ jQuery(function ($) {
 //            } else {
 //                $('.dataTables_paginate').show();
 //            }
-            $('.title-field').trunk8({ tooltip:false });// .popover();
+            $('.title-field').trunk8({ tooltip:false }); // .popover();
         },
         "fnInitComplete": function() {
             $('.title-field').trunk8({ tooltip:false }); // .popover();
@@ -1775,7 +1796,7 @@ jQuery(function ($) {
       hidePanelsOnClose:false,
       accordionPanels:false,
       onExtOpen:function(){  },
-      onExtContentLoad:function(){ $(".menu-main").metisMenu(); },
+      onExtContentLoad:function(){ $(".menu-main").metisMenu({ toggle: false }); },
       onExtClose:function(){},
       
       // onExtContentLoad:function(){$("../menus-ajax.html").openPanel();},
@@ -1790,7 +1811,7 @@ jQuery(function ($) {
 
       hidePanelsOnClose:false,
       accordionPanels:false,
-      onExtOpen:function(){ $(".menu-main").metisMenu(); },
+      onExtOpen:function(){ $(".menu-main").metisMenu({ toggle: false }); },
       onExtContentLoad:function(){  },
       onExtClose:function(){},
 
@@ -1832,7 +1853,7 @@ jQuery(function ($) {
         $("#menu-main").openMbExtruder();
         $("#kmaps-search").closeMbExtruder();
         $("#menu-collections").closeMbExtruder();
-        $(".menu-commons, .menu-options, .menu-collections").css('display','block');
+        $(".menu-commons, .menu-preferences, .menu-collections").css('display','block');
         
         $(".menu-commons").addClass("active");
         
@@ -1849,12 +1870,14 @@ jQuery(function ($) {
 
   $(".menu-exploretoggle").click(function () {   
       if($("#menu-collections.extruder").hasClass("isOpened")){   
+        
         $("#menu-collections").closeMbExtruder();
         $(".menu-exploretoggle").removeClass("show-topmenu");
+        // $(".bottom-trim").remove();
                 
       } else {
         
-        $(".menu-commons, .menu-options").css('display','none');
+        $(".menu-commons, .menu-preferences").css('display','none');
         $(".menu-collections").css('display','block');
         
         $(".menu-collections").addClass("active");
@@ -1865,10 +1888,14 @@ jQuery(function ($) {
         $("#kmaps-search").closeMbExtruder();
         
         $(".menu-exploretoggle").addClass("show-topmenu");  
-        $(".menu-maintoggle,.kmaps-searchtoggle").removeClass("show-topmenu");      
+        $(".menu-maintoggle,.kmaps-searchtoggle").removeClass("show-topmenu");    
+        
+        // $(".menu-collections").find("ul").append("<li class='bottom-trim'></li>");  
         return false;
       }
   });
+  
+  
   
   // --- desktop version - big dropdown collections toggle
   $("li.explore").addClass("closed");

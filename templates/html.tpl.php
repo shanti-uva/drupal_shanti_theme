@@ -15,16 +15,20 @@
   <meta name="description" content="template">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/utils.css">
-  <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
   <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
+	<!-- default styles above, custom kmaps below -->
+  
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
   <?php if(!$subject): ?>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
   <?php endif ?>
-  <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   
+  <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
@@ -181,6 +185,7 @@
 	    <button type="button" class="btn btn-default btn-xs visible-xs view-resources" data-toggle="offcanvas"><i class="fa"></i><span class="header">RESOURCES</span><span class="badge">13489</span><span class="hide-panel">&times;</span></button>
 	    
       <div class="tab-content">
+      
         <article class="tab-pane main-col active" id="tab-overview">
         </article>
         <!-- END tab-pane active -->
@@ -196,7 +201,7 @@
 
         <article class="tab-pane main-col" id="tab-subjects">
         </article>
-
+        
         <article class="tab-pane main-col" id="tab-agents">
         </article>
 
@@ -226,6 +231,7 @@
 
         <article class="tab-pane main-col" id="tab-sources">
         </article>
+      
       </div><!-- END tab-content -->
     </section><!-- END content-page -->    
 
