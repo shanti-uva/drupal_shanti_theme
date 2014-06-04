@@ -1798,28 +1798,20 @@ jQuery(function ($) {
       onExtOpen:function(){  },
       onExtContentLoad:function(){ $(".menu-main").metisMenu({ toggle: false }); },
       onExtClose:function(){},
-      
-      // onExtContentLoad:function(){$("../menus-ajax.html").openPanel();},
       top: 0
-
   }); 
 
   $("#menu-collections").buildMbExtruder({
       positionFixed: false,
       position: "right",
       width:280, // width is set in two places, here and the css
-
       hidePanelsOnClose:false,
       accordionPanels:false,
       onExtOpen:function(){ $(".menu-main").metisMenu({ toggle: false }); },
       onExtContentLoad:function(){  },
       onExtClose:function(){},
-
       top: 0
-
   });
-
-	// $("#menu-main .extruder-content").css( {'background':'#888 !important'} );
 	
 	// this is for the responsive button
   $(".kmaps-searchtoggle").click(function () {   
@@ -1834,15 +1826,13 @@ jQuery(function ($) {
         $("#kmaps-search").openMbExtruder();
         $(".kmaps-searchtoggle").addClass("show-topmenu");
         $(".menu-maintoggle,.menu-exploretoggle").removeClass("show-topmenu");
-        // $("#menu-main").load("./menus-ajax.html");
-        
+        // $("#menu-main").load("./menus-ajax.html");        
         // $(".menu-collections-wrap .accordion-toggle").addClass("collapsed");
         // $(".menu-collections-wrap .panel-collapse").removeClass("in").css('height','0');
         return false;
       }
   });
-  
-  
+    
   $(".menu-maintoggle").click(function () {   
       if($("#menu-main.extruder").hasClass("isOpened")){    
         $("#menu-main").closeMbExtruder();

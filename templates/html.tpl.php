@@ -18,16 +18,14 @@
   <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/utils.css">
-  <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
-	<!-- default styles above, custom kmaps below -->
-  
+  <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">  
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
+  
   <?php if(!$subject): ?>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
-  <?php endif ?>
-  
+  <?php endif ?>  
   <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -84,24 +82,9 @@
       <nav class="row" role="navigation"> 
          <div class="col-sm-12 col-md-10 col-md-offset-1">          
             <h4>EXPLORE COLLECTIONS</h4>
-            	<div class="kmaps-collections">
-			          <ul>
-			            <li><a href="<?php print base_path(); ?>subjects"><i class="icon km-subjects"></i>Subjects</a></li>
-			            <li><a href="<?php print base_path(); ?>places"><i class="icon km-places"></i>Places</a></li>
-			            <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
-			            <li><a href="#"><i class="icon km-events"></i>Events</a></li>
-			            <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
-			            <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
-			            <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
-			            <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
-			            <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
-			            <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
-			            <li><a href="#"><i class="icon km-community"></i>Community</a></li>
-			            <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
-			            <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
-			            <li class="bottom-trim"></li>
-								</ul>
-						</div>
+            <div id="kmaps-collections"> 
+            	<!-- load ajax menu --> 
+            </div>
          </div>
           <span class="closecollection"> <i class="icon km-close"></i> </span>
       </nav>
@@ -410,22 +393,11 @@
   </main><!-- END container -->
 
 
- 
 
-	  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">   
-	  </section>
-	  
-	  <section id="menu-collections" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">    
-	  </section>
-	  
-
+  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">   </section>
   
+  <section id="menu-collections" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">    </section>
    
- 
-
- 
-
-  
   <section id="menu" style="display:none;">
     <nav role="navigation">                
      <ul>
@@ -547,6 +519,10 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
-  
+  <script>
+  jQuery(function ($) {
+		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections ul");
+	});
+	</script>
 </body>
 </html>
