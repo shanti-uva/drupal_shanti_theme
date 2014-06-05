@@ -98,14 +98,14 @@ $(document).ready(function () {
 // *** NAVIGTION *** breadcrumbs 
 jQuery(function ($) {
   $(".breadwrap").jBreadCrumb({   
-        minimumCompressionElements: 4,
+        minimumCompressionElements: 0,
         easing: "easeOutQuad",
-        endElementsToLeaveOpen: 3,
-        beginingElementsToLeaveOpen: 0,
+        endElementsToLeaveOpen: 1,
+        beginingElementsToLeaveOpen: 1,
         timeExpansionAnimation: 500,
         timeCompressionAnimation: 500,
         timeInitialCollapse: 600,
-        previewWidth: 10  
+        previewWidth: 30  
   });
 });
 
