@@ -66,13 +66,10 @@ $.fn.accordionFx = function() {
     });
 };
 
-$(document).ready(function () {
+jQuery(function ($) {
 	$('#accordion').accordionFx();
-});
 
-
-// *** CONTENT *** hide responsive column for resources
-$(document).ready(function () {
+	// *** CONTENT *** hide responsive column for resources
   $('[data-toggle=offcanvas]').click(function () {
     $('.row-offcanvas').toggleClass('active');
   });
