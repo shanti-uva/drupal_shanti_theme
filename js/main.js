@@ -92,13 +92,12 @@ jQuery(function ($) {
 
 
 
-/*** NAVIGTION *** breadcrumbs 
------------------------
+// *** NAVIGTION *** breadcrumbs 
 jQuery(function ($) {
   $(".breadwrap").jBreadCrumb({   
         minimumCompressionElements: 1,
-        easing: "easeOutQuad",
-        endElementsToLeaveOpen: 4,
+        // easing: "easeOutQuad",
+        endElementsToLeaveOpen: 5,
         beginingElementsToLeaveOpen: 1,
         timeExpansionAnimation: 500,
         timeCompressionAnimation: 500,
@@ -106,7 +105,7 @@ jQuery(function ($) {
         previewWidth: 25  
   });
 });
-----------------------*/
+
 
 
 // *** SEARCH *** initiate sliding container, toggle collections & search options
