@@ -71,7 +71,7 @@ function processPlacesData(data) {
   overviewContent += '<div class="panel-heading">';
   overviewContent += '<h6>';
   overviewContent += '<a href="#collapseOne" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">';
-  overviewContent += '<i class="glyphicon"></i> Names';
+  overviewContent += '<i class="glyphicon glyphicon-plus"></i> Names';
   overviewContent += '</a>';
   overviewContent += '</h6>';
   overviewContent += '</div>';
@@ -85,7 +85,7 @@ function processPlacesData(data) {
   overviewContent += '<div class="panel-heading">';
   overviewContent += '<h6>';
   overviewContent += '<a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">';
-  overviewContent += '<i class="glyphicon"></i> ETYMOLOGY';
+  overviewContent += '<i class="glyphicon glyphicon-plus"></i> ETYMOLOGY';
   overviewContent += '</a>';
   overviewContent += '</h6>';
   overviewContent += '</div>';
@@ -97,6 +97,38 @@ function processPlacesData(data) {
 
   overviewContent += '</aside>';
   $tabOverview.append(overviewContent);
+
+
+
+	
+	// *** NAVIGATION *** accordion toggle
+	$.fn.accordionFx = function() {
+	    return this.each(function(i, accordion) {
+	        $(".accordion-toggle", accordion).click(function(ev) {
+	            var link = ev.target;
+	            var header = $(link).closest(".panel-heading");
+	            var chevState = $("i.glyphicon", header)
+	                .toggleClass('glyphicon-minus glyphicon-plus');
+	            $("i.glyphicon", accordion)
+	                .not(chevState)
+	                .removeClass("glyphicon-minus")
+	                .addClass("glyphicon-plus");
+	        });
+	    });
+	};
+
+
+	$('#accordion').accordionFx();
+
+	// *** CONTENT *** hide responsive column for resources
+  $('[data-toggle=offcanvas]').click(function () {
+    $('.row-offcanvas').toggleClass('active');
+  });
+
+
+
+
+
 
   //Trigger remote call for overview accordion Names
   $("#collapseOne").one('show.bs.collapse', function() {
