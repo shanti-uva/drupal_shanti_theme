@@ -1909,6 +1909,10 @@ jQuery(function ($) {
   $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
   
   $(".main-col.active").equalHeights(); 
+  $(document).click( function(){
+  	$(".main-col.active").equalHeights();
+  }
+  
   // $(".content-resources > ul > li").find("a").click(function (event) { 
   //		$(".main-col.active").equalHeights(); 
   // });
