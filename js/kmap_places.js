@@ -116,8 +116,6 @@ function processPlacesData(data) {
 	        });
 	    });
 	};
-
-
 	$('#accordion').accordionFx();
 
 	// *** CONTENT *** hide responsive column for resources

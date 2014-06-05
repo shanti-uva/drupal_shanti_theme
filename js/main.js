@@ -92,19 +92,6 @@ jQuery(function ($) {
 
 
 
-// *** NAVIGTION *** breadcrumbs 
-jQuery(function ($) {
-  $(".breadwrap").jBreadCrumb({   
-        minimumCompressionElements: 4,
-        easing: "easeOutQuad",
-        endElementsToLeaveOpen: 4,
-        beginingElementsToLeaveOpen: 4,
-        timeExpansionAnimation: 500,
-        timeCompressionAnimation: 500,
-        timeInitialCollapse: 600,
-        previewWidth: 40  
-  });
-});
 
 
 
