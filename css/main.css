@@ -450,6 +450,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	background-image: -o-linear-gradient(left, #ccc 0px, #ccc 9px, #fff 10px);
 	background-image: linear-gradient(left, #ccc 0px, #ccc 9px, #fff 10px);  
 }
+.content-resources:after{ clear:both !important;}
 .content-resources ul.nav-pills {  
   font-weight: 700;
   text-transform: uppercase;

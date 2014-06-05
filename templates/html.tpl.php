@@ -113,7 +113,9 @@
     </div>
     
     <!-- CONTENT SECTION: Two Columns: content-resources and content-section -->
-    <div class="row row-offcanvas row-offcanvas-left">              
+    <div class="row row-offcanvas row-offcanvas-left">
+    
+    <!-- Column resources  -->              
     <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
      <div class="main-col active">
       <ul class="nav nav-pills nav-stacked">
@@ -162,7 +164,8 @@
       </ul> 
      </div>
     </aside> 
-                      
+    
+    <!-- Column Main  -->                   
     <section  class="content-section col-xs-12 col-sm-9">
 	    <!-- button for responsive menu toggle -->
 	    <button type="button" class="btn btn-default btn-xs visible-xs view-resources" data-toggle="offcanvas"><i class="fa"></i><span class="header">RESOURCES</span><span class="badge">13489</span><span class="hide-panel">&times;</span></button>
