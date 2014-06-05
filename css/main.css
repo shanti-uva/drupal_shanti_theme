@@ -352,7 +352,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  position:relative;top:-2px;
+  position:relative;
+  top:-2px;
+  width:.88em;
 }
 .titlearea .breadwrap .breadCrumb li + li:before {
   color: #fff;
@@ -362,6 +364,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .titlearea .breadwrap .breadCrumb li.active {
   font-weight:bold; color:#fff; font-size:1em;
 }
+
 /*--- END banner header ---*/
 
 
