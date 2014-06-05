@@ -32,16 +32,16 @@
 <body>
   <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -<i class="icon km-close"></i></p><![endif]-->
   <div class="wrap-all">
-  <a href=".main-content" class="sr-only">Skip to main content</a>
+  		<span class="sr-only"><a href=".main-content">Skip to main content</a> <a href="#kmaps-search">Skip to search</a></span>
   <header class="header-banner">
     <div class="navbar navbar-default navbar-static-top" role="navigation">  
       
-      <div class="menu-buttons" role="navigation">
-        <span class="kmaps-searchtoggle menu-icon"><a href="#"><i class='icon km-search-kmaps'></i></a></span>
-        <span class="menu-toggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
-        <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
-        <span class="menu-exploretoggle menu-explore"><a href="#"><span>Explore </span>Collections<i class="icon km-directions"></i></a></span>
-      </div>
+      <nav class="menu-buttons">
+        <span class="kmaps-searchtoggle menu-icon"><a href="#"><i class='icon km-search-kmaps'></i></a></span><!-- mobile < 400 -->
+        <span class="menu-toggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span><!-- desktop > 768 drilldown menu -->
+        <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span><!-- mobile < 768 -->
+        <span class="menu-exploretoggle menu-explore"><a href="#"><span>Explore </span>Collections<i class="icon km-directions"></i></a></span><!-- mobile < 768 -->
+      </nav>
 
       <div class="navbar-header">
         <h1 class="navbar-title"><a href="#" class="navbar-brand" title="SHANTI Homepage"><i class="icon km-logo-kmaps"></i><em>SHANTI</em>
@@ -49,14 +49,14 @@
         </h1>
       </div>
 
-      <nav class="navbar-collapse collapse navtop">
+      <nav class="navbar-collapse collapse navtop"> <!-- desktop display > 768 -->
        <form class="form">
        <fieldset>         
-        <ul class="nav navbar-nav navbar-right" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
           <li class="explore"><a href="#">Explore Collections<i class="icon km-directions"></i></a></li>
-          <li class="dropdown lang highlight">                    
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
-              <ul class="dropdown-menu dropdown-features" role="menu">
+          <li class="dropdown lang highlight" id="lang">                    
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
+              <ul class="dropdown-menu">
                 <li class="form-group"><label class="radio-inline" for="optionlang1">
                     <input type="radio" name="radios" id="optionlang1" value="lang1">Tibetan</label>
                 </li>
@@ -69,7 +69,7 @@
                 <li class="last form-group"><label class="radio-inline" for="optionlang4">
                     <input type="radio" name="radios" id="optionlang4" value="lang4">Chinese</label>
                 </li>
-              </ul>
+              </ul>              
           </li>
         </ul>
        </fieldset>  
@@ -387,19 +387,17 @@
         </div>                        
       </section><!-- END view section -->
   </section><!-- END kmaps-search -->
-
    
     <a href="#" class="back-to-top"><i class="icon"></i></a>    
   </main><!-- END container -->
 
 
-
-  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">   </section>
-  
+	<!-- LOAD menus -->
+  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">   </section>  
   <section id="menu-collections" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">    </section>
    
-  <section id="menu" style="display:none;">
-    <nav role="navigation">                
+  <section id="menu" role="navigation" style="display:none;">
+    <nav id="menu-drill">                
      <ul>
        <li><h3><em>Main Menu</em></h3> 
           <a class="link-blocker"></a>

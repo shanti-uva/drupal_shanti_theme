@@ -98,7 +98,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 .navbar-default .navbar-nav>li.login>a{ padding-top:20px; } 
 .navbar-default .navbar-nav>li.highlight>a{ background:#eee;color:#444;}
-.navbar-default .navbar-nav li.explore>a>i.icon{ font-size:17px; position:relative;left:6px;top:2px;}
+.navbar-default .navbar-nav li.explore>a>i.icon{ font-size:17px; position:relative;left:4px;top:2px;}
 
 
 .navbar-default .navbar-nav>li.highlight>a:hover{ background:#fff;color:#444;}
@@ -178,7 +178,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   line-height:4.5em;
 }
 .collections ul li a { 
-  color: #c0c0c0;
+  color: #aaa;
   text-decoration: none;
   letter-spacing: 0.12em;
   margin-left:0;
@@ -190,10 +190,14 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 }
 .collections ul .icon {
+	color: #ccc;
 	margin-right:8px;
 	font-size:1.5em;
-	position:relative;top:2px;
+	position:relative;
+	top:2px;
 }
+.collections ul li a:hover .icon{ color:#fff;}
+
 .collections h4 {
 	color:#eee;
   text-align: center;
@@ -201,19 +205,19 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   letter-spacing: 0.32em;
 }
 .collections .closecollection {
-  color: #aaa;
-  font-size: 1.5em;
+  color: #888;
+  font-size: 1.44em;
   position: absolute;
   top: 5px;
   right: 15px;
   cursor:pointer;
   display:inline-block;
-  -webkit-transition: color 400ms;
-	transition: color 400ms;
+  -webkit-transition: color 200ms;
+	transition: color 200ms;
 	font-family:'kmaps-icons';
 }
 .collections .closecollection:hover {
-	color: #eee; 
+	color: #aaa; 
 	text-decoration:none;
 }
 .collections .closecollection:before {
@@ -746,8 +750,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 
 #menu .multilevelpushmenu_wrapper ul{
-  -webkit-box-shadow: -2px 3px 12px rgba(0,0,0,.175);
-	box-shadow: -2px 3px 12px rgba(0,0,0,.175); 
+  -webkit-box-shadow: -2px 3px 8px rgba(0,0,0,.025);
+	box-shadow: -2px 3px 8px rgba(0,0,0,.025); 
 	border-collapse:separate; /* needed by ie9+ with box-shadow */
 }
 #menu .multilevelpushmenu_wrapper ul.hideshadow{
@@ -921,8 +925,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 
 ul.menu-main{ 	
-  -webkit-box-shadow: -2px 3px 12px rgba(0,0,0,.3);
-	box-shadow: -2px 3px 12px rgba(0,0,0,.3);
+  -webkit-box-shadow: -2px 3px 6px rgba(0,0,0,.3);
+	box-shadow: -2px 3px 6px rgba(0,0,0,.3);
 	border-collapse:separate; /* needed by ie9+ with box-shadow */
 	overflow:visible !important;
 }
@@ -1064,9 +1068,7 @@ ul.menu-main>li>a:first-child {
 
 
 
-@media screen and (max-width: 599px) {    
-
-
+@media screen and (max-width: 599px) {
 
 }
 
@@ -1077,7 +1079,7 @@ ul.menu-main>li>a:first-child {
   	line-height:1.68em;
   }	
 
-  .collections ul:first-child{ margin-left:2%; } /* collections menu if displaynone at min-768 but settings here helps avoid flash */
+  .collections ul:first-child{ margin-left:2%; }
 	.collections ul li { line-height:1.75em; width:20%; }
   .collections ul li a { font-size: 0.68em; line-height:2.25em;}
   
@@ -1188,7 +1190,7 @@ ul.menu-main>li>a:first-child {
 
   .main-content .content-section { max-width: 750px; }
   
-	.collections ul li a { font-size: 0.75em; line-height:2em;}	
+	.collections ul li a { font-size: 0.68em; line-height:2em;}	
  	.collections h4 {
 		font-size:1.12em;
 	}
@@ -1201,9 +1203,7 @@ ul.menu-main>li>a:first-child {
 
 
 @media screen and (min-width: 1280px) {
-	
-	.collections ul li a { font-size: 0.82em;}
-	.collections ul:first-child{ margin-left:7%; }
+		.collections ul:first-child{ margin-left:7%; }
 }
 
 

@@ -162,7 +162,6 @@ jQuery(function ($) {
   });
   // toggle heights with search options
   $(".advanced-link").click(function () {
-    var winHeight = $(window).height();
     $(".view-wrap").css({ "height": viewHeight });
     $("#kmaps-search .view-wrap.short-wrap").css({ "height": shortHeight });
   });
@@ -270,7 +269,6 @@ function decorateElementWithPopover(elem, node) {
                 var video_count = Number($(xml).find('video_count').text());
                 var document_count = Number($(xml).find('document_count').text());
 
-                // perhaps instead of vertical bars this should be done as spans then styled via css
                 if (related_count) counts.html("<span class='associated'><i class='icon km-sources'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
                 if (description_count) counts.append("<span class='associated'><i class='icon km-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
                 if (place_count) counts.append("<span class='associated'><i class='icon km-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
@@ -1253,7 +1251,7 @@ function processSubjectsData(data) {
 
   //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadCrumb li").remove();
-  $("ol.breadCrumb").append('<li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>');
+  $("ol.breadCrumb").append('<li><a href="">Subjects:</a></li>');
   $.each(data.feature.ancestors, populateBreadcrumbs);
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
@@ -1362,7 +1360,7 @@ function processSubjectsData(data) {
 
 function populateBreadcrumbs(bInd, bVal) {
   $breadcrumbOl = $("ol.breadCrumb");
-  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a></li>');
+  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
 }
 
 function showOverviewImage(data) {
@@ -1915,7 +1913,7 @@ jQuery(function ($) {
 
   
   $(".main-col.active").equalHeights(); 
-  $(".content-resources > ul").find("a").click(function (event) { 
+  $(".content-resources > ul > li").find("a").click(function (event) { 
   		$(".main-col.active").equalHeights(); 
   });
   
