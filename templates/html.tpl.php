@@ -223,170 +223,170 @@
  
  
  
-  <!-- BEGIN Search Panel --> 
-  <section id="kmaps-search" role="search">               
-      <!-- BEGIN input section -->                    
-      <section class="input-section">                   
-        <form class="form">
-         <fieldset>                       
-            <div class="search-group">                        
-		            <div class="input-group">
-				            <input type="text" class="form-control kms" id="searchform" placeholder="Enter Search...">
-				            <span class="input-group-btns">
-				              <button type="button" class="btn btn-default" id="searchbutton"><i class="icon"></i></button>
-				              <button type="reset" class="searchreset">&times;</button>
-				            </span>
+		  <!-- BEGIN Search Panel --> 
+		  <section id="kmaps-search" role="search">               
+		      <!-- BEGIN input section -->                    
+		      <section class="input-section">                   
+		        <form class="form">
+		         <fieldset>                       
+		            <div class="search-group">                        
+				            <div class="input-group">
+						            <input type="text" class="form-control kms" id="searchform" placeholder="Enter Search...">
+						            <span class="input-group-btns">
+						              <button type="button" class="btn btn-default" id="searchbutton"><i class="icon"></i></button>
+						              <button type="reset" class="searchreset">&times;</button>
+						            </span>
+				            </div>
+				            
+				           <!-- search scope -->
+				           <div class="form-group">
+				               <label class="checkbox-inline"><input type="checkbox" id="summaryscope" name="summary-scope" checked="checked" data-value="summaries">Summaries</label>
+				               <label class="checkbox-inline" ><input type="checkbox" id="essayscope" name="essay-scope" data-value="essays">Essays</label>            
+											 <a href="#" class="advanced-link toggle-link"><i class="icon"></i>Advanced</a>					  
+									 </div>
+							 </div><!-- END search group -->
+							 
+		           <div id="notification-wrapper"></div>
+		                
+		           <section class="advanced-view" style="display:none;">                                              
+		                  <div class="form-group"> 
+		                    <label class="radio-inline" for="radios-0">
+		                      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+		                        All Text</label> 
+		                    <label class="radio-inline" for="radios-1">
+		                      <input type="radio" name="radios" id="radios-1" value="2">
+		                        Name </label> 
+		                  </div>
+		                                              
+		                  <div class="form-group">
+		                    <label class="radio-inline" for="radios-2">
+		                      <input type="radio" name="radios2" id="radios-2" value="3" checked="checked">
+		                        Contains</label> 
+		                    <label class="radio-inline" for="radios-3">
+		                      <input type="radio" name="radios2" id="radios-3" value="4">
+		                        Starts With</label>
+		                    <label class="radio-inline" for="radios-4">
+		                      <input type="radio" name="radios2" id="radios-4" value="5">
+		                        Exactly</label>                             
+		                  </div>
+		                  
+		                  <div class="form-group">
+		                    <label class="checkbox-inline" for="checkbox-1">
+		                      <input type="checkbox" name="checkbox" id="checkbox-1" value="6">
+		                        Show only entries with essays</label> 
+		                  </div>
+		
+		                  <div class="form-group">                                    
+		                    <label class="checkbox-inline" for="checkbox-2">
+		                      <input type="checkbox" name="checkbox" id="checkbox-2" value="7" checked="checked">
+		                        Show feature details</label>                              
+		                  </div>
+		                  
+		                                    
+		                  <!-- feature 1 type -->
+		                  <div class="form-group km-input feature-group dropdown">
+		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
+		                        <button id="feature1b-reset" class="feature-reset">&times;</button>
+		                                              
+		                        <div class="dropdown-menu feature-menu">
+		                            <div class="tree-wrap"> 
+		
+		                              <div class="feature-container">                             
+		                                <div id="feature-tree1"></div> <!-- features tree, under construction -->                              
+		                              </div> 
+		                                                          
+		                              <div class="feature-submit">
+		                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
+		                                <button type="reset" id="feature1a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                              </div>
+		                                                          
+		                            </div>                      
+		                        </div> <!-- END dropdown-menu -->                        
+		                  </div> <!-- END feature-group -->
+		
+		
+		                  <!-- feature 2 subject -->
+		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
+		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
+		                        <button id="feature2b-reset" class="feature-reset">&times;</button>
+		                                              
+		                        <div class="dropdown-menu feature-menu">
+		                            <div class="tree-wrap"> 
+		
+		                              <div class="feature-container">                             
+		                                <div id="feature-tree2"></div> <!-- features tree, under construction -->                              
+		                              </div> 
+		                                                          
+		                              <div class="feature-submit">
+		                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
+		                                <button type="reset" id="feature2a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                              </div>
+		                                                          
+		                            </div>                      
+		                        </div> <!-- END dropdown-menu -->                       
+		                  </div> <!-- END feature-group -->
+		                  
+		
+		                  <!-- feature 3 region -->
+		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
+		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
+		                        <button id="feature3b-reset" class="feature-reset">&times;</button>
+		                                              
+		                        <div class="dropdown-menu feature-menu">
+		                            <div class="tree-wrap"> 
+		
+		                              <div class="feature-container">                             
+		                                <div id="feature-tree3"></div> <!-- features tree, under construction -->                              
+		                              </div> 
+		                                                          
+		                              <div class="feature-submit">
+		                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
+		                                <button type="reset" id="feature3a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                              </div>
+		                                                          
+		                            </div>                      
+		                        </div> <!-- END dropdown-menu -->                        
+		                  </div> <!-- END feature-group -->
+		                  
+		           </section><!-- END advanced section -->
+		         </fieldset>         
+		       </form>
+		      </section> <!-- END input section -->
+		
+		      <!-- START view section -->                                  
+		      <section class="view-section">             
+		        <ul class="nav nav-tabs">
+		          <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon km-tree"></i>Tree</a></li>
+		          <li class="listview"><a href=".listview" data-toggle="tab"><i class="icon km-list"></i>List</a></li>
+		        </ul>           
+		        <div class="tab-content">
+		                          
+		          <!-- TAB - tree view -->
+		          <div class="treeview tab-pane active">        
+		              <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
+		          </div>          
+		          <!-- TAB - list view -->
+		          <div class="listview tab-pane">   
+		            <div class="view-wrap"> <!-- view-wrap controls container height -->              
+		              <div class="table-responsive">
+		                 <table class="table table-condensed table-results">
+		                  <thead>
+		                      <tr>
+		                        <th>Name</th>
+		                        <th>Feature Type</th>
+		                      </tr>
+		                  </thead>
+		                  <tbody></tbody>
+		                 </table>                                   
+		              </div>
 		            </div>
-		            
-		           <!-- search scope -->
-		           <div class="form-group">
-		               <label class="checkbox-inline"><input type="checkbox" id="summaryscope" name="summary-scope" checked="checked" data-value="summaries">Summaries</label>
-		               <label class="checkbox-inline" ><input type="checkbox" id="essayscope" name="essay-scope" data-value="essays">Essays</label>            
-									 <a href="#" class="advanced-link toggle-link"><i class="icon"></i>Advanced</a>					  
-							 </div>
-					 </div><!-- END search group -->
-					 
-           <div id="notification-wrapper"></div>
-                
-           <section class="advanced-view" style="display:none;">                                              
-                  <div class="form-group"> 
-                    <label class="radio-inline" for="radios-0">
-                      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
-                        All Text</label> 
-                    <label class="radio-inline" for="radios-1">
-                      <input type="radio" name="radios" id="radios-1" value="2">
-                        Name </label> 
-                  </div>
-                                              
-                  <div class="form-group">
-                    <label class="radio-inline" for="radios-2">
-                      <input type="radio" name="radios2" id="radios-2" value="3" checked="checked">
-                        Contains</label> 
-                    <label class="radio-inline" for="radios-3">
-                      <input type="radio" name="radios2" id="radios-3" value="4">
-                        Starts With</label>
-                    <label class="radio-inline" for="radios-4">
-                      <input type="radio" name="radios2" id="radios-4" value="5">
-                        Exactly</label>                             
-                  </div>
-                  
-                  <div class="form-group">
-                    <label class="checkbox-inline" for="checkbox-1">
-                      <input type="checkbox" name="checkbox" id="checkbox-1" value="6">
-                        Show only entries with essays</label> 
-                  </div>
-
-                  <div class="form-group">                                    
-                    <label class="checkbox-inline" for="checkbox-2">
-                      <input type="checkbox" name="checkbox" id="checkbox-2" value="7" checked="checked">
-                        Show feature details</label>                              
-                  </div>
-                  
-                                    
-                  <!-- feature 1 type -->
-                  <div class="form-group km-input feature-group dropdown">
-                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
-                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
-                        <button id="feature1b-reset" class="feature-reset">&times;</button>
-                                              
-                        <div class="dropdown-menu feature-menu">
-                            <div class="tree-wrap"> 
-
-                              <div class="feature-container">                             
-                                <div id="feature-tree1"></div> <!-- features tree, under construction -->                              
-                              </div> 
-                                                          
-                              <div class="feature-submit">
-                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
-                                <button type="reset" id="feature1a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
-                              </div>
-                                                          
-                            </div>                      
-                        </div> <!-- END dropdown-menu -->                        
-                  </div> <!-- END feature-group -->
-
-
-                  <!-- feature 2 subject -->
-                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
-                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
-                        <button id="feature2b-reset" class="feature-reset">&times;</button>
-                                              
-                        <div class="dropdown-menu feature-menu">
-                            <div class="tree-wrap"> 
-
-                              <div class="feature-container">                             
-                                <div id="feature-tree2"></div> <!-- features tree, under construction -->                              
-                              </div> 
-                                                          
-                              <div class="feature-submit">
-                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
-                                <button type="reset" id="feature2a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
-                              </div>
-                                                          
-                            </div>                      
-                        </div> <!-- END dropdown-menu -->                       
-                  </div> <!-- END feature-group -->
-                  
-
-                  <!-- feature 3 region -->
-                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
-                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
-                        <button id="feature3b-reset" class="feature-reset">&times;</button>
-                                              
-                        <div class="dropdown-menu feature-menu">
-                            <div class="tree-wrap"> 
-
-                              <div class="feature-container">                             
-                                <div id="feature-tree3"></div> <!-- features tree, under construction -->                              
-                              </div> 
-                                                          
-                              <div class="feature-submit">
-                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
-                                <button type="reset" id="feature3a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
-                              </div>
-                                                          
-                            </div>                      
-                        </div> <!-- END dropdown-menu -->                        
-                  </div> <!-- END feature-group -->
-                  
-           </section><!-- END advanced section -->
-         </fieldset>         
-       </form>
-      </section> <!-- END input section -->
-
-      <!-- START view section -->                                  
-      <section class="view-section">             
-        <ul class="nav nav-tabs">
-          <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon km-tree"></i>Tree</a></li>
-          <li class="listview"><a href=".listview" data-toggle="tab"><i class="icon km-list"></i>List</a></li>
-        </ul>           
-        <div class="tab-content">
-                          
-          <!-- TAB - tree view -->
-          <div class="treeview tab-pane active">        
-              <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
-          </div>          
-          <!-- TAB - list view -->
-          <div class="listview tab-pane">   
-            <div class="view-wrap"> <!-- view-wrap controls container height -->              
-              <div class="table-responsive">
-                 <table class="table table-condensed table-results">
-                  <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Feature Type</th>
-                      </tr>
-                  </thead>
-                  <tbody></tbody>
-                 </table>                                   
-              </div>
-            </div>
-          </div>
-        </div>                        
-      </section><!-- END view section -->
-  </section><!-- END kmaps-search -->
+		          </div>
+		        </div>                        
+		      </section><!-- END view section -->
+		  </section><!-- END kmaps-search -->
    
     <a href="#" class="back-to-top"><i class="icon"></i></a>    
   </main><!-- END container -->
