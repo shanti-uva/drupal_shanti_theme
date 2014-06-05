@@ -340,6 +340,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	display: block;
 	overflow: hidden;
 	background:transparent;
+	overflow:visible;
 }
 .titlearea .breadwrap ol li i:before{
 	content: "\f105";
@@ -347,16 +348,17 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	font-size:1em;
   display: inline-block;
   position:relative;
-  top:-2px;
+  top:0;
   width:10px;
 }
 .titlearea .breadwrap .breadCrumb li + li:before {
   color: #fff;
-  padding:0;
 }
 
 .titlearea .breadwrap .breadCrumb li.active {
-  font-weight:bold; color:#fff; font-size:1em;
+  font-weight:bold; 
+  color:#fff; 
+  font-size:1em;
 }
 
 /*--- END banner header ---*/
