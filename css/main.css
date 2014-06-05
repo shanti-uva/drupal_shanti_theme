@@ -625,11 +625,11 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 #accordion .panel .accordion-toggle .glyphicon:before {
   position: relative;
   top: 5px;
-  left: 5px;
+  left: 6px;
 }
 #accordion .panel .accordion-toggle .glyphicon.glyphicon-minus:before {
   position: relative;
-  left: 4px;
+  left: 5px;
 }
 /* END accordion */
 
