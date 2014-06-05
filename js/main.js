@@ -1911,7 +1911,7 @@ jQuery(function ($) {
   $(".main-col.active").equalHeights(); 
   $(document).click( function(){
   	$(".main-col.active").equalHeights();
-  }
+  });
   
   // $(".content-resources > ul > li").find("a").click(function (event) { 
   //		$(".main-col.active").equalHeights(); 
