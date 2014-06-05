@@ -628,7 +628,10 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   top: 5px;
   left: 5px;
 }
-
+#accordion .panel .accordion-toggle .glyphicon.glyphicon-minus:before {
+  position: relative;
+  left: 4px;
+}
 /* END accordion */
 
 
