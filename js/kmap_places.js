@@ -85,11 +85,11 @@ function processPlacesData(data) {
   overviewContent += '<div class="panel-heading">';
   overviewContent += '<h6>';
   overviewContent += '<a href="#collapseTwo" data-toggle="collapse" data-parent="#accordion" class="accordion-toggle">';
-  overviewContent += '<i class="glyphicon glyphicon-minus"></i> ETYMOLOGY';
+  overviewContent += '<i class="glyphicon glyphicon-plus"></i> ETYMOLOGY';
   overviewContent += '</a>';
   overviewContent += '</h6>';
   overviewContent += '</div>';
-  overviewContent += '<div id="collapseTwo" class="panel-collapse collapse in">';
+  overviewContent += '<div id="collapseTwo" class="panel-collapse collapse">';
   overviewContent += '<div class="panel-body">';
   overviewContent += '</div>';
   overviewContent += '</div>';
