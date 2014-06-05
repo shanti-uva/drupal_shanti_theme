@@ -50,7 +50,7 @@ jQuery(function ($) {
 
 
 
-// *** NAVIGATION *** accordion toggle
+// *** CONTENT *** accordion toggle
 $.fn.accordionFx = function() {
     return this.each(function(i, accordion) {
         $(".accordion-toggle", accordion).click(function(ev) {

@@ -346,15 +346,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	color:#ddd;
 	font-size:1em;
   display: inline-block;
-  font-family: 'FontAwesome';
-  font-style: normal;
-  font-weight: normal;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   position:relative;
   top:-2px;
-  width:.88em;
+  width:10px;
 }
 .titlearea .breadwrap .breadCrumb li + li:before {
   color: #fff;
