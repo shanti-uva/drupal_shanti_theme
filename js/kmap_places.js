@@ -25,7 +25,7 @@ function processPlacesData(data) {
 
   //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadCrumb li").remove();
-  $("ol.breadCrumb").append('<li><a href=""><span class="tag-before-breadcrumb">Places:</span></a></li>');
+  $("ol.breadCrumb").append('<li><a href="">Places:</a></li>');
   $.each(data.feature.parents, populatePlacesBreadcrumbs);
   $("ol.breadCrumb").append('<li>' + data.feature.header + '</li>');
 
@@ -201,7 +201,7 @@ function processPlacesData(data) {
 //Populate Breadcrumbs
 function populatePlacesBreadcrumbs(bInd, bVal) {
   $breadcrumbOl = $("ol.breadCrumb");
-  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a></li>');
+  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
 }
 
 //Function to show the related places within kmap places
