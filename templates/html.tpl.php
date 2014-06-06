@@ -106,13 +106,6 @@
 		      <nav class="breadwrap" role="navigation">
 		        <ol class="breadCrumb">
 		          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
-		            <li><a href="#">World</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="#">Asia</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="#">Greater Himalayas & Tibetan Plateau</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="#">China</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="#">Tibet Autonomous Region</a><i class="fa fa-angle-right"></i></li>
-            <li><a href="#">Lhasa</a><i class="fa fa-angle-right"></i></li>
-            <li class="active">Lhasa</li>
 		        </ol>
 		      </nav>
         </div>

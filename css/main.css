@@ -240,6 +240,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   padding-top:8px;
   padding-bottom:10px;
   height:63px;
+  /* bottom shadow here, top shadow is off navba */
   -webkit-box-shadow: inset 0px -10px 15px -7px hsla(0, 0%, 0.0000%, 0.1110);
 	box-shadow: inset 0px -10px 15px -7px hsla(0, 0%, 0.0000%, 0.1110);
 }
@@ -265,7 +266,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	margin-left:15px;
 	margin-top:0;
 	padding: 0;
-	float: left;
 	display: block;
 	height: 21px;
 	overflow: hidden;
@@ -339,7 +339,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	color:#ddd;
 	display: block;
 	overflow: hidden;
-	background:transparent;
+	background:#dc3c47;
 	overflow:visible;
 }
 .titlearea .breadwrap ol li i:before{
@@ -351,6 +351,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   top:1px;
   left:0;
   width:10px;
+  height:16px;
 }
 .titlearea .breadwrap .breadCrumb li + li:before {
   color: #fff;
@@ -361,7 +362,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   color:#fff; 
   font-size:1em;
 }
-
 /*--- END banner header ---*/
 
 
