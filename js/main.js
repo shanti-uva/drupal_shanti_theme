@@ -104,6 +104,14 @@ jQuery(function ($) {
         timeInitialCollapse: 600,
         previewWidth: 25  
   });
+  
+  if($("breadCrumb li a:contains('Subjects')")) {
+	  $(this).find("i").css('background','red')
+  }
+  if($("breadCrumb li a:contains('Places')")) {
+	  $(this).find("i").css('background','blue')
+  }  
+  
 });
 
 
