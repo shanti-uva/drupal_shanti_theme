@@ -30,7 +30,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .navbar.navbar-default .navbar-collapse,
 .navbar.navbar-default.navbar-static-top{ border-bottom: none; border-bottom-width:0;}
 
-.navbar-default h1 {color:#555;font-style:italic; font-size:1.5em; line-height:normal; margin:0; padding:0 0 0 15px; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
+.navbar-default h1 {color:#555;font-style:italic; font-size:1.5em; line-height:normal; margin:0; padding:0 0 0 20px; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
 .navbar-default h1 a.navbar-brand{float:none;border:0;display:inline-block;padding:0;margin:0;color:#333;font-weight:normal;text-shadow:1px 1px 1px #eee;}
 .navbar-default h1 a.navbar-brand:hover{ color:#222;}
 .navbar-default h1 em{ display:none;}
@@ -333,7 +333,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	top: -1px;
 	z-index: 20;
 	font-family:'FontAwesome';
-	font-size:2em;
+	font-size:1.56em;
 	line-height:20px;
 	font-weight:200;
 	color:#ddd;
@@ -345,10 +345,11 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .titlearea .breadwrap ol li i:before{
 	content: "\f105";
 	color:#ddd;
-	font-size:1em;
+	font-size:1.18em;
   display: inline-block;
   position:relative;
-  top:0;
+  top:1px;
+  left:0;
   width:10px;
 }
 .titlearea .breadwrap .breadCrumb li + li:before {
@@ -450,7 +451,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	background-image: -o-linear-gradient(left, #ccc 0px, #ccc 9px, #fff 10px);
 	background-image: linear-gradient(left, #ccc 0px, #ccc 9px, #fff 10px);  
 }
-.content-resources:after{ clear:both !important;}
 .content-resources ul.nav-pills {  
   font-weight: 700;
   text-transform: uppercase;
@@ -609,8 +609,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   font-size: 0.63em;    
   background: #fff;
   color: #444;    
-  width: 19px;
-  height: 19px;
+  width: 18px;
+  height: 18px;
   display: block;
   border-radius: 50%;
   margin-right:20px;
@@ -625,12 +625,12 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 #accordion .panel .accordion-toggle .glyphicon:before {
   position: relative;
-  top: 5px;
-  left: 6px;
+  top: 4px;
+  left: 5px;
 }
 #accordion .panel .accordion-toggle .glyphicon.glyphicon-minus:before {
   position: relative;
-  left: 5px;
+  left: 4px;
 }
 /* END accordion */
 

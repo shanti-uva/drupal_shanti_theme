@@ -97,7 +97,7 @@ jQuery(function ($) {
   $(".breadwrap").jBreadCrumb({   
         minimumCompressionElements: 1,
         // easing: "easeOutQuad",
-        endElementsToLeaveOpen: 5,
+        endElementsToLeaveOpen: 2,
         beginingElementsToLeaveOpen: 1,
         timeExpansionAnimation: 500,
         timeCompressionAnimation: 500,
