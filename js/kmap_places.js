@@ -118,7 +118,8 @@ function processPlacesData(data) {
 	};
 	$('#accordion').accordionFx();
 
- 
+
+
 
 
   //Trigger remote call for overview accordion Names
@@ -226,19 +227,6 @@ function populatePlacesBreadcrumbs(bInd, bVal) {
   $breadcrumbOl = $("ol.breadCrumb");
   $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
 }
-jQuery(function ($) {
-  $(".breadwrap").jBreadCrumb({   
-        minimumCompressionElements: 1,
-        easing: "easeOutQuad",
-        endElementsToLeaveOpen: 1,
-        beginingElementsToLeaveOpen: 1,
-        timeExpansionAnimation: 500,
-        timeCompressionAnimation: 500,
-        timeInitialCollapse: 600,
-        previewWidth: 25  
-  });
-});
-
 
 //Function to show the related places within kmap places
 function placesWithinPlaces(data) {
