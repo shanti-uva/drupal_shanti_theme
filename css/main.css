@@ -340,7 +340,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	color:#ddd;
 	display: block;
 	overflow: hidden;
-	background:#dc3c47;
+	/* background:#dc3c47; */
 	overflow:visible;
 }
 .titlearea .breadwrap ol li i:before{
