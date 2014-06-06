@@ -95,7 +95,7 @@
 
 
   
-  <!-- BEGIN content -->
+  <!-- BEGIN Content -->
   <main class="main-wrapper container">
     <article class="main-content" role="main">
      
@@ -119,10 +119,10 @@
 			</header>
     </div>
     
-    <!-- CONTENT SECTION: Two Columns: content-resources and content-section -->
+    <!-- Two Columns: content-resources and content-section -->
     <div class="row row-offcanvas row-offcanvas-left">
     
-    <!-- Column resources  -->              
+    <!-- Column Resources  -->              
     <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
      <div class="main-col active">
       <ul class="nav nav-pills nav-stacked">
@@ -235,7 +235,7 @@
  
 		  <!-- BEGIN Search Panel --> 
 		  <section id="kmaps-search" role="search">               
-		      <!-- BEGIN input section -->                    
+		      <!-- BEGIN Input section -->                    
 		      <section class="input-section">                   
 		        <form class="form">
 		         <fieldset>                       
@@ -366,7 +366,7 @@
 		       </form>
 		      </section> <!-- END input section -->
 		
-		      <!-- START view section -->                                  
+		      <!-- BEGIN view section -->                                  
 		      <section class="view-section">             
 		        <ul class="nav nav-tabs">
 		          <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon km-tree"></i>Tree</a></li>
