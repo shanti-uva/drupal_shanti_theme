@@ -106,10 +106,10 @@ jQuery(function ($) {
   });
   
   if($("breadCrumb li a:contains('Subjects')")) {
-	  $(this).find("i").css('background','red')
+	  $(this).find("i").css('background','#dc3c47')
   }
   if($("breadCrumb li a:contains('Places')")) {
-	  $(this).find("i").css('background','blue')
+	  $("breadCrumb li a").find("i").css('background','#4CA6FB')
   }  
   
 });
