@@ -45,7 +45,7 @@ jQuery(function ($) {
   $(document).click( function(){
       $('#menu').hide();
       $('.menu-toggle').removeClass('show-topmenu');
-      $('#menu').multilevelpushmenu( 'collapse' );
+      // $('#menu').multilevelpushmenu( 'collapse' );
   });   
 });
 
