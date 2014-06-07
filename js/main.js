@@ -19,17 +19,6 @@ jQuery(function ($) {
     groupIcon: 'fa fa-angle-right',
     collapsed: false
   });
-
-  // --- expand
-  $( '.menu-toggle' ).click(function(){
-    $('.menu-toggle').toggleClass('show-topmenu');
-    // $('#menu').multilevelpushmenu( 'expand' );
-		// $('#menu').slideToggle( 'slow' );
-		
-    // if($('.menu-toggle').hasClass('show-topmenu')) {
-      // $('#menu').multilevelpushmenu( 'collapse' );
-    // }
-  });
   
   // --- align the text
   $('#menu ul>li, #menu h2').css('text-align','left');
@@ -39,13 +28,12 @@ jQuery(function ($) {
   // --- close the menu on outside click except button
   $('.menu-toggle').click( function(event){
       event.stopPropagation();
-      $('#menu').toggle();
+      $('#menu').toggle(70);
+      $('.menu-toggle').toggleClass('show-topmenu');
   });
   
   $(document).click( function(){
-      $('#menu').hide();
       $('.menu-toggle').removeClass('show-topmenu');
-      // $('#menu').multilevelpushmenu( 'collapse' );
   });   
 });
 
