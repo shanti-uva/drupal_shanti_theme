@@ -51,11 +51,11 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }  
 /*--- menu toggle buttons ---*/
 .menu-icon{ display:inline-block; float:right; padding:0; border-left:1px solid #d0d0d0;}
-.menu-icon a{ text-align:center;background:#eee;color:#444; display:inline-block; width:60px;height:50px; vertical-align:middle; padding:12px 0 0 0;margin:0;}
-.menu-icon a:hover{ text-decoration:none;}
+.menu-icon a{ text-align:center; background:#eee; color:#444; display:inline-block; width:60px;height:50px; vertical-align:middle; padding:12px 0 0 0; margin:0;}
+.menu-icon a:hover{ text-decoration:none; background:#fff;}
 .menu-icon i{ padding:0; margin:0; color:#505050; font-size:2em; line-height:0.93em;}
 .menu-icon i:before{ content: "\e605";}
-.menu-icon a:hover i:before{ color:#707070;}
+/* .menu-icon a:hover i:before{ color:#222;} */
 .menu-icon a:active i:before{ color:#555;}
 .menu-icon.show-topmenu a{ background:#39373f; color:#fff;}
 .menu-icon.show-topmenu a i:before{ color:#fff;}
@@ -509,10 +509,12 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	margin-right:.56em; 
 	font-size:1.68em; 
   line-height:.88em;
-  color:#555;
+  color:#666;
 }
 
-
+.content-resources ul.nav-pills li.active a i{
+	color:#333;
+}
 .content-resources ul.nav-pills li a i:before{
 	position:relative; top:4px;
 }
@@ -715,7 +717,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 /*----------------------------*/
 
 /*---- top-menu wrapper ----*/
-#menu{ position:absolute;z-index:200;top:50px;right:0px;border:none;padding:0;overflow:visible;}
+#menu{ width:250px;position:absolute;z-index:200;right:0;top:50px;border:none;padding:0;overflow:visible;}
 #menu h3,
 #menu h2{ 
 	color:#222; 
@@ -733,8 +735,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	vertical-align:middle;
 	padding:0; 
 	margin:0;  
-	-webkit-box-shadow:-1px -5px 5px hsla(0, 0.0000%, 60.0000%, 0.3);
-	box-shadow:-1px -5px 5px hsla(0, 0.0000%, 60.0000%, 0.3);
+	-webkit-box-shadow:-1px -2px 4px hsla(0, 0.0000%, 60.0000%, 0.3);
+	box-shadow:-1px -2px 4px hsla(0, 0.0000%, 60.0000%, 0.3);
 	border-collapse:separate; /* for ie with box-shadow */
 	overflow:visible;
 }
@@ -1016,9 +1018,7 @@ ul.menu-main>li>a:first-child {
 @media screen and (max-width: 399px) {
 
 	.menu-icon{ border-left:none;}
-	.menu-icon a{ background:#fff;color:#777; width:1.88em !important; height:1.75em !important;min-height:1.75em !important;line-height:normal; padding:3px;margin:0;
-			-webkit-box-shadow: 0 0 4px 3px #d0d0d0;box-shadow: 0 0 4px 3px #d0d0d0;border-collapse:separate;border-radius:3px;position:relative;top:9px; right:0;margin-right:15px;
-	}
+	.menu-icon a{ background:#fff;color:#777; width:1.88em !important; height:1.75em !important;min-height:1.75em !important; line-height:normal; padding:3px; margin:0 15px 0 0; -webkit-box-shadow: 0 0 4px 3px #d0d0d0; box-shadow: 0 0 4px 3px #d0d0d0;border-collapse:separate;border-radius:3px; position:relative; top:9px; right:0; }
 	.menu-icon a:hover{ color:#222; text-decoration:none;}
 	.menu-icon i{ font-size:1.32em !important; line-height:1.25em !important; width:1.75em !important; height:1.75em !important;min-height:1.75em !important;}
 	.menu-icon i:before{ content: "\e614";}
@@ -1170,7 +1170,7 @@ ul.menu-main>li>a:first-child {
   .navbar-collapse .navbar-nav.navbar-right:last-child{ margin-right:0; }
 	.navbar-default .menu-explore{ display:none !important; }
 	.menu-maintoggle{ display:none; }
-	.menu-toggle{ display:inline-block; }   
+	.menu-toggle{ display:inline-block; -webkit-box-shadow: 0px 3px 15px hsla(0, 0%, 0.0000%, 0.175); box-shadow: 0px 3px 15px hsla(0, 0%, 0.0000%, 0.175); }   
 	.navbar-default .navbar-nav>li>a{ background:transparent; }
 	.navbar-default h1 i.icon{ font-size:1.63em; line-height:1.68em; position:relative; top:1px;; }
   .navbar-header h1.navbar-title a span{ font-size:0.83em; position:relative; top:-5px; }	 

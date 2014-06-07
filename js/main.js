@@ -17,18 +17,20 @@ jQuery(function ($) {
     direction: 'rtl',
     backItemIcon: 'fa fa-angle-left',
     groupIcon: 'fa fa-angle-right',
-    collapsed: true
+    collapsed: false
   });
 
   // --- expand
   $( '.menu-toggle' ).click(function(){
     $('.menu-toggle').toggleClass('show-topmenu');
-    $('#menu').multilevelpushmenu( 'expand' );
-
-    if($('.menu-toggle').hasClass('show-topmenu')) {
-      $('#menu').multilevelpushmenu( 'collapse' );
-    }
+    // $('#menu').multilevelpushmenu( 'expand' );
+		// $('#menu').slideToggle( 'slow' );
+		
+    // if($('.menu-toggle').hasClass('show-topmenu')) {
+      // $('#menu').multilevelpushmenu( 'collapse' );
+    // }
   });
+  
   // --- align the text
   $('#menu ul>li, #menu h2').css('text-align','left');
   $('#menu ul>li.levelHolderClass.rtl').css('text-align','right');
@@ -108,7 +110,7 @@ jQuery(function ($) {
   if($("breadCrumb > li > a:contains('Subjects')")) {
 	  $("breadCrumb li a").find("i").css('background','#dc3c47');
   }
-  if($("breadCrumb li a:contains('Places')")) {
+  if($("breadCrumb > li > a:contains('Places')")) {
 	  $("breadCrumb li a").find("i").css('background','#4CA6FB');
   }  
   
