@@ -1242,7 +1242,7 @@ function processSubjectsData(data) {
   };
 
   //Removes previous binds for the show related tabs.
-  $('a[href="#tab-related"]').unbind('show.bs.tab');
+  $('a[href="#tab-subjects"]').unbind('show.bs.tab');
 
   //Removes previous binds for the show related photos tab.
   $('a[href="#tab-photos"]').unbind('show.bs.tab');
@@ -1286,10 +1286,10 @@ function processSubjectsData(data) {
 
   //Related content section
   if (data.feature.associated_resources.related_feature_count > 0) {
-    $("ul.nav li a[href='#tab-related'] .badge").text(data.feature.associated_resources.related_feature_count);
-    $(".content-resources ul.nav-pills li.related").show();
-    $('a[href="#tab-related"]').one('show.bs.tab', function(e) {
-      var $tabRelated = $("#tab-related");
+    $("ul.nav li a[href='#tab-subjects'] .badge").text(data.feature.associated_resources.related_feature_count);
+    $(".content-resources ul.nav-pills li.subjects").show();
+    $('a[href="#tab-subjects"]').one('show.bs.tab', function(e) {
+      var $tabRelated = $("#tab-subjects");
       $tabRelated.empty();
       $tabRelated.append('<h6>' + data.feature.header + '</h6>');
       var relatedUrl = Settings.baseUrl + "/features/" + data.feature.id + "/related.json";
@@ -1392,7 +1392,7 @@ function showOverviewImage(data) {
 
 //Function to populate related tab
 function relatedResources(data) {
-  var $tabRelated = $("#tab-related");
+  var $tabRelated = $("#tab-subjects");
   var contentR = '<ul class="list-unstyled list-group">';
   $.each(data.feature_relation_types, function(rInd, rElm) {
     contentR += '<li class="list-group-item">' + capitaliseFirstLetter(rElm.label) + ' the following ' + 
