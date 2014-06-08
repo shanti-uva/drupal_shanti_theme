@@ -8,6 +8,9 @@ var Settings = {
 }
 
 
+
+
+
 // *** NAVIGATION *** top drilldown menu
 jQuery(function ($) {
   $( '#menu' ).multilevelpushmenu({
@@ -28,14 +31,32 @@ jQuery(function ($) {
   // --- close the menu on outside click except button
   $('.menu-toggle').click( function(event){
       event.stopPropagation();
-      $('#menu').toggle(70);
+      $('#menu').toggle(50);
       $('.menu-toggle').toggleClass('show-topmenu');
+      $('.collections').slideUp(200);
+      $('.menu-exploretoggle').removeClass('show-topmenu');
+   });
+
+	// --- close the menu on outside click except button
+  $('.menu-exploretoggle').click( function(event){
+      event.stopPropagation();
+      $('.collections').slideUp();
   });
-  
+    
   $(document).click( function(){
       $('.menu-toggle').removeClass('show-topmenu');
-  });   
+      $('#menu').hide(100);
+      // $('.collections').slideUp(200);
+      // $(".collections").css('display','none');
+  });  
+        
 });
+
+
+
+
+
+
 
 
 
@@ -55,17 +76,17 @@ $.fn.accordionFx = function() {
         });
     });
 };
-
 jQuery(function ($) {
 	$('#accordion').accordionFx();
+});
 
+
+jQuery(function ($) {
 	// *** CONTENT *** hide responsive column for resources
   $('[data-toggle=offcanvas]').click(function () {
     $('.row-offcanvas').toggleClass('active');
   });
 });
-
-
 
 
 // jQuery(function ($) {
@@ -1900,10 +1921,9 @@ jQuery(function ($) {
 });
 
 
-// *** GLOBAL *** ie browser alert, equal-heights, off-canvas panel
+
 jQuery(function ($) {
   // show-hide the IE message for older browsers
-  // this could be improved with conditional for - lte IE7 - so it does not self-hide
   $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
   
   // $(".main-col.active").equalHeights(); 
@@ -1921,6 +1941,29 @@ jQuery(function ($) {
 
 
 
+
+
+
+  
+//  one menu button instead of two, needs re-initiation on resize
+jQuery(function ($) {
+    var $window = $(window);
+
+    function checkWidth() {
+        var windowsize = $window.width();
+        if (windowsize <= 767) {
+	         // $("#respond").removeClass("menu-toggle");
+	         // $("#respond").addClass("menu-maintoggle");  
+	         $("#menu").hide(200); 
+        } else {
+	         // $("#respond").addClass("menu-toggle");
+	         // $("#respond").removeClass("menu-maintoggle");
+	         $("#menu-main").hide(200);
+        }
+    }
+    checkWidth();
+    $window.resize(checkWidth);
+});
 
 
 
