@@ -1,6 +1,5 @@
 //Function to process kmaps places
 function processPlacesData(data) {
-  console.log(data);
   //Global variable to hold all the related resources count
   shantiPlaces = {
     places_id: data.feature.id,

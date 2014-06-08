@@ -17,7 +17,6 @@
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/utils.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
-  <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
   <?php if(!$subject): ?>
@@ -542,6 +541,10 @@
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
+  <!-- Load scripts for open layer maps used in places -->
+  <?php if(!$subject): ?>
+  
+  <?php endif ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   
