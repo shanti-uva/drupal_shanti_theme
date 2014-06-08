@@ -1946,24 +1946,24 @@ jQuery(function ($) {
 
   
 //  one menu button instead of two, needs re-initiation on resize
-jQuery(function ($) {
-    var $window = $(window);
-
-    function checkWidth() {
-        var windowsize = $window.width();
-        if (windowsize <= 767) {
-	         // $("#respond").removeClass("menu-toggle");
-	         // $("#respond").addClass("menu-maintoggle");  
-	         $("#menu").hide(200); 
-        } else {
-	         // $("#respond").addClass("menu-toggle");
-	         // $("#respond").removeClass("menu-maintoggle");
-	         $("#menu-main").hide(200);
-        }
-    }
-    checkWidth();
-    $window.resize(checkWidth);
-});
+// jQuery(function ($) {
+//     var $window = $(window);
+// 
+//     function checkWidth() {
+//         var windowsize = $window.width();
+//         if (windowsize <= 767) {
+// 	         // $("#respond").removeClass("menu-toggle");
+// 	         // $("#respond").addClass("menu-maintoggle");  
+// 	         $("#menu").hide(200); 
+//         } else {
+// 	         // $("#respond").addClass("menu-toggle");
+// 	         // $("#respond").removeClass("menu-maintoggle");
+// 	         $("#menu-main").hide(200);
+//         }
+//     }
+//     checkWidth();
+//     $window.resize(checkWidth);
+// });
 
 
 

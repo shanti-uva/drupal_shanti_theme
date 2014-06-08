@@ -118,8 +118,7 @@ function processPlacesData(data) {
 	};
 	$('#accordion').accordionFx();
 
-
-
+ 
 
 
   //Trigger remote call for overview accordion Names
