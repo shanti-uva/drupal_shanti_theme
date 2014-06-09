@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/utils.css">
-  <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">  
+  <link rel="stylesheet" href="//vjs.zencdn.net/4.5/video-js.css">  
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
@@ -26,7 +26,8 @@
   <?php if(!$subject): ?>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
   <link rel="stylesheet" type="text/css" href="http://openlayers.org/api/theme/default/style.css">
-  <?php endif ?>  
+  <?php endif ?>
+  
   <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -106,7 +107,7 @@
 		      <h1 class="page-title"><i class="icon <?php print $subject ? "km-subjects" : "km-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
 		      <nav class="breadwrap" role="navigation">
 		        <ol class="breadCrumb">
-		          <li><a href="#"><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
+		          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
 		        </ol>
 		      </nav>
         </div>
@@ -519,17 +520,19 @@
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
-  <!-- Load scripts for open layer maps used in places -->
+    <!-- Load scripts for open layer maps used in places -->
   <?php if(!$subject): ?>
   <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAXpnXkPS39-Bo5ovHQWvyIk6eMgcvc1q4&amp;sensor=false"></script>
   <script src="http://openlayers.org/api/OpenLayers.js" type="text/javascript"></script>
   <script src="http://www.thlib.org/places/maps/interactive/scripts/THLWMS.js" type="text/javascript"></script>
   <script src="<?php print $theme_path; ?>/js/inset-map.js" type="text/javascript"></script>
   <?php endif ?>
+  
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
   <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
+  
   <script>
   jQuery(function ($) {
 		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections>ul");
