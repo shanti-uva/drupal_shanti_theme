@@ -106,7 +106,7 @@
 		      <h1 class="page-title"><i class="icon <?php print $subject ? "km-subjects" : "km-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
 		      <nav class="breadwrap" role="navigation">
 		        <ol class="breadCrumb">
-		          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
+		          <li><a href="#"><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
 		        </ol>
 		      </nav>
         </div>
@@ -118,7 +118,8 @@
     
     <!-- Column Resources  -->              
     <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
-     <div class="main-col active">
+    <div class="main-col active">
+
       <ul class="nav nav-pills nav-stacked">
         <li class="overview active"><a href="#tab-overview" data-toggle="pill">
         	<i class="icon"></i>Overview</a>
@@ -163,7 +164,7 @@
         	<i class="icon"></i>Sources<span class="badge">3</span></a>
         </li>
       </ul> 
-     </div>
+    </div>
     </aside> 
     
     <!-- Column Main  -->                   
@@ -175,15 +176,14 @@
       
         <article class="tab-pane main-col active" id="tab-overview">
         </article>
-        <!-- END tab-pane active -->
 
         <article class="tab-pane main-col" id="tab-subjects">
         </article>
 
         <article class="tab-pane main-col" id="tab-essays">
-        </article>
+				</article>
 
-        <article class="tab-pane main-col" id="tab-places">
+				<article class="tab-pane main-col" id="tab-places">
         </article>
                         
         <article class="tab-pane main-col" id="tab-agents">
@@ -230,7 +230,7 @@
 		  <!-- BEGIN Search Panel --> 
 		  <section id="kmaps-search" role="search">               
 		      <!-- BEGIN Input section -->                    
-		      <section class="input-section">                   
+		      <section class="input-section" style="display:none;">                   
 		        <form class="form">
 		         <fieldset>                       
 		            <div class="search-group">                        
@@ -532,7 +532,7 @@
   <?php endif ?>
   <script>
   jQuery(function ($) {
-		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections ul");
+		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections>ul");
 	});
 	</script>
 </body>

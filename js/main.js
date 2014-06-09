@@ -113,15 +113,7 @@ jQuery(function ($) {
         timeCompressionAnimation: 500,
         timeInitialCollapse: 600,
         previewWidth: 25  
-  });
-  
-  if($("breadCrumb > li > a:contains('Subjects')")) {
-	  $("breadCrumb li a").find("i").css('background','#dc3c47');
-  }
-  if($("breadCrumb > li > a:contains('Places')")) {
-	  $("breadCrumb li a").find("i").css('background','#4CA6FB');
-  }  
-  
+  });  
 });
 
 
