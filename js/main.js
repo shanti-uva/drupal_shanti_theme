@@ -88,7 +88,6 @@ jQuery(function ($) {
   });
 });
 
-
 // jQuery(function ($) {
 
   // var menulist = $('#menu ul').css('display') == 'block'

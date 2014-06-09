@@ -25,6 +25,7 @@
   
   <?php if(!$subject): ?>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
+  <link rel="stylesheet" type="text/css" href="http://openlayers.org/api/theme/default/style.css">
   <?php endif ?>  
   <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
@@ -520,7 +521,10 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
   <!-- Load scripts for open layer maps used in places -->
   <?php if(!$subject): ?>
-  
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAXpnXkPS39-Bo5ovHQWvyIk6eMgcvc1q4&amp;sensor=false"></script>
+  <script src="http://openlayers.org/api/OpenLayers.js" type="text/javascript"></script>
+  <script src="http://www.thlib.org/places/maps/interactive/scripts/THLWMS.js" type="text/javascript"></script>
+  <script src="<?php print $theme_path; ?>/js/inset-map.js" type="text/javascript"></script>
   <?php endif ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>

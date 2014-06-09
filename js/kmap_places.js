@@ -61,8 +61,13 @@ function processPlacesData(data) {
   }
 
   if (data.feature.closest_fid_with_shapes) {
+    shantiPlaces.fid = data.feature.closest_fid_with_shapes;
     overviewContent += '<div class="google-maps">';
     overviewContent += '<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=http:%2F%2Fplaces.thlib.org%2Ffeatures%2Fgis_resources%2F' + data.feature.closest_fid_with_shapes + '.kmz&amp;ie=UTF8&amp;t=p&amp;output=embed"></iframe>';
+    overviewContent += '</div>';
+    overviewContent += '<div>';
+    overviewContent += '<button type="button" class="btn btn-primary renderGmaps">Google Map</button>';
+    overviewContent += '<button type="button" class="btn btn-primary renderOpenLayerMaps">OpenLayer Map</button>';
     overviewContent += '</div>';
   }
   overviewContent += '<aside class="panel-group" id="accordion">';
@@ -97,7 +102,17 @@ function processPlacesData(data) {
   overviewContent += '</aside>';
   $tabOverview.append(overviewContent);
 
+  //Render the maps based on what is clicked.
+  $(".renderGmaps").click(function() {
+    var googleMapsRender = '<iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=http:%2F%2Fplaces.thlib.org%2Ffeatures%2Fgis_resources%2F' + shantiPlaces.fid + '.kmz&amp;ie=UTF8&amp;t=p&amp;output=embed"></iframe>';
+    $(".google-maps").html(googleMapsRender);
+  });
 
+  $(".renderOpenLayerMaps").click(function() {
+    var openLayerMapsRender = '<div id="inset_map" class="fid-' + shantiPlaces.fid + ' language-roman.popular olMap" style="width:100%; height:550px"></div>';
+    $(".google-maps").html(openLayerMapsRender);
+    InsetMap.init();
+  });
 
 	
 	// *** NAVIGATION *** accordion toggle
@@ -312,9 +327,12 @@ function buildNames(obj) {
   }
 }
 
-
-
-
+//Initiate open layer maps
+jQuery(function ($) {
+  $( document ).ready(function() {
+    InsetMap.init();
+  });
+});
 
 
 
