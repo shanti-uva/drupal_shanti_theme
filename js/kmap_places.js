@@ -229,8 +229,23 @@ function processPlacesData(data) {
         }
       });
       subjectsContent += '</p>';
-      $tabSubjects.append(subjectsContent);
     }
+    if (data.feature.category_features.length > 0) {
+      subjectsContent += '<div><h6>SUBJECTS</h6><ul>';
+      $.each(data.feature.category_features, function(ind, val) {
+        subjectsContent += '<li>';
+        subjectsContent += val.root.title + ' > ' + '<a href="' + Settings.subjectsPath + '#features/' + val.category.id + '">' + val.category.title + '</a>';
+        if (val.numeric_value) {
+          subjectsContent += ': ' + val.numeric_value;
+        }
+        if (val.string_value) {
+          subjectsContent += ': ' + val.string_value;
+        }
+        subjectsContent += '</li>';
+      });
+      subjectsContent += '</ul></div>';
+    }
+    $tabSubjects.append(subjectsContent);
   }
 
 }

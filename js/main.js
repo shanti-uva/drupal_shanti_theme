@@ -1278,7 +1278,7 @@ function processSubjectsData(data) {
   $tabOverview.empty();
   $tabOverview.append('<h6>' + data.feature.header + '</h6>');
   if (data.feature.summaries.length > 0) {$tabOverview.append(data.feature.summaries[0].content)}
-  if (data.feature.illustrations.length > 0) {
+  if (data.feature.illustrations.length > 0 && data.feature.illustrations[0].type != 'external') {
     $.get(data.feature.illustrations[0].url, showOverviewImage);
   }
   $(".content-resources ul.nav-pills li.overview").show();

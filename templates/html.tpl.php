@@ -527,7 +527,9 @@
   <script src="<?php print $theme_path; ?>/js/inset-map.js" type="text/javascript"></script>
   <?php endif ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
+  <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
+  <?php endif ?>
   <script>
   jQuery(function ($) {
 		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections ul");
