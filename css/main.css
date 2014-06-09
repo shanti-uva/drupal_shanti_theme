@@ -310,7 +310,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   font-size:1em;
   line-height:1.5em;
   padding:0;
-  margin:-1px 4px 0 0;
+  margin:0 4px 0 0;
   font-weight: 600;
   font-style:normal;
 }
