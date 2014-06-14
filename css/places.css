@@ -1,7 +1,10 @@
 /*--- HEADER */
-.titlearea,
-.titlearea .page-title .icon {
+.titlearea {
   background-color: #4CA6FB;
+}
+
+.titlearea .page-title .icon{ 
+	background-color: #3e81be;
 }
 
 .titlearea .breadwrap ol li i{

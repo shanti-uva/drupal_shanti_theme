@@ -88,7 +88,7 @@
             	<!-- load ajax menu --> 
             </div>
          </div>
-          <span class="closecollection"> <i class="icon km-close"></i> </span>
+          <button class="closecollection"> <i class="icon km-close"></i> </button>
       </nav>
     </section><!-- END dropdown panel -->
   </header><!-- END container -->

@@ -885,16 +885,14 @@ jQuery(function($) {
     cookieId: "feature3tree", // set cookies for features, the second fancytree
     idPrefix: "feature3tree"
   });
-
+});
 	// *** END extruder
 
 
 
 
-
-  // --- input styles for search panel
-  // ----------------------------------
-  // --- kms, KMAPS MAIN SEARCH INPUT ---
+jQuery(function ($) {
+  // --- SEARCH INPUT SECTION ---
   var kms = $("#searchform"); // the main search input
   $(kms).data("holder",$(kms).attr("placeholder"));
 
@@ -1910,54 +1908,4 @@ jQuery(function ($) {
   });
     
 });
-
-
-
-jQuery(function ($) {
-  // show-hide the IE message for older browsers
-  $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
-  
-  // $(".main-col.active").equalHeights(); 
-  // $(document).click( function(){
-  // 	$(".main-col.active").equalHeights();
-  // });
-  //
-  // $(".content-resources > ul > li").find("a").click(function (event) { 
-  //		$(".main-col.active").equalHeights(); 
-  // });
-  
-});
-
-
-
-
-
-
-
-
-  
-//  one menu button instead of two, needs re-initiation on resize
-// jQuery(function ($) {
-//     var $window = $(window);
-// 
-//     function checkWidth() {
-//         var windowsize = $window.width();
-//         if (windowsize <= 767) {
-// 	         // $("#respond").removeClass("menu-toggle");
-// 	         // $("#respond").addClass("menu-maintoggle");  
-// 	         $("#menu").hide(200); 
-//         } else {
-// 	         // $("#respond").addClass("menu-toggle");
-// 	         // $("#respond").removeClass("menu-maintoggle");
-// 	         $("#menu-main").hide(200);
-//         }
-//     }
-//     checkWidth();
-//     $window.resize(checkWidth);
-// });
-
-
-
-
-
 
