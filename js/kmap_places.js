@@ -240,16 +240,14 @@ function relatedPlacesSubjects(data) {
   $tabSubjects.empty();
   $tabSubjects.append('<h6 class="center-me">RELATED SUBJECTS</h6>');
   if (data.feature.feature_types.length > 0) {
-    var subjectsContent = '<p><h6 class="custom-inline">FEATURE TYPES: &nbsp;&nbsp;</h6>';
+    var subjectsContent = '<h6 class="custom-inline">FEATURE TYPES:</h6>';
+    subjectsContent += '<ul>';
     $.each(data.feature.feature_types, function(ind, val) {
-      subjectsContent += '<a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
+      subjectsContent += '<li><a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
       subjectsContent += val.title;
-      subjectsContent += '</a>';
-      if (ind < (data.feature.feature_types.length - 1)) {
-        subjectsContent += '; ';  
-      }
+      subjectsContent += '</a></li>';
     });
-    subjectsContent += '</p>';
+    subjectsContent += '</ul>';
   }
 
   if (data.feature.category_features.length > 0) {

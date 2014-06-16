@@ -113,7 +113,15 @@ jQuery(function ($) {
         timeCompressionAnimation: 500,
         timeInitialCollapse: 600,
         previewWidth: 25  
-  });  
+  });
+  
+  if($("breadCrumb > li > a:contains('Subjects')")) {
+	  $("breadCrumb li a").find("i").css('background','#dc3c47');
+  }
+  if($("breadCrumb > li > a:contains('Places')")) {
+	  $("breadCrumb li a").find("i").css('background','#4CA6FB');
+  }  
+  
 });
 
 
@@ -645,103 +653,9 @@ jQuery(function ($) {
 
 });
 
-
-
-// --- kms, KMAPS MAIN SEARCH INPUT ---
-jQuery(function($) {
-  var kms = $("#searchform"); // the main search input
-  $(kms).data("holder",$(kms).attr("placeholder"));
-
-  // --- features inputs - focusin / focusout
-  $(kms).focusin(function(){
-      $(kms).attr("placeholder","");
-      $("button.searchreset").show("fast");
-  });
-  $(kms).focusout(function(){
-      $(kms).attr("placeholder",$(kms).data("holder"));
-      $("button.searchreset").hide();
-
-    var str = "Enter Search...";
-    var txt = $(kms).val();
-
-    if (str.indexOf(txt) > -1) {
-      $("button.searchreset").hide();
-    return true;
-    } else {
-      $("button.searchreset").show(100);
-    return false;
-    }
-  });
-  // --- close and clear all
-  $("button.searchreset").click(function(){
-    $(kms).attr("placeholder",$(kms).data("holder"));
-    $("button.searchreset").hide();
-    $(".alert").hide();
-        searchUtil.clearSearch();
-        tree.clearFilter();
-  });
-
-
-
-
 // -------------------------
 // *** BEGIN feature trees
-// -------------------------
-
-var feature1_filterUtil = {
-    clearSearch1: function() {
-        if ($("#feature-tree1").fancytree("getActiveNode")) {
-            $("#feature-tree1").fancytree("getActiveNode").setActive(false);
-        }
-         // $("#feature-tree1").fancytree("getTree").clearFilter();
-        $("#feature-tree1").fancytree("getRootNode").visit(function (node) {
-            node.setExpanded(false);
-        });
-        // "unwrap" the <mark>ed text
-        $("span.fancytree-title").each(
-            function () {
-                $(this).text($(this).text());
-            }
-        );
-    }
-};
-var feature2_filterUtil = {
-    clearSearch2: function() {
-        if ($("#feature-tree2").fancytree("getActiveNode")) {
-            $("#feature-tree2").fancytree("getActiveNode").setActive(false);
-        }
-        // $("#feature-tree2").fancytree("getTree").clearFilter();
-        $("#feature-tree2").fancytree("getRootNode").visit(function (node) {
-            node.setExpanded(false);
-        });
-        // "unwrap" the <mark>ed text
-        $("span.fancytree-title").each(
-            function () {
-                $(this).text($(this).text());
-            }
-        );
-    }
-};
-var feature3_filterUtil = {
-    clearSearch3: function() {
-        if ($("#feature-tree3").fancytree("getActiveNode")) {
-            $("#feature-tree3").fancytree("getActiveNode").setActive(false);
-        }
-        // $("#feature-tree3").fancytree("getTree").clearFilter();
-        $("#feature-tree3").fancytree("getRootNode").visit(function (node) {
-            node.setExpanded(false);
-        });
-        // "unwrap" the <mark>ed text
-        $("span.fancytree-title").each(
-            function () {
-                $(this).text($(this).text());
-            }
-        );
-    }
-};
-
-
-
+jQuery(function($) {
 	// *** feature type ***
 	  $("#feature-tree1").fancytree({
     extensions: ["glyph", "edit", "filter"],
@@ -791,7 +705,9 @@ var feature3_filterUtil = {
         // loading: "icon-spinner icon-spin"
       }
     },
-    source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
+    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
+    // source: treeData,
     filter: {
         mode: "hide"
     },
@@ -868,7 +784,9 @@ var feature3_filterUtil = {
         // loading: "icon-spinner icon-spin"
       }
     },
-    source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
+    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
+    // source: treeData,
     filter: {
         mode: "hide"
     },
@@ -894,6 +812,9 @@ var feature3_filterUtil = {
     cookieId: "feature2tree", // set cookies for features, the second fancytree
     idPrefix: "feature2tree"
   });
+
+
+
 
 
   $("#feature-tree3").fancytree({
@@ -944,7 +865,9 @@ var feature3_filterUtil = {
         // loading: "icon-spinner icon-spin"
       }
     },
-    source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
+    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
+    // source: treeData,
     filter: {
         mode: "hide"
     },
@@ -970,12 +893,51 @@ var feature3_filterUtil = {
     cookieId: "feature3tree", // set cookies for features, the second fancytree
     idPrefix: "feature3tree"
   });
+
+	// *** END extruder
+
+
+
+
+
+  // --- input styles for search panel
   // ----------------------------------
-	// --- END extruder
+  // --- kms, KMAPS MAIN SEARCH INPUT ---
+  var kms = $("#searchform"); // the main search input
+  $(kms).data("holder",$(kms).attr("placeholder"));
 
+  // --- features inputs - focusin / focusout
+  $(kms).focusin(function(){
+      $(kms).attr("placeholder","");
+      $("button.searchreset").show("fast");
+  });
+  $(kms).focusout(function(){
+      $(kms).attr("placeholder",$(kms).data("holder"));
+      $("button.searchreset").hide();
 
+    var str = "Enter Search...";
+    var txt = $(kms).val();
 
-  // --- Feature Inputs ---------------
+    if (str.indexOf(txt) > -1) {
+      $("button.searchreset").hide();
+    return true;
+    } else {
+      $("button.searchreset").show(100);
+    return false;
+    }
+  });
+  // --- close and clear all
+  $("button.searchreset").click(function(){
+    $(kms).attr("placeholder",$(kms).data("holder"));
+    $("button.searchreset").hide();
+    $(".alert").hide();
+        searchUtil.clearSearch();
+        tree.clearFilter();
+  });
+  
+  
+
+  // --- fname, KMAPS FEATURES ---
   // ----------------------------------
   var tree1 = $("#feature-tree1").fancytree("getTree");
   var tree2 = $("#feature-tree2").fancytree("getTree");
@@ -986,96 +948,98 @@ var feature3_filterUtil = {
   $(feature1).data("holderf1",$(feature1).attr("placeholder"));
   $(feature2).data("holderf2",$(feature2).attr("placeholder"));
   $(feature3).data("holderf3",$(feature3).attr("placeholder"));
+
+
+
+
+  // --- features inputs - focusin / focusout with two buttons that clear selection
   
-  // --- feature-Type
+  // --- feature-type
   $(feature1).focusin(function(){
       $(this).dropdown();
       $(this).attr("placeholder","");
-      $("#feature1a-reset").show(100);
-      $("#feature1a-reset, #feature1b-reset").attr("disabled", false);
+      $("button#feature1b-reset").show(100); // switched to negative indent since hide() not working consistently
   });
   $(feature1).focusout(function(){
       $(this).attr("placeholder",$(feature1).data("holderf1"));
-      $("#feature1a-reset").hide();
+      $("button#feature1b-reset").hide();
       $(this).dropdown();
 
-      var strf1 = "Filter by Feature Type";
-      var txtf1 = $(feature1).val();
-      if (strf1.indexOf(txtf1) > -1) {
-        $("#feature1a-reset").hide();
+      var strf = "Filter by Feature Type";
+      var txtf = $(feature1).val();
+      if (strf.indexOf(txtf) > -1) {
+        $("button#feature1b-reset").hide();
       return true;
       } else {
-        $("#feature1a-reset").show(100);
+        $("button#feature1b-reset").show(100);
       return false;
       }
   });
+  // --- features inputs - keydown / keyup / click
   $("input[name=feature-type]").keydown(function(e){
       $(feature1).dropdown();
-      $(".type.filter").show(100);
-      $("#feature1a-reset,#feature1b-reset").attr("disabled", false);
+      $(".filter").show(100);
       return;
   });
   $("input[name=feature-type]").keyup(function(e){
     var match = $(this).val();
     if(e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === ""){
-      $("#feature1a-reset,#feature1b-reset").click();
+      $("button#feature1b-reset").click();
       return;
     }
     // Pass text as filter string (will be matched as substring in the node title)
     var n = tree1.applyFilter(match);
-      $("#feature1a-reset,#feature1b-reset").attr("disabled", false);
-      $(".type.filter #matches1").text("(" + n + " matches)");
+      // $("#feature1a-reset, #feature1b-reset").attr("disabled", false);
+      $("span#matches").text("(" + n + " matches)");
   }).focus();
-  $("#feature1a-reset, #feature1b-reset").click(function(event){
+  // close and clear all
+  $("button#feature1b-reset").click(function(event){
     $(feature1).attr("placeholder",$(feature1).data("holderf1"));
-    $("#feature-tree1").fancytree();
-    $("#feature1a-reset").hide();
     $("input[name=feature-type]").val("");
-    $(".type.filter #matches1").text("");
-    $(".type.filter").hide();
-    tree1.clearFilter();
-    feature1_filterUtil.clearSearch1();
-    $(".dropdown-type").parent().removeClass("open");
+    $("span#matches").text("");
+    $(".filter").hide();
+     tree1.clearFilter();
+    $("button#feature-tree1").fancytree();
+    $("button#feature1b-reset").hide(); // switched to negative indent since hide() not working consistently
+    // $(this).addClass("show");
   }).attr("disabled", true);
+
+  // controls clicking in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-type, .dropdown-type', function(e) {
+    $(document).on('click', '#feature-type, .dropdown-menu.feature-menu', function(e) {
        e.stopPropagation()
     })
   }); 
-  $(document).click( function(){
-    $(".dropdown-type").parent().removeClass("open");
-  });
-  
 
 
 
-	// ----------------------------
-  // --- feature-Subject -----------
+
+
+  // --- feature-type
   $(feature2).focusin(function(){
       $(this).dropdown();
       $(this).attr("placeholder","");
-      $("#feature2a-reset").show(100);
-      $("#feature2a-reset, #feature2b-reset").attr("disabled", false);
+      $("#feature2b-reset").show(100); // switched to negative indent since hide() not working consistently
   });
   $(feature2).focusout(function(){
       $(this).attr("placeholder",$(feature2).data("holderf2"));
-      $("#feature2a-reset").hide();
+      $("#feature2b-reset").hide();
       $(this).dropdown();
 
-      var strf2 = "Filter by Feature Subject";
-      var txtf2 = $(feature2).val();
-      if (strf2.indexOf(txtf2) > -1) {
-        $("#feature2a-reset").hide();
+      var strf = "Filter by Feature Subject";
+      var txtf = $(feature2).val();
+      if (strf.indexOf(txtf) > -1) {
+        $("#feature2b-reset").hide();
       return true;
       } else {
-        $("#feature2a-reset").show(100);
+        $("#feature2b-reset").show(100);
       return false;
       }
   });
+  // --- features inputs - keydown / keyup / click
   $("input[name=feature-subject]").keydown(function(e){
       $(feature2).dropdown();
-      $(".subject.filter").show(100);
-      $("#feature1a-reset,#feature1b-reset").attr("disabled", false);
+      $(".filter").show(100);
       return;
   });
   $("input[name=feature-subject]").keyup(function(e){
@@ -1087,27 +1051,28 @@ var feature3_filterUtil = {
     // Pass text as filter string (will be matched as substring in the node title)
     var n = tree2.applyFilter(match);
       $("#feature2a-reset, #feature2b-reset").attr("disabled", false);
-      $(".subject.filter #matches2").text("(" + n + " matches)");
+      $("#matches").text("(" + n + " matches)");
   }).focus();
+  // close and clear all
   $("#feature2a-reset, #feature2b-reset").click(function(event){
     $(feature2).attr("placeholder",$(feature2).data("holderf2"));
-    $(".dropdown-subject").parent().removeClass("open");
-    $("#feature-tree2").fancytree();
-    $("#feature2a-reset").hide();
     $("input[name=feature-subject]").val("");
-    $(".subject.filter #matches2").text("");
-    $(".subject.filter").hide();
-    tree2.clearFilter();
-    feature2_FilterUtil.clearSearch2();    
+    $("#matches").text("");
+    $(".filter").hide();
+     tree2.clearFilter();
+    $("#feature-tree2").fancytree();
+    $("#feature2b-reset").hide(); // switched to negative indent since hide() not working consistently
+    // $(this).addClass("show");
   }).attr("disabled", true);
+
+  // controls clicking in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-subject, .dropdown-subject', function(e) {
+    $(document).on('click', '#feature-subject, .dropdown-menu.feature-menu', function(e) {
        e.stopPropagation()
     })
   }); 
-  $(document).click( function(){
-    $(".dropdown-subject").parent().removeClass("open");
-  });
+
+
 
 
 
@@ -1116,28 +1081,27 @@ var feature3_filterUtil = {
   $(feature3).focusin(function(){
       $(this).dropdown();
       $(this).attr("placeholder","");
-      $("#feature3a-reset").show(100);
-      $("#feature3a-reset, #feature3b-reset").attr("disabled", false);
+      $("#feature3b-reset").show(100); // switched to negative indent since hide() not working consistently
   });
   $(feature3).focusout(function(){
       $(this).attr("placeholder",$(feature3).data("holderf3"));
-      $("#feature3a-reset").hide();
+      $("#feature3b-reset").hide();
       $(this).dropdown();
 
-      var strf3 = "Filter by Feature Region";
-      var txtf3 = $(feature3).val();
-      if (strf3.indexOf(txtf3) > -1) {
-        $("#feature3a-reset").hide();
+      var strf = "Filter by Feature Region";
+      var txtf = $(feature3).val();
+      if (strf.indexOf(txtf) > -1) {
+        $("#feature3b-reset").hide();
       return true;
       } else {
-        $("#feature3a-reset").show(100);
+        $("#feature3b-reset").show(100);
       return false;
       }
   });
+  // --- features inputs - keydown / keyup / click
   $("input[name=feature-region]").keydown(function(e){
       $(feature3).dropdown();
-      $(".region.filter").show(100);
-      $("#feature3a-reset,#feature3b-reset").attr("disabled", false);
+      $(".filter").show(100);
       return;
   });
   $("input[name=feature-region]").keyup(function(e){
@@ -1149,29 +1113,31 @@ var feature3_filterUtil = {
     // Pass text as filter string (will be matched as substring in the node title)
     var n = tree3.applyFilter(match);
       $("#feature3a-reset, #feature3b-reset").attr("disabled", false);
-      $(".region.filter #matches3").text("(" + n + " matches)");
+      $("#matches").text("(" + n + " matches)");
   }).focus();
+  // close and clear all
   $("#feature3a-reset, #feature3b-reset").click(function(event){
     $(feature3).attr("placeholder",$(feature3).data("holderf3"));
-    $(".dropdown-region").parent().removeClass("open");
-    $("#feature-tree3").fancytree();
-    $("#feature3a-reset").hide();
     $("input[name=feature-region]").val("");
-    $(".region.filter #matches3").text("");
-    $(".region.filter").hide();
-    tree3.clearFilter();
-    feature3_FilterUtil.clearSearch3();    
+    $("#matches").text("");
+    $(".filter").hide();
+     tree3.clearFilter();
+    $("#feature-tree3").fancytree();
+    $("#feature3b-reset").hide(); // switched to negative indent since hide() not working consistently
+    // $(this).addClass("show");
   }).attr("disabled", true);
+
+  // controls clicking in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-region, .dropdown-region', function(e) {
+    $(document).on('click', '#feature-region, .dropdown-menu.feature-menu', function(e) {
        e.stopPropagation()
     })
   }); 
-  $(document).click( function(){
-    $(".dropdown-region").parent().removeClass("open");
-  });
-  
+
 });
+
+
+
 
 
 
@@ -1357,7 +1323,7 @@ function processSubjectsData(data) {
   }
 
   //Related Photos (picture) section
-  if (data.feature.associated_resources.picture_count > 0) {
+  if (data.feature.associated_resources.picture_count > 0 || data.feature.id == 1300) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
     $(".content-resources ul.nav-pills li.photos").show();
     $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
@@ -1366,6 +1332,7 @@ function processSubjectsData(data) {
       $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
       var photosURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/pictures.json?per_page=30";
       shanti.photosURL = photosURL;
+      shanti.feature_id = data.feature.id;
       //$.get(photosURL, relatedPhotos);
       $.ajax({
         url: photosURL,
@@ -1381,7 +1348,7 @@ function processSubjectsData(data) {
   }
 
   //Related Audio-Video (videos) section
-  if (data.feature.associated_resources.video_count > 0) {
+  if (data.feature.associated_resources.video_count > 0 || data.feature.id == 302) {
     $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count);
     $(".content-resources ul.nav-pills li.audio-video").show();
     $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
@@ -1406,10 +1373,10 @@ function processSubjectsData(data) {
     });
   }
 
-  var testUrl = 'http://africablack.duckdns.org/seven.com/sharedshelf/api/projects/534/assets/filter/fd_24809_lookup.links.source_id/' + data.feature.id + '.json';
-  $.get(testUrl, function(data) {
-    console.log(data);
-  });
+  // var testUrl = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24803_lookup.links.source_id/' + data.feature.id + '.json';
+  // $.get(testUrl, function(data) {
+  //   console.log(data);
+  // });
 }
 
 function populateBreadcrumbs(bInd, bVal) {
@@ -1450,6 +1417,13 @@ function relatedResources(data) {
 function relatedPhotos(data) {
   
   var contentPh = '<div class="related-photos">';
+
+  //First get and show photos from sharedshelf
+  var sharedShelfURL = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24803_lookup.links.source_id/' + shanti.feature_id + '.json';
+  $.get(sharedShelfURL, function(ssData) {
+    console.log(ssData);
+  });
+
   $.each(data.topic.media, function(rInd, rElm) {
     contentPh += '<div class="each-photo">';
     contentPh += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
@@ -1655,6 +1629,7 @@ function paginatedPhotos(data) {
 
 //Function to process and show related videos
 function relatedVideos(data) {
+  console.log(data);
   var contentAV = '<div class="related-audio-video">';
 
   $.each(data.media, function(rInd, rElm) {
@@ -1957,4 +1932,54 @@ jQuery(function ($) {
   });
     
 });
+
+
+
+jQuery(function ($) {
+  // show-hide the IE message for older browsers
+  $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
+  
+  // $(".main-col.active").equalHeights(); 
+  // $(document).click( function(){
+  // 	$(".main-col.active").equalHeights();
+  // });
+  //
+  // $(".content-resources > ul > li").find("a").click(function (event) { 
+  //		$(".main-col.active").equalHeights(); 
+  // });
+  
+});
+
+
+
+
+
+
+
+
+  
+//  one menu button instead of two, needs re-initiation on resize
+// jQuery(function ($) {
+//     var $window = $(window);
+// 
+//     function checkWidth() {
+//         var windowsize = $window.width();
+//         if (windowsize <= 767) {
+// 	         // $("#respond").removeClass("menu-toggle");
+// 	         // $("#respond").addClass("menu-maintoggle");  
+// 	         $("#menu").hide(200); 
+//         } else {
+// 	         // $("#respond").addClass("menu-toggle");
+// 	         // $("#respond").removeClass("menu-maintoggle");
+// 	         $("#menu-main").hide(200);
+//         }
+//     }
+//     checkWidth();
+//     $window.resize(checkWidth);
+// });
+
+
+
+
+
 
