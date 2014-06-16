@@ -290,11 +290,11 @@
 		                                    
 		                  <!-- feature 1 type -->
 		                  <div class="form-group km-input feature-group dropdown">
-		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <span class="filter type"><label>Filter:</label> <span id="matches1"></span></span>                                               
 		                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
-		                        <button id="feature1b-reset" class="feature-reset">&times;</button>
+		                        <button id="feature1a-reset" class="feature-reset">&times;</button>
 		                                              
-		                        <div class="dropdown-menu feature-menu">
+		                        <div class="dropdown-menu feature-menu dropdown-type">
 		                            <div class="tree-wrap"> 
 		
 		                              <div class="feature-container">                             
@@ -303,7 +303,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature1a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature1b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
 		                              </div>
 		                                                          
 		                            </div>                      
@@ -313,11 +313,11 @@
 		
 		                  <!-- feature 2 subject -->
 		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <span class="filter subject"><label>Filter:</label> <span id="matches2"></span></span>                                               
 		                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
-		                        <button id="feature2b-reset" class="feature-reset">&times;</button>
+		                        <button id="feature2a-reset" class="feature-reset">&times;</button>
 		                                              
-		                        <div class="dropdown-menu feature-menu">
+		                        <div class="dropdown-menu feature-menu dropdown-subject">
 		                            <div class="tree-wrap"> 
 		
 		                              <div class="feature-container">                             
@@ -326,7 +326,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature2a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature2b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
 		                              </div>
 		                                                          
 		                            </div>                      
@@ -336,11 +336,11 @@
 		
 		                  <!-- feature 3 region -->
 		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <span class="filter region"><label>Filter:</label> <span id="matches3"></span></span>                                               
 		                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
-		                        <button id="feature3b-reset" class="feature-reset">&times;</button>
+		                        <button id="feature3a-reset" class="feature-reset">&times;</button>
 		                                              
-		                        <div class="dropdown-menu feature-menu">
+		                        <div class="dropdown-menu feature-menu dropdown-region">
 		                            <div class="tree-wrap"> 
 		
 		                              <div class="feature-container">                             
@@ -349,7 +349,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature3a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature3b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
 		                              </div>
 		                                                          
 		                            </div>                      
