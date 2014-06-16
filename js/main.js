@@ -1371,6 +1371,11 @@ function processSubjectsData(data) {
       $.get(textsURL, relatedTexts);
     });
   }
+
+  var testUrl = 'http://africablack.duckdns.org/seven.com/sharedshelf/api/projects/534/assets/filter/fd_24809_lookup.links.source_id/' + data.feature.id + '.json';
+  $.get(testUrl, function(data) {
+    console.log(data);
+  });
 }
 
 function populateBreadcrumbs(bInd, bVal) {
