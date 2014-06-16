@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/utils.css">
-  <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">  
+  <link rel="stylesheet" href="//vjs.zencdn.net/4.5/video-js.css">  
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
@@ -26,7 +26,8 @@
   <?php if(!$subject): ?>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
   <link rel="stylesheet" type="text/css" href="http://openlayers.org/api/theme/default/style.css">
-  <?php endif ?>  
+  <?php endif ?>
+  
   <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
@@ -87,7 +88,7 @@
             	<!-- load ajax menu --> 
             </div>
          </div>
-          <span class="closecollection"> <i class="icon km-close"></i> </span>
+          <button class="closecollection"> <i class="icon km-close"></i> </button>
       </nav>
     </section><!-- END dropdown panel -->
   </header><!-- END container -->
@@ -118,7 +119,8 @@
     
     <!-- Column Resources  -->              
     <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
-     <div class="main-col active">
+    <div class="main-col active">
+
       <ul class="nav nav-pills nav-stacked">
         <li class="overview active"><a href="#tab-overview" data-toggle="pill">
         	<i class="icon"></i>Overview</a>
@@ -163,7 +165,7 @@
         	<i class="icon"></i>Sources<span class="badge">3</span></a>
         </li>
       </ul> 
-     </div>
+    </div>
     </aside> 
     
     <!-- Column Main  -->                   
@@ -175,15 +177,14 @@
       
         <article class="tab-pane main-col active" id="tab-overview">
         </article>
-        <!-- END tab-pane active -->
 
         <article class="tab-pane main-col" id="tab-subjects">
         </article>
 
         <article class="tab-pane main-col" id="tab-essays">
-        </article>
+				</article>
 
-        <article class="tab-pane main-col" id="tab-places">
+				<article class="tab-pane main-col" id="tab-places">
         </article>
                         
         <article class="tab-pane main-col" id="tab-agents">
@@ -230,7 +231,7 @@
 		  <!-- BEGIN Search Panel --> 
 		  <section id="kmaps-search" role="search">               
 		      <!-- BEGIN Input section -->                    
-		      <section class="input-section">                   
+		      <section class="input-section" style="display:none;">                   
 		        <form class="form">
 		         <fieldset>                       
 		            <div class="search-group">                        
@@ -289,11 +290,11 @@
 		                                    
 		                  <!-- feature 1 type -->
 		                  <div class="form-group km-input feature-group dropdown">
-		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <span class="filter type"><label>Filter:</label> <span id="matches1"></span></span>                                               
 		                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
-		                        <button id="feature1b-reset" class="feature-reset">&times;</button>
+		                        <button id="feature1a-reset" class="feature-reset">&times;</button>
 		                                              
-		                        <div class="dropdown-menu feature-menu">
+		                        <div class="dropdown-menu feature-menu dropdown-type">
 		                            <div class="tree-wrap"> 
 		
 		                              <div class="feature-container">                             
@@ -302,7 +303,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature1a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature1b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
 		                              </div>
 		                                                          
 		                            </div>                      
@@ -312,11 +313,11 @@
 		
 		                  <!-- feature 2 subject -->
 		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <span class="filter subject"><label>Filter:</label> <span id="matches2"></span></span>                                               
 		                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
-		                        <button id="feature2b-reset" class="feature-reset">&times;</button>
+		                        <button id="feature2a-reset" class="feature-reset">&times;</button>
 		                                              
-		                        <div class="dropdown-menu feature-menu">
+		                        <div class="dropdown-menu feature-menu dropdown-subject">
 		                            <div class="tree-wrap"> 
 		
 		                              <div class="feature-container">                             
@@ -325,7 +326,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature2a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature2b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
 		                              </div>
 		                                                          
 		                            </div>                      
@@ -335,11 +336,11 @@
 		
 		                  <!-- feature 3 region -->
 		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-		                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
+		                        <span class="filter region"><label>Filter:</label> <span id="matches3"></span></span>                                               
 		                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
-		                        <button id="feature3b-reset" class="feature-reset">&times;</button>
+		                        <button id="feature3a-reset" class="feature-reset">&times;</button>
 		                                              
-		                        <div class="dropdown-menu feature-menu">
+		                        <div class="dropdown-menu feature-menu dropdown-region">
 		                            <div class="tree-wrap"> 
 		
 		                              <div class="feature-container">                             
@@ -348,7 +349,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature3a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature3b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
 		                              </div>
 		                                                          
 		                            </div>                      
@@ -519,20 +520,22 @@
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
-  <!-- Load scripts for open layer maps used in places -->
+    <!-- Load scripts for open layer maps used in places -->
   <?php if(!$subject): ?>
   <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAXpnXkPS39-Bo5ovHQWvyIk6eMgcvc1q4&amp;sensor=false"></script>
   <script src="http://openlayers.org/api/OpenLayers.js" type="text/javascript"></script>
   <script src="http://www.thlib.org/places/maps/interactive/scripts/THLWMS.js" type="text/javascript"></script>
   <script src="<?php print $theme_path; ?>/js/inset-map.js" type="text/javascript"></script>
   <?php endif ?>
+  
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
   <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
+  
   <script>
   jQuery(function ($) {
-		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections ul");
+		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections>ul");
 	});
 	</script>
 </body>

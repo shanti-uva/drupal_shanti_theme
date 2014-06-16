@@ -16,7 +16,7 @@ function processPlacesData(data) {
   $('a[href="#tab-subjects"]').unbind('show.bs.tab');
 
   //Remove previous binds for the accordion
-  $("#collapseOne").unbind('show.bs.collapse');
+  $("#collapseOne").unbind('show.bs.collapse');  // note: perhaps this needs expansion options for more than 2 accordions 
   $("#collapseTwo").unbind('show.bs.collapse');
 
   //Change the page title to that of the new page being loaded
