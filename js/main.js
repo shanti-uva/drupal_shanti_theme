@@ -8,6 +8,9 @@ var Settings = {
 }
 
 
+
+
+
 // *** NAVIGATION *** top drilldown menu
 jQuery(function ($) {
   $( '#menu' ).multilevelpushmenu({
@@ -17,18 +20,9 @@ jQuery(function ($) {
     direction: 'rtl',
     backItemIcon: 'fa fa-angle-left',
     groupIcon: 'fa fa-angle-right',
-    collapsed: true
+    collapsed: false
   });
-
-  // --- expand
-  $( '.menu-toggle' ).click(function(){
-    $('.menu-toggle').toggleClass('show-topmenu');
-    $('#menu').multilevelpushmenu( 'expand' );
-
-    if($('.menu-toggle').hasClass('show-topmenu')) {
-      $('#menu').multilevelpushmenu( 'collapse' );
-    }
-  });
+  
   // --- align the text
   $('#menu ul>li, #menu h2').css('text-align','left');
   $('#menu ul>li.levelHolderClass.rtl').css('text-align','right');
@@ -37,28 +31,62 @@ jQuery(function ($) {
   // --- close the menu on outside click except button
   $('.menu-toggle').click( function(event){
       event.stopPropagation();
-      $('#menu').toggle();
+      $('#menu').toggle(50);
+      $('.menu-toggle').toggleClass('show-topmenu');
+      $('.collections').slideUp(200);
+      $('.menu-exploretoggle').removeClass('show-topmenu');
+   });
+
+	// --- close the menu on outside click except button
+  $('.menu-exploretoggle').click( function(event){
+      event.stopPropagation();
+      $('.collections').slideUp();
   });
-  
+    
   $(document).click( function(){
-      $('#menu').hide();
       $('.menu-toggle').removeClass('show-topmenu');
-      $('#menu').multilevelpushmenu( 'collapse' );
-  });   
+      $('#menu').hide(100);
+      // $('.collections').slideUp(200);
+      // $(".collections").css('display','none');
+  });  
+        
 });
 
 
 
 
 
-$(document).ready(function () {
+
+
+
+
+
+// *** CONTENT *** accordion toggle
+$.fn.accordionFx = function() {
+    return this.each(function(i, accordion) {
+        $(".accordion-toggle", accordion).click(function(ev) {
+            var link = ev.target;
+            var header = $(link).closest(".panel-heading");
+            var chevState = $("i.glyphicon", header)
+                .toggleClass('glyphicon-minus glyphicon-plus');
+            $("i.glyphicon", accordion)
+                .not(chevState)
+                .removeClass("glyphicon-minus")
+                .addClass("glyphicon-plus");
+        });
+    });
+};
+jQuery(function ($) {
+	$('#accordion').accordionFx();
+});
+
+
+jQuery(function ($) {
+	// *** CONTENT *** hide responsive column for resources
   $('[data-toggle=offcanvas]').click(function () {
     $('.row-offcanvas').toggleClass('active');
   });
 });
-
-
-
 
 // jQuery(function ($) {
 
@@ -74,18 +102,26 @@ $(document).ready(function () {
 
 
 
-// --- breadcrumbs 
+// *** NAVIGTION *** breadcrumbs 
 jQuery(function ($) {
   $(".breadwrap").jBreadCrumb({   
-        minimumCompressionElements: 4,
+        minimumCompressionElements: 1,
         easing: "easeOutQuad",
-        endElementsToLeaveOpen: 3,
-        beginingElementsToLeaveOpen: 0,
+        endElementsToLeaveOpen: 1,
+        beginingElementsToLeaveOpen: 1,
         timeExpansionAnimation: 500,
         timeCompressionAnimation: 500,
         timeInitialCollapse: 600,
-        previewWidth: 10  
+        previewWidth: 25  
   });
+  
+  if($("breadCrumb > li > a:contains('Subjects')")) {
+	  $("breadCrumb li a").find("i").css('background','#dc3c47');
+  }
+  if($("breadCrumb > li > a:contains('Places')")) {
+	  $("breadCrumb li a").find("i").css('background','#4CA6FB');
+  }  
+  
 });
 
 
@@ -141,7 +177,6 @@ jQuery(function ($) {
   });
   // toggle heights with search options
   $(".advanced-link").click(function () {
-    var winHeight = $(window).height();
     $(".view-wrap").css({ "height": viewHeight });
     $("#kmaps-search .view-wrap.short-wrap").css({ "height": shortHeight });
   });
@@ -249,7 +284,6 @@ function decorateElementWithPopover(elem, node) {
                 var video_count = Number($(xml).find('video_count').text());
                 var document_count = Number($(xml).find('document_count').text());
 
-                // perhaps instead of vertical bars this should be done as spans then styled via css
                 if (related_count) counts.html("<span class='associated'><i class='icon km-sources'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
                 if (description_count) counts.append("<span class='associated'><i class='icon km-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
                 if (place_count) counts.append("<span class='associated'><i class='icon km-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
@@ -336,7 +370,7 @@ jQuery(function ($) {
 //                position: 'relative'
 //            });
             // I suppose some of this styling should go into a css file instead
-            mask = $('<div class="overlay-mask"><div style="text-align:center"><i class="glyphicon glyphicon-time" style="font-size: 5em"></i></div></div>');
+            mask = $('<div class="overlay-mask"><div><i class="glyphicon glyphicon-time"></i></div></div>');
             mask.css({
                 position: 'absolute',
                 width: '100%',
@@ -392,7 +426,7 @@ jQuery(function ($) {
 //            } else {
 //                $('.dataTables_paginate').show();
 //            }
-            $('.title-field').trunk8({ tooltip:false });// .popover();
+            $('.title-field').trunk8({ tooltip:false }); // .popover();
         },
         "fnInitComplete": function() {
             $('.title-field').trunk8({ tooltip:false }); // .popover();
@@ -1203,7 +1237,7 @@ function processSubjectsData(data) {
   };
 
   //Removes previous binds for the show related tabs.
-  $('a[href="#tab-related"]').unbind('show.bs.tab');
+  $('a[href="#tab-subjects"]').unbind('show.bs.tab');
 
   //Removes previous binds for the show related photos tab.
   $('a[href="#tab-photos"]').unbind('show.bs.tab');
@@ -1228,7 +1262,7 @@ function processSubjectsData(data) {
 
   //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadCrumb li").remove();
-  $("ol.breadCrumb").append('<li><a href=""><span class="tag-before-breadcrumb">Subjects:</span></a></li>');
+  $("ol.breadCrumb").append('<li><a href="">Subjects:</a></li>');
   $.each(data.feature.ancestors, populateBreadcrumbs);
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
@@ -1240,17 +1274,17 @@ function processSubjectsData(data) {
   $tabOverview.empty();
   $tabOverview.append('<h6>' + data.feature.header + '</h6>');
   if (data.feature.summaries.length > 0) {$tabOverview.append(data.feature.summaries[0].content)}
-  if (data.feature.illustrations.length > 0) {
+  if (data.feature.illustrations.length > 0 && data.feature.illustrations[0].type != 'external') {
     $.get(data.feature.illustrations[0].url, showOverviewImage);
   }
   $(".content-resources ul.nav-pills li.overview").show();
 
   //Related content section
   if (data.feature.associated_resources.related_feature_count > 0) {
-    $("ul.nav li a[href='#tab-related'] .badge").text(data.feature.associated_resources.related_feature_count);
-    $(".content-resources ul.nav-pills li.related").show();
-    $('a[href="#tab-related"]').one('show.bs.tab', function(e) {
-      var $tabRelated = $("#tab-related");
+    $("ul.nav li a[href='#tab-subjects'] .badge").text(data.feature.associated_resources.related_feature_count);
+    $(".content-resources ul.nav-pills li.subjects").show();
+    $('a[href="#tab-subjects"]').one('show.bs.tab', function(e) {
+      var $tabRelated = $("#tab-subjects");
       $tabRelated.empty();
       $tabRelated.append('<h6>' + data.feature.header + '</h6>');
       var relatedUrl = Settings.baseUrl + "/features/" + data.feature.id + "/related.json";
@@ -1285,7 +1319,7 @@ function processSubjectsData(data) {
   }
 
   //Related Photos (picture) section
-  if (data.feature.associated_resources.picture_count > 0) {
+  if (data.feature.associated_resources.picture_count > 0 || data.feature.id == 1300) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
     $(".content-resources ul.nav-pills li.photos").show();
     $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
@@ -1294,6 +1328,7 @@ function processSubjectsData(data) {
       $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
       var photosURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/pictures.json?per_page=30";
       shanti.photosURL = photosURL;
+      shanti.feature_id = data.feature.id;
       //$.get(photosURL, relatedPhotos);
       $.ajax({
         url: photosURL,
@@ -1309,7 +1344,7 @@ function processSubjectsData(data) {
   }
 
   //Related Audio-Video (videos) section
-  if (data.feature.associated_resources.video_count > 0) {
+  if (data.feature.associated_resources.video_count > 0 || data.feature.id == 302) {
     $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count);
     $(".content-resources ul.nav-pills li.audio-video").show();
     $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
@@ -1333,11 +1368,16 @@ function processSubjectsData(data) {
       $.get(textsURL, relatedTexts);
     });
   }
+
+  // var testUrl = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24803_lookup.links.source_id/' + data.feature.id + '.json';
+  // $.get(testUrl, function(data) {
+  //   console.log(data);
+  // });
 }
 
 function populateBreadcrumbs(bInd, bVal) {
   $breadcrumbOl = $("ol.breadCrumb");
-  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a></li>');
+  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
 }
 
 function showOverviewImage(data) {
@@ -1353,7 +1393,7 @@ function showOverviewImage(data) {
 
 //Function to populate related tab
 function relatedResources(data) {
-  var $tabRelated = $("#tab-related");
+  var $tabRelated = $("#tab-subjects");
   var contentR = '<ul class="list-unstyled list-group">';
   $.each(data.feature_relation_types, function(rInd, rElm) {
     contentR += '<li class="list-group-item">' + capitaliseFirstLetter(rElm.label) + ' the following ' + 
@@ -1373,6 +1413,13 @@ function relatedResources(data) {
 function relatedPhotos(data) {
   
   var contentPh = '<div class="related-photos">';
+
+  //First get and show photos from sharedshelf
+  var sharedShelfURL = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24803_lookup.links.source_id/' + shanti.feature_id + '.json';
+  $.get(sharedShelfURL, function(ssData) {
+    console.log(ssData);
+  });
+
   $.each(data.topic.media, function(rInd, rElm) {
     contentPh += '<div class="each-photo">';
     contentPh += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
@@ -1578,6 +1625,7 @@ function paginatedPhotos(data) {
 
 //Function to process and show related videos
 function relatedVideos(data) {
+  console.log(data);
   var contentAV = '<div class="related-audio-video">';
 
   $.each(data.media, function(rInd, rElm) {
@@ -1771,30 +1819,22 @@ jQuery(function ($) {
       hidePanelsOnClose:false,
       accordionPanels:false,
       onExtOpen:function(){  },
-      onExtContentLoad:function(){ $(".menu-main").metisMenu(); },
+      onExtContentLoad:function(){ $(".menu-main").metisMenu({ toggle: false }); },
       onExtClose:function(){},
-      
-      // onExtContentLoad:function(){$("../menus-ajax.html").openPanel();},
       top: 0
-
   }); 
 
   $("#menu-collections").buildMbExtruder({
       positionFixed: false,
       position: "right",
       width:280, // width is set in two places, here and the css
-
       hidePanelsOnClose:false,
       accordionPanels:false,
-      onExtOpen:function(){ $(".menu-main").metisMenu(); },
+      onExtOpen:function(){ $(".menu-main").metisMenu({ toggle: false }); },
       onExtContentLoad:function(){  },
       onExtClose:function(){},
-
       top: 0
-
   });
-
-	// $("#menu-main .extruder-content").css( {'background':'#888 !important'} );
 	
 	// this is for the responsive button
   $(".kmaps-searchtoggle").click(function () {   
@@ -1809,15 +1849,13 @@ jQuery(function ($) {
         $("#kmaps-search").openMbExtruder();
         $(".kmaps-searchtoggle").addClass("show-topmenu");
         $(".menu-maintoggle,.menu-exploretoggle").removeClass("show-topmenu");
-        // $("#menu-main").load("./menus-ajax.html");
-        
+        // $("#menu-main").load("./menus-ajax.html");        
         // $(".menu-collections-wrap .accordion-toggle").addClass("collapsed");
         // $(".menu-collections-wrap .panel-collapse").removeClass("in").css('height','0');
         return false;
       }
   });
-  
-  
+    
   $(".menu-maintoggle").click(function () {   
       if($("#menu-main.extruder").hasClass("isOpened")){    
         $("#menu-main").closeMbExtruder();
@@ -1828,7 +1866,7 @@ jQuery(function ($) {
         $("#menu-main").openMbExtruder();
         $("#kmaps-search").closeMbExtruder();
         $("#menu-collections").closeMbExtruder();
-        $(".menu-commons, .menu-options, .menu-collections").css('display','block');
+        $(".menu-commons, .menu-preferences, .menu-collections").css('display','block');
         
         $(".menu-commons").addClass("active");
         
@@ -1845,12 +1883,14 @@ jQuery(function ($) {
 
   $(".menu-exploretoggle").click(function () {   
       if($("#menu-collections.extruder").hasClass("isOpened")){   
+        
         $("#menu-collections").closeMbExtruder();
         $(".menu-exploretoggle").removeClass("show-topmenu");
+        // $(".bottom-trim").remove();
                 
       } else {
         
-        $(".menu-commons, .menu-options").css('display','none');
+        $(".menu-commons, .menu-preferences").css('display','none');
         $(".menu-collections").css('display','block');
         
         $(".menu-collections").addClass("active");
@@ -1861,10 +1901,14 @@ jQuery(function ($) {
         $("#kmaps-search").closeMbExtruder();
         
         $(".menu-exploretoggle").addClass("show-topmenu");  
-        $(".menu-maintoggle,.kmaps-searchtoggle").removeClass("show-topmenu");      
+        $(".menu-maintoggle,.kmaps-searchtoggle").removeClass("show-topmenu");    
+        
+        // $(".menu-collections").find("ul").append("<li class='bottom-trim'></li>");  
         return false;
       }
   });
+  
+  
   
   // --- desktop version - big dropdown collections toggle
   $("li.explore").addClass("closed");
@@ -1886,17 +1930,19 @@ jQuery(function ($) {
 });
 
 
-// *** GLOBAL *** ie browser alert, equal-heights, off-canvas panel
+
 jQuery(function ($) {
   // show-hide the IE message for older browsers
-  // this could be improved with conditional for - lte IE7 - so it does not self-hide
   $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
-
   
-  $(".main-col.active").equalHeights(); 
-  $(".content-resources > ul").find("a").click(function (event) { 
-  		$(".main-col.active").equalHeights(); 
-  });
+  // $(".main-col.active").equalHeights(); 
+  // $(document).click( function(){
+  // 	$(".main-col.active").equalHeights();
+  // });
+  //
+  // $(".content-resources > ul > li").find("a").click(function (event) { 
+  //		$(".main-col.active").equalHeights(); 
+  // });
   
 });
 
@@ -1904,6 +1950,29 @@ jQuery(function ($) {
 
 
 
+
+
+
+  
+//  one menu button instead of two, needs re-initiation on resize
+// jQuery(function ($) {
+//     var $window = $(window);
+// 
+//     function checkWidth() {
+//         var windowsize = $window.width();
+//         if (windowsize <= 767) {
+// 	         // $("#respond").removeClass("menu-toggle");
+// 	         // $("#respond").addClass("menu-maintoggle");  
+// 	         $("#menu").hide(200); 
+//         } else {
+// 	         // $("#respond").addClass("menu-toggle");
+// 	         // $("#respond").removeClass("menu-maintoggle");
+// 	         $("#menu-main").hide(200);
+//         }
+//     }
+//     checkWidth();
+//     $window.resize(checkWidth);
+// });
 
 
 

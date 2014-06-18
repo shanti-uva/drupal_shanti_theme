@@ -177,10 +177,21 @@ h6.custom-inline {
   display: inline;
 }
 
+.summary-overview {
+  margin-top: 20px;
+}
 
+.list-group {
+  margin-bottom: 0;
+}
 
+.list-group-item {
+  padding: 2px 15px;
+}
 
-
+.center-me {
+  text-align: center;
+}
 
 
 

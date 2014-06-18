@@ -15,31 +15,35 @@
   <meta name="description" content="template">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php print $theme_path; ?>/src/skin-bootstrap/ui.fancytree.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/utils.css">
+  <link rel="stylesheet" href="//vjs.zencdn.net/4.5/video-js.css">  
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
-  <link href="//vjs.zencdn.net/4.5/video-js.css" rel="stylesheet">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
+  
   <?php if(!$subject): ?>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
+  <link rel="stylesheet" type="text/css" href="http://openlayers.org/api/theme/default/style.css">
   <?php endif ?>
-  <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   
+  <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
   <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -<i class="icon km-close"></i></p><![endif]-->
   <div class="wrap-all">
-  <a href=".main-content" class="sr-only">Skip to main content</a>
+  		<span class="sr-only"><a href=".main-content">Skip to main content</a> <a href="#kmaps-search">Skip to search</a></span>
   <header class="header-banner">
     <div class="navbar navbar-default navbar-static-top" role="navigation">  
       
-      <div class="menu-buttons" role="navigation">
-        <span class="kmaps-searchtoggle menu-icon"><a href="#"><i class='icon km-search-kmaps'></i></a></span>
-        <span class="menu-toggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
-        <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span>
-        <span class="menu-exploretoggle menu-explore"><a href="#"><span>Explore </span>Collections<i class="icon km-directions"></i></a></span>
-      </div>
+      <nav class="menu-buttons">
+        <span class="kmaps-searchtoggle menu-icon"><a href="#"><i class='icon km-search-kmaps'></i></a></span><!-- mobile < 400 : search -->
+        <span class="menu-toggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span><!-- desktop > 768 drilldown menu : main-menu -->
+        <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span><!-- mobile < 768 : main-menu -->
+        <span class="menu-exploretoggle menu-explore"><a href="#"><span>Explore </span>Collections<i class="icon km-directions"></i></a></span><!-- mobile < 768 : collections -->
+      </nav>
 
       <div class="navbar-header">
         <h1 class="navbar-title"><a href="#" class="navbar-brand" title="SHANTI Homepage"><i class="icon km-logo-kmaps"></i><em>SHANTI</em>
@@ -47,14 +51,14 @@
         </h1>
       </div>
 
-      <nav class="navbar-collapse collapse navtop">
+      <nav class="navbar-collapse collapse navtop"> <!-- desktop display > 768 -->
        <form class="form">
        <fieldset>         
-        <ul class="nav navbar-nav navbar-right" role="navigation">
+        <ul class="nav navbar-nav navbar-right">
           <li class="explore"><a href="#">Explore Collections<i class="icon km-directions"></i></a></li>
-          <li class="dropdown lang highlight">                    
-              <a href="" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
-              <ul class="dropdown-menu dropdown-features" role="menu">
+          <li class="dropdown lang highlight" id="lang">                    
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
+              <ul class="dropdown-menu">
                 <li class="form-group"><label class="radio-inline" for="optionlang1">
                     <input type="radio" name="radios" id="optionlang1" value="lang1">Tibetan</label>
                 </li>
@@ -67,7 +71,7 @@
                 <li class="last form-group"><label class="radio-inline" for="optionlang4">
                     <input type="radio" name="radios" id="optionlang4" value="lang4">Chinese</label>
                 </li>
-              </ul>
+              </ul>              
           </li>
         </ul>
        </fieldset>  
@@ -80,26 +84,11 @@
       <nav class="row" role="navigation"> 
          <div class="col-sm-12 col-md-10 col-md-offset-1">          
             <h4>EXPLORE COLLECTIONS</h4>
-            	<div class="kmaps-collections">
-			          <ul>
-			            <li><a href="#"><i class="icon km-subjects"></i>Subjects</a></li>
-			            <li><a href="#"><i class="icon km-places"></i>Places</a></li>
-			            <li><a href="#"><i class="icon km-agents"></i>Agents</a></li>
-			            <li><a href="#"><i class="icon km-events"></i>Events</a></li>
-			            <li><a href="#"><i class="icon km-photos"></i>Photos</a></li>
-			            <li><a href="#"><i class="icon km-audiovideo"></i>Audio-Video</a></li>
-			            <li><a href="#"><i class="icon km-visuals"></i>Visuals</a></li>
-			            <li><a href="#"><i class="icon km-essays"></i>Essays</a></li>
-			            <li><a href="#"><i class="icon km-texts"></i>Texts</a></li>
-			            <li><a href="#"><i class="icon km-maps"></i>Maps</a></li>
-			            <li><a href="#"><i class="icon km-community"></i>Community</a></li>
-			            <li><a href="#"><i class="icon km-terms"></i>Terms</a></li>
-			            <li><a href="#"><i class="icon km-sources"></i>Sources</a></li>
-			            <li class="bottom-trim"></li>
-								</ul>
-						</div>
+            <div id="kmaps-collections"> 
+            	<!-- load ajax menu --> 
+            </div>
          </div>
-          <span class="closecollection"> <i class="icon km-close"></i> </span>
+          <button class="closecollection"> <i class="icon km-close"></i> </button>
       </nav>
     </section><!-- END dropdown panel -->
   </header><!-- END container -->
@@ -108,7 +97,7 @@
 
 
   
-  <!-- BEGIN content -->
+  <!-- BEGIN Content -->
   <main class="main-wrapper container">
     <article class="main-content" role="main">
      
@@ -125,10 +114,13 @@
 			</header>
     </div>
     
-    <!-- CONTENT SECTION: Two Columns: content-resources and content-section -->
-    <div class="row row-offcanvas row-offcanvas-left">              
+    <!-- Two Columns: content-resources and content-section -->
+    <div class="row row-offcanvas row-offcanvas-left">
+    
+    <!-- Column Resources  -->              
     <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
-     <div class="main-col active">
+    <div class="main-col active">
+
       <ul class="nav nav-pills nav-stacked">
         <li class="overview active"><a href="#tab-overview" data-toggle="pill">
         	<i class="icon"></i>Overview</a>
@@ -173,96 +165,58 @@
         	<i class="icon"></i>Sources<span class="badge">3</span></a>
         </li>
       </ul> 
-     </div>
+    </div>
     </aside> 
-                      
+    
+    <!-- Column Main  -->                   
     <section  class="content-section col-xs-12 col-sm-9">
 	    <!-- button for responsive menu toggle -->
 	    <button type="button" class="btn btn-default btn-xs visible-xs view-resources" data-toggle="offcanvas"><i class="fa"></i><span class="header">RESOURCES</span><span class="badge">13489</span><span class="hide-panel">&times;</span></button>
 	    
       <div class="tab-content">
+      
         <article class="tab-pane main-col active" id="tab-overview">
-        <h6></h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        </article>
-        <!-- END tab-pane active -->
-
-        <article class="tab-pane main-col" id="tab-related">
-          <h6>Essays</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
-        </article>
-
-        <article class="tab-pane main-col" id="tab-essays">
-          <h6>Essays</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-subjects">
-          <h6>Subjects</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
         </article>
 
-        <article class="tab-pane main-col" id="tab-places">
-          <h6>Places</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-        </article>
+        <article class="tab-pane main-col" id="tab-essays">
+				</article>
 
+				<article class="tab-pane main-col" id="tab-places">
+        </article>
+                        
         <article class="tab-pane main-col" id="tab-agents">
-          <h6>Agents</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-events">
-          <h6>Events</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-photos">
-          <h6>Photos</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-audio-video">
-          <h6>Audio-Video</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-visuals">
-          <h6>Visuals</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-texts">
-          <h6>Texts</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-maps">
-          <h6>Maps</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-community">
-          <h6>Community</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-terms">
-          <h6>Terms</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
         </article>
 
         <article class="tab-pane main-col" id="tab-sources">
-          <h6>Sources</h6>
-          <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>
         </article>
+      
       </div><!-- END tab-content -->
     </section><!-- END content-page -->    
 
@@ -274,194 +228,181 @@
  
  
  
-  <!-- BEGIN Search Panel --> 
-  <section id="kmaps-search" role="search">               
-      <!-- BEGIN input section -->                    
-      <section class="input-section">                   
-        <form class="form">
-         <fieldset>                       
-            <div class="search-group">                        
-		            <div class="input-group">
-				            <input type="text" class="form-control kms" id="searchform" placeholder="Enter Search...">
-				            <span class="input-group-btns">
-				              <button type="button" class="btn btn-default" id="searchbutton"><i class="icon"></i></button>
-				              <button type="reset" class="searchreset">&times;</button>
-				            </span>
+		  <!-- BEGIN Search Panel --> 
+		  <section id="kmaps-search" role="search">               
+		      <!-- BEGIN Input section -->                    
+		      <section class="input-section" style="display:none;">                   
+		        <form class="form">
+		         <fieldset>                       
+		            <div class="search-group">                        
+				            <div class="input-group">
+						            <input type="text" class="form-control kms" id="searchform" placeholder="Enter Search...">
+						            <span class="input-group-btns">
+						              <button type="button" class="btn btn-default" id="searchbutton"><i class="icon"></i></button>
+						              <button type="reset" class="searchreset">&times;</button>
+						            </span>
+				            </div>
+				            
+				           <!-- search scope -->
+				           <div class="form-group">
+				               <label class="checkbox-inline"><input type="checkbox" id="summaryscope" name="summary-scope" checked="checked" data-value="summaries">Summaries</label>
+				               <label class="checkbox-inline" ><input type="checkbox" id="essayscope" name="essay-scope" data-value="essays">Essays</label>            
+											 <a href="#" class="advanced-link toggle-link"><i class="icon"></i>Advanced</a>					  
+									 </div>
+							 </div><!-- END search group -->
+							 
+		           <div id="notification-wrapper"></div>
+		                
+		           <section class="advanced-view" style="display:none;">                                              
+		                  <div class="form-group"> 
+		                    <label class="radio-inline" for="radios-0">
+		                      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+		                        All Text</label> 
+		                    <label class="radio-inline" for="radios-1">
+		                      <input type="radio" name="radios" id="radios-1" value="2">
+		                        Name </label> 
+		                  </div>
+		                                              
+		                  <div class="form-group">
+		                    <label class="radio-inline" for="radios-2">
+		                      <input type="radio" name="radios2" id="radios-2" value="3" checked="checked">
+		                        Contains</label> 
+		                    <label class="radio-inline" for="radios-3">
+		                      <input type="radio" name="radios2" id="radios-3" value="4">
+		                        Starts With</label>
+		                    <label class="radio-inline" for="radios-4">
+		                      <input type="radio" name="radios2" id="radios-4" value="5">
+		                        Exactly</label>                             
+		                  </div>
+		                  
+		                  <div class="form-group">
+		                    <label class="checkbox-inline" for="checkbox-1">
+		                      <input type="checkbox" name="checkbox" id="checkbox-1" value="6">
+		                        Show only entries with essays</label> 
+		                  </div>
+		
+		                  <div class="form-group">                                    
+		                    <label class="checkbox-inline" for="checkbox-2">
+		                      <input type="checkbox" name="checkbox" id="checkbox-2" value="7" checked="checked">
+		                        Show feature details</label>                              
+		                  </div>
+		                  
+		                                    
+		                  <!-- feature 1 type -->
+		                  <div class="form-group km-input feature-group dropdown">
+		                        <span class="filter type"><label>Filter:</label> <span id="matches1"></span></span>                                               
+		                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
+		                        <button id="feature1a-reset" class="feature-reset">&times;</button>
+		                                              
+		                        <div class="dropdown-menu feature-menu dropdown-type">
+		                            <div class="tree-wrap"> 
+		
+		                              <div class="feature-container">                             
+		                                <div id="feature-tree1"></div> <!-- features tree, under construction -->                              
+		                              </div> 
+		                                                          
+		                              <div class="feature-submit">
+		                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
+		                                <button type="reset" id="feature1b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                              </div>
+		                                                          
+		                            </div>                      
+		                        </div> <!-- END dropdown-menu -->                        
+		                  </div> <!-- END feature-group -->
+		
+		
+		                  <!-- feature 2 subject -->
+		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
+		                        <span class="filter subject"><label>Filter:</label> <span id="matches2"></span></span>                                               
+		                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
+		                        <button id="feature2a-reset" class="feature-reset">&times;</button>
+		                                              
+		                        <div class="dropdown-menu feature-menu dropdown-subject">
+		                            <div class="tree-wrap"> 
+		
+		                              <div class="feature-container">                             
+		                                <div id="feature-tree2"></div> <!-- features tree, under construction -->                              
+		                              </div> 
+		                                                          
+		                              <div class="feature-submit">
+		                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
+		                                <button type="reset" id="feature2b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                              </div>
+		                                                          
+		                            </div>                      
+		                        </div> <!-- END dropdown-menu -->                       
+		                  </div> <!-- END feature-group -->
+		                  
+		
+		                  <!-- feature 3 region -->
+		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
+		                        <span class="filter region"><label>Filter:</label> <span id="matches3"></span></span>                                               
+		                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
+		                        <button id="feature3a-reset" class="feature-reset">&times;</button>
+		                                              
+		                        <div class="dropdown-menu feature-menu dropdown-region">
+		                            <div class="tree-wrap"> 
+		
+		                              <div class="feature-container">                             
+		                                <div id="feature-tree3"></div> <!-- features tree, under construction -->                              
+		                              </div> 
+		                                                          
+		                              <div class="feature-submit">
+		                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
+		                                <button type="reset" id="feature3b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                              </div>
+		                                                          
+		                            </div>                      
+		                        </div> <!-- END dropdown-menu -->                        
+		                  </div> <!-- END feature-group -->
+		                  
+		           </section><!-- END advanced section -->
+		         </fieldset>         
+		       </form>
+		      </section> <!-- END input section -->
+		
+		      <!-- BEGIN view section -->                                  
+		      <section class="view-section">             
+		        <ul class="nav nav-tabs">
+		          <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon km-tree"></i>Tree</a></li>
+		          <li class="listview"><a href=".listview" data-toggle="tab"><i class="icon km-list"></i>List</a></li>
+		        </ul>           
+		        <div class="tab-content">
+		                          
+		          <!-- TAB - tree view -->
+		          <div class="treeview tab-pane active">        
+		              <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
+		          </div>          
+		          <!-- TAB - list view -->
+		          <div class="listview tab-pane">   
+		            <div class="view-wrap"> <!-- view-wrap controls container height -->              
+		              <div class="table-responsive">
+		                 <table class="table table-condensed table-results">
+		                  <thead>
+		                      <tr>
+		                        <th>Name</th>
+		                        <th>Feature Type</th>
+		                      </tr>
+		                  </thead>
+		                  <tbody></tbody>
+		                 </table>                                   
+		              </div>
 		            </div>
-		            
-		           <!-- search scope -->
-		           <div class="form-group">
-		               <label class="checkbox-inline"><input type="checkbox" id="summaryscope" name="summary-scope" checked="checked" data-value="summaries">Summaries</label>
-		               <label class="checkbox-inline" ><input type="checkbox" id="essayscope" name="essay-scope" data-value="essays">Essays</label>            
-									 <a href="#" class="advanced-link toggle-link"><i class="icon"></i>Advanced</a>					  
-							 </div>
-					 </div><!-- END search group -->
-					 
-           <div id="notification-wrapper"></div>
-                
-           <section class="advanced-view" style="display:none;">                                              
-                  <div class="form-group"> 
-                    <label class="radio-inline" for="radios-0">
-                      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
-                        All Text</label> 
-                    <label class="radio-inline" for="radios-1">
-                      <input type="radio" name="radios" id="radios-1" value="2">
-                        Name </label> 
-                  </div>
-                                              
-                  <div class="form-group">
-                    <label class="radio-inline" for="radios-2">
-                      <input type="radio" name="radios2" id="radios-2" value="3" checked="checked">
-                        Contains</label> 
-                    <label class="radio-inline" for="radios-3">
-                      <input type="radio" name="radios2" id="radios-3" value="4">
-                        Starts With</label>
-                    <label class="radio-inline" for="radios-4">
-                      <input type="radio" name="radios2" id="radios-4" value="5">
-                        Exactly</label>                             
-                  </div>
-                  
-                  <div class="form-group">
-                    <label class="checkbox-inline" for="checkbox-1">
-                      <input type="checkbox" name="checkbox" id="checkbox-1" value="6">
-                        Show only entries with essays</label> 
-                  </div>
-
-                  <div class="form-group">                                    
-                    <label class="checkbox-inline" for="checkbox-2">
-                      <input type="checkbox" name="checkbox" id="checkbox-2" value="7" checked="checked">
-                        Show feature details</label>                              
-                  </div>
-                  
-                                    
-                  <!-- feature 1 type -->
-                  <div class="form-group km-input feature-group dropdown">
-                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
-                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
-                        <button id="feature1b-reset" class="feature-reset">&times;</button>
-                                              
-                        <div class="dropdown-menu feature-menu">
-                            <div class="tree-wrap"> 
-
-                              <div class="feature-container">                             
-                                <div id="feature-tree1"></div> <!-- features tree, under construction -->                              
-                              </div> 
-                                                          
-                              <div class="feature-submit">
-                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
-                                <button type="reset" id="feature1a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
-                              </div>
-                                                          
-                            </div>                      
-                        </div> <!-- END dropdown-menu -->                        
-                  </div> <!-- END feature-group -->
-
-
-                  <!-- feature 2 subject -->
-                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
-                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
-                        <button id="feature2b-reset" class="feature-reset">&times;</button>
-                                              
-                        <div class="dropdown-menu feature-menu">
-                            <div class="tree-wrap"> 
-
-                              <div class="feature-container">                             
-                                <div id="feature-tree2"></div> <!-- features tree, under construction -->                              
-                              </div> 
-                                                          
-                              <div class="feature-submit">
-                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
-                                <button type="reset" id="feature2a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
-                              </div>
-                                                          
-                            </div>                      
-                        </div> <!-- END dropdown-menu -->                       
-                  </div> <!-- END feature-group -->
-                  
-
-                  <!-- feature 3 region -->
-                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
-                        <span class="filter"><label>Filter:</label> <span id="matches"></span></span>                                               
-                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
-                        <button id="feature3b-reset" class="feature-reset">&times;</button>
-                                              
-                        <div class="dropdown-menu feature-menu">
-                            <div class="tree-wrap"> 
-
-                              <div class="feature-container">                             
-                                <div id="feature-tree3"></div> <!-- features tree, under construction -->                              
-                              </div> 
-                                                          
-                              <div class="feature-submit">
-                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
-                                <button type="reset" id="feature3a-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
-                              </div>
-                                                          
-                            </div>                      
-                        </div> <!-- END dropdown-menu -->                        
-                  </div> <!-- END feature-group -->
-                  
-           </section><!-- END advanced section -->
-         </fieldset>         
-       </form>
-      </section> <!-- END input section -->
-
-      <!-- START view section -->                                  
-      <section class="view-section">             
-        <ul class="nav nav-tabs">
-          <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon km-tree"></i>Tree</a></li>
-          <li class="listview"><a href=".listview" data-toggle="tab"><i class="icon km-list"></i>List</a></li>
-        </ul>           
-        <div class="tab-content">
-                          
-          <!-- TAB - tree view -->
-          <div class="treeview tab-pane active">        
-              <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
-          </div>          
-          <!-- TAB - list view -->
-          <div class="listview tab-pane">   
-            <div class="view-wrap"> <!-- view-wrap controls container height -->              
-              <div class="table-responsive">
-                 <table class="table table-condensed table-results">
-                  <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Feature Type</th>
-                      </tr>
-                  </thead>
-                  <tbody></tbody>
-                 </table>                                   
-              </div>
-            </div>
-          </div>
-        </div>                        
-      </section><!-- END view section -->
-  </section><!-- END kmaps-search -->
-
+		          </div>
+		        </div>                        
+		      </section><!-- END view section -->
+		  </section><!-- END kmaps-search -->
    
     <a href="#" class="back-to-top"><i class="icon"></i></a>    
   </main><!-- END container -->
 
 
- 
-
-	  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">   
-	  </section>
-	  
-	  <section id="menu-collections" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">    
-	  </section>
-	  
-
-  
+	<!-- LOAD menus -->
+  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">   </section>  
+  <section id="menu-collections" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">    </section>
    
- 
-
- 
-
-  
-  <section id="menu" style="display:none;">
-    <nav role="navigation">                
+  <section id="menu" role="navigation" style="display:none;">
+    <nav id="menu-drill">                
      <ul>
        <li><h3><em>Main Menu</em></h3> 
           <a class="link-blocker"></a>
@@ -579,9 +520,23 @@
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
-  <script src="//vjs.zencdn.net/4.5/video.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
+    <!-- Load scripts for open layer maps used in places -->
+  <?php if(!$subject): ?>
+  <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAXpnXkPS39-Bo5ovHQWvyIk6eMgcvc1q4&amp;sensor=false"></script>
+  <script src="http://openlayers.org/api/OpenLayers.js" type="text/javascript"></script>
+  <script src="http://www.thlib.org/places/maps/interactive/scripts/THLWMS.js" type="text/javascript"></script>
+  <script src="<?php print $theme_path; ?>/js/inset-map.js" type="text/javascript"></script>
+  <?php endif ?>
   
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
+  <?php if(!$subject): ?>
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
+  <?php endif ?>
+  
+  <script>
+  jQuery(function ($) {
+		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections>ul");
+	});
+	</script>
 </body>
 </html>
