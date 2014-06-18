@@ -543,16 +543,12 @@ jQuery(function ($) {
                     var table = $('div.listview div div.table-responsive table.table-results');
                     $.each(list, function (x, y) {
                         table.find('tbody').append(
-                            $('<tr>')
-                                .append(decorateElementWithPopover($('<td>'), y)
-                                    .append(
-                                        $('<span class="title-field">').text(y.title).attr('kid', y.key)
-                                            .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false }))
-                                    )
-                                .append($('<td>' + resultHash[y.key] + '</td>')
-                        )
+                            decorateElementWithPopover(
+                                $('<tr>')
+                                .append($('<td>'))
+                                .append($('<span class="title-field">').text(y.title).attr('kid', y.key).highlight(txt, { element: 'mark' }).trunk8({ tooltip: false }))
+                                .append($('<td>' + resultHash[y.key] + '</td>')), y)
                         );
-
                     });
 
                     $("table.table-results tbody tr").click(function (event) {
