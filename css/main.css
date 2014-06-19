@@ -1181,7 +1181,7 @@ ul.menu-main>li>a:first-child {
 	.menu-maintoggle{ display:none; }
 	.menu-toggle{ display:inline-block; -webkit-box-shadow: 0px 3px 10px hsla(0, 0%, 0.0000%, 0.14); box-shadow: 0px 3px 10px hsla(0, 0%, 0.0000%, 0.14); }   
 	.navbar-default .navbar-nav>li>a{ background:transparent; }
-	.navbar-default h1 i.icon{ font-size:1.63em; line-height:1.68em; position:relative; top:1px;; }
+	.navbar-default h1 i.icon{ font-size:1.63em; line-height:1.68em; position:relative; top:1px; }
   .navbar-header h1.navbar-title a span{ font-size:0.83em; position:relative; top:-5px; }	 
 
 	.collections h4 {

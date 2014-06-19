@@ -261,6 +261,8 @@ function decorateElementWithPopover(elem, node) {
     jQuery(elem).attr('title', node.title + kmapid);
     jQuery(elem).popover();
     jQuery(elem).on('shown.bs.popover', function(x) {
+    
+    		$(".popover").addClass("searchPop"); // target css styles on search tree popups
 
         var counts = jQuery(elem.parentNode||elem[0].parentNode).find('.info-wrap .counts-display');
         // alert(node.key + counts);
@@ -357,7 +359,8 @@ jQuery(function ($) {
     $.fn.popover.Constructor.DEFAULTS.trigger = 'hover';
     $.fn.popover.Constructor.DEFAULTS.placement = 'left';
     $.fn.popover.Constructor.DEFAULTS.html = true;
-    $.fn.popover.Constructor.DEFAULTS.delay.hide = '5000'
+    $.fn.popover.Constructor.DEFAULTS.delay.hide = '5000';
+    $.fn.popover.Constructor.DEFAULTS.container = 'body';
 
 
     $.fn.overlayMask = function (action) {

@@ -491,13 +491,13 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 /* .listview td.sorting_1 { min-width: 12em;} */
 .view-section div.title-field { position: static;float: none;/*width: 85%;*//*max-height: 1.3em;*//*white-space: nowrap;*//*overflow: hidden;*//*text-overflow: ellipsis;*/}
 
-.view-section .popover{ display:none;}
+.searchPop .popover{ display:none;}
 
 .overlay-mask .glyphicon{ font-size:5em;}
 .overlay-mask > div{ text-align:center;}
-.view-section .popover-content {font-family: sans-serif;font-size: smaller;}
-.view-section .popover-content > blockquote p {font-size: 13px;}
-.view-section .popover-content > blockquote {
+.searchPop .popover-content {font-family: sans-serif;font-size: smaller;}
+.searchPop .popover-content > blockquote p {font-size: 13px;}
+.searchPop .popover-content > blockquote {
     border-left: none;
     -webkit-margin-before: 0em;
     -webkit-margin-after: 0em;
@@ -505,8 +505,8 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     -webkit-margin-end: 0px;
 }
 
-.view-section .popover-content .kmapid-display,
-.view-section .counts-display {
+.searchPop .popover-content .kmapid-display,
+.searchPop .counts-display {
     display: block;
     float: right;
     clear: both;
@@ -517,9 +517,9 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     color: #888;
 }
 
-.view-section .popover-content .info-wrap {min-width: 18em;}
-.view-section .popover-content .counts-display { display:block; height: 40px; padding:5px; }
-.view-section .popover-title .kmapid-display {
+.searchPop .popover-content .info-wrap {min-width: 18em;}
+.searchPop .popover-content .counts-display { display:block; height: 40px; padding:5px; }
+.searchPop .popover-title .kmapid-display {
     display: block;
     float: right;
     clear: both;
@@ -529,8 +529,8 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     margin-right: 0;
     color: #888;
 }
-.view-section .popover-title .kmapid-display:before {color: #888;/*content: "kmapid: "*/}
-.view-section .popover-content .badge {
+.searchPop .popover-title .kmapid-display:before {color: #888;/*content: "kmapid: "*/}
+.searchPop .popover-content .badge {
     margin:0 5px;
     position: relative;
     top: 19px;
@@ -544,18 +544,18 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     line-height:8px; 
     height:15px;
 }
-.view-section .popover-content span.associated:first-child .badge{ }
+.searchPop .popover-content span.associated:first-child .badge{ }
 
-.view-section .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:35px !important; margin:0 0 5px 0; border-left:1px solid #ddd; }
-.view-section .popover-content span.associated+span.associated{ }
-.view-section .popover-content span.associated:first-child{
+.searchPop .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:35px !important; margin:0 0 5px 0; border-left:1px solid #ddd; }
+.searchPop .popover-content span.associated+span.associated{ }
+.searchPop .popover-content span.associated:first-child{
 	margin-right:-15px;
 }
-.view-section .popover-content span.associated+span.associated:before {}
-.view-section .listview h3.popover-title {font-size: medium;}
+.searchPop .popover-content span.associated+span.associated:before {}
+.searchPop .listview h3.popover-title {font-size: medium;}
 
 
-.view-section .popover-content span.associated i{
+.searchPop .popover-content span.associated i{
 	font-size:1.68em;
 	position:absolute;
 	bottom:19px;
