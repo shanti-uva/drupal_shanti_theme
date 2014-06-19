@@ -495,7 +495,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 .overlay-mask .glyphicon{ font-size:5em;}
 .overlay-mask > div{ text-align:center;}
-.searchPop .popover-content {font-family: sans-serif;font-size: smaller;}
+.searchPop .popover-content {font-family: sans-serif;font-size: smaller; word-wrap : break-word;}
 .searchPop .popover-content > blockquote p {font-size: 13px;}
 .searchPop .popover-content > blockquote {
     border-left: none;
