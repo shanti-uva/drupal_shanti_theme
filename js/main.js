@@ -589,7 +589,7 @@ jQuery(function ($) {
                                         $('<span class="title-field">').text(y.title).attr('kid', y.key)
                                             .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false }))
                                     )
-                                .append($('<td>' + resultHash[y.key] + '</td>')),y
+                                .append($('<td><div>' + resultHash[y.key] + '</div></td>')),y
                             )
                         );
                     });
