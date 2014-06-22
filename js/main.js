@@ -787,6 +787,7 @@ jQuery(function($) {
       }
     },
     url: Settings.baseUrl + "/features/fancy_nested.json",
+    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -864,6 +865,7 @@ jQuery(function($) {
       }
     },
     url: Settings.baseUrl + "/features/fancy_nested.json",
+    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -940,6 +942,7 @@ jQuery(function($) {
       }
     },
     url: Settings.baseUrl + "/features/fancy_nested.json",
+    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -1035,12 +1038,14 @@ jQuery(function($) {
     $("#feature1a-reset").hide(); // switched to negative indent since hide() not working consistently
     // $(this).addClass("show");
   }).attr("disabled", true);
-  // controls clicking in dropdown & feature input
+  
+  // stop closing on click in dropdown & feature input 
   $(function () { 
-    $(document).on('click', '#feature-subject, .dropdown-menu.dropdown-type', function(e) {
+    $(document).on('click', '#feature-type, .dropdown-menu.dropdown-type', function(e) {
        e.stopPropagation()
     })
-  }); 
+  });  
+  // close dropdown on outside clicking 
   $(document).click( function(){
     $(".dropdown-menu.dropdown-type").parent().removeClass("open");
   });
@@ -1100,12 +1105,14 @@ jQuery(function($) {
     $("#feature2a-reset").hide(); // switched to negative indent since hide() not working consistently
     // $(this).addClass("show");
   }).attr("disabled", true);
-  // controls clicking in dropdown & feature input
+  
+  // stop closing on click in dropdown & feature input
   $(function () { 
     $(document).on('click', '#feature-subject, .dropdown-menu.dropdown-subject', function(e) {
        e.stopPropagation()
     })
-  }); 
+  });
+  // close dropdown on outside clicking 
   $(document).click( function(){
     $(".dropdown-menu.dropdown-subject").parent().removeClass("open");
   });
@@ -1166,12 +1173,14 @@ jQuery(function($) {
     $("#feature3a-reset").hide(); // switched to negative indent since hide() not working consistently
     // $(this).addClass("show");
   }).attr("disabled", true);
-  // controls clicking in dropdown & feature input
+    
+  // stop closing on click in dropdown & feature input
   $(function () { 
     $(document).on('click', '#feature-region, .dropdown-menu.dropdown-region', function(e) {
        e.stopPropagation()
     })
   }); 
+  // close dropdown on outside clicking
   $(document).click( function(){
     $(".dropdown-menu.dropdown-region").parent().removeClass("open");
   });
@@ -1850,7 +1859,6 @@ function capitaliseFirstLetter(string)
 
 
 
-
 // *** SEARCH *** initiate sliding container, toggle collections & search options
 jQuery(function ($) {
 
@@ -1866,7 +1874,6 @@ jQuery(function ($) {
       onExtClose:function(){},
       top: 0
   }); 
-
   $("#menu-collections").buildMbExtruder({
       positionFixed: false,
       position: "right",
@@ -1877,16 +1884,13 @@ jQuery(function ($) {
       onExtContentLoad:function(){  },
       onExtClose:function(){},
       top: 0
-  });
-	
+  });	
 	// this is for the responsive button
   $(".kmaps-searchtoggle").click(function () {   
       if($("#kmaps-search.extruder").hasClass("isOpened")){   
         $("#kmaps-search").closeMbExtruder();
-        $(".kmaps-searchtoggle").removeClass("show-topmenu");
-        
-      } else {
-      
+        $(".kmaps-searchtoggle").removeClass("show-topmenu");        
+      } else {      
         $("#menu-main").closeMbExtruder();
         $("#menu-collections").closeMbExtruder();
         $("#kmaps-search").openMbExtruder();
@@ -1897,15 +1901,12 @@ jQuery(function ($) {
         // $(".menu-collections-wrap .panel-collapse").removeClass("in").css('height','0');
         return false;
       }
-  });
-    
+  });   
   $(".menu-maintoggle").click(function () {   
       if($("#menu-main.extruder").hasClass("isOpened")){    
         $("#menu-main").closeMbExtruder();
-        $(".menu-maintoggle").removeClass("show-topmenu");
-      
-      } else {
-      
+        $(".menu-maintoggle").removeClass("show-topmenu");     
+      } else {     
         $("#menu-main").openMbExtruder();
         $("#kmaps-search").closeMbExtruder();
         $("#menu-collections").closeMbExtruder();
@@ -1922,17 +1923,13 @@ jQuery(function ($) {
         return false;
       }
   });
-
-
   $(".menu-exploretoggle").click(function () {   
       if($("#menu-collections.extruder").hasClass("isOpened")){   
         
         $("#menu-collections").closeMbExtruder();
         $(".menu-exploretoggle").removeClass("show-topmenu");
-        // $(".bottom-trim").remove();
-                
-      } else {
-        
+        // $(".bottom-trim").remove();                
+      } else {        
         $(".menu-commons, .menu-preferences").css('display','none');
         $(".menu-collections").css('display','block');
         
@@ -1949,10 +1946,7 @@ jQuery(function ($) {
         // $(".menu-collections").find("ul").append("<li class='bottom-trim'></li>");  
         return false;
       }
-  });
-  
-  
-  
+  });  
   // --- desktop version - big dropdown collections toggle
   $("li.explore").addClass("closed");
   $(".explore>a, .closecollection").click(function(){
@@ -1961,7 +1955,6 @@ jQuery(function ($) {
       // $("#kmaps-search").toggleClass("hidden", 300);
       $("#kmaps-search").toggleClass("open-collections", 200);
   });
-
   // --- advanced search toggle icons, open/close, view change height
   $(".advanced-link").click(function () {
       $(this).toggleClass("show-advanced",'fast');
@@ -1971,51 +1964,6 @@ jQuery(function ($) {
   });
     
 });
-
-
-
-jQuery(function ($) {
-  // show-hide the IE message for older browsers
-  $(".progressive").delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
-  
-  // $(".main-col.active").equalHeights(); 
-  // $(document).click( function(){
-  // 	$(".main-col.active").equalHeights();
-  // });
-  //
-  // $(".content-resources > ul > li").find("a").click(function (event) { 
-  //		$(".main-col.active").equalHeights(); 
-  // });
-  
-});
-
-
-
-
-
-
-
-
-  
-//  one menu button instead of two, needs re-initiation on resize
-// jQuery(function ($) {
-//     var $window = $(window);
-// 
-//     function checkWidth() {
-//         var windowsize = $window.width();
-//         if (windowsize <= 767) {
-// 	         // $("#respond").removeClass("menu-toggle");
-// 	         // $("#respond").addClass("menu-maintoggle");  
-// 	         $("#menu").hide(200); 
-//         } else {
-// 	         // $("#respond").addClass("menu-toggle");
-// 	         // $("#respond").removeClass("menu-maintoggle");
-// 	         $("#menu-main").hide(200);
-//         }
-//     }
-//     checkWidth();
-//     $window.resize(checkWidth);
-// });
 
 
 
