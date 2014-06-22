@@ -658,8 +658,84 @@ jQuery(function ($) {
 
 });
 
+
+
+// --- kms, KMAPS MAIN SEARCH INPUT ---
+jQuery(function($) {
+  var kms = $("#searchform"); // the main search input
+  $(kms).data("holder",$(kms).attr("placeholder"));
+
+  // --- features inputs - focusin / focusout
+  $(kms).focusin(function(){
+      $(kms).attr("placeholder","");
+      $("button.searchreset").show("fast");
+  });
+  $(kms).focusout(function(){
+      $(kms).attr("placeholder",$(kms).data("holder"));
+      $("button.searchreset").hide();
+
+    var str = "Enter Search...";
+    var txt = $(kms).val();
+
+    if (str.indexOf(txt) > -1) {
+      $("button.searchreset").hide();
+    return true;
+    } else {
+      $("button.searchreset").show(100);
+    return false;
+    }
+  });
+  // --- close and clear all
+  $("button.searchreset").click(function(){
+    $(kms).attr("placeholder",$(kms).data("holder"));
+    $("button.searchreset").hide();
+    $(".alert").hide();
+        searchUtil.clearSearch();
+        tree.clearFilter();
+  });
+
+});
+
+
 // -------------------------
 // *** BEGIN feature trees
+// -------------------------
+
+var feature1_filterUtil = {
+    feature1_clearFilter: function() {
+        if ($('#feature-tree1').fancytree('getActiveNode')) {
+            $('#feature-tree1').fancytree('getActiveNode').setActive(false);
+        }
+        // $('#feature-tree1').fancytree('getTree').clearFilter();
+        $('#feature-tree1').fancytree("getRootNode").visit(function (node) {
+            node.setExpanded(false);
+        });
+    }
+};
+var feature2_filterUtil = {
+    feature2_clearFilter: function() {
+        if ($('#feature-tree2').fancytree('getActiveNode')) {
+            $('#feature-tree2').fancytree('getActiveNode').setActive(false);
+        }
+        // $('#feature-tree1').fancytree('getTree').clearFilter();
+        $('#feature-tree2').fancytree("getRootNode").visit(function (node) {
+            node.setExpanded(false);
+        });
+    }
+};
+var feature3_filterUtil = {
+    feature3_clearFilter: function() {
+        if ($('#feature-tree3').fancytree('getActiveNode')) {
+            $('#feature-tree3').fancytree('getActiveNode').setActive(false);
+        }
+        // $('#feature-tree1').fancytree('getTree').clearFilter();
+        $('#feature-tree3').fancytree("getRootNode").visit(function (node) {
+            node.setExpanded(false);
+        });
+    }
+};
+
+
 jQuery(function($) {
 	// *** feature type ***
 	  $("#feature-tree1").fancytree({
@@ -710,9 +786,7 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
-    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
-    // source: treeData,
+    source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -789,9 +863,7 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
-    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
-    // source: treeData,
+    source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -817,9 +889,6 @@ jQuery(function($) {
     cookieId: "feature2tree", // set cookies for features, the second fancytree
     idPrefix: "feature2tree"
   });
-
-
-
 
 
   $("#feature-tree3").fancytree({
@@ -870,9 +939,7 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    // source: {url: "ajax-tree-plain.json", debugDelay: 1000},
-    //source: {url: "./js/fancy_nested.json", debugDelay: 1000},
-    // source: treeData,
+    source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -898,51 +965,12 @@ jQuery(function($) {
     cookieId: "feature3tree", // set cookies for features, the second fancytree
     idPrefix: "feature3tree"
   });
-
-	// *** END extruder
-
-
-
-
-
-  // --- input styles for search panel
   // ----------------------------------
-  // --- kms, KMAPS MAIN SEARCH INPUT ---
-  var kms = $("#searchform"); // the main search input
-  $(kms).data("holder",$(kms).attr("placeholder"));
+	// --- END extruder
 
-  // --- features inputs - focusin / focusout
-  $(kms).focusin(function(){
-      $(kms).attr("placeholder","");
-      $("button.searchreset").show("fast");
-  });
-  $(kms).focusout(function(){
-      $(kms).attr("placeholder",$(kms).data("holder"));
-      $("button.searchreset").hide();
 
-    var str = "Enter Search...";
-    var txt = $(kms).val();
 
-    if (str.indexOf(txt) > -1) {
-      $("button.searchreset").hide();
-    return true;
-    } else {
-      $("button.searchreset").show(100);
-    return false;
-    }
-  });
-  // --- close and clear all
-  $("button.searchreset").click(function(){
-    $(kms).attr("placeholder",$(kms).data("holder"));
-    $("button.searchreset").hide();
-    $(".alert").hide();
-        searchUtil.clearSearch();
-        tree.clearFilter();
-  });
-  
-  
-
-  // --- fname, KMAPS FEATURES ---
+  // --- Feature Inputs ---------------
   // ----------------------------------
   var tree1 = $("#feature-tree1").fancytree("getTree");
   var tree2 = $("#feature-tree2").fancytree("getTree");
@@ -953,98 +981,99 @@ jQuery(function($) {
   $(feature1).data("holderf1",$(feature1).attr("placeholder"));
   $(feature2).data("holderf2",$(feature2).attr("placeholder"));
   $(feature3).data("holderf3",$(feature3).attr("placeholder"));
-
-
-
-
-  // --- features inputs - focusin / focusout with two buttons that clear selection
   
-  // --- feature-type
+  // --- feature-Type
   $(feature1).focusin(function(){
       $(this).dropdown();
       $(this).attr("placeholder","");
-      $("button#feature1b-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature1a-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature1a-reset, #feature1b-reset").attr("disabled", false);
   });
   $(feature1).focusout(function(){
       $(this).attr("placeholder",$(feature1).data("holderf1"));
-      $("button#feature1b-reset").hide();
+      $("#feature1a-reset").hide();
       $(this).dropdown();
 
-      var strf = "Filter by Feature Type";
-      var txtf = $(feature1).val();
-      if (strf.indexOf(txtf) > -1) {
-        $("button#feature1b-reset").hide();
+      var strf1 = "Filter by Feature Type";
+      var txtf1 = $(feature1).val();
+      if (strf1.indexOf(txtf1) > -1) {
+        $("#feature1a-reset").hide();
       return true;
       } else {
-        $("button#feature1b-reset").show(100);
+        $("#feature1a-reset").show(100);
       return false;
       }
   });
   // --- features inputs - keydown / keyup / click
   $("input[name=feature-type]").keydown(function(e){
       $(feature1).dropdown();
-      $(".filter").show(100);
+      $(".type.filter").show(100);
+      $("#feature1a-reset,#feature1b-reset").attr("disabled", false);
       return;
   });
   $("input[name=feature-type]").keyup(function(e){
     var match = $(this).val();
     if(e && e.which === $.ui.keyCode.ESCAPE || $.trim(match) === ""){
-      $("button#feature1b-reset").click();
+      $("#feature1a-reset,#feature1b-reset").click();
       return;
     }
     // Pass text as filter string (will be matched as substring in the node title)
     var n = tree1.applyFilter(match);
-      // $("#feature1a-reset, #feature1b-reset").attr("disabled", false);
-      $("span#matches").text("(" + n + " matches)");
+      $("#feature1a-reset,#feature1b-reset").attr("disabled", false);
+      $("#matches1").text("(" + n + " matches)");
   }).focus();
   // close and clear all
-  $("button#feature1b-reset").click(function(event){
+  $("#feature1a-reset, #feature1b-reset").click(function(event){
     $(feature1).attr("placeholder",$(feature1).data("holderf1"));
     $("input[name=feature-type]").val("");
-    $("span#matches").text("");
-    $(".filter").hide();
-     tree1.clearFilter();
-    $("button#feature-tree1").fancytree();
-    $("button#feature1b-reset").hide(); // switched to negative indent since hide() not working consistently
+    $("#matches1").text("");
+    $(".type.filter").hide();
+    tree1.clearFilter();
+    feature1_filterUtil.feature1_clearFilter();
+    $(".dropdown-menu.dropdown-type").parent().removeClass("open");
+    $("#feature-tree1").fancytree();
+    $("#feature1a-reset").hide(); // switched to negative indent since hide() not working consistently
     // $(this).addClass("show");
   }).attr("disabled", true);
-
   // controls clicking in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-type, .dropdown-menu.feature-menu', function(e) {
+    $(document).on('click', '#feature-subject, .dropdown-menu.dropdown-type', function(e) {
        e.stopPropagation()
     })
   }); 
+  $(document).click( function(){
+    $(".dropdown-menu.dropdown-type").parent().removeClass("open");
+  });
 
 
-
-
-
-  // --- feature-type
+	// ----------------------------
+  // --- feature-Subject -----------
   $(feature2).focusin(function(){
       $(this).dropdown();
       $(this).attr("placeholder","");
-      $("#feature2b-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature2a-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature2a-reset, #feature2b-reset").attr("disabled", false);
   });
   $(feature2).focusout(function(){
       $(this).attr("placeholder",$(feature2).data("holderf2"));
-      $("#feature2b-reset").hide();
+      $("#feature2a-reset").hide();
       $(this).dropdown();
 
-      var strf = "Filter by Feature Subject";
-      var txtf = $(feature2).val();
-      if (strf.indexOf(txtf) > -1) {
-        $("#feature2b-reset").hide();
+      var strf2 = "Filter by Feature Subject";
+      var txtf2 = $(feature2).val();
+      if (strf2.indexOf(txtf2) > -1) {
+        $("#feature2a-reset").hide();
       return true;
       } else {
-        $("#feature2b-reset").show(100);
+        $("#feature2a-reset").show(100);
       return false;
       }
   });
   // --- features inputs - keydown / keyup / click
   $("input[name=feature-subject]").keydown(function(e){
       $(feature2).dropdown();
-      $(".filter").show(100);
+      $(".subject.filter").show(100);
+      $("#feature1a-reset,#feature1b-reset").attr("disabled", false);
       return;
   });
   $("input[name=feature-subject]").keyup(function(e){
@@ -1056,28 +1085,30 @@ jQuery(function($) {
     // Pass text as filter string (will be matched as substring in the node title)
     var n = tree2.applyFilter(match);
       $("#feature2a-reset, #feature2b-reset").attr("disabled", false);
-      $("#matches").text("(" + n + " matches)");
+      $("#matches2").text("(" + n + " matches)");
   }).focus();
   // close and clear all
   $("#feature2a-reset, #feature2b-reset").click(function(event){
     $(feature2).attr("placeholder",$(feature2).data("holderf2"));
     $("input[name=feature-subject]").val("");
-    $("#matches").text("");
-    $(".filter").hide();
-     tree2.clearFilter();
+    $("#matches2").text("");
+    $(".subject.filter").hide();
+    tree2.clearFilter();
+    feature2_FilterUtil.feature2_clearFilter();
+    $(".dropdown-menu.dropdown-subject").parent().removeClass("open");
     $("#feature-tree2").fancytree();
-    $("#feature2b-reset").hide(); // switched to negative indent since hide() not working consistently
+    $("#feature2a-reset").hide(); // switched to negative indent since hide() not working consistently
     // $(this).addClass("show");
   }).attr("disabled", true);
-
   // controls clicking in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-subject, .dropdown-menu.feature-menu', function(e) {
+    $(document).on('click', '#feature-subject, .dropdown-menu.dropdown-subject', function(e) {
        e.stopPropagation()
     })
   }); 
-
-
+  $(document).click( function(){
+    $(".dropdown-menu.dropdown-subject").parent().removeClass("open");
+  });
 
 
 
@@ -1086,27 +1117,29 @@ jQuery(function($) {
   $(feature3).focusin(function(){
       $(this).dropdown();
       $(this).attr("placeholder","");
-      $("#feature3b-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature3a-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature3a-reset, #feature3b-reset").attr("disabled", false);
   });
   $(feature3).focusout(function(){
       $(this).attr("placeholder",$(feature3).data("holderf3"));
-      $("#feature3b-reset").hide();
+      $("#feature3a-reset").hide();
       $(this).dropdown();
 
-      var strf = "Filter by Feature Region";
-      var txtf = $(feature3).val();
-      if (strf.indexOf(txtf) > -1) {
-        $("#feature3b-reset").hide();
+      var strf3 = "Filter by Feature Region";
+      var txtf3 = $(feature3).val();
+      if (strf3.indexOf(txtf3) > -1) {
+        $("#feature3a-reset").hide();
       return true;
       } else {
-        $("#feature3b-reset").show(100);
+        $("#feature3a-reset").show(100);
       return false;
       }
   });
   // --- features inputs - keydown / keyup / click
   $("input[name=feature-region]").keydown(function(e){
       $(feature3).dropdown();
-      $(".filter").show(100);
+      $(".region.filter").show(100);
+      $("#feature3a-reset,#feature3b-reset").attr("disabled", false);
       return;
   });
   $("input[name=feature-region]").keyup(function(e){
@@ -1118,31 +1151,32 @@ jQuery(function($) {
     // Pass text as filter string (will be matched as substring in the node title)
     var n = tree3.applyFilter(match);
       $("#feature3a-reset, #feature3b-reset").attr("disabled", false);
-      $("#matches").text("(" + n + " matches)");
+      $("#matches3").text("(" + n + " matches)");
   }).focus();
   // close and clear all
   $("#feature3a-reset, #feature3b-reset").click(function(event){
     $(feature3).attr("placeholder",$(feature3).data("holderf3"));
     $("input[name=feature-region]").val("");
-    $("#matches").text("");
-    $(".filter").hide();
-     tree3.clearFilter();
+    $("#matches3").text("");
+    $(".region.filter").hide();
+    tree3.clearFilter();
+    feature3_FilterUtil.feature3_clearFilter();
+    $(".dropdown-menu.dropdown-region").parent().removeClass("open");
     $("#feature-tree3").fancytree();
-    $("#feature3b-reset").hide(); // switched to negative indent since hide() not working consistently
+    $("#feature3a-reset").hide(); // switched to negative indent since hide() not working consistently
     // $(this).addClass("show");
   }).attr("disabled", true);
-
   // controls clicking in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-region, .dropdown-menu.feature-menu', function(e) {
+    $(document).on('click', '#feature-region, .dropdown-menu.dropdown-region', function(e) {
        e.stopPropagation()
     })
   }); 
-
+  $(document).click( function(){
+    $(".dropdown-menu.dropdown-region").parent().removeClass("open");
+  });
+  
 });
-
-
-
 
 
 
