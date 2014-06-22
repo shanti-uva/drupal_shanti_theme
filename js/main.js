@@ -254,7 +254,7 @@ function decorateElementWithPopover(elem, node) {
     var path = "/" + $.makeArray(node.getParentList(false, true).map(function (x) {
         return x.title;
     })).join("/");
-    var caption = "<blockquote>" + ((node.data.caption)?node.data.caption:"") + "</blockquote>";
+    var caption = ((node.data.caption)?node.data.caption:"");
     var kmapid = "<span class='kmapid-display'>" + node.key + "</span>";
     var lazycounts = "<div class='counts-display'>...</div>";
     jQuery(elem).attr('data-content', path + caption + "<div class='info-wrap' id='infowrap" + node.key +"'>" + lazycounts + "</div>");
