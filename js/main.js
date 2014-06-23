@@ -1397,7 +1397,7 @@ function processSubjectsData(data) {
 
   //Related Audio-Video (videos) section
   if (data.feature.associated_resources.video_count > 0 || data.feature.id == 302) {
-    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count);
+    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count == 0 ? '1' : data.feature.associated_resources.video_count);
     $(".content-resources ul.nav-pills li.audio-video").show();
     $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
       var $tabAudioVideo = $("#tab-audio-video");
@@ -1421,7 +1421,8 @@ function processSubjectsData(data) {
     });
   }
 
-  // var testUrl = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24803_lookup.links.source_id/' + data.feature.id + '.json';
+  // var testUrl = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24809_lookup.links.source_id/' + data.feature.id + '.json';
+  // console.log(testUrl);
   // $.get(testUrl, function(data) {
   //   console.log(data);
   // });
@@ -1467,7 +1468,7 @@ function relatedPhotos(data) {
   var contentPh = '<div class="related-photos">';
 
   //First get and show photos from sharedshelf
-  var sharedShelfURL = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24803_lookup.links.source_id/' + shanti.feature_id + '.json';
+  var sharedShelfURL = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24809_lookup.links.source_id/' + shanti.feature_id + '.json';
   $.get(sharedShelfURL, function(ssData) {
     console.log(ssData);
   });
