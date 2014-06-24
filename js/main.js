@@ -985,11 +985,13 @@ jQuery(function($) {
   $(feature2).data("holderf2",$(feature2).attr("placeholder"));
   $(feature3).data("holderf3",$(feature3).attr("placeholder"));
   
-  // --- feature-Type
+  // --- feature-Type -----------
+	// ----------------------------
   $(feature1).focusin(function(){
       $(this).dropdown();
+      $(".dropdown-subject, .dropdown-region").parent().removeClass("open");
       $(this).attr("placeholder","");
-      $("#feature1a-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature1a-reset").show(100);
       $("#feature1a-reset, #feature1b-reset").attr("disabled", false);
   });
   $(feature1).focusout(function(){
@@ -1025,38 +1027,40 @@ jQuery(function($) {
       $("#feature1a-reset,#feature1b-reset").attr("disabled", false);
       $("#matches1").text("(" + n + " matches)");
   }).focus();
-  // close and clear all
-  $("#feature1a-reset, #feature1b-reset").click(function(event){
-    $(feature1).attr("placeholder",$(feature1).data("holderf1"));
-    $("input[name=feature-type]").val("");
-    $("#matches1").text("");
-    $(".type.filter").hide();
-    tree1.clearFilter();
-    feature1_filterUtil.feature1_clearFilter();
-    $(".dropdown-menu.dropdown-type").parent().removeClass("open");
-    $("#feature-tree1").fancytree();
-    $("#feature1a-reset").hide(); // switched to negative indent since hide() not working consistently
-    // $(this).addClass("show");
-  }).attr("disabled", true);
-  
+
   // stop closing on click in dropdown & feature input 
   $(function () { 
-    $(document).on('click', '#feature-type, .dropdown-menu.dropdown-type', function(e) {
+    $(document).on('click', '#feature-type, .dropdown-type', function(e) {
        e.stopPropagation()
     })
-  });  
+  }); 
+
+  // close and clear all
+  $("#feature1a-reset, #feature1b-reset").click(function(event){
+  	$(".dropdown-type").parent().removeClass("open");
+    $(feature1).attr("placeholder",$(feature1).data("holderf1"));
+    $("input[name=feature-type]").val("");    
+    $("#matches1").text("");
+    $(".type.filter, #feature1a-reset").hide();   
+    $("#feature-tree1").fancytree();
+    tree1.clearFilter();
+    feature1_filterUtil.feature1_clearFilter(); 
+  }).attr("disabled", true);
+  
+ 
   // close dropdown on outside clicking 
   $(document).click( function(){
-    $(".dropdown-menu.dropdown-type").parent().removeClass("open");
+    $(".dropdown-type").parent().removeClass("open");
   });
 
 
+  // --- feature-Subject --------
 	// ----------------------------
-  // --- feature-Subject -----------
   $(feature2).focusin(function(){
       $(this).dropdown();
+      $(".dropdown-type, .dropdown-region").parent().removeClass("open");
       $(this).attr("placeholder","");
-      $("#feature2a-reset").show(100); // switched to negative indent since hide() not working consistently
+      $("#feature2a-reset").show(100); 
       $("#feature2a-reset, #feature2b-reset").attr("disabled", false);
   });
   $(feature2).focusout(function(){
@@ -1092,37 +1096,38 @@ jQuery(function($) {
       $("#feature2a-reset, #feature2b-reset").attr("disabled", false);
       $("#matches2").text("(" + n + " matches)");
   }).focus();
-  // close and clear all
-  $("#feature2a-reset, #feature2b-reset").click(function(event){
-    $(feature2).attr("placeholder",$(feature2).data("holderf2"));
-    $("input[name=feature-subject]").val("");
-    $("#matches2").text("");
-    $(".subject.filter").hide();
-    tree2.clearFilter();
-    feature2_FilterUtil.feature2_clearFilter();
-    $(".dropdown-menu.dropdown-subject").parent().removeClass("open");
-    $("#feature-tree2").fancytree();
-    $("#feature2a-reset").hide(); // switched to negative indent since hide() not working consistently
-    // $(this).addClass("show");
-  }).attr("disabled", true);
-  
+
   // stop closing on click in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-subject, .dropdown-menu.dropdown-subject', function(e) {
+    $(document).on('click', '#feature-subject, .dropdown-subject', function(e) {
        e.stopPropagation()
     })
   });
+  
+  // close and clear all
+  $("#feature2a-reset, #feature2b-reset").click(function(event){
+  	$(".dropdown-subject").parent().removeClass("open");
+    $(feature2).attr("placeholder",$(feature2).data("holderf2"));
+    $("input[name=feature-subject]").val("");
+    $("#matches2").text("");
+    $(".subject.filter, #feature2a-reset").hide();
+    $("#feature-tree2").fancytree();
+    tree2.clearFilter();
+    feature2_FilterUtil.feature2_clearFilter();
+  }).attr("disabled", true);
+  
   // close dropdown on outside clicking 
   $(document).click( function(){
-    $(".dropdown-menu.dropdown-subject").parent().removeClass("open");
+    $(".dropdown-subject").parent().removeClass("open");
   });
 
 
 
-
-  // --- feature-type
+  // --- feature-Region ---------
+	// ----------------------------
   $(feature3).focusin(function(){
       $(this).dropdown();
+      $(".dropdown-type, .dropdown-subject").parent().removeClass("open");
       $(this).attr("placeholder","");
       $("#feature3a-reset").show(100); // switched to negative indent since hide() not working consistently
       $("#feature3a-reset, #feature3b-reset").attr("disabled", false);
@@ -1160,29 +1165,29 @@ jQuery(function($) {
       $("#feature3a-reset, #feature3b-reset").attr("disabled", false);
       $("#matches3").text("(" + n + " matches)");
   }).focus();
-  // close and clear all
-  $("#feature3a-reset, #feature3b-reset").click(function(event){
-    $(feature3).attr("placeholder",$(feature3).data("holderf3"));
-    $("input[name=feature-region]").val("");
-    $("#matches3").text("");
-    $(".region.filter").hide();
-    tree3.clearFilter();
-    feature3_FilterUtil.feature3_clearFilter();
-    $(".dropdown-menu.dropdown-region").parent().removeClass("open");
-    $("#feature-tree3").fancytree();
-    $("#feature3a-reset").hide(); // switched to negative indent since hide() not working consistently
-    // $(this).addClass("show");
-  }).attr("disabled", true);
     
   // stop closing on click in dropdown & feature input
   $(function () { 
-    $(document).on('click', '#feature-region, .dropdown-menu.dropdown-region', function(e) {
+    $(document).on('click', '#feature-region, .dropdown-region', function(e) {
        e.stopPropagation()
     })
-  }); 
+  });
+  
+  // close and clear all
+  $("#feature3a-reset, #feature3b-reset").click(function(event){
+  	$(".dropdown-region").parent().removeClass("open");
+    $(feature3).attr("placeholder",$(feature3).data("holderf3"));
+    $("input[name=feature-region]").val("");
+    $("#matches3").text("");
+    $(".region.filter, #feature3a-reset").hide();    
+    $("#feature-tree3").fancytree();
+    tree3.clearFilter();
+    feature3_FilterUtil.feature3_clearFilter();
+  }).attr("disabled", true);
+ 
   // close dropdown on outside clicking
   $(document).click( function(){
-    $(".dropdown-menu.dropdown-region").parent().removeClass("open");
+    $(".dropdown-region").parent().removeClass("open");
   });
   
 });

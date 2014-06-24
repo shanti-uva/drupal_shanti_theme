@@ -5,12 +5,12 @@ body div.wrap-all{ position:relative;}
 *:focus{ outline: 0 !important; /* outline: -2px auto -webkit-focus-ring-color !important; */}
 a,a:visited,a:hover,a:focus{text-decoration:none}
 ::selection{
-	background: #888;
+	background: #999;
 	text-shadow: none;
 	color: white;
 }
 ::moz-selection{
-	background: #888;
+	background: #999;
 	text-shadow: none;
 	color: white;
 }
