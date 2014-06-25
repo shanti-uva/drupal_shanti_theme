@@ -786,8 +786,8 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    url: Settings.baseUrl + "/features/fancy_nested.json",
-    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    //url: Settings.baseUrl + "/features/fancy_nested.json",
+    source: {url: "/sites/all/themes/shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -864,8 +864,8 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    url: Settings.baseUrl + "/features/fancy_nested.json",
-    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    //url: Settings.baseUrl + "/features/fancy_nested.json",
+    source: {url: "/sites/all/themes/shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -941,8 +941,8 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    url: Settings.baseUrl + "/features/fancy_nested.json",
-    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    //url: Settings.baseUrl + "/features/fancy_nested.json",
+    source: {url: "/sites/all/themes/shanti_theme/js/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -1031,7 +1031,7 @@ jQuery(function($) {
   // stop closing on click in dropdown & feature input 
   $(function () { 
     $(document).on('click', '#feature-type, .dropdown-type', function(e) {
-       e.stopPropagation()
+       e.stopPropagation();
     })
   }); 
 
@@ -1100,7 +1100,7 @@ jQuery(function($) {
   // stop closing on click in dropdown & feature input
   $(function () { 
     $(document).on('click', '#feature-subject, .dropdown-subject', function(e) {
-       e.stopPropagation()
+       e.stopPropagation();
     })
   });
   
@@ -1169,7 +1169,7 @@ jQuery(function($) {
   // stop closing on click in dropdown & feature input
   $(function () { 
     $(document).on('click', '#feature-region, .dropdown-region', function(e) {
-       e.stopPropagation()
+       e.stopPropagation();
     })
   });
   
@@ -1425,9 +1425,7 @@ function processSubjectsData(data) {
       $.get(textsURL, relatedTexts);
     });
   }
-
   // var testUrl = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24809_lookup.links.source_id/' + data.feature.id + '.json';
-  // console.log(testUrl);
   // $.get(testUrl, function(data) {
   //   console.log(data);
   // });
