@@ -198,7 +198,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 }
 .collections ul .icon {
-	color: #ccc;
+	color: #c0c0c0;
 	margin-right:8px;
 	font-size:1.5em;
 	position:relative;
@@ -661,7 +661,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .back-to-top {
   position: fixed;
   bottom: 10px;
-  right: 10px;
+  right: 15px;
   z-index:100;
   height:40px;
   width:40px;
