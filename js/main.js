@@ -251,19 +251,24 @@ jQuery(function($) {
 
 function decorateElementWithPopover(elem, node) {
     jQuery(elem).attr('rel', 'popover');
-    var path = "/" + $.makeArray(node.getParentList(false, true).map(function (x) {
+    var path = "<div class='kmap-path'>/" + $.makeArray(node.getParentList(false, true).map(function (x) {
         return x.title;
-    })).join("/");
+    })).join("/") + "</div>";
     var caption = ((node.data.caption)?node.data.caption:"");
     var kmapid = "<span class='kmapid-display'>" + node.key + "</span>";
     var lazycounts = "<div class='counts-display'>...</div>";
-    jQuery(elem).attr('data-content', path + caption + "<div class='info-wrap' id='infowrap" + node.key +"'>" + lazycounts + "</div>");
-    jQuery(elem).attr('title', node.title + kmapid);
-    jQuery(elem).popover();
+    jQuery(elem).popover({
+            html: true,
+            content: function() {
+                return path + caption + "<div class='info-wrap' id='infowrap" + node.key +"'>" + lazycounts + "</div>";
+            },
+            title: function() {
+                return node.title + kmapid;
+            }
+        }
+    );
     jQuery(elem).on('shown.bs.popover', function(x) {
-    
     		$(".popover").addClass("searchPop"); // target css styles on search tree popups
-
         //  var counts = jQuery(elem.parentNode||elem[0].parentNode).find('.info-wrap .counts-display');
         var counts = $("#infowrap" + node.key + " .counts-display");
         // console.log(counts.html());
