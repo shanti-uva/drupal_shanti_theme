@@ -489,17 +489,9 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 .searchPop .popover-content{
 	font-family:"Museo Sans",sans-serif;
-	font-size: 12px;
-	
-	-ms-word-break: normal;
-   word-break: normal;	
+	font-size: 12px;	
 }
-.searchPop .popover-content .kmap-path{
-	-ms-word-break: break-all;
-  word-break: break-all;
-			/*  non-standard for webkit */
-			word-break: break-word;	
-}
+
 .searchPop .popover-content > p,
 .searchPop .popover .popover-title,
 .searchPop .popover .popover-content .info-wrap{	
@@ -510,13 +502,19 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	margin:5px 0;
 	border-left:4px solid #f0f0f0;
 }
+.searchPop .popover-content > .kmap-path{
+	display:inline;
+	-ms-word-break: break-all;
+  word-break: break-all !important;
+
+}
 
 .searchPop .popover-content .kmapid-display,
 .searchPop .counts-display {
     display: block;
     float: right;
     clear: both;
-    font-size: smaller;
+    font-size: 10px;
     white-space:nowrap;
     margin-left: 0;
     margin-right: 0;
@@ -534,11 +532,11 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     margin: 1px 0 0;
     color: #666;
 }
-.searchPop .popover-title .kmapid-display:before {color: #888;/*content: "kmapid: "*/}
+.searchPop .popover-title .kmapid-display:before {color: #888;  /*content: "kmapid: "*/}
 .searchPop .popover-content .badge {
     margin:0 5px;
     position: relative;
-    top: 19px;
+    top: 22px;
     font-size: 10px;
     font-family: sans-serif;
     letter-spacing: 0.06em;
@@ -551,7 +549,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 }
 .searchPop .popover-content span.associated:first-child .badge{ }
 
-.searchPop .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:35px !important; margin:0 0 5px 0; border-left:1px solid #ddd; }
+.searchPop .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:38px !important; margin:0 0 5px 0; border-left:1px solid #ddd; }
 .searchPop .popover-content span.associated+span.associated{ }
 .searchPop .popover-content span.associated:first-child{
 	margin-right:-15px;
