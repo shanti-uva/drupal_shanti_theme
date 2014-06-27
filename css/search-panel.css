@@ -485,75 +485,65 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .overlay-mask .glyphicon{ font-size:5em;}
 .overlay-mask > div{ text-align:center;}
 .searchPop.popover{ display:none;}
-
-.searchPop.popover .popover-title{ padding-top:11px; position:relative;}
-.searchPop.popover .popover-title .kmapid-display { position:absolute; top:-2px; right:5px; }
-.searchPop .popover-title .kmapid-display {
-    font-size: 0.68em;
-    white-space:nowrap;
-    margin: 0;
-    color: #606060;
-    /* font-weight:bold; */
+.searchPop.popover .popover-title{ font-size:0.93em; padding-top:11px; position:relative;}
+.searchPop.popover .popover-title .kmapid-display { 
+	position:absolute; top:-2px; right:5px; 
+  font-size: 0.68em;
+  white-space:nowrap;
+  margin: 0;
+  color: #444;
+  /* font-weight:bold; */
 }
-.searchPop .popover-title .kmapid-display:before { content: "\Kmap-ID:"}
-
-.searchPop .popover-content{
+.searchPop.popover .popover-title .kmapid-display:before { content: "\Kmap-ID:"}
+.searchPop.popover .popover-content{
 	font-family:"Museo Sans",sans-serif;
-	font-size: 12px;	
+	font-size: 0.75em;
+	padding-top:4px;	
 }
-.searchPop .popover-content > p {
+.searchPop.popover .popover-content > p {
 	padding:0 10px 0 8px;
 	margin:5px 0;
 	border-left:4px solid #f0f0f0;
 }
-.searchPop .popover-content .kmap-path{
-	display:inline !important;
+.searchPop.popover .popover-content .kmap-path{
+	display:inline;
+	font-size: 1em;
 	-ms-word-break: break-all !important;
   word-break: break-all !important;
 }
-
 .searchPop .counts-display {
-    display: block;
-    float: right;
-    clear: both;
-    font-size: 10px;
-    white-space:nowrap;
-    margin-left: 0;
-    margin-right: 0;
-    color: #888;
+  display: block;
+  float: right;
+  clear: both;
+  white-space:nowrap;
+  margin-left: 0;
+  margin-right: 0;
+  color: #888;
 }
-
 .searchPop .popover-content .info-wrap { min-width: 18em;}
 .searchPop .popover-content .counts-display { display:block; height: 4.12em; padding:5px; margin-top:2px;}
 .searchPop .popover-content .badge {
-    margin:0 5px;
-    position: relative;
-    top: 22px;
-    font-size: 10px;
-    font-family: sans-serif;
-    letter-spacing: 0.06em;
-    border:1px solid #c0c0c0;
-    background:#f9f9f9; 
-    color:#444;
-    padding:2px 6px;
-    line-height:8px; 
-    height:15px;
-}
-.searchPop .popover-content span.associated:first-child .badge{ }
+  margin:0 5px;
+  position: relative;
+  top: 25px;
+  font-size: 0.88em;
+  line-height:1.18em;
+  height:1.44em;
+  letter-spacing: 0.06em;
+  border:1px solid #c0c0c0;
+  background:#f9f9f9; 
+  color:#555;
+  padding:1px 6px; 
 
+}
 .searchPop .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:38px !important; margin:0 0 5px 0; border-left:1px solid #ddd; }
-.searchPop .popover-content span.associated+span.associated{ }
 .searchPop .popover-content span.associated:first-child{
 	margin-right:-15px;
 }
-.searchPop .popover-content span.associated+span.associated:before {}
-.searchPop .listview h3.popover-title {font-size: medium;}
-
-
 .searchPop .popover-content span.associated i{
-	font-size:1.68em;
+	font-size:1.56em;
 	position:absolute;
-	bottom:19px;
+	bottom:16px;
 	color:#777;
 	margin:0 0 0 7px;
 }
