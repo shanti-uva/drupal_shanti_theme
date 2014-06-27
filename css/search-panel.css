@@ -482,34 +482,36 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .view-section .row {margin-right: 0;/*margin-left: 0em;*/}
 /* .listview td.sorting_1 { min-width: 12em;} */
 
-.searchPop .popover{ display:none;}
-
 .overlay-mask .glyphicon{ font-size:5em;}
 .overlay-mask > div{ text-align:center;}
+.searchPop.popover{ display:none;}
+
+.searchPop.popover .popover-title{ padding-top:11px; position:relative;}
+.searchPop.popover .popover-title .kmapid-display { position:absolute; top:-2px; right:5px; }
+.searchPop .popover-title .kmapid-display {
+    font-size: 0.68em;
+    white-space:nowrap;
+    margin: 0;
+    color: #606060;
+    /* font-weight:bold; */
+}
+.searchPop .popover-title .kmapid-display:before { content: "\Kmap-ID:"}
 
 .searchPop .popover-content{
 	font-family:"Museo Sans",sans-serif;
 	font-size: 12px;	
-}
-
-.searchPop .popover-content > p,
-.searchPop .popover .popover-title,
-.searchPop .popover .popover-content .info-wrap{	
-	
 }
 .searchPop .popover-content > p {
 	padding:0 10px 0 8px;
 	margin:5px 0;
 	border-left:4px solid #f0f0f0;
 }
-.searchPop .popover-content > .kmap-path{
-	display:inline;
-	-ms-word-break: break-all;
+.searchPop .popover-content .kmap-path{
+	display:inline !important;
+	-ms-word-break: break-all !important;
   word-break: break-all !important;
-
 }
 
-.searchPop .popover-content .kmapid-display,
 .searchPop .counts-display {
     display: block;
     float: right;
@@ -523,16 +525,6 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 .searchPop .popover-content .info-wrap { min-width: 18em;}
 .searchPop .popover-content .counts-display { display:block; height: 4.12em; padding:5px; margin-top:2px;}
-.searchPop .popover-title span.kmapid-display {
-    display: block;
-    float: right;
-    clear: both;
-    font-size: 0.68em;
-    white-space:nowrap;
-    margin: 1px 0 0;
-    color: #666;
-}
-.searchPop .popover-title .kmapid-display:before {color: #888;  /*content: "kmapid: "*/}
 .searchPop .popover-content .badge {
     margin:0 5px;
     position: relative;
@@ -603,7 +595,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	background: #fff;
 	color:transparent;
 	font-family: 'kmaps-icons';
-	content: '\e625';
+	content: "\e625";
 	font-size: 1em;
 	float:left;
 	position:relative; top:5px; right:2px;
