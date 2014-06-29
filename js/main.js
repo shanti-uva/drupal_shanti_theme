@@ -8,9 +8,6 @@ var Settings = {
 }
 
 
-
-
-
 // *** NAVIGATION *** top drilldown menu
 jQuery(function ($) {
   $( '#menu' ).multilevelpushmenu({
@@ -55,12 +52,6 @@ jQuery(function ($) {
 
 
 
-
-
-
-
-
-
 // *** CONTENT *** accordion toggle
 $.fn.accordionFx = function() {
     return this.each(function(i, accordion) {
@@ -76,6 +67,7 @@ $.fn.accordionFx = function() {
         });
     });
 };
+
 jQuery(function ($) {
 	$('#accordion').accordionFx();
 });
@@ -88,19 +80,10 @@ jQuery(function ($) {
   });
 });
 
-// jQuery(function ($) {
-
-  // var menulist = $('#menu ul').css('display') == 'block'
-
-  // $(menulist).filter(function() {
-    // return $(menulist).css('display') == 'block';
-  // })
-  // .css('box-shadow','none');
-
-// });
-
-
-
+jQuery(function () {
+  // show-hide the IE message for older browsers
+  $('.progressive').delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
+});
 
 // *** NAVIGTION *** breadcrumbs 
 jQuery(function ($) {
@@ -146,7 +129,6 @@ jQuery(function ($) {
 
 
 // *** SEARCH *** adapt search panel height to viewport
-// function for auto-adjusting height of search panel
  function kmaps_searchHeight() {
     var height = $(window).height();
     var kmapsrch = (height) - 80;
@@ -224,12 +206,6 @@ jQuery(function($) {
 
 // *** SEARCH *** toggle button
 jQuery(function($) {
-   // $(window).on("resize",function(){ location.reload(); } ); // forces height refresh on browser-size change
-   // drag handle for panel width
-//   $(".extruder.right").resize(function() {
-//        $(window).reload(false)
-//   })
-
   if (!$(".extruder.right").hasClass("isOpened")) {
         $(".flap").click( function() {
           $(".extruder .text").css("width","100%");
@@ -1955,7 +1931,11 @@ jQuery(function ($) {
         // $(".menu-collections").find("ul").append("<li class='bottom-trim'></li>");  
         return false;
       }
-  });  
+  }); 
+  
+  // --- ajax call for collections list
+  $( "#kmaps-collections").load( "/sites/all/themes/drupal_shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");	
+   
   // --- desktop version - big dropdown collections toggle
   $("li.explore").addClass("closed");
   $(".explore>a, .closecollection").click(function(){
@@ -1964,6 +1944,8 @@ jQuery(function ($) {
       // $("#kmaps-search").toggleClass("hidden", 300);
       $("#kmaps-search").toggleClass("open-collections", 200);
   });
+  
+  
   // --- advanced search toggle icons, open/close, view change height
   $(".advanced-link").click(function () {
       $(this).toggleClass("show-advanced",'fast');
@@ -1973,9 +1955,4 @@ jQuery(function ($) {
   });
     
 });
-
-
-
-
-
 

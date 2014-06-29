@@ -476,42 +476,43 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 /* trunk8 */
 .view-section .col-xs-6 { width: 100%; font-size: 0.63em; padding-right: 0; /*padding-left: 0em;*//*margin-left: -2em;*/}
 .view-section .pagination>li>a, 
-.pagination>li>span { padding: 0.5em 0.8em;}
-.view-section .pagination { margin-left: 1em;margin-top: 0.3em;margin-bottom: 0.1em;margin-right: -0.5em;}
+.pagination>li>span { padding:7px 9px;}
+.view-section .pagination { margin:4px 0 2px 15px; }
 .view-section .dataTables_info {font-size: 1.3em;margin-left: 10px; padding-top:0; padding-bottom:0;}
 .view-section .row {margin-right: 0;/*margin-left: 0em;*/}
 /* .listview td.sorting_1 { min-width: 12em;} */
 
 .overlay-mask .glyphicon{ font-size:5em;}
 .overlay-mask > div{ text-align:center;}
-.searchPop.popover{ display:none;}
-.searchPop.popover .popover-title{ font-size:0.93em; padding-top:11px; position:relative;}
-.searchPop.popover .popover-title .kmapid-display { 
-	position:absolute; top:-2px; right:5px; 
+.searchPop{ display:none;}
+.searchPop > .popover-title{ font-size:0.88em; line-height:1.12em; padding-top:12px; padding-bottom:7px; position:relative;}
+.searchPop > .popover-title .kmapid-display { 
+	position:absolute; top:0px; right:8px; 
   font-size: 0.68em;
   white-space:nowrap;
   margin: 0;
   color: #444;
   /* font-weight:bold; */
 }
-.searchPop.popover .popover-title .kmapid-display:before { content: "\Kmap-ID:"}
-.searchPop.popover .popover-content{
+.searchPop > .popover-title .kmapid-display:before { content: ""}
+.searchPop > .popover-content{
 	font-family:"Museo Sans",sans-serif;
 	font-size: 0.75em;
 	padding-top:4px;	
 }
-.searchPop.popover .popover-content > p {
+.searchPop > .popover-content > p {
 	padding:0 10px 0 8px;
 	margin:5px 0;
 	border-left:4px solid #f0f0f0;
 }
-.searchPop.popover .popover-content .kmap-path{
+.searchPop > .popover-content > .kmap-path{
 	display:inline;
-	font-size: 1em;
-	-ms-word-break: break-all !important;
-  word-break: break-all !important;
+	font-size: 0.93em;
+	line-height:1em;
+	-ms-word-break: break-all;
+  word-break: break-all;
 }
-.searchPop .counts-display {
+.searchPop > .counts-display {
   display: block;
   float: right;
   clear: both;
@@ -520,12 +521,12 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
   margin-right: 0;
   color: #888;
 }
-.searchPop .popover-content .info-wrap { min-width: 18em;}
-.searchPop .popover-content .counts-display { display:block; height: 4.12em; padding:5px; margin-top:2px;}
-.searchPop .popover-content .badge {
+.searchPop > .popover-content .info-wrap { min-width: 18em;}
+.searchPop > .popover-content .counts-display { display:block; height: 4.12em; padding:5px; margin-top:2px;}
+.searchPop > .popover-content .badge {
   margin:0 5px;
   position: relative;
-  top: 25px;
+  top: 22px;
   font-size: 0.88em;
   line-height:1.18em;
   height:1.44em;
@@ -536,14 +537,14 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
   padding:1px 6px; 
 
 }
-.searchPop .popover-content span.associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:-4px; height:38px !important; margin:0 0 5px 0; border-left:1px solid #ddd; }
-.searchPop .popover-content span.associated:first-child{
+.searchPop > .popover-content .associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:5px; height:36px; margin:0 0 5px 0; border-left:1px solid #ddd; }
+.searchPop > .popover-content .associated:first-child{
 	margin-right:-15px;
 }
-.searchPop .popover-content span.associated i{
+.searchPop > .popover-content .associated i{
 	font-size:1.56em;
 	position:absolute;
-	bottom:16px;
+	bottom:17px;
 	color:#777;
 	margin:0 0 0 7px;
 }

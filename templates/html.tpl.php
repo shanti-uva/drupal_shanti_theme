@@ -119,8 +119,6 @@
     
     <!-- Column Resources  -->              
     <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
-    <div class="main-col active">
-
       <ul class="nav nav-pills nav-stacked">
         <li class="overview active"><a href="#tab-overview" data-toggle="pill">
         	<i class="icon"></i>Overview</a>
@@ -165,7 +163,6 @@
         	<i class="icon"></i>Sources<span class="badge">3</span></a>
         </li>
       </ul> 
-    </div>
     </aside> 
     
     <!-- Column Main  -->                   
@@ -175,46 +172,46 @@
 	    
       <div class="tab-content">
       
-        <article class="tab-pane main-col active" id="tab-overview">
+        <article class="tab-pane active" id="tab-overview">	        
         </article>
 
-        <article class="tab-pane main-col" id="tab-subjects">
+        <article class="tab-pane" id="tab-subjects"> 
         </article>
 
-        <article class="tab-pane main-col" id="tab-essays">
+        <article class="tab-pane" id="tab-essays">
 				</article>
 
-				<article class="tab-pane main-col" id="tab-places">
+				<article class="tab-pane" id="tab-places">
         </article>
                         
-        <article class="tab-pane main-col" id="tab-agents">
+        <article class="tab-pane" id="tab-agents">
         </article>
 
-        <article class="tab-pane main-col" id="tab-events">
+        <article class="tab-pane" id="tab-events">
         </article>
 
-        <article class="tab-pane main-col" id="tab-photos">
+        <article class="tab-pane" id="tab-photos">
         </article>
 
-        <article class="tab-pane main-col" id="tab-audio-video">
+        <article class="tab-pane" id="tab-audio-video">
         </article>
 
-        <article class="tab-pane main-col" id="tab-visuals">
+        <article class="tab-pane" id="tab-visuals">
         </article>
 
-        <article class="tab-pane main-col" id="tab-texts">
+        <article class="tab-pane" id="tab-texts">
         </article>
 
-        <article class="tab-pane main-col" id="tab-maps">
+        <article class="tab-pane" id="tab-maps">
         </article>
 
-        <article class="tab-pane main-col" id="tab-community">
+        <article class="tab-pane" id="tab-community">
         </article>
 
-        <article class="tab-pane main-col" id="tab-terms">
+        <article class="tab-pane" id="tab-terms">
         </article>
 
-        <article class="tab-pane main-col" id="tab-sources">
+        <article class="tab-pane" id="tab-sources">
         </article>
       
       </div><!-- END tab-content -->
@@ -509,7 +506,6 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.edit.js"></script> <!-- is this needed ? -->
   
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/metisMenu.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/equalHeights.js"></script> <!-- sidecolumn resources full-height -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/check/icheck.min.js"></script><!-- forms -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/select/bootstrap-select.min.js"></script><!-- forms -->  
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.highlight.js"></script><!-- highlight -->
@@ -523,20 +519,15 @@
     <!-- Load scripts for open layer maps used in places -->
   <?php if(!$subject): ?>
   <script type="text/javascript" src="//maps.googleapis.com/maps/api/js?key=AIzaSyAXpnXkPS39-Bo5ovHQWvyIk6eMgcvc1q4&amp;sensor=false"></script>
-  <script src="http://openlayers.org/api/OpenLayers.js" type="text/javascript"></script>
-  <script src="http://www.thlib.org/places/maps/interactive/scripts/THLWMS.js" type="text/javascript"></script>
-  <script src="<?php print $theme_path; ?>/js/inset-map.js" type="text/javascript"></script>
+  <script type="text/javascript" src="http://openlayers.org/api/OpenLayers.js"></script>
+  <script type="text/javascript" src="http://www.thlib.org/places/maps/interactive/scripts/THLWMS.js"></script>
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/inset-map.js"></script>
   <?php endif ?>
   
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
   <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
-  
-  <script>
-  jQuery(function ($) {
-		$( "#kmaps-collections").load( "<?php print $theme_path; ?>/js/menus/menu-ajax.html .menu-collections>ul");
-	});
-	</script>
+
 </body>
 </html>
