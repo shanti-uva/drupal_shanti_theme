@@ -1934,7 +1934,7 @@ jQuery(function ($) {
   }); 
   
   // --- ajax call for collections list
-  $( "#kmaps-collections").load( "/sites/all/themes/drupal_shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");	
+  $( "#kmaps-collections").load( "/sites/all/themes/shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");	
    
   // --- desktop version - big dropdown collections toggle
   $("li.explore").addClass("closed");
