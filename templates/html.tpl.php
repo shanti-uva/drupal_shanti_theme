@@ -267,7 +267,7 @@
 							 
 		           <div id="notification-wrapper"></div>
 		                
-		           <section class="advanced-view" style="display:none;">                                              
+		           <section class="advanced-view toggle-section" style="display:none;">                                              
 		                  <div class="form-group"> 
 		                    <label class="radio-inline" for="radios-0">
 		                      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
@@ -385,11 +385,11 @@
 		                          
 		          <!-- TAB - tree view -->
 		          <div class="treeview tab-pane active">        
-		              <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
+		              <div id="tree" class="view-wrap toggle-section"><!-- view-wrap controls tree container height --></div>              
 		          </div>          
 		          <!-- TAB - list view -->
 		          <div class="listview tab-pane">   
-		            <div class="view-wrap"> <!-- view-wrap controls container height -->              
+		            <div class="view-wrap toggle-section"> <!-- view-wrap controls container height -->              
 		              <div class="table-responsive">
 		                 <table class="table table-condensed table-results">
 		                  <thead>
