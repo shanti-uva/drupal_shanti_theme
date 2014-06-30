@@ -36,6 +36,25 @@ jQuery(function($) {
   }); 
   
   $("advanced-view").css('height','275px'); 
+
+
+
+function recalc(){
+    var jq_parent = $(this).closest('.section');
+    jq_parent.attr('class', 'section ' + (jq_parent.hasClass('expanded') ? 
+                   'collapsed' : 'expanded'));
+    var num = $('.expanded').length;
+    if (num > 0) {
+        var h = (400 - (38 * $('.collapsed').length) )/ num;
+        $('.collapsed').animate({height:'38px'});
+        $('.expanded').animate({height: h + 'px' });
+    }
+}
+$('.toggle').click(recalc);
+recalc();
+    $(window).bind('load orientationchange resize', recalc );
+
+
   
 // *** SEARCH *** adapt search panel height to viewport
   function kmaps_searchHeight() {
