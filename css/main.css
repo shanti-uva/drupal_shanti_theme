@@ -386,7 +386,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 /*---------------------*/
 /*--- BEGIN content ---*/
 /*---------------------*/
-.main-wrapper{ position:relative;}
+.main-wrapper{ position:relative; min-height:900px; }
 /*--- make heights equal of main two content columns, resources and content columns ---*/
 
 .main-content {
@@ -441,7 +441,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   padding-left: 0;
   padding-right: 0;
   width:190px;
-  /* border-right: 1px solid #eee; */
   background:transparent;
 	background-image: -webkit-linear-gradient(left, #ccc 0px, #ccc 9px, #fff 10px);
 	background-image: -moz-linear-gradient(left, #ccc 0px, #ccc 9px, #fff 10px);
@@ -798,7 +797,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 
 #menu .multilevelpushmenu_wrapper li a{ 
-	color:#505050;
+	color:#606060;
 	font-size:.93em;
 	line-height:2.44em; 
 	height:4em;
@@ -1145,6 +1144,7 @@ ul.menu-main>li>a:first-child {
   #menu-collections .panel-group{ padding:0 !important;}  
   
   .content-resources { width:190px;}
+  .content-resources ul{ margin-top:25px;}
   
 	.content-resources ul.nav-pills li{ font-size: 1em; line-height: 1em; height: 2.63em;}
   .content-resources ul.nav-pills li a{ font-size: 0.75em; line-height: 3.63em; height:3.5em; padding:0 0 0 10px; } 
@@ -1154,7 +1154,7 @@ ul.menu-main>li>a:first-child {
 	.content-resources ul.nav-pills li a i{ position:relative; top:4px;}
 		
   .view-resources.btn-default { width:230px; display:block; padding:4px 8px 2px 60px; position:relative; top:0; left:-66px; font-size:.75em; line-height:1.75em; height:2.25em; background-image:none; border:none; border-radius:0; background:#555; text-shadow:none; box-shadow:none; font-weight:400; color:#fff; font-family:'Museo Sans',sans-serif; -webkit-transition: all .3s ease-out;-moz-transition: all .3s ease-out;transition: all .3s ease-out; }  
-	.view-resources.btn-default.show { width:200px; padding-left:35px; text-align:left; position:relative; left:-217px;}	
+	.view-resources.btn-default.show { width:200px; padding-left:35px; text-align:left; position:relative; left:-218px;}	
 	.view-resources.btn-default .hide-panel{ display:none; }
 	.view-resources.btn-default.show .hide-panel{ color:#fff !important; font-size:1em; float:right; text-align:right; margin:0;padding:0;line-height:1em;width:10px; height:10px; display:inline; position:absolute; top:2px; right:5px; }
 	.view-resources.btn-default .header{ }	

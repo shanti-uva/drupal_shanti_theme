@@ -162,6 +162,7 @@
         <li class="sources"><a href="#tab-sources" data-toggle="pill">
         	<i class="icon"></i>Sources<span class="badge">3</span></a>
         </li>
+        <li style="height:8px;"></li><!-- temporary -->
       </ul> 
     </aside> 
     
@@ -498,12 +499,12 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap.min.js"></script> 
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jquery.multilevelpushmenu.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jquery.jBreadCrumb.1.1.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/extruder/mbExtruder.js"></script><!-- searchpanel(3) --> 
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/extruder/mbExtruder.js"></script><!-- searchpanel(3 merged) --> 
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.js"></script><!-- tree -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.glyph.js"></script><!-- tree -->  
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.filter.js"></script><!-- tree -->
 
-  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.edit.js"></script> <!-- is this needed ? -->
+  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.edit.js"></script>
   
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/metisMenu.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/check/icheck.min.js"></script><!-- forms -->
@@ -523,7 +524,7 @@
   <script type="text/javascript" src="http://www.thlib.org/places/maps/interactive/scripts/THLWMS.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/inset-map.js"></script>
   <?php endif ?>
-  
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/search-panel.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
   <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
