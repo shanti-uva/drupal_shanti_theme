@@ -25,45 +25,40 @@ jQuery(function ($) {
 
 
 
-
+jQuery(function($) {
+  // --- advanced search toggle icons, open/close, view change height
+  $(".advanced-link").click(function () {
+      $(this).toggleClass("show-advanced",'fast');
+      $(".advanced-view").slideToggle('fast');
+      $(".advanced-view").toggleClass("show-options");
+      $(".view-wrap").toggleClass("short-wrap"); // ----- toggle class for managing view-section height      
+      kmaps_searchHeight();
+  }); 
+  
+  $("advanced-view").css('height','275px'); 
+  
 // *** SEARCH *** adapt search panel height to viewport
- function kmaps_searchHeight() {
+  function kmaps_searchHeight() {
     var height = $(window).height();
     var kmapsrch = (height) - 80;
-    var viewheight = (height) - 212;
+    var viewheight = (height) -  211;
+		// var advHeight = $(".advanced-view").show().height();
+    var comboHeight = (viewheight) - 265;
     
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);
     
     viewheight = parseInt(viewheight) + 'px';
-    $("#kmaps-search").find(".view-wrap").css('height',viewheight);
- }
- 
- jQuery(function($) {
-  var winHeight = $(window).height();
-  var panelHeight = winHeight -80; // ----- height of container for search panel - minus length above and below in px
-  var viewHeight = winHeight -215; // ----- height for view-section & search options - CLOSED
-  var shortHeight = winHeight -483; // ----- height for view-section & search options - OPEN
+    comboHeight = parseInt(comboHeight) + 'px';
+    $(".view-wrap").css('height', viewheight);
+		$(".view-wrap.short-wrap").css('height', comboHeight);
+            
+  } 
 
-  // set initial div height
-  $("div.text").css({ "height": panelHeight });
-  $(".view-wrap").css({ "height": viewHeight });
-  $("#kmaps-search .view-wrap.short-wrap").css({ "height": shortHeight });
-  // make sure div stays full width/height on resize
-  $(window).resize(function(){
-    $("div.text").css({ "height": panelHeight });
-    $(".view-wrap").css({ "height": viewHeight });
-    $("#kmaps-search .view-wrap.short-wrap").css({ "height": shortHeight });
-  });
-  // toggle heights with search options
-  $(".advanced-link").click(function () {
-    $(".view-wrap").css({ "height": viewHeight });
-    $("#kmaps-search .view-wrap.short-wrap").css({ "height": shortHeight });
-  });
-
-	// --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
+	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
     kmaps_searchHeight();
     $(window).bind('load orientationchange resize', kmaps_searchHeight);
+
 });
 
 
@@ -96,15 +91,6 @@ jQuery(function($) {
   $("button.view-resources").click( function() {
           $(this).toggleClass( "show",'fast' );
    });
-
-
-  // --- advanced search toggle icons, open/close, view change height
-  $(".advanced-link").click(function () {
-      $(this).toggleClass("show-advanced",'fast');
-      $(".advanced-view").slideToggle('fast');
-      $(".advanced-view").toggleClass("show-options");
-      $(".view-wrap").toggleClass("short-wrap"); // ----- toggle class for managing view-section height
-  });
   
 });
 
