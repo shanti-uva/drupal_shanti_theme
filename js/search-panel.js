@@ -346,7 +346,7 @@ jQuery(function ($) {
       },
       source: {
 //          url: "/fancy_nested.json",
-          url: Settings.baseUrl + "/features/fancy_nested.json",
+          url: Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('.nav li.lang input[name=radios]:checked').val(),
           cache: false,
           debugDelay: 1000,
           timeout: 30000,
@@ -1090,6 +1090,16 @@ jQuery(function ($) {
 
 
 /* Additions by Gerard Ketuma */
+
+// *** Change fancytree to accomodate different languagues ***
+jQuery(function($) {
+  console.log($('.nav li.lang input[name=radios]:checked').val());
+  $('.nav li.lang input[name=radios]').change(function() {
+    var newSource = Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('.nav li.lang input[name=radios]:checked').val();
+    $("#tree").fancytree("option", "source", newSource);
+    console.log("Radio Reloaded");
+  });
+});
 
 // *** Hash Change events ***
 jQuery(function($) {

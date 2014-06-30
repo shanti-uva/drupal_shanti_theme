@@ -56,22 +56,38 @@
        <fieldset>         
         <ul class="nav navbar-nav navbar-right">
           <li class="explore"><a href="#">Explore Collections<i class="icon km-directions"></i></a></li>
-          <li class="dropdown lang highlight" id="lang">                    
+          <li class="dropdown lang highlight" id="lang"> 
+            <form>                  
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
               <ul class="dropdown-menu">
                 <li class="form-group"><label class="radio-inline" for="optionlang1">
-                    <input type="radio" name="radios" id="optionlang1" value="lang1">Tibetan</label>
+                    <input type="radio" name="radios" id="optionlang1" value="" checked>English</label>
                 </li>
                 <li class="form-group"><label class="radio-inline" for="optionlang2">
-                    <input type="radio" name="radios" id="optionlang2" value="lang2" checked>English</label>
+                    <input type="radio" name="radios" id="optionlang2" value="simp.chi">Chi (Simp)</label>
                 </li>
+                <?php if(!$subject): ?>
                 <li class="form-group"><label class="radio-inline" for="optionlang3">
-                    <input type="radio" name="radios" id="optionlang3" value="lang3">French</label>
+                    <input type="radio" name="radios" id="optionlang3" value="trad.chi">Chi (Trad)</label>
                 </li>
-                <li class="last form-group"><label class="radio-inline" for="optionlang4">
-                    <input type="radio" name="radios" id="optionlang4" value="lang4">Chinese</label>
+                <?php endif ?>
+                <li class="form-group"><label class="radio-inline" for="optionlang4">
+                    <input type="radio" name="radios" id="optionlang4" value="deva">Deva Script</label>
                 </li>
-              </ul>              
+                <li class="last form-group"><label class="radio-inline" for="optionlang5">
+                    <input type="radio" name="radios" id="optionlang5" value="roman.popular">Rom Pop</label>
+                </li>
+                <li class="last form-group"><label class="radio-inline" for="optionlang6">
+                    <input type="radio" name="radios" id="optionlang6" value="roman.scholar">Rom Sch</label>
+                </li>
+                <li class="last form-group"><label class="radio-inline" for="optionlang7">
+                    <input type="radio" name="radios" id="optionlang7" value="pri.tib.sec.chi">Tib Chi</label>
+                </li>
+                <li class="last form-group"><label class="radio-inline" for="optionlang8">
+                    <input type="radio" name="radios" id="optionlang8" value="pri.tib.sec.roman">Tib Rom</label>
+                </li>
+              </ul> 
+            </form>            
           </li>
         </ul>
        </fieldset>  
