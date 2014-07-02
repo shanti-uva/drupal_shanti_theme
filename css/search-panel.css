@@ -208,81 +208,8 @@ object.flip_label{ display:none;}
 
 .input-section label.radio-inline:first-child{ width:6em; min-width:6em; max-width:15em; padding-left:4px;}
 
-/*-----------------------------------------------*/
-/*---- select dropdown -----*/
-.input-section .bootstrap-select{ width:100%; padding:0 5px 0 5px; margin-top:4px;margin-bottom:0;}
-.input-section .bootstrap-select .selectpicker{ line-height:27px; height:27px; padding:0; border:1px solid #ddd; width:100% !important;}
-.input-section .bootstrap-select .btn{ 
-	padding-left: 15px;
-	color:#666;
-	background: transparent;
-	background-image:none;
-	background-image: -webkit-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%); 
-  background-image: -moz-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);  
-  background-image: -ms-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);  
-  background-image: -o-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);  
-  background-image: linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);
-	/* 
-		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
-	*/
-	background-repeat: repeat-x;
-	border: 1px solid #ddd;
-	border-radius:25px;  	
-	border-color: #eeee #eee #ddd;
-	background-clip: padding-box; /* Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners */
-	overflow:hidden;
-	-webkit-box-shadow:none;
-	box-shadow:none;
-}
-.input-section .bootstrap-select .btn:hover{ 
-	border: 1px solid #ccc; 
-	background: #eee; 
-}
-	
-.input-section .bootstrap-select .btn:focus,
-.input-section .bootstrap-select .btn.active{ outline:none !important; border: 1px solid #9097d3; -webkit-box-shadow: 0 0 4px 0 #5764de; box-shadow: 0 0 4px 0 #5764de; 
-	background: #f5f5f5;
-	background-image:none;
-}
+/*--- END iCheck ---*/
 
-/*--- dropdown ---*/
-.input-section .dropdown-menu.open{ border-radius:10px;}
-.input-section .selectpicker .dropdown-menu>li>a span.text{ margin-right:0; padding-left:18px; overflow:hidden;}
-
-.input-section .bootstrap-select.btn-group .dropdown-menu{ height:250px; overflow:auto;}
-
-.input-section .selectpicker .caret{ border:none; }
-.input-section .selectpicker .caret:before{ color:#dc3c47; font-size:17px; font-family: 'kmaps-icons'; content: "\e620"; position:absolute; top:-10px; right:0px;}
-
-.input-section .selectpicker li{ padding:0; overflow:hidden;}
-.input-section .selectpicker li a{ color:#444; padding:0 15px; overflow:hidden; display:block; line-height:25px; height:25px;}
-
-.input-section .selectpicker li a,
-.input-section .selectpicker li a span,
-.input-section .selectpicker li.selected a{ color:#555;}
-.input-section .selectpicker li.selected a span.text{ color:#000;}
-.input-section .selectpicker li>a:hover{ }
-
-.input-section .selectpicker li,
-.input-section .selectpicker li a:active,
-.input-section .selectpicker li.selected a:hover,
-.input-section .selectpicker li.selected a:active{ color:#444 !important;}
-
-.input-section .selectpicker li a span.text:hover,
-.input-section .selectpicker li.selected a span.text:hover{ color:#fff !important;}
-
-.input-section .selectpicker li:hover span.text,
-.input-section .selectpicker li:active span.text{ color:#fff !important; background: transparent !important; }
-
-.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a i.check-mark{ color:#dc3c47;}
-.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a:hover i.check-mark,
-.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a:focus i.check-mark{ color:#fff;}
- /* search errors */
-.input-section .notification-wrapper{ padding: 0 15px;}
-.input-section .alert{ margin:0 10px 10px;}
-
-.input-section .selectpicker li a span{ background:transparent !important; color:#444;}
-.input-section .selectpicker li a span:hover{ color:#fff;}
 
 
 /*--------------------------------------------------*/
@@ -478,32 +405,33 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .view-section .pagination>li>a, 
 .pagination>li>span { padding:7px 9px;}
 .view-section .pagination { margin:4px 0 2px 15px; }
-.view-section .dataTables_info {font-size: 1.3em;margin-left: 10px; padding-top:0; padding-bottom:0;}
-.view-section .row {margin-right: 0;/*margin-left: 0em;*/}
+.view-section .dataTables_info { font-size: 1.3em;margin-left: 10px; padding-top:0; padding-bottom:0;}
+.view-section .row { margin-right: 0;/*margin-left: 0em;*/}
 /* .listview td.sorting_1 { min-width: 12em;} */
 
 .overlay-mask .glyphicon{ font-size:5em;}
 .overlay-mask > div{ text-align:center;}
 .searchPop{ display:none;}
-.searchPop > .popover-title{ font-size:0.88em; line-height:1.12em; padding-top:12px; padding-bottom:7px; position:relative;}
+.searchPop > .popover-title{ font-size:0.88em; line-height:1.12em; padding:12px 12px 7px; position:relative;}
 .searchPop > .popover-title .kmapid-display { 
-	position:absolute; top:0px; right:8px; 
-  font-size: 0.68em;
+	position:absolute; top:2px; right:10px; 
+  font-size: 0.75em;
   white-space:nowrap;
   margin: 0;
-  color: #444;
-  /* font-weight:bold; */
+  color: #707070;
 }
 .searchPop > .popover-title .kmapid-display:before { content: ""}
 .searchPop > .popover-content{
 	font-family:"Museo Sans",sans-serif;
 	font-size: 0.75em;
-	padding-top:4px;	
+	padding-top:4px 12px;	
 }
 .searchPop > .popover-content > p {
-	padding:0 10px 0 8px;
-	margin:5px 0;
+	padding:0 8px;
+	margin:5px 0 0;
+	font-size: 1.18em;
 	border-left:4px solid #f0f0f0;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 .searchPop > .popover-content > .kmap-path{
 	display:inline;
@@ -529,23 +457,23 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
   top: 22px;
   font-size: 0.88em;
   line-height:1.18em;
-  height:1.44em;
+  height:1.56em;
   letter-spacing: 0.06em;
   border:1px solid #c0c0c0;
   background:#f9f9f9; 
-  color:#606060;
+  color:#111;
   padding:1px 6px; 
-
+	font-weight:normal;
 }
 .searchPop > .popover-content .associated{ /* background:#f0f0f0; */ text-align:center; float:right; position:relative; top:5px; height:36px; margin:0 0 5px 0; border-left:1px solid #ddd; }
 .searchPop > .popover-content .associated:first-child{
-	margin-right:-15px;
+	margin-right:-17px;
 }
 .searchPop > .popover-content .associated i{
 	font-size:1.56em;
 	position:absolute;
 	bottom:17px;
-	color:#777;
+	color:#808080;
 	margin:0 0 0 7px;
 }
 /*--- END trunk8 */
@@ -669,6 +597,111 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 
 
+/*-----------------------------------------------*/
+/*---- select dropdown -----*/
+.input-section .bootstrap-select{ width:100%; padding:0 5px 0 5px; margin-top:4px;margin-bottom:0;}
+.input-section .bootstrap-select .selectpicker{ line-height:27px; height:27px; padding:0; border:1px solid #ddd; width:100% !important;}
+.input-section .bootstrap-select .popover-title{ padding: 4px 14px; margin-bottom:5px;}
+
+.input-section .bootstrap-select .btn{ 
+	padding-left: 15px;
+	color:#666;
+	background: transparent;
+	background-image:none;
+	background-image: -webkit-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%); 
+  background-image: -moz-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);  
+  background-image: -ms-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);  
+  background-image: -o-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);  
+  background-image: linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%);
+	/* 
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe6e6e6', GradientType=0);
+	*/
+	background-repeat: repeat-x;
+	border: 1px solid #ddd;
+	border-radius:25px;  	
+	border-color: #eeee #eee #ddd;
+	background-clip: padding-box; /* Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners */
+	overflow:hidden;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+.input-section .bootstrap-select .btn:hover{ 
+	border: 1px solid #ccc; 
+	background: #eee; 
+}
+	
+.input-section .bootstrap-select .btn:focus,
+.input-section .bootstrap-select .btn.active{ outline:none !important; border: 1px solid #9097d3; -webkit-box-shadow: 0 0 4px 0 #5764de; box-shadow: 0 0 4px 0 #5764de; 
+	background: #f5f5f5;
+	background-image:none;
+}
+
+/*--- dropdown ---*/
+.input-section .dropdown-menu.open{ border-radius:10px;}
+.input-section .selectpicker .dropdown-menu>li>a span.text{ margin-right:0; padding-left:18px; overflow:hidden;}
+
+.input-section .bootstrap-select.btn-group{ margin-top:10px;margin-bottom:0;}
+.bootstrap-select.btn-group:not(.input-group-btn){ margin-bottom:0;}
+
+.input-section .bootstrap-select.btn-group .dropdown-menu{ height:255px; overflow:auto;}
+.input-section .bootstrap-select.btn-group .dropdown-menu.open{ height:300px;}
+
+.input-section .selectpicker .caret{ border:none; }
+.input-section .selectpicker .caret:before{ color:#dc3c47; font-size:17px; font-family: 'kmaps-icons'; content: "\e620"; position:absolute; top:-10px; right:0px;}
+
+.input-section .selectpicker li{ padding:0; overflow:hidden;}
+.input-section .selectpicker li a{ color:#444; padding:0 15px; overflow:hidden; display:block; line-height:25px; height:25px;}
+
+.input-section .selectpicker>li>a>span.text{ padding-left:4px !important;}
+
+.input-section .selectpicker li a,
+.input-section .selectpicker li a span,
+.input-section .selectpicker li.selected a{ color:#555;}
+.input-section .selectpicker li.selected a span.text{ color:#000;}
+.input-section .selectpicker li>a:hover{ }
+
+.input-section .selectpicker li,
+.input-section .selectpicker li a:active,
+.input-section .selectpicker li.selected a:hover,
+.input-section .selectpicker li.selected a:active{ color:#444;}
+
+
+.input-section .selectpicker li a span.text:hover,
+.input-section .selectpicker li.selected a span.text:hover{ color:#444;}
+
+.input-section .selectpicker li:hover span.text,
+.input-section .selectpicker li:active span.text{ color:#444; background: transparent; }
+
+.input-section .selectpicker>li>a i.check-mark,
+.input-section .selectpicker>li>a:hover i.check-mark,
+.input-section .selectpicker>li>a:focus i.check-mark { color:#ccc;}
+	
+.input-section .selectpicker>li.selected>a i.check-mark,
+.input-section .selectpicker>li.selected>a:hover i.check-mark,
+.input-section .selectpicker>li.selected>a:focus i.check-mark{ color:#dc3c47;}
+
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li a i.check-mark{ 
+	position:absolute; right:15px; margin-top:2px;
+}
+
+
+.input-section .selectpicker li a span.text,
+.input-section .selectpicker li a span.text:hover{ background:transparent !important; color:#444;}
+
+.bootstrap-select.btn-group .btn .filter-option{ font-size:.92em;}
+.bootstrap-select.btn-group .btn .filter-option i{ margin-right:2px;}
+.bootstrap-select.btn-group.show-tick i:first-child{ position:relative; top:1px;}
+
+
+
+/*--- END selectpicker ---*/
+
+
+
+/*--- search errors ---*/
+.input-section .notification-wrapper{ padding: 0 15px;}
+.input-section .alert{ margin:0 10px 10px;}
 
 
 
@@ -676,16 +709,9 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 
 
-
-
-
-
-
-/*-------------------------------*/
-/*--- START Kmaps Icon Fonts ----*/
-/*-------------------------------*/
-
-/* *** KMAPS CUSTOM icons below *** */
+/*-------------------------------------------*/
+/*--- START SHANTI Icon Font - Defaults ----*/
+/*-------------------------------------------*/
 @font-face {
 	font-family: 'kmaps-icons';
 	src:url('../fonts/kmaps-icons/fonts/kmaps-icons.eot?-n4brbx');
@@ -703,14 +729,11 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	font-weight: normal;
 	font-variant: normal;
 	text-transform: none;
-	line-height: 1;
-		
+	line-height: 1;		
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-
-
 /*--- increases the font 33% larger relative to the icon container ---*/
 .km-lg {
   font-size: 1.3333333333333333em;
@@ -775,9 +798,16 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
   animation: spin 2s infinite linear;
 }
 
+/*---------------------------------------------------*/
+/*--- END Default Font Styles ----*/
+/*---------------------------------------------------*/
 
 
-/*---- kmaps icon font set -----*/
+
+
+/*-------------------------------*/
+/*--- START SHANTI Icon Fonts ----*/
+/*-------------------------------*/
 .km-search-kmaps:before {
 	content: "\e600";
 }

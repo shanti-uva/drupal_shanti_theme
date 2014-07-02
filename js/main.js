@@ -116,7 +116,9 @@ jQuery(function ($) {
       });
   });
 
-  $(".selectpicker").selectpicker(); // initiates util bootstrap-select
+  
+  $(".selectpicker").selectpicker(); // --- bootstrap-select
+
 
 });
 
@@ -197,7 +199,7 @@ jQuery(function ($) {
         return false;
       }
   });   
-  $(".menu-maintoggle").click(function () {   
+  $('body').on('click','.menu-maintoggle',function(){   
       if($("#menu-main.extruder").hasClass("isOpened")){    
         $("#menu-main").closeMbExtruder();
         $(".menu-maintoggle").removeClass("show-topmenu");     
@@ -243,17 +245,18 @@ jQuery(function ($) {
       }
   }); 
   
-  // --- ajax call for collections list
-  $( "#kmaps-collections").load( "/sites/all/themes/shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");	
    
-  // --- desktop version - big dropdown collections toggle
-  $("li.explore").addClass("closed");
-  $(".explore>a, .closecollection").click(function(){
-      $(".opencollect").slideToggle('fast');
-      $(".closed").toggleClass("open", 'fast');
+  // --- desktop version - the big dropdown collections toggle
+	// --- ajax call for collections list
+	$( "#kmaps-collections").load( "/sites/all/themes/drupal_shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");  	
+  // $(".explore").addClass("closed");
+  $('body').on('click','.explore>a, .collections button',function(){
+       $(".opencollect").slideToggle(200);      
+      // $(".closed").toggleClass("open", 'fast');
       // $("#kmaps-search").toggleClass("hidden", 300);
-      $("#kmaps-search").toggleClass("open-collections", 200);
+      // $("#kmaps-search").toggleClass("open-collections", 200);
   });
+
     
 });
 

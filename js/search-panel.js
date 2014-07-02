@@ -26,6 +26,21 @@ jQuery(function ($) {
 
 
 jQuery(function($) {
+	 // call bootstrap-select
+  $(".selectpicker").selectpicker({
+			iconBase: 'icon',
+	    noneSelectedText: 'Select Assett Types:',
+	    noneResultsText: 'No results match',
+	    countSelectedText: 'Show {0} of {1} Assets Types'
+  });
+  $('.selectpicker').selectpicker('selectAll');
+  // --- set custom shanti resource icons
+	$(".selectpicker li a").find("i:eq(1)").removeClass("icon");
+	$(".selectpicker li a").find("i:eq(1)").addClass("glyphicon");		
+	
+	$(".selectpicker>li>a i.check-mark").css('display','inline-block');
+	
+		
   // --- advanced search toggle icons, open/close, view change height
   $(".advanced-link").click(function () {
       $(this).toggleClass("show-advanced",'fast');
@@ -35,7 +50,7 @@ jQuery(function($) {
       kmaps_searchHeight();
   }); 
   
-  $("advanced-view").css('height','275px'); 
+  // $("advanced-view").css('height','275px'); 
   
 // *** SEARCH *** adapt search panel height to viewport
   function kmaps_searchHeight() {
@@ -43,7 +58,7 @@ jQuery(function($) {
     var kmapsrch = (height) - 80;
     var viewheight = (height) -  211;
 		// var advHeight = $(".advanced-view").show().height();
-    var comboHeight = (viewheight) - 265;
+    var comboHeight = (viewheight) - 135;
     
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);

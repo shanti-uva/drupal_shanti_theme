@@ -96,15 +96,15 @@
     </div><!-- END navbar -->
 
     <!-- BEGIN navigation dropdown panel -->  
-    <section class="container collapse opencollect collections">
-      <nav class="row" role="navigation"> 
+    <section class="container opencollect collections" role="navigation">
+      <nav class="row"> 
          <div class="col-sm-12 col-md-10 col-md-offset-1">          
             <h4>EXPLORE COLLECTIONS</h4>
             <div id="kmaps-collections"> 
             	<!-- load ajax menu --> 
             </div>
          </div>
-          <button class="closecollection"> <i class="icon km-close"></i> </button>
+          <button></button>
       </nav>
     </section><!-- END dropdown panel -->
   </header><!-- END container -->
@@ -178,7 +178,6 @@
         <li class="sources"><a href="#tab-sources" data-toggle="pill">
         	<i class="icon"></i>Sources<span class="badge">3</span></a>
         </li>
-        <li style="height:8px;"></li><!-- temporary -->
       </ul> 
     </aside> 
     
@@ -189,7 +188,7 @@
 	    
       <div class="tab-content">
       
-        <article class="tab-pane active" id="tab-overview">	        
+        <article class="tab-pane active" id="tab-overview">        
         </article>
 
         <article class="tab-pane" id="tab-subjects"> 
@@ -267,7 +266,7 @@
 							 
 		           <div id="notification-wrapper"></div>
 		                
-		           <section class="advanced-view toggle-section" style="display:none;">                                              
+		           <section class="advanced-view" style="display:none;">                                              
 		                  <div class="form-group"> 
 		                    <label class="radio-inline" for="radios-0">
 		                      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
@@ -295,15 +294,20 @@
 		                        Show only entries with essays</label> 
 		                  </div>
 		
-		                  <div class="form-group">                                    
+		                  <div class="form-group" style="display:none;">                                    
 		                    <label class="checkbox-inline" for="checkbox-2">
 		                      <input type="checkbox" name="checkbox" id="checkbox-2" value="7" checked="checked">
 		                        Show feature details</label>                              
-		                  </div>
-		                  
-		                                    
-		                  <!-- feature 1 type -->
-		                  <div class="form-group km-input feature-group dropdown">
+		                  </div>              
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 		                  <!-- feature 1 type -->
+		                  <div class="form-group km-input feature-group dropdown" style="display:none;">
 		                        <span class="filter type"><label>Filter:</label> <span id="matches1"></span></span>                                               
 		                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
 		                        <button id="feature1a-reset" class="feature-reset">&times;</button>
@@ -326,7 +330,7 @@
 		
 		
 		                  <!-- feature 2 subject -->
-		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
+		                  <div class="form-group km-input feature-group dropdown" style="border-top:none; display:none;">
 		                        <span class="filter subject"><label>Filter:</label> <span id="matches2"></span></span>                                               
 		                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
 		                        <button id="feature2a-reset" class="feature-reset">&times;</button>
@@ -349,7 +353,7 @@
 		                  
 		
 		                  <!-- feature 3 region -->
-		                  <div class="form-group km-input feature-group dropdown" style="border-top:none;">
+		                  <div class="form-group km-input feature-group dropdown" style="border-top:none; display:none;">
 		                        <span class="filter region"><label>Filter:</label> <span id="matches3"></span></span>                                               
 		                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
 		                        <button id="feature3a-reset" class="feature-reset">&times;</button>
@@ -369,7 +373,29 @@
 		                            </div>                      
 		                        </div> <!-- END dropdown-menu -->                        
 		                  </div> <!-- END feature-group -->
-		                  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+                  
+		                  <div class="form-group select-type"> 
+										        <select class="selectpicker" id="selector1" name="selector1" data-selected-text-format="count" data-header="Deselect one or more..." data-width="100%" multiple >										      
+												      <option data-icon="km-essays">Essays</option>
+												      <option data-icon="km-places">Places</option>
+												      <option data-icon="km-agents">Agents</option>
+												      <option data-icon="km-events">Events</option>
+												      <option data-icon="km-photos">Photos</option>
+													    <option data-icon="km-audiovideo">Audio-Video</option>
+													    <option data-icon="km-visuals">Visuals</option>
+												      <option data-icon="km-texts">Texts</option>
+												      <option data-icon="km-terms">Terms</option>
+													    <option data-icon="km-sources">Sources</option>
+												    </select>
+										  </div>
+								  		                  
 		           </section><!-- END advanced section -->
 		         </fieldset>         
 		       </form>
@@ -385,11 +411,11 @@
 		                          
 		          <!-- TAB - tree view -->
 		          <div class="treeview tab-pane active">        
-		              <div id="tree" class="view-wrap toggle-section"><!-- view-wrap controls tree container height --></div>              
+		              <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
 		          </div>          
 		          <!-- TAB - list view -->
 		          <div class="listview tab-pane">   
-		            <div class="view-wrap toggle-section"> <!-- view-wrap controls container height -->              
+		            <div class="view-wrap"> <!-- view-wrap controls container height -->              
 		              <div class="table-responsive">
 		                 <table class="table table-condensed table-results">
 		                  <thead>
