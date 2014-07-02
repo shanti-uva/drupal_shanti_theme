@@ -188,12 +188,7 @@
 	    
       <div class="tab-content">
       
-        <article class="tab-pane active" id="tab-overview">
-        
-        <div class="btn-group btn-group-gmaps">
-					<button type="button" class="btn btn-default dfn">This is the Text</button>
-					<button type="button" class="btn btn-default dfn">Big Button</button>
-				</div>	        
+        <article class="tab-pane active" id="tab-overview">        
         </article>
 
         <article class="tab-pane" id="tab-subjects"> 
