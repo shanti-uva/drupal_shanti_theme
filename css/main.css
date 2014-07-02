@@ -554,15 +554,25 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 
 
-.btn,
-.btn:active,
-.btn.active {
-  background-image: none; 
-  font-family: "Museo Sans",sans-serif;
-}
+
 
 
 .btn{ font-family: "Museo Sans",sans-serif; }
+
+
+.btn-group{
+	-moz-box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
+	box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
+}
+.btn-group > .btn{ 
+	-moz-box-shadow:none;
+	box-shadow:none;
+}
+
+.btn{
+  background-image: none; 
+  font-family: "Museo Sans",sans-serif;
+}
 
 .btn-default,
 .btn-primary,
@@ -574,8 +584,17 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	-moz-box-shadow:none;
 	box-shadow:none;
 	background-image:none;
-	filter:none;
+	/* filter:none; set none for IE */
 }
+
+
+
+
+.btn:active,
+.btn.active {
+  background-image: none; 
+}
+
 
 .btn-default {
 	background:#fff;
@@ -584,14 +603,21 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	-moz-box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
 	box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
 }
-.btn-group .btn{ 
-	-moz-box-shadow:none;
-	box-shadow:none;
+.btn-default:hover,
+.btn-default:focus {
+  border-color: transparent;
+}
+.btn-default:active,
+.btn-default.active {
+  background: #f7f7f7;
+  border-color: transparent;
 }
 
 
-button.dfn, /* default bootstrap class name for serif */
-button.italic{ font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
+button.btn.dfn, /* default bootstrap class name for serif */
+button.btn.italic{ font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
+
+
 
 
 
