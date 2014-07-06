@@ -157,7 +157,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .content-resources ul li.audiovideo a i:before { content: "\e60b";}
 .content-resources ul li.visuals a i:before { content: "\e63c";}
 .content-resources ul li.texts a i:before { content: "\e637";}
-.content-resources ul li.maps a i:before { content: "\e626";}
+.content-resources ul li.maps a i:before { content: "\e61a"; margin-left:-2px;}
 .content-resources ul li.community a i:before { content: "\e611";}
 .content-resources ul li.terms a i:before { content: "\e636";}
 .content-resources ul li.sources a i:before { content: "\e632";}

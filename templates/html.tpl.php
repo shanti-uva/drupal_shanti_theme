@@ -158,7 +158,7 @@
         	<i class="icon shanticon-photos"></i>Photos<span class="badge">3</span></a>
         </li>
         <li class="audio-video"><a href="#tab-audio-video" data-toggle="pill">
-        	<i class="icon shanticon-audiovideo"></i>Audio-Video<span class="badge">3</span></a>
+        	<i class="icon shanticon-audio-video"></i>Audio-Video<span class="badge">3</span></a>
         </li>
         <li class="visuals"><a href="#tab-visuals" data-toggle="pill">
         	<i class="icon shanticon-visuals"></i>Visuals<span class="badge">3</span></a>
@@ -388,7 +388,7 @@
 												      <option data-icon="shanticon-agents">Agents</option>
 												      <option data-icon="shanticon-events">Events</option>
 												      <option data-icon="shanticon-photos">Photos</option>
-													    <option data-icon="shanticon-audiovideo">Audio-Video</option>
+													    <option data-icon="shanticon-audio-video">Audio-Video</option>
 													    <option data-icon="shanticon-visuals">Visuals</option>
 												      <option data-icon="shanticon-texts">Texts</option>
 												      <option data-icon="shanticon-terms">Terms</option>

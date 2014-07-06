@@ -658,21 +658,21 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 .input-section .selectpicker li a,
 .input-section .selectpicker li a span,
-.input-section .selectpicker li.selected a{ color:#555;}
+.input-section .selectpicker li.selected a{ color:#555;background: #fff !important;}
 .input-section .selectpicker li.selected a span.text{ color:#000;}
 .input-section .selectpicker li>a:hover{ }
 
 .input-section .selectpicker li,
 .input-section .selectpicker li a:active,
 .input-section .selectpicker li.selected a:hover,
-.input-section .selectpicker li.selected a:active{ color:#444;}
+.input-section .selectpicker li.selected a:active{ color:#444; background: #eee !important;}
 
 
 .input-section .selectpicker li a span.text:hover,
-.input-section .selectpicker li.selected a span.text:hover{ color:#444;}
+.input-section .selectpicker li.selected a span.text:hover{ color:#444; background: #eee !important;}
 
 .input-section .selectpicker li:hover span.text,
-.input-section .selectpicker li:active span.text{ color:#444; background: transparent; }
+.input-section .selectpicker li:active span.text{ color:#444; background: transparent !important; }
 
 .input-section .selectpicker>li>a i.check-mark,
 .input-section .selectpicker>li>a:hover i.check-mark,
@@ -850,7 +850,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .shanticon-audio:before {
 	content: "\e60a";
 }
-.shanticon-audiovideo:before {
+.shanticon-audio-video:before {
 	content: "\e60b";
 }
 .shanticon-calendar:before {
