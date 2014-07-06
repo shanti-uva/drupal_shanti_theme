@@ -115,11 +115,6 @@ jQuery(function ($) {
           insert: "<div class='icheck_line-icon'></div>" + label_text
       });
   });
-
-  
-  $(".selectpicker").selectpicker(); // --- bootstrap-select
-
-
 });
 
 

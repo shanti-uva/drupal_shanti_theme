@@ -456,6 +456,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
   position: relative;
   top: 22px;
   font-size: 0.88em;
+  font-family: sans-serif;
   line-height:1.18em;
   height:1.56em;
   letter-spacing: 0.06em;
@@ -640,7 +641,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .input-section .dropdown-menu.open{ border-radius:10px;}
 .input-section .selectpicker .dropdown-menu>li>a span.text{ margin-right:0; padding-left:18px; overflow:hidden;}
 
-.input-section .bootstrap-select.btn-group{ margin-top:10px;margin-bottom:0;}
+.input-section .bootstrap-select.btn-group{ margin-top:10px;margin-bottom:0;box-shadow:none;}
 .bootstrap-select.btn-group:not(.input-group-btn){ margin-bottom:0;}
 
 .input-section .bootstrap-select.btn-group .dropdown-menu{ height:255px; overflow:auto;}
@@ -687,7 +688,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 
 .input-section .selectpicker li a span.text,
-.input-section .selectpicker li a span.text:hover{ background:transparent !important; color:#444;}
+.input-section .selectpicker li a span.text:hover{ background:transparent; color:#444;}
 
 .bootstrap-select.btn-group .btn .filter-option{ font-size:.92em;}
 .bootstrap-select.btn-group .btn .filter-option i{ margin-right:2px;}
