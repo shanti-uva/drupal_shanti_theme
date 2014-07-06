@@ -32,21 +32,21 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
-  <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -<i class="icon km-close"></i></p><![endif]-->
+  <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -<i class="icon shanticon-close"></i></p><![endif]-->
   <div class="wrap-all">
   		<span class="sr-only"><a href=".main-content">Skip to main content</a> <a href="#kmaps-search">Skip to search</a></span>
   <header class="header-banner">
     <div class="navbar navbar-default navbar-static-top" role="navigation">  
       
       <nav class="menu-buttons">
-        <span class="kmaps-searchtoggle menu-icon"><a href="#"><i class='icon km-search-kmaps'></i></a></span><!-- mobile < 400 : search -->
-        <span class="menu-toggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span><!-- desktop > 768 drilldown menu : main-menu -->
-        <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon km-menu"></i></a></span><!-- mobile < 768 : main-menu -->
-        <span class="menu-exploretoggle menu-explore"><a href="#"><span>Explore </span>Collections<i class="icon km-directions"></i></a></span><!-- mobile < 768 : collections -->
+        <span class="shanti-searchtoggle menu-icon"><a href="#"><i class='icon shanticon-search'></i></a></span><!-- mobile < 400 : search -->
+        <span class="menu-toggle menu-icon"><a href="#"><i class="icon shanticon-menu"></i></a></span><!-- desktop > 768 drilldown menu : main-menu -->
+        <span class="menu-maintoggle menu-icon"><a href="#"><i class="icon shanticon-menu"></i></a></span><!-- mobile < 768 : main-menu -->
+        <span class="menu-exploretoggle menu-explore"><a href="#"><span>Explore </span>Collections<i class="icon shanticon-directions"></i></a></span><!-- mobile < 768 : collections -->
       </nav>
 
       <div class="navbar-header">
-        <h1 class="navbar-title"><a href="#" class="navbar-brand" title="SHANTI Homepage"><i class="icon km-logo-kmaps"></i><em>SHANTI</em>
+        <h1 class="navbar-title"><a href="#" class="navbar-brand" title="SHANTI Homepage"><i class="icon shanticon-logo"></i><em>SHANTI</em>
           <span>Scholarly Collections at the University of Virginia</span></a>
         </h1>
       </div>
@@ -55,10 +55,10 @@
        <form class="form">
        <fieldset>         
         <ul class="nav navbar-nav navbar-right">
-          <li class="explore"><a href="#">Explore Collections<i class="icon km-directions"></i></a></li>
+          <li class="explore"><a href="#">Explore Collections<i class="icon shanticon-directions"></i></a></li>
           <li class="dropdown lang highlight" id="lang"> 
             <form>                  
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon km-arrowselect"></i></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Eng<i class="icon shanticon-arrowselect"></i></a>
               <ul class="dropdown-menu">
                 <li class="form-group"><label class="radio-inline" for="optionlang1">
                     <input type="radio" name="radios" id="optionlang1" value="" checked>English</label>
@@ -104,7 +104,7 @@
             	<!-- load ajax menu --> 
             </div>
          </div>
-          <button></button>
+          <button><i class="icon shanticon-cancel"></i></button>
       </nav>
     </section><!-- END dropdown panel -->
   </header><!-- END container -->
@@ -120,7 +120,7 @@
     <div class="row">   
 	    <header class="col-xs-12 titlearea">
 	      <div role="banner">
-		      <h1 class="page-title"><i class="icon <?php print $subject ? "km-subjects" : "km-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
+		      <h1 class="page-title"><i class="icon <?php print $subject ? "shanticon-subjects" : "shanticon-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
 		      <nav class="breadwrap" role="navigation">
 		        <ol class="breadCrumb">
 		          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
@@ -137,46 +137,46 @@
     <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
       <ul class="nav nav-pills nav-stacked">
         <li class="overview active"><a href="#tab-overview" data-toggle="pill">
-        	<i class="icon"></i>Overview</a>
+        	<i class="icon shanticon-overview"></i>Overview</a>
         </li>
         <li class="subjects"><a href="#tab-subjects" data-toggle="pill">
-        	<i class="icon"></i>Subjects<span class="badge">5</span></a>
+        	<i class="icon shanticon-subjects"></i>Subjects<span class="badge">5</span></a>
         </li>
         <li class="essays"><a href="#tab-essays" data-toggle="pill">
-        	<i class="icon"></i>Essays<span class="badge">1</span></a>
+        	<i class="icon shanticon-essays"></i>Essays<span class="badge">1</span></a>
         </li>
         <li class="places"><a href="#tab-places" data-toggle="pill">
-        	<i class="icon"></i>Places<span class="badge">3</span></a>
+        	<i class="icon shanticon-places"></i>Places<span class="badge">3</span></a>
         </li>
         <li class="agents"><a href="#tab-agents" data-toggle="pill">
-        	<i class="icon"></i>Agents<span class="badge">3</span></a>
+        	<i class="icon shanticon-agents"></i>Agents<span class="badge">3</span></a>
         </li>
         <li class="events"><a href="#tab-events" data-toggle="pill">
-        	<i class="icon"></i>Events<span class="badge">3</span></a>
+        	<i class="icon shanticon-events"></i>Events<span class="badge">3</span></a>
         </li>
         <li class="photos"><a href="#tab-photos" data-toggle="pill">
-        	<i class="icon"></i>Photos<span class="badge">3</span></a>
+        	<i class="icon shanticon-photos"></i>Photos<span class="badge">3</span></a>
         </li>
         <li class="audio-video"><a href="#tab-audio-video" data-toggle="pill">
-        	<i class="icon"></i>Audio-Video<span class="badge">3</span></a>
+        	<i class="icon shanticon-audiovideo"></i>Audio-Video<span class="badge">3</span></a>
         </li>
         <li class="visuals"><a href="#tab-visuals" data-toggle="pill">
-        	<i class="icon"></i>Visuals<span class="badge">3</span></a>
+        	<i class="icon shanticon-visuals"></i>Visuals<span class="badge">3</span></a>
         </li>
         <li class="texts"><a href="#tab-texts" data-toggle="pill">
-        	<i class="icon"></i>Texts<span class="badge">3</span></a>
+        	<i class="icon shanticon-texts"></i>Texts<span class="badge">3</span></a>
         </li>
         <li class="maps"><a href="#tab-maps" data-toggle="pill">
-        	<i class="icon"></i>Maps<span class="badge">3</span></a>
+        	<i class="icon shanticon-maps"></i>Maps<span class="badge">3</span></a>
         </li>
         <li class="community"><a href="#tab-community" data-toggle="pill">
-        	<i class="icon"></i>Community<span class="badge">3</span></a>
+        	<i class="icon shanticon-community"></i>Community<span class="badge">3</span></a>
         </li>
         <li class="terms"><a href="#tab-terms" data-toggle="pill">
-        	<i class="icon"></i>Terms<span class="badge">3</span></a>
+        	<i class="icon shanticon-terms"></i>Terms<span class="badge">3</span></a>
         </li>
         <li class="sources"><a href="#tab-sources" data-toggle="pill">
-        	<i class="icon"></i>Sources<span class="badge">3</span></a>
+        	<i class="icon shanticon-sources"></i>Sources<span class="badge">3</span></a>
         </li>
       </ul> 
     </aside> 
@@ -307,7 +307,7 @@
  
  
  		                  <!-- feature 1 type -->
-		                  <div class="form-group km-input feature-group dropdown" style="display:none;">
+		                  <div class="form-group advanced-input feature-group dropdown" style="display:none;">
 		                        <span class="filter type"><label>Filter:</label> <span id="matches1"></span></span>                                               
 		                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
 		                        <button id="feature1a-reset" class="feature-reset">&times;</button>
@@ -330,7 +330,7 @@
 		
 		
 		                  <!-- feature 2 subject -->
-		                  <div class="form-group km-input feature-group dropdown" style="border-top:none; display:none;">
+		                  <div class="form-group advanced-input feature-group dropdown" style="border-top:none; display:none;">
 		                        <span class="filter subject"><label>Filter:</label> <span id="matches2"></span></span>                                               
 		                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
 		                        <button id="feature2a-reset" class="feature-reset">&times;</button>
@@ -353,7 +353,7 @@
 		                  
 		
 		                  <!-- feature 3 region -->
-		                  <div class="form-group km-input feature-group dropdown" style="border-top:none; display:none;">
+		                  <div class="form-group advanced-input feature-group dropdown" style="border-top:none; display:none;">
 		                        <span class="filter region"><label>Filter:</label> <span id="matches3"></span></span>                                               
 		                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
 		                        <button id="feature3a-reset" class="feature-reset">&times;</button>
@@ -381,18 +381,18 @@
  
  
                   
-		                  <div class="form-group select-type"> 
+		                  <div class="form-group advanced-input select-type"> 
 										        <select class="selectpicker" id="selector1" name="selector1" data-selected-text-format="count" data-header="Deselect one or more..." data-width="100%" multiple >										      
-												      <option data-icon="km-essays">Essays</option>
-												      <option data-icon="km-places">Places</option>
-												      <option data-icon="km-agents">Agents</option>
-												      <option data-icon="km-events">Events</option>
-												      <option data-icon="km-photos">Photos</option>
-													    <option data-icon="km-audiovideo">Audio-Video</option>
-													    <option data-icon="km-visuals">Visuals</option>
-												      <option data-icon="km-texts">Texts</option>
-												      <option data-icon="km-terms">Terms</option>
-													    <option data-icon="km-sources">Sources</option>
+												      <option data-icon="shanticon-essays">Essays</option>
+												      <option data-icon="shanticon-places">Places</option>
+												      <option data-icon="shanticon-agents">Agents</option>
+												      <option data-icon="shanticon-events">Events</option>
+												      <option data-icon="shanticon-photos">Photos</option>
+													    <option data-icon="shanticon-audiovideo">Audio-Video</option>
+													    <option data-icon="shanticon-visuals">Visuals</option>
+												      <option data-icon="shanticon-texts">Texts</option>
+												      <option data-icon="shanticon-terms">Terms</option>
+													    <option data-icon="shanticon-sources">Sources</option>
 												    </select>
 										  </div>
 								  		                  
@@ -404,8 +404,8 @@
 		      <!-- BEGIN view section -->                                  
 		      <section class="view-section">             
 		        <ul class="nav nav-tabs">
-		          <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon km-tree"></i>Tree</a></li>
-		          <li class="listview"><a href=".listview" data-toggle="tab"><i class="icon km-list"></i>List</a></li>
+		          <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon shanticon-tree"></i>Tree</a></li>
+		          <li class="listview"><a href=".listview" data-toggle="tab"><i class="icon shanticon-list"></i>List</a></li>
 		        </ul>           
 		        <div class="tab-content">
 		                          
@@ -567,7 +567,7 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/inset-map.js"></script>
   <?php endif ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/search-panel.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script> <!-- kmaps fx -->
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/main.js"></script>
   <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
