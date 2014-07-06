@@ -504,8 +504,9 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	color:#444; 
 	margin:0 0 0 -24px; 
 	padding-left:15px; 
-	line-height:19px; 
-	height:20px; 
+	padding-top:2px;
+	line-height:1.5em; 
+	height:1.5em; 
 	-webkit-box-sizing: content-box;
 	-moz-box-sizing: content-box;
   box-sizing: content-box;
@@ -570,7 +571,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     font-size: 13px;
     margin-right: 12px;
     position: relative;
-    top: 2px;
+    top: 4px;
 }
 .view-section ul.fancytree-container span.fancytree-node:hover > .glyphicon {
     color: #333;
