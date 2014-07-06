@@ -15,6 +15,12 @@ function processPlacesData(data) {
   //Remove previous binds for related subjects
   $('a[href="#tab-subjects"]').unbind('show.bs.tab');
 
+  //Remove previous binds for related photos
+  $('a[href="#tab-photos"]').unbind('show.bs.tab');
+
+  //Remove previous binds for related texts
+  $('a[href="#tab-texts"]').unbind('show.bs.tab');
+
   //Remove previous binds for the accordion
   $("#collapseOne").unbind('show.bs.collapse');  // note: perhaps this needs expansion options for more than 2 accordions 
   $("#collapseTwo").unbind('show.bs.collapse');
@@ -229,12 +235,265 @@ function processPlacesData(data) {
       $.get(subjectsURL, relatedPlacesSubjects);
     });
   }
+
+  //Related photos in places section
+  if (data.feature.associated_resources.picture_count > 0) {
+    $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
+    $(".content-resources ul.nav-pills li.photos").show();
+    $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
+      var $tabPhotos = $("#tab-photos");
+      $tabPhotos.empty();
+      $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
+      var photosURL = Settings.mmsUrl + "/places/" + data.feature.id + "/pictures.json?per_page=30";
+      shantiPlaces.photosURL = photosURL;
+      shantiPlaces.feature_id = data.feature.id;
+      shantiPlaces.total_pages = parseInt(data.feature.associated_resources.picture_count / 32);
+      //$.get(photosURL, relatedPhotos);
+      $.ajax({
+        url: photosURL,
+        beforeSend: function(xhr) {
+          $('li.photos i').removeClass('icon km-photos').addClass('fa fa-spinner fa-spin');
+        }
+      })
+      .done(relatedPlacesPhotos)
+      .always(function() {
+        $('li.photos i').removeClass('fa fa-spinner fa-spin').addClass('icon km-photos');
+      });
+    });
+  }
+
+  //Related Texts section
+  if (data.feature.associated_resources.document_count > 0) {
+    $("ul.nav li a[href='#tab-texts'] .badge").text(data.feature.associated_resources.document_count);
+    $(".content-resources ul.nav-pills li.texts").show();
+    $('a[href="#tab-texts"]').one('show.bs.tab', function(e) {
+      var $tabTexts = $("#tab-texts");
+      $tabTexts.empty();
+      $tabTexts.append('<h6>Texts in ' + data.feature.header + '</h6>');
+      var textsURL = Settings.mmsUrl + "/places/" + data.feature.id + "/documents.json";
+      $.get(textsURL, relatedPlacesTexts);
+    });
+  }
 }
 
 //Populate Breadcrumbs
 function populatePlacesBreadcrumbs(bInd, bVal) {
   $breadcrumbOl = $("ol.breadCrumb");
   $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
+}
+
+//Function to show related photos in places
+function relatedPlacesPhotos(data) {
+  
+  var contentPh = '<div class="related-photos">';
+
+  //First get and show photos from sharedshelf
+  // var sharedShelfURL = location.href.substr(0, location.href.lastIndexOf('subjects')) + 'sharedshelf/api/projects/534/assets/filter/fd_24809_lookup.links.source_id/' + shantiPlaces.feature_id + '.json';
+  // $.get(sharedShelfURL, function(ssData) {
+  //   console.log(ssData);
+  // });
+
+  $.each(data.place.media, function(rInd, rElm) {
+    contentPh += '<div class="each-photo">';
+    contentPh += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
+    contentPh += '<img src="' + rElm.images[0].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentPh += '</a>';
+    contentPh += '</div>';
+
+    //Modal for each photo
+    contentPh += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentPh += '<div class="modal-dialog">';
+    contentPh += '<div class="modal-content">';
+    contentPh += '<div class="modal-header">';
+    contentPh += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+    contentPh += '<h4 class="modal-title" id="myModalLabel">' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '</h4>';
+    contentPh += '</div>';
+    contentPh += '<div class="modal-body">';
+    contentPh += '<img src="' + rElm.images[4].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentPh += '<p><strong>Resource #:</strong> ' + rElm.id + '</p>';
+    contentPh += '<p><strong>Description:</strong></p>';
+    contentPh += (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "");
+    contentPh += '<p><strong>Copyright holder:</strong> ' + (rElm.copyrights.length > 0 ? rElm.copyrights[0].copyright_holder.title : "") + '</p>';
+    contentPh += '<p><strong>Photographer:</strong> ' + (rElm.photographer.hasOwnProperty('fullname') ? rElm.photographer.fullname : "") + '</p>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+  });
+
+  contentPh += '</div>';
+  contentPh += '<ul id="photo-pagination">';
+  contentPh += '<li class="first-page"><a href="' + shantiPlaces.photosURL + '&page=1' + '">&lt;&lt;</a></li>';
+  contentPh += '<li class="previous-page"><a href="' + shantiPlaces.photosURL + '&page=1' + '">&lt;</a></li>';
+  contentPh += '<li>PAGE</li>';
+  contentPh += '<li><input type="text" value="1" class="page-input"></li>';
+  contentPh += '<li>OF ' + shantiPlaces.total_pages + '</li>';
+  contentPh += '<li class="next-page"><a href="' + shantiPlaces.photosURL + '&page=2' + '">&gt;</a></li>';
+  contentPh += '<li class="last-page"><a href="' + shantiPlaces.photosURL + '&page=' + shantiPlaces.total_pages + '">&gt;&gt;</a></li>';
+  contentPh += '</ul>';
+  contentPh += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
+  $("#tab-photos").append(contentPh);
+
+  //Add the event listener for the first-page element
+  $("li.first-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    $.ajax({
+      url: currentTarget,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPlacesPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val('1');
+      $('li.previous-page a').attr('href', currentTarget);
+      var nextTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1) + 2;
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the previous-page element
+  $("li.previous-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
+    var newpage = parseInt($('li input.page-input').val()) - 1;
+    if (newpage < 1) { newpage = 1; }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(shantiPlaces.total_pages) ? shantiPlaces.total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPlacesPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $(e.currentTarget).attr('href', previousTarget);
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the next-page element
+  $("li.next-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
+    var newpage = parseInt($('li input.page-input').val()) + 1;
+    if (newpage > parseInt(shantiPlaces.total_pages)) { newpage = parseInt(shantiPlaces.total_pages); }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(shantiPlaces.total_pages) ? shantiPlaces.total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPlacesPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $(e.currentTarget).attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the pager text input element
+  $("li input.page-input").change(function(e) {
+    e.preventDefault();
+    var currentTarget = shantiPlaces.photosURL + '&page=';
+    var newpage = parseInt($(this).val());
+    if (newpage > parseInt(shantiPlaces.total_pages)) { newpage = parseInt(shantiPlaces.total_pages); }
+    if (newpage < 1) { newpage = 1; }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(shantiPlaces.total_pages) ? shantiPlaces.total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPlacesPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the event listener for the last-page element
+  $("li.last-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    var newpage = parseInt(shantiPlaces.total_pages);
+    var previousTarget = shantiPlaces.photosURL + (newpage - 1);
+    $.ajax({
+      url: currentTarget,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedPlacesPhotos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $('li.next-page a').attr('href', currentTarget);
+    });
+  });
+}
+
+//Function to process and show the paginated photos in places
+function paginatedPlacesPhotos(data) {
+  var paginatedContent = $("#tab-photos .related-photos");
+
+  var contentPh = '';
+  $.each(data.place.media, function(rInd, rElm) {
+    contentPh += '<div class="each-photo">';
+    contentPh += '<a href="#pid' + rElm.id + '" class="thumbnail" data-toggle="modal">';
+    contentPh += '<img src="' + rElm.images[0].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentPh += '</a>';
+    contentPh += '</div>';
+
+    //Modal for each photo
+    contentPh += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.id + '">';
+    contentPh += '<div class="modal-dialog">';
+    contentPh += '<div class="modal-content">';
+    contentPh += '<div class="modal-header">';
+    contentPh += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+    contentPh += '<h4 class="modal-title" id="myModalLabel">' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '</h4>';
+    contentPh += '</div>';
+    contentPh += '<div class="modal-body">';
+    contentPh += '<img src="' + rElm.images[4].url + '" alt="' + (rElm.captions.length > 0 ? rElm.captions[0].title : "") + '">';
+    contentPh += '<p><strong>Resource #:</strong> ' + rElm.id + '</p>';
+    contentPh += '<p><strong>Description:</strong></p>';
+    contentPh += (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "");
+    contentPh += '<p><strong>Copyright holder:</strong> ' + (rElm.copyrights.length > 0 ? rElm.copyrights[0].copyright_holder.title : "") + '</p>';
+    contentPh += '<p><strong>Photographer:</strong> ' + (rElm.hasOwnProperty('photographer') ? rElm.photographer.fullname : "") + '</p>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+    contentPh += '</div>';
+  });
+  paginatedContent.empty().html(contentPh);
 }
 
 //Function to show related subjects in places
@@ -316,6 +575,44 @@ function relatedPlacesEssays(data) {
   contentES += '</div>';
 
   $("#tab-essays").append(contentES);
+}
+
+//Function to process and show related texts
+function relatedPlacesTexts(data) {
+  var contentTX = '<div class="related-texts">';
+
+  $.each(data.place.media, function(mInd, mElm) {
+    $.get(Settings.mmsUrl + '/media_objects/' + mElm.id + '.json', function(data) {
+      if (data.document.images) {
+        var contentTX = '<div class="each-text">';
+        contentTX += '<a href="#pid' + data.document.id + '" class="thumbnail" data-toggle="modal">';
+        contentTX += '<img src="' + data.document.images[1].url + '" alt="' + (data.document.captions.length > 0 ? data.document.captions[0].title : "") + '">';
+        contentTX += '</a>';
+        contentTX += '</div>';
+
+        //Modal for each photo
+        contentTX += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + data.document.id + '">';
+        contentTX += '<div class="modal-dialog">';
+        contentTX += '<div class="modal-content">';
+        contentTX += '<div class="modal-header">';
+        contentTX += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
+        contentTX += '<h4 class="modal-title" id="myModalLabel">' + (data.document.captions.length > 0 ? data.document.captions[0].title : "") + '</h4>';
+        contentTX += '</div>';
+        contentTX += '<div class="modal-body">';
+        contentTX += '<img src="' + data.document.images[6].url + '" alt="' + (data.document.captions.length > 0 ? data.document.captions[0].title : "") + '">';
+        contentTX += '<p><strong>Resource #:</strong> ' + data.document.id + '</p>';
+        contentTX += '</div>';
+        contentTX += '</div>';
+        contentTX += '</div>';
+        contentTX += '</div>';
+        $(".related-texts").append(contentTX);
+      }
+    });
+  });
+
+  contentTX += '</div>';
+
+  $("#tab-texts").append(contentTX);
 }
 
 //Recursive function to build and return nested names
