@@ -243,7 +243,7 @@ jQuery(function ($) {
    
   // --- desktop version - the big dropdown collections toggle
 	// --- ajax call for collections list
-	$( "#kmaps-collections").load( "/sites/all/themes/drupal_shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");  	
+	$( "#kmaps-collections").load( "/sites/all/themes/shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");  	
   // $(".explore").addClass("closed");
   $('body').on('click','.explore>a, .collections button',function(){
        $(".opencollect").slideToggle(200);      
