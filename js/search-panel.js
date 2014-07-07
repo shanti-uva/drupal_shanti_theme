@@ -1108,11 +1108,9 @@ jQuery(function ($) {
 
 // *** Change fancytree to accomodate different languagues ***
 jQuery(function($) {
-  console.log($('.nav li.lang input[name=radios]:checked').val());
-  $('.nav li.lang input[name=radios]').change(function() {
+  $('.nav li.lang input[name=radios]').on('ifChecked', function(e) {
     var newSource = Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('.nav li.lang input[name=radios]:checked').val();
-    $("#tree").fancytree("option", "source", newSource);
-    console.log("Radio Reloaded");
+    $("#tree").fancytree("option", "source.url", newSource);
   });
 });
 
