@@ -1536,7 +1536,6 @@ function paginatedPhotos(data) {
 
 //Function to process and show related videos
 function relatedVideos(data) {
-  console.log(data);
   var contentAV = '<div class="related-audio-video">';
 
   $.each(data.media, function(rInd, rElm) {
@@ -1547,7 +1546,7 @@ function relatedVideos(data) {
     contentAV += '</div>';
 
     //Modal for each video
-    contentAV += '<div class="modal fade" tabindex="-1" role="dialog" id="pid' + rElm.nid + '">';
+    contentAV += '<div class="modal video fade" tabindex="-1" role="dialog" id="pid' + rElm.nid + '">';
     contentAV += '<div class="modal-dialog">';
     contentAV += '<div class="modal-content">';
     contentAV += '<div class="modal-header">';
@@ -1555,7 +1554,7 @@ function relatedVideos(data) {
     contentAV += '<h4 class="modal-title" id="myModalLabel">' + (rElm.title ? rElm.title : "") + '</h4>';
     contentAV += '</div>';
     contentAV += '<div class="modal-body">';
-    contentAV += '<video controls name="media">';
+    contentAV += '<video class="each-video-player" controls name="media">';
     contentAV += '<source src="' + rElm.video_url + '" type="video/mp4" />';
     contentAV += '</video>';
     contentAV += '</div>';
@@ -1567,6 +1566,9 @@ function relatedVideos(data) {
   contentAV += '</div>';
 
   $("#tab-audio-video").append(contentAV);
+  $('.modal.video').on('hidden.bs.modal', function() {
+    $(".each-video-player")[0].pause();
+  });
 }
 
 //Function to process and show related texts
@@ -1712,5 +1714,4 @@ function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
 

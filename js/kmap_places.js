@@ -508,9 +508,8 @@ function relatedPlacesSubjects(data) {
   var subjectsContent = '';
   var $tabSubjects = $('#tab-subjects');
   $tabSubjects.empty();
-  $tabSubjects.append('<h6 class="center-me">RELATED SUBJECTS</h6>');
   if (data.feature.feature_types.length > 0) {
-    var subjectsContent = '<h6 class="custom-inline">FEATURE TYPES:</h6>';
+    var subjectsContent = '<h6>FEATURE TYPES:</h6>';
     subjectsContent += '<ul>';
     $.each(data.feature.feature_types, function(ind, val) {
       subjectsContent += '<li><a href="' + Settings.subjectsPath + "#features/" + val.id + '">';
@@ -541,7 +540,7 @@ function relatedPlacesSubjects(data) {
 
 //Function to show the related places within kmap places
 function placesWithinPlaces(data) {
-  var contentPlaces = '<h6 class="center-me">RELATED PLACES</h6>';
+  var contentPlaces = '';
   $.each(data.feature_relation_types, function(ind1, val1) {
     contentPlaces += '<h6>' + shantiPlaces.places_header + ' ' + val1.label + ' (' + val1.count + '):</h6>';
     contentPlaces += '<ul>';
