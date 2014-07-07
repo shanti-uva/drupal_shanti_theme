@@ -58,7 +58,7 @@ jQuery(function($) {
     var kmapsrch = (height) - 80;
     var viewheight = (height) -  211;
 		// var advHeight = $(".advanced-view").show().height();
-    var comboHeight = (viewheight) - 135;
+    var comboHeight = (viewheight) - 140;
     
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);
