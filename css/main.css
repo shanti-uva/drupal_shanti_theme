@@ -173,8 +173,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 /*-------------------------*/
 .content-section .btn{ font-family: "Museo Sans",sans-serif; }
 .content-section .btn-group{
-	-moz-box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
-	box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
+	-moz-box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.25);
+	box-shadow: 0px 0px 20px 0px rgba(50, 50, 50, 0.25);
 }
 .content-section .btn-group > .btn{ 
 	-moz-box-shadow:none;
@@ -208,12 +208,11 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 .content-section .btn-default:hover,
 .content-section .btn-default:focus {
-  border-color: transparent;
+  /* border-color: transparent; */
 }
 .content-section .btn-default:active,
 .content-section .btn-default.active {
-  background: #f7f7f7;
-  border-color: transparent;
+  background: #f0f0f0;
 }
 .content-section button.btn.dfn, /* default bootstrap class name for serif */
 .content-section button.btn.italic{ font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
