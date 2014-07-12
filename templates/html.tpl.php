@@ -32,7 +32,7 @@
   <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
 </head>
 <body>
-  <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -<i class="icon shanticon-close"></i></p><![endif]-->
+  <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -</p><![endif]-->
   <div class="wrap-all">
   		<span class="sr-only"><a href=".main-content">Skip to main content</a> <a href="#kmaps-search">Skip to search</a></span>
   <header class="header-banner">
@@ -365,7 +365,7 @@
  
                   
 		                  <div class="form-group advanced-input select-type"> 
-		                  <span style="position:relative;top:6px;padding-left:15px;font-size:105%;color:#404040;">Show only results containing:</span>
+		                  		<span>Show only results containing:</span>
 										        <select class="selectpicker" id="selector1" name="selector1" data-selected-text-format="count>2" data-width="100%" multiple >										      
 												      <option data-icon="shanticon-essays">Essays</option>
 												      <option data-icon="shanticon-places">Places</option>

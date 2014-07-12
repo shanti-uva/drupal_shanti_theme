@@ -29,7 +29,7 @@ jQuery(function($) {
 	 // call bootstrap-select
   $(".selectpicker").selectpicker({ // see other selectpicker settings in related html markup in search panel
 			iconBase: 'icon',
-	    noneSelectedText: 'SEARCH RESOURCES:',
+	    noneSelectedText: 'SEARCH RESOURCES',
 	    noneResultsText: 'No results match',
 	    countSelectedText: 'Searching {0} Resource Types'
   });
