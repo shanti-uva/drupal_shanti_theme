@@ -76,30 +76,6 @@ jQuery(function () {
   $('.progressive').delay( 2000 ).slideDown( 400 ).delay( 5000 ).slideUp( 400 );
 });
 
-// *** NAVIGTION *** breadcrumbs 
-jQuery(function ($) {
-  $(".breadwrap").jBreadCrumb({   
-        minimumCompressionElements: 1,
-        easing: "easeOutQuad",
-        endElementsToLeaveOpen: 1,
-        beginingElementsToLeaveOpen: 1,
-        timeExpansionAnimation: 500,
-        timeCompressionAnimation: 500,
-        timeInitialCollapse: 600,
-        previewWidth: 25  
-  });
-  
-  if($("breadCrumb > li > a:contains('Subjects')")) {
-	  $("breadCrumb li a").find("i").css('background','#dc3c47');
-  }
-  if($("breadCrumb > li > a:contains('Places')")) {
-	  $("breadCrumb li a").find("i").css('background','#4CA6FB');
-  }  
-  
-});
-
-
-
 
 // *** SEARCH *** Select-Form & iCheck form graphics
 jQuery(function ($) {
@@ -157,12 +133,25 @@ jQuery(function ($) {
   $("#menu-main").buildMbExtruder({
       positionFixed: false,
       position: "right",
-      width: 280, // width is set in two places, here and the css
-      
+      width: 280,      
       hidePanelsOnClose:false,
       accordionPanels:false,
-      onExtOpen:function(){  },
-      onExtContentLoad:function(){ $(".menu-main").metisMenu({ toggle: false }); },
+      onExtOpen:function(){ $(".menu-main").metisMenu({ toggle: false });  },
+      onExtContentLoad:function(){ 
+      
+      	$("input[type='radio']").each(function () {
+					var self = $(this),
+          label = self.next(),
+          label_text = label.text();
+					label.remove();
+					self.iCheck({
+	          // checkboxClass: "icheckbox_minimal-red",
+	          radioClass: "iradio_minimal-red",
+	          insert: "<div class='icheck_line-icon'></div>" + label_text
+					});
+				});
+      	
+      },
       onExtClose:function(){},
       top: 0
   }); 
@@ -243,7 +232,7 @@ jQuery(function ($) {
    
   // --- desktop version - the big dropdown collections toggle
 	// --- ajax call for collections list
-	$( "#kmaps-collections").load( "/sites/all/themes/shanti_theme/js/menus/menu-ajax.html .menu-collections > ul");  	
+	$( "#kmaps-collections").load( "/sites/all/themes/shanti_theme/js/menus/menu-ajax.php .menu-collections > ul");  	
   // $(".explore").addClass("closed");
   $('body').on('click','.explore>a, .collections button',function(){
        $(".opencollect").slideToggle(200);      

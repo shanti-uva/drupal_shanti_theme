@@ -107,47 +107,63 @@ object.flip_label{ display:none;}
 .input-section .input-group input.form-control:focus{ border: 1px solid #9097d3; -webkit-box-shadow: 0 0 4px #949bd8;box-shadow: 0 0 4px #949bd8;}
 
 /*--- button group ---*/
-.input-section .input-group .input-group-btns{ width:45px !important; /* set button width and position */ position:absolute; top:9px; right:13px; z-index:10; background:transparent; padding:0; margin:0;}
+.input-section .input-group .input-group-btn{ width:45px !important; /* set button width and position */ position:absolute; top:9px; right:13px; z-index:10; background:transparent; padding:0; margin:0;}
 
 /*--- button ---*/
-.input-section .input-group .btn.btn-default{ 
+.input-section .input-group #searchbutton{ 
 	display:block; 
 	height:33px; /* 2px less than search input height above */		
 	color:#888;
 	width:100%; 
 	border: 1px solid #e5e5e5;
 	border-width:0 0 0 1px;
-  border-radius: 25px;
-	border-bottom-left-radius: 0;
-	border-top-left-radius: 0; 
+  border-radius: 25px !important;
+	border-bottom-left-radius: 0 !important;
+	border-top-left-radius: 0 !important; 
 	-webkit-box-shadow:none;
 	box-shadow:none;
 	background-clip: padding-box; /* Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners */
 }
-.input-section .input-group .btn.btn-default:hover{ color:#dc3c47;}
-.input-section .input-group .btn-default:active, .input-section .input-group .btn-default.active{ background: transparent; border-color:#fff; /* active state for button */}
-.input-section .input-group .btn i.icon{ font-family: 'Glyphicons Halflings';}
-.input-section .input-group .btn i:before{ content: "\e080"; position:relative; right:2px; top:1px;}
-.input-section .input-group .btn.btn-default:active i.icon, 
-.input-section .input-group .btn.btn-default.active i.icon{ color:#777;}
+.input-section .input-group #searchbutton:hover{ color:#dc3c47;}
+.input-section .input-group #searchbutton:active, .input-section .input-group .btn-default.active{ background: transparent; border-color:#fff; /* active state for button */}
+.input-section .input-group #searchbutton{ font-family: 'Glyphicons Halflings';}
+.input-section .input-group #searchbutton:before{ content: "\e080"; position:relative; right:2px; top:1px;}
+.input-section .input-group #searchbutton:active, 
+.input-section .input-group #searchbutton.active{ color:#777;}
 /*--- clear all button ---*/
-.input-section .feature-group .feature-reset,
-.input-section .input-group .searchreset{ 
+.input-section .input-group .searchreset { 
 	border:none;
 	background:transparent;
 	background-image:none;
 	width:15px;
 	height:15px;
 	position:absolute;
-	right:46px;
+	right:50px;
 	top:9px;
 	z-index:10000;
-	font-size:1.5em; 
-	color:#ccc;
+	padding:0;
+	margin:0;
 	display:none;
-	padding:0;margin:0;
 }
-.input-section .feature-group .feature-reset{ position:absolute; top:23px;right:11px;}
+.input-section .input-group .searchreset i.icon{ font-size:1.25em; color:#aaa; }
+.input-section .input-group .searchreset  i.icon:before{ font-family: 'shanticon'; content: "\e610"; }
+
+.input-section .feature-group .feature-reset{
+	border:none;
+	background:transparent;
+	background-image:none;
+	width:15px;
+	height:15px;
+	position:absolute;
+	right:13px;
+	top:22px;
+	z-index:10000;
+	display:none;
+	padding:0;
+	margin:0;
+}
+.input-section .feature-group .feature-reset i.icon{ font-size:1.25em; color:#c0c0c0; }
+.input-section .feature-group .feature-reset i.icon:before{ font-family: 'shanticon'; content: "\e610"; }
 
 /*-----------------------------------------------*/
 
@@ -295,12 +311,29 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .feature-submit .btn.btn-default{ /*--- the select button ---*/
 	font-size:0.75em; background-color:#dc3c47;color:#fff; padding:3px 13px 2px; margin-top:7px; background-image:none;box-shadow:none;text-transform:uppercase;text-shadow:none;
 }
-.feature-submit .btn.btn-default>span{ font-size:1.63em;position:relative;top:3px;left:3px;}
+.feature-submit .btn.btn-default>span{ }
 .feature-submit .btn.btn-default.clear-form{ /*--- the clear button ---*/
-	border:none;background:transparent;font-size:0.88em;padding:0;position:relative;top:-4px;left:-10px;float:right;-webkit-box-shadow:none; font-weight:bold; box-shadow:none;color:#dc3c47;text-transform:capitalize; border-radius:0;
+	border:none;
+	background:transparent;
+	font-size:0.88em;
+	padding:0;
+	position:relative;
+	top:0px;
+	left:-10px;
+	float:right;
+	-webkit-box-shadow:none; 
+	font-weight:bold; 
+	box-shadow:none;
+	color:#dc3c47;
+	text-transform: capitalize; 
+	border-radius:0;
 }
 .feature-submit .btn.btn-default.clear-form:hover{ color:#333;}
 .feature-submit .btn.btn-default.clear-form:active{ color:#dc3c47;}
+.feature-submit .btn.btn-default.clear-form i.icon{  color:#dc3c47; font-size:1.56em; position:relative; top:4px; left:1px; }
+.feature-submit .btn.btn-default.clear-form i.icon:before{ font-family: 'shanticon'; content: "\e610"; }
+.feature-submit .btn.btn-default.clear-form:hover i.icon{ color:#333;}
+.feature-submit .btn.btn-default.clear-form:active i.icon{ color:#c3c47;}
 
 .advanced-view .form-group.advanced-input{ padding:2px 5px 2px;} /*--- common input ---*/
 .advanced-view .form-group.advanced-input .form-control{ 
@@ -606,8 +639,8 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .input-section .bootstrap-select .popover-title{ padding: 4px 14px; margin-bottom:5px;}
 
 .input-section .bootstrap-select .btn{ 
-	padding-left: 15px;
-	color:#666;
+	padding-left: 28px;
+	 color:#404040; 
 	background: transparent;
 	background-image:none;
 	background-image: -webkit-linear-gradient(top, #fff 0%, #f7f7f7 45%,  #f0f0f0 55%,  #e0e0e0 100%); 
@@ -646,7 +679,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .bootstrap-select.btn-group:not(.input-group-btn){ margin-bottom:0;}
 
 .input-section .bootstrap-select.btn-group .dropdown-menu{ height:255px; overflow:auto;}
-.input-section .bootstrap-select.btn-group .dropdown-menu.open{ height:300px;}
+.input-section .bootstrap-select.btn-group .dropdown-menu.open{ height:265px;}
 
 .input-section .selectpicker .caret{ border:none; font-family: 'shanticon'; content: "\e609";}
 .input-section .selectpicker .caret:before{ color:#dc3c47; font-size:17px; font-family: 'shanticon'; content: "\e609"; position:absolute; top:-10px; right:0px;}
@@ -657,22 +690,22 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .input-section .selectpicker>li>a>span.text{ padding-left:4px !important;}
 
 .input-section .selectpicker li a,
-.input-section .selectpicker li a span,
-.input-section .selectpicker li.selected a{ color:#555;background: #fff !important;}
-.input-section .selectpicker li.selected a span.text{ color:#000;}
-.input-section .selectpicker li>a:hover{ }
+.input-section .selectpicker li a span.text,
+.input-section .selectpicker li.selected a{ color:#555; background: #fff !important;}
 
-.input-section .selectpicker li,
+.input-section .selectpicker li.selected a span.text{ color:#000;}
+
+.input-section .selectpicker li:hover,
+.input-section .selectpicker li a:hover,
 .input-section .selectpicker li a:active,
+.input-section .selectpicker li:hover span.text,
+.input-section .selectpicker li:active span.text,
+.input-section .selectpicker li a span.text:hover,
 .input-section .selectpicker li.selected a:hover,
 .input-section .selectpicker li.selected a:active{ color:#444; background: #eee !important;}
 
-
 .input-section .selectpicker li a span.text:hover,
 .input-section .selectpicker li.selected a span.text:hover{ color:#444; background: #eee !important;}
-
-.input-section .selectpicker li:hover span.text,
-.input-section .selectpicker li:active span.text{ color:#444; background: transparent !important; }
 
 .input-section .selectpicker>li>a i.check-mark,
 .input-section .selectpicker>li>a:hover i.check-mark,

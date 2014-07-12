@@ -13,6 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shanti Kmaps</title>
   <meta name="description" content="template">
+  <script type="text/javascript" src="//use.typekit.net/oxg3src.js"></script> <!-- typekit -->
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script> <!-- typekit -->
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
@@ -22,14 +24,12 @@
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/search-panel.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/main.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/additional.css">
-  
   <?php if(!$subject): ?>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/places.css">
   <link rel="stylesheet" type="text/css" href="http://openlayers.org/api/theme/default/style.css">
   <?php endif ?>
-  
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>  
   <link rel="icon" href="<?php print $theme_path; ?>/favicon.ico">
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
   <!--[if lte IE 8]><p class="progressive">It appears you are using an older browser. Please consider a upgrading to a modern version of your browser to best appreciate this website. Thank you -<i class="icon shanticon-close"></i></p><![endif]-->
@@ -123,7 +123,7 @@
 		      <h1 class="page-title"><i class="icon <?php print $subject ? "shanticon-subjects" : "shanticon-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
 		      <nav class="breadwrap" role="navigation">
 		        <ol class="breadCrumb">
-		          <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
+		         <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
 		        </ol>
 		      </nav>
         </div>
@@ -184,7 +184,12 @@
     <!-- Column Main  -->                   
     <section  class="content-section col-xs-12 col-sm-9">
 	    <!-- button for responsive menu toggle -->
-	    <button type="button" class="btn btn-default btn-xs visible-xs view-resources" data-toggle="offcanvas"><i class="fa"></i><span class="header">RESOURCES</span><span class="badge">13489</span><span class="hide-panel">&times;</span></button>
+	    <button type="button" class="btn btn-default btn-xs visible-xs view-resources" data-toggle="offcanvas">
+	    	<i class="fa"></i>
+	    	<span class="header">RESOURCES</span>
+	    	<span class="badge">13489</span>
+	    	<i class="icon"></i>
+	    </button>
 	    
       <div class="tab-content">
       
@@ -250,9 +255,9 @@
 		            <div class="search-group">                        
 				            <div class="input-group">
 						            <input type="text" class="form-control kms" id="searchform" placeholder="Enter Search...">
-						            <span class="input-group-btns">
+						            <span class="input-group-btn">
 						              <button type="button" class="btn btn-default" id="searchbutton"><i class="icon"></i></button>
-						              <button type="reset" class="searchreset">&times;</button>
+						              <button type="reset" class="btn searchreset"><i class="icon"></i></button>
 						            </span>
 				            </div>
 				            
@@ -287,30 +292,14 @@
 		                      <input type="radio" name="radios2" id="radios-4" value="5">
 		                        Exactly</label>                             
 		                  </div>
-		                  
-		                  <div class="form-group">
-		                    <label class="checkbox-inline" for="checkbox-1">
-		                      <input type="checkbox" name="checkbox" id="checkbox-1" value="6">
-		                        Show only entries with essays</label> 
-		                  </div>
-		
-		                  <div class="form-group" style="display:none;">                                    
-		                    <label class="checkbox-inline" for="checkbox-2">
-		                      <input type="checkbox" name="checkbox" id="checkbox-2" value="7" checked="checked">
-		                        Show feature details</label>                              
-		                  </div>              
  
- 
- 
- 
- 
- 
+   
  
  		                  <!-- feature 1 type -->
 		                  <div class="form-group advanced-input feature-group dropdown" style="display:none;">
 		                        <span class="filter type"><label>Filter:</label> <span id="matches1"></span></span>                                               
 		                        <input class="form-control feature-type" id="feature-type" name="feature-type" type="text" placeholder="Filter by Feature Type">  
-		                        <button id="feature1a-reset" class="feature-reset">&times;</button>
+		                        <button id="feature1a-reset" class="feature-reset"><i class="icon"></i></button>
 		                                              
 		                        <div class="dropdown-menu feature-menu dropdown-type">
 		                            <div class="tree-wrap"> 
@@ -321,7 +310,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature1-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature1b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature1b-reset" class="btn btn-default clear-form">Cancel<i class="icon"></i></button>
 		                              </div>
 		                                                          
 		                            </div>                      
@@ -330,10 +319,10 @@
 		
 		
 		                  <!-- feature 2 subject -->
-		                  <div class="form-group advanced-input feature-group dropdown" style="border-top:none; display:none;">
+		                  <div class="form-group advanced-input feature-group dropdown" style="border-top:none;display:none;">
 		                        <span class="filter subject"><label>Filter:</label> <span id="matches2"></span></span>                                               
 		                        <input class="form-control feature-subject" id="feature-subject" name="feature-subject" type="text" placeholder="Filter by Feature Subject">  
-		                        <button id="feature2a-reset" class="feature-reset">&times;</button>
+		                        <button id="feature2a-reset" class="feature-reset"><i class="icon"></i></button>
 		                                              
 		                        <div class="dropdown-menu feature-menu dropdown-subject">
 		                            <div class="tree-wrap"> 
@@ -344,7 +333,7 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature2-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature2b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature2b-reset" class="btn btn-default clear-form">Cancel<i class="icon"></i></button>
 		                              </div>
 		                                                          
 		                            </div>                      
@@ -353,10 +342,10 @@
 		                  
 		
 		                  <!-- feature 3 region -->
-		                  <div class="form-group advanced-input feature-group dropdown" style="border-top:none; display:none;">
+		                  <div class="form-group advanced-input feature-group dropdown" style="border-top:none;display:none;">
 		                        <span class="filter region"><label>Filter:</label> <span id="matches3"></span></span>                                               
 		                        <input class="form-control feature-region" id="feature-region" name="feature-region" type="text" placeholder="Filter by Feature Region">  
-		                        <button id="feature3a-reset" class="feature-reset">&times;</button>
+		                        <button id="feature3a-reset" class="feature-reset"><i class="icon"></i></button>
 		                                              
 		                        <div class="dropdown-menu feature-menu dropdown-region">
 		                            <div class="tree-wrap"> 
@@ -367,22 +356,17 @@
 		                                                          
 		                              <div class="feature-submit">
 		                                <button type="button" id="feature3-select" class="btn btn-default">Select</button>
-		                                <button type="reset" id="feature3b-reset" class="btn btn-default clear-form">Cancel<span>&times;</span></button>
+		                                <button type="reset" id="feature3b-reset" class="btn btn-default clear-form">Cancel<i class="icon"></i></button>
 		                              </div>
 		                                                          
 		                            </div>                      
 		                        </div> <!-- END dropdown-menu -->                        
 		                  </div> <!-- END feature-group -->
  
- 
- 
- 
- 
- 
- 
                   
 		                  <div class="form-group advanced-input select-type"> 
-										        <select class="selectpicker" id="selector1" name="selector1" data-selected-text-format="count" data-header="Deselect one or more..." data-width="100%" multiple >										      
+		                  <span style="position:relative;top:6px;padding-left:15px;font-size:105%;color:#404040;">Show only results containing:</span>
+										        <select class="selectpicker" id="selector1" name="selector1" data-selected-text-format="count>2" data-width="100%" multiple >										      
 												      <option data-icon="shanticon-essays">Essays</option>
 												      <option data-icon="shanticon-places">Places</option>
 												      <option data-icon="shanticon-agents">Agents</option>
@@ -438,8 +422,8 @@
 
 
 	<!-- LOAD menus -->
-  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">   </section>  
-  <section id="menu-collections" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.html'} menu-accordion">    </section>
+  <section id="menu-main" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.php'} menu-accordion">   </section>  
+  <section id="menu-collections" role="navigation" class="{ url:'<?php print $theme_path; ?>/js/menus/menu-ajax.php'} menu-accordion">    </section>
    
   <section id="menu" role="navigation" style="display:none;">
     <nav id="menu-drill">                
@@ -540,7 +524,6 @@
   
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap.min.js"></script> 
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jquery.multilevelpushmenu.min.js"></script>
-  <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jquery.jBreadCrumb.1.1.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/extruder/mbExtruder.js"></script><!-- searchpanel(3 merged) --> 
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.js"></script><!-- tree -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.glyph.js"></script><!-- tree -->  

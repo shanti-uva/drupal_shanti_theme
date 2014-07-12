@@ -27,13 +27,14 @@ jQuery(function ($) {
 
 jQuery(function($) {
 	 // call bootstrap-select
-  $(".selectpicker").selectpicker({
+  $(".selectpicker").selectpicker({ // see other selectpicker settings in related html markup in search panel
 			iconBase: 'icon',
-	    noneSelectedText: 'Select Assett Types:',
+	    noneSelectedText: 'SEARCH RESOURCES:',
 	    noneResultsText: 'No results match',
-	    countSelectedText: 'Show {0} of {1} Assets Types'
+	    countSelectedText: 'Searching {0} Resource Types'
   });
-  $('.selectpicker').selectpicker('selectAll');
+  // $(".selectpicker").selectpicker("val", ['Essays','Photos']);
+  // $('.selectpicker').selectpicker('selectAll');
   // --- set custom shanti resource icons
 	$(".selectpicker li a").find("i:eq(1)").removeClass("icon");
 	$(".selectpicker li a").find("i:eq(1)").addClass("glyphicon");		
