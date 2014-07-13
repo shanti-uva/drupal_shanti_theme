@@ -239,12 +239,14 @@ jQuery(function ($) {
 
 
 jQuery(document).ready(function(){
-	jQuery(".breadwrap").jBreadCrumbCustom({
+	$(".breadwrap").jBreadCrumbCustom({
 				animationDuration: 400,
         collapsedWidth: 18,
         easing: 'easeOutQuad',
         startingFrom: 2
 	});
+	
+	$("ul.breadcrumb").find("li").last().addClass("last");
 
     $(window).bind('load orientationchange resize', jBreadCrumbCustom);
 });
