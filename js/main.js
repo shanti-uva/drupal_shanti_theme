@@ -227,23 +227,24 @@ jQuery(function ($) {
         // $(".menu-collections").find("ul").append("<li class='bottom-trim'></li>");  
         return false;
       }
-  }); 
-  
+  });   
    
-  // --- desktop version - the big dropdown collections toggle
 	// --- ajax call for collections list
 	$( "#kmaps-collections").load( "/sites/all/themes/shanti_theme/js/menus/menu-ajax.php .menu-collections > ul");  	
-  // $(".explore").addClass("closed");
   $('body').on('click','.explore>a, .collections button',function(){
        $(".opencollect").slideToggle(200);      
-      // $(".closed").toggleClass("open", 'fast');
-      // $("#kmaps-search").toggleClass("hidden", 300);
-      // $("#kmaps-search").toggleClass("open-collections", 200);
   });
-
     
 });
 
 
+jQuery(document).ready(function(){
+	jQuery(".breadwrap").jBreadCrumbCustom({
+				animationDuration: 400,
+        collapsedWidth: 18,
+        easing: 'easeOutQuad',
+        startingFrom: 2
+	});
 
-
+    $(window).bind('load orientationchange resize', jBreadCrumbCustom);
+});

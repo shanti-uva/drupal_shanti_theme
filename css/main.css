@@ -29,7 +29,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 .content-section {
   padding: 0 10px 30px 18px;
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: "minion-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size:1.06em;
   height:100%;
 }
@@ -112,7 +112,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   background: #f0f0f0;
 }
 .content-section button.btn.dfn, /* default bootstrap class name for serif */
-.content-section button.btn.italic{ font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
+.content-section button.btn.italic{ font-family: "minion-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
 
 /*----- END Buttons -----*/
 /*-------------------------*/
@@ -311,7 +311,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .navbar.navbar-default .navbar-collapse,
 .navbar.navbar-default.navbar-static-top{ border-bottom: none; border-bottom-width:0;}
 
-.navbar-default h1 {color:#555;font-style:italic; font-size:1.5em; line-height:normal; margin:0; padding:0 0 0 20px; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
+.navbar-default h1 {color:#555;font-style:italic; font-size:1.5em; line-height:normal; margin:0; padding:0 0 0 20px; font-family: "minion-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
 .navbar-default h1 a.navbar-brand{float:none;border:0;display:inline-block;padding:0;margin:0;color:#333;font-weight:normal;text-shadow:1px 1px 1px #f0f0f0;}
 .navbar-default h1 a.navbar-brand:hover{ color:#222;}
 .navbar-default h1 em{ display:none;}
@@ -551,83 +551,119 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   font-size:1em;
 }
 
-/* BEGIN breadcrumbs */
-.titlearea .breadwrap
-{
-	margin: -1px 0 0 15px;
-	padding: 0;
-	display: block;
-	height: 21px;
-	overflow: hidden;
-	width: 100%;
-	background:transparent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*=======================================
+	jBreadCrumbCustom Plugin Styles
+=======================================*/
+.breadwrap {
+  margin: 0 30px 0 15px;
+  padding: 0;
+  display: block;
+  height: 21px;
+  overflow: hidden;
+  width: 100%;
+  background:transparent;
 }
-.titlearea .breadwrap ol
-{
-  background: inherit;
-  font-size: 0.88em;
+
+.breadwrap .breadcrumb > li + li:before {
+  /* In case that you're using .breadcrumb element from Bootstrap 3 */
+  content: " ";
+  padding: 0 5px;
+  color: #999999;
+  display: none;
+}
+
+.breadwrap ol {
+  margin: 2px 0 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  background: transparent;
   line-height:21px;
   height:21px;
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-  margin:2px 0 0;
-  padding:0;
-	display: block;
+  font-size: .75em;
+  font-family: "Minion-Pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  *zoom: 1;
 }
-.titlearea .breadwrap ol li
-{
-	display: inline-block;
-	float: left;
-	position: relative;
-	height: 21px;
-	overflow: hidden;
-	line-height: 21px;
-	margin: 0 3px 0 0;
-	padding: 0 10px 0 0;
-	font-size: 1em;
-	
-}
-.titlearea .breadwrap .breadCrumb li:first-child 
+.breadwrap .breadcrumb li:first-child 
 {
   font-family: "Museo Sans", sans-serif;
-  font-size:1em;
-  line-height:1.5em;
+  font-size:1.12em;
+  line-height:1em;
   padding:0;
-  margin:0 4px 0 0;
-  font-weight: 600;
+  margin:0;
   font-style:normal;
+  font-weight:700;
 }
-.titlearea .breadwrap ol li.last
-{
-	background: none;
-	margin-right: 0;
-	padding-right: 0;
+.breadwrap ol:before,
+.breadwrap ol:after {
+  content: " ";
+  display: table;
 }
 
-.titlearea .breadwrap ol li a
-{
+.breadwrap ol:after {
+  clear: both;
+}
+
+.breadwrap ol li {
+  display: inline-block;
+  float: none;
+  position: relative;
+  font-size; .88em;
+  height: 21px;
+  line-height: 21px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0 18px 0 0;
+}
+
+.breadwrap ol li a {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  float: left;
+  font-size: 1.1em;
   color: #fff;
   text-decoration: none;
-	display: inline-block;
-	position: relative;
 	height: 21px;
 	line-height: 21px;
 	overflow: hidden;
 	float: left;
-	margin-right:0px;
+	margin-right:2px;
 }
 
-.titlearea .breadwrap ol li i
+.breadwrap ul li span,
+.breadwrap ol li span {
+  display: block;
+  overflow: hidden;
+}
+
+.breadwrap ol li i
 {
 	position: absolute;
-	right: -3px;
-	top: 3px;
+	right: 0px;
+	top: 0px;
 	z-index: 10;
 	font-family:'FontAwesome';
-	font-size:1.56em;
+	font-size:1.68em;
 	line-height:1em;
 	height: 0.68em;
-	width:0.68em;
-	font-weight:200;
+	width:0.56em;
+	font-weight:bold;
 	color:#eee;
 	display: block;
 	overflow: hidden;
@@ -635,21 +671,30 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	overflow:visible;
 	display: inline-block;
 }
-.titlearea .breadwrap ol li i:before{
+.breadwrap ol li i:before{
 	content: "\f105";
   position:relative;
-  top:-3px;
-  left:1px;
-}
-.titlearea .breadwrap .breadCrumb li + li:before {
-  color: #fff;
+  top:1px;
+  left:-2px;
 }
 
-.titlearea .breadwrap .breadCrumb li.active {
-  font-weight:bold; 
-  color:#fff; 
-  font-size:1em;
+.breadwrap .breadcrumb li.active {
+
 }
+
+.breadwrap ol li.last
+{ font-weight:bold; 
+  color:#fff;
+	background: none;
+	font-size:1.18em;
+	position:relative; top:-7px;
+	margin-right: 0;
+	padding-right: 0;
+	font-weight:bold;
+}
+
+
+
 /*-------------------------------------*/
 /*----- END Header/Banner Section -----*/
 /*-------------------------------------*/
@@ -771,7 +816,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	background:#fff;
 	border-top:1px solid #fff;
 	border-bottom:1px solid #c0c0c0;
-	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; 
+	font-family: "minion-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; 
 	font-weight:normal; 
 	font-style:italic;
 	text-indent:0.75em;
@@ -1042,7 +1087,7 @@ ul.menu-main li a .icon{
 }
 
 ul.menu-main>li>a:first-child {
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; 
+  font-family: "minion-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; 
 	font-weight:normal; 
 	font-style:italic;
 	font-size:1.5em; 
@@ -1136,6 +1181,73 @@ ul.menu-main>li>a:first-child {
   	line-height:1.83em;
   }  
 	.menu-explore a span{ display:none;} 
+
+
+	/* --- BEGIN breadcrumbs ---- */
+	/* -------------------------- */
+  .breadwrap .breadcrumb > li + li:before {
+    display: none;
+  }
+
+  .breadwrap ul,
+  .breadwrap ol {
+    margin: 0;
+    padding: 0;
+    white-space: normal;
+    height: auto;
+    *zoom: 1;
+  }
+
+  .breadwrap ul:before,
+  .breadwrap ul:after,
+  .breadwrap ol:before,
+  .breadwrap ol:after {
+    display: none;
+  }
+
+  .breadwrap ul li,
+  .breadwrap ol li {
+    display: block;
+    float: none;
+    height: 26px;
+    line-height: 26px;
+    margin: 0;
+    padding: 0;
+  }
+
+  .breadwrap ul li + li,
+  .breadwrap ol li + li {
+    margin: 6px 0 0;
+  }
+
+  .breadwrap ul li:after,
+  .breadwrap ol li:after {
+    display: none;
+  }
+
+  .breadwrap ul li div.chevronOverlay,
+  .breadwrap ol li div.chevronOverlay {
+    display: none;
+  }
+
+  .breadwrap ul li span,
+  .breadwrap ol li span {
+    display: block;
+    overflow: hidden;
+  }
+
+  .breadwrap ul li a,
+  .breadwrap ol li a {
+    height: auto;
+    line-height: inherit;
+    float: none;
+  }
+
+  .breadwrap ul li.last,
+  .breadwrap ol li.last {
+    margin: 6px 0 0;
+  }
+
 
 }
 

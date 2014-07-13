@@ -264,8 +264,8 @@ jQuery(function ($) {
 //            this.css({
 //                position: 'relative'
 //            });
-            // I suppose some of this styling should go into a css file instead
-            mask = $('<div class="overlay-mask"><div class="loading-container"><div class="loading"></div><div id="loading-text">searching</div></div></div>');
+
+            mask = $('<div class="overlay-mask"><div class="loading-container"><div class="loading"></div><div id="loading-text">Searching&#133;</div></div></div>');
             mask.css({
                 position: 'absolute',
                 width: '100%',
@@ -1173,8 +1173,8 @@ function processSubjectsData(data) {
   $("a[href='#tab-overview']").click();
 
   //Remove all elements from Breadcrumbs and start adding them again.
-  $("ol.breadCrumb li").remove();
-  $("ol.breadCrumb").append('<li><a href="">Subjects:</a></li>');
+  $("ol.breadcrumb li").remove();
+  $("ol.breadcrumb").append('<li><a href="">Subjects:</a></li>');
   $.each(data.feature.ancestors, populateBreadcrumbs);
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
@@ -1287,7 +1287,7 @@ function processSubjectsData(data) {
 }
 
 function populateBreadcrumbs(bInd, bVal) {
-  $breadcrumbOl = $("ol.breadCrumb");
+  $breadcrumbOl = $("ol.breadcrumb");
   $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
 }
 

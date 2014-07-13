@@ -122,7 +122,7 @@
 	      <div role="banner">
 		      <h1 class="page-title"><i class="icon <?php print $subject ? "shanticon-subjects" : "shanticon-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
 		      <nav class="breadwrap" role="navigation">
-		        <ol class="breadCrumb">
+		        <ol class="breadcrumb">
 		         <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
 		        </ol>
 		      </nav>
@@ -530,7 +530,6 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.filter.js"></script><!-- tree -->
 
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.fancytree.edit.js"></script>
-  
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/metisMenu.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/check/icheck.min.js"></script><!-- forms -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/select/bootstrap-select.min.js"></script><!-- forms -->  
@@ -539,6 +538,8 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.dataTables.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/dataTables.bootstrap.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/trunk8.min.js"></script>
+  <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jbreadcrumb.js"></script>
+
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
@@ -554,6 +555,8 @@
   <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
+
+
 
 </body>
 </html>
