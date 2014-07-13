@@ -556,21 +556,5 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
 
-<script>
-jQuery(document).ready(function(){
-	$(".breadwrap").jBreadCrumbCustom({
-				animationDuration: 400,
-        collapsedWidth: 18,
-        easing: 'easeOutQuad',
-        startingFrom: 2
-	});
-	
-	$(".breadcrumb > li:eq(-n)").addClass("last");
-
-    $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-    
-    $(".breadcrumb > li").width().resize().jBreadCrumbCustom(".breadwrap").load;
-});
-</script>
 </body>
 </html>
