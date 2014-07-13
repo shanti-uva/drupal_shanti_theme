@@ -86,7 +86,7 @@
 
         	while(listWidth > _container.width()) {
         		startingFrom++;
-				listWidth = listWidth - jQuery(_breadCrumbElements[startingFrom]).width() + 20;
+				listWidth = listWidth - jQuery(_breadCrumbElements[startingFrom]).width() + 10;
 				returningArray.push(startingFrom);
         	}
 

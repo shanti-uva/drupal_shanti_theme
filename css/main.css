@@ -599,8 +599,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   font-family: "Minion-Pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   *zoom: 1;
 }
-.breadwrap .breadcrumb li.first
-{
+.breadwrap .breadcrumb li.first,
+.breadwrap .breadcrumb li:first-child{
   font-family: "Museo Sans", sans-serif;
   font-size:1.12em;
   line-height:1em;
@@ -654,8 +654,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   overflow: hidden;
 }
 
-.breadwrap ol li i
-{
+.breadwrap ol li i{
 	position: absolute;
 	right: 0px;
 	top: 0px;
@@ -684,8 +683,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 }
 
-.breadwrap ol li.last
-{ font-weight:bold; 
+.breadwrap ol li.last{ 
+	font-weight:bold; 
   color:#fff;
 	background: none;
 	font-size:1.18em;
