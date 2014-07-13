@@ -180,7 +180,7 @@ object.flip_label{ display:none;}
 .input-section label{ color:#444; font-size:13px; line-height:30px; height:28px; padding-right:0; margin-right:0;}
 
 /*--- toggle links for search panel ---*/
-.input-section .toggle-link{ background:#f8f8f8;color:#dc3c47;font-size:0.93em;display:block;text-align:right;font-weight:600; line-height:0.88em; height:1.12em; margin:0;padding:0 25px 0 0;text-decoration:none;font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
+.input-section .toggle-link{ background:#f8f8f8;color:#dc3c47;font-size:0.93em;display:block;text-align:right;font-weight:600; line-height:0.88em; height:1.12em; margin:0;padding:0 25px 0 0;text-decoration:none;font-family: "ff-tisa-web-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
 .input-section .toggle-link:hover{ text-decoration:none !important; color:#555;}
 .input-section .toggle-link i{ font-family:'FontAwesome'; }
 .input-section .toggle-link i.icon:before{ color:#dc3c47; font-family:'FontAwesome'; content:"\f067"; font-size:0.68em; margin-right:0.12em;}
@@ -406,7 +406,7 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 
 /*---- START list table view ----*/
 .view-section table.table-responsive{ text-align:center; border:none;}
-.view-section table.table-results{ border:none; font-size:13px; line-height:20px; margin:0 2%; margin-top:-9px !important; width:96%; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
+.view-section table.table-results{ border:none; font-size:13px; line-height:20px; margin:0 2%; margin-top:-9px !important; width:96%; font-family: "ff-tisa-web-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
 .view-section table.table-results a{ font-style:italic;}
 
 .view-section table.table-results tbody>tr>td,
@@ -561,7 +561,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	margin:5px 0 0;
 	font-size: 1.18em;
 	border-left:4px solid #f0f0f0;
-	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-family: "ff-tisa-web-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 .searchPop > .popover-content > .kmap-path{
 	display:inline;
@@ -620,7 +620,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 /*------------------------------*/
 /*---- START :: Search Tree ----*/
 /*------------------------------*/
-.view-section ul.fancytree-container{ margin:0; background:transparent; border:none; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
+.view-section ul.fancytree-container{ margin:0; background:transparent; border:none; font-family: "ff-tisa-web-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
 .view-section ul.fancytree-container ul{ padding-top:0; margin-top:0;}
 .view-section ul.fancytree-container li{ }
 
