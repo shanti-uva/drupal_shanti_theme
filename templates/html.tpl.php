@@ -124,6 +124,16 @@
 		      <nav class="breadwrap" role="navigation">
 		        <ol class="breadcrumb">
 		         <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
+		         <li><a href="">Breadcrumb </a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb Breadcrumb</a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb Breadcrumb here too</a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb</a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb Breadcrumb Here</a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb Breadcrumb</a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb Breadcrumb here too</a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb</a><i class="icon"></i></li>
+		         <li><a href="">Breadcrumb Breadcrumb Here</a><i class="icon"></i></li>
+		         <li>Breadcrumb</li>
 		        </ol>
 		      </nav>
         </div>
@@ -556,7 +566,21 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
 
+<script>
+jQuery(document).ready(function(){
+	$(".breadwrap").jBreadCrumbCustom({
+				animationDuration: 400,
+        collapsedWidth: 18,
+        easing: 'easeOutQuad',
+        startingFrom: 2
+	});
+	
+	$(".breadcrumb > li:eq(-n)").addClass("last");
 
-
+    $(window).bind('load orientationchange resize', jBreadCrumbCustom);
+    
+    $(".breadcrumb > li").width().resize().jBreadCrumbCustom(".breadwrap").load;
+});
+</script>
 </body>
 </html>
