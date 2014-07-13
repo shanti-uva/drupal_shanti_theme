@@ -580,7 +580,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 
 .breadwrap .breadcrumb > li + li:before {
-  /* In case that you're using .breadcrumb element from Bootstrap 3 */
+  /* override breadcrumb class from Bootstrap 3 */
   content: " ";
   padding: 0 5px;
   color: #999999;
@@ -588,7 +588,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 
 .breadwrap ol {
-  margin: 2px 0 0;
+  margin: 0;
   padding: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -599,13 +599,15 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   font-family: "Minion-Pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   *zoom: 1;
 }
-.breadwrap .breadcrumb li:first-child 
+.breadwrap .breadcrumb li.first
 {
   font-family: "Museo Sans", sans-serif;
   font-size:1.12em;
   line-height:1em;
+  height:21px;
   padding:0;
   margin:0;
+  position:relative; top:-1px;
   font-style:normal;
   font-weight:700;
 }
