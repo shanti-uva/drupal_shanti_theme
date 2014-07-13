@@ -29,7 +29,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 .content-section {
   padding: 0 10px 30px 18px;
-  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: "ff-tisa-web-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size:1.06em;
   height:100%;
 }
@@ -1273,7 +1273,9 @@ ul.menu-main>li>a:first-child {
 
   .navbar-header h1.navbar-title a span{ font-size:0.93em; position:relative; top:-5px; }
 
-  .main-content .content-section { max-width: 750px; }
+  .main-content .content-section { max-width: 800px; }
+  
+  .content-section .related-photos{ max-width: 1150px; } /* test - wider width for thumbnail collections */
   
 	.collections ul li a { font-size: 0.68em; line-height:2em;}	
  	.collections h4 {
