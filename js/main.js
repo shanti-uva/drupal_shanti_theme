@@ -238,19 +238,3 @@ jQuery(function ($) {
 });
 
 
-
-jQuery(document).ready(function(){
-	$(".breadwrap").jBreadCrumbCustom({
-				animationDuration: 400,
-        collapsedWidth: 18,
-        easing: 'easeOutQuad',
-        startingFrom: 2
-	});
-	
-	$(".breadcrumb > li:eq(-n)").addClass("last");    
-    
-    // --- can't gett hese working yet
-    $(window).bind('load orientationchange resize', jBreadCrumbCustom);    
-    $(".breadcrumb > li").width().resize().jBreadCrumbCustom(".breadwrap").load;
-});
-
