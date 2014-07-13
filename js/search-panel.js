@@ -265,7 +265,7 @@ jQuery(function ($) {
 //                position: 'relative'
 //            });
             // I suppose some of this styling should go into a css file instead
-            mask = $('<div class="overlay-mask"><div><i class="glyphicon glyphicon-time"></i></div></div>');
+            mask = $('<div class="overlay-mask"><div class="loading-container"><div class="loading"></div><div id="loading-text">searching</div></div></div>');
             mask.css({
                 position: 'absolute',
                 width: '100%',
@@ -273,6 +273,7 @@ jQuery(function ($) {
                 top: '0px',
                 left: '0px',
                 zIndex: 100,
+                opacity: 3,
                 backgroundColor: 'grey'
             }).appendTo(this).fadeTo(0, 0.5).find('div').position( { my: 'center center', at: 'center center', of: '.overlay-mask' } )
         }

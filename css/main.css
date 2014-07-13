@@ -29,7 +29,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 }
 .content-section {
   padding: 0 10px 30px 18px;
-  font-family: "ff-tisa-web-pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
   font-size:1.06em;
   height:100%;
 }
