@@ -124,16 +124,6 @@
 		      <nav class="breadwrap" role="navigation">
 		        <ol class="breadcrumb">
 		         <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
-		         <li><a href="">Breadcrumb</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb Breadcrumb</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb Breadcrumb here too</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb Breadcrumb Here</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb Breadcrumb</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb Breadcrumb here too</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb</a><i class="icon"></i></li>
-		         <li><a href="">Breadcrumb Breadcrumb Here</a><i class="icon"></i></li>
-		         <li>Breadcrumb</li>
 		        </ol>
 		      </nav>
         </div>
