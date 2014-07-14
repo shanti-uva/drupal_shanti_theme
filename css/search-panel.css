@@ -818,6 +818,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 .bootstrap-select.btn-group .btn .filter-option{ font-size:.92em;}
 .bootstrap-select.btn-group .btn .filter-option i{ font-weight:normal; font-size:1.25em; margin-right:0; color:#dc3c47; position:relative; top:2px;}
+.bootstrap-select.btn-group .btn .filter-option strong{ color:#dc3c47; font-weight:normal; font-size:1.18em;}
 .bootstrap-select.btn-group.show-tick i:first-child{ position:relative; top:1px;}
 
 /*--- END selectpicker ---*/
