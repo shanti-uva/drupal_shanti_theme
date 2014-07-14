@@ -534,7 +534,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     position: absolute;
     text-align: center;
     /* text-transform: uppercase; */
-    top: 0;
+    top: -20px;
     width: 130px;
 }
 /* ----- END search loading ----- */
@@ -735,7 +735,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .input-section .bootstrap-select .popover-title{ padding: 4px 14px; margin-bottom:5px;}
 
 .input-section .bootstrap-select .btn{ 
-	padding-left: 22px;
+	padding-left: 20px;
 	 color:#606060; 
 	background: transparent;
 	background-image:none;
@@ -817,7 +817,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .input-section .selectpicker li a span.text:hover{ background:transparent; color:#444;}
 
 .bootstrap-select.btn-group .btn .filter-option{ font-size:.92em;}
-.bootstrap-select.btn-group .btn .filter-option i{ margin-right:0;}
+.bootstrap-select.btn-group .btn .filter-option i{ font-weight:normal; font-size:1.25em; margin-right:0; color:#dc3c47; position:relative; top:2px;}
 .bootstrap-select.btn-group.show-tick i:first-child{ position:relative; top:1px;}
 
 /*--- END selectpicker ---*/

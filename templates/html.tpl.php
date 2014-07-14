@@ -366,7 +366,7 @@
                   
 		                  <div class="form-group advanced-input select-type"> 
 		                  		<span>Show only results containing:</span>
-										        <select class="selectpicker" id="selector1" name="selector1" data-selected-text-format="count>2" data-width="100%" multiple >										      
+										        <select class="selectpicker" id="selector1" name="selector1" data-selected-text-format="count>2" data-header="Select one or more..." data-width="100%" multiple >										      
 												      <option data-icon="shanticon-essays">Essays</option>
 												      <option data-icon="shanticon-places">Places</option>
 												      <option data-icon="shanticon-agents">Agents</option>
@@ -535,7 +535,7 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/forms/select/bootstrap-select.min.js"></script><!-- forms -->  
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.highlight.js"></script><!-- highlight -->
   <script type="text/javascript" src="http://tablesorter.com/__jquery.tablesorter.min.js"></script> <!-- tablesorter -->    
-  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.dataTables.min.js"></script>
+
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/dataTables.bootstrap.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/trunk8.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jbreadcrumb.js"></script>
@@ -555,7 +555,7 @@
   <?php if(!$subject): ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
-
+  <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.dataTables.min.js"></script>
 <script>
 jQuery(document).ready(function(){
 	$(".breadwrap").jBreadCrumbCustom({
