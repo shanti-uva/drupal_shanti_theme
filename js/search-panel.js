@@ -31,7 +31,7 @@ jQuery(function($) {
 			iconBase: 'icon',
 	    noneSelectedText: 'SEARCH RESOURCES',
 	    noneResultsText: 'No results match',
-	    countSelectedText: 'Searching <strong>({0})</strong> Resource Types'
+	    countSelectedText: 'Searching <em>({0})</em> Resource Types'
   });
   // $(".selectpicker").selectpicker("val", ['Essays','Photos']);
   // $('.selectpicker').selectpicker('selectAll');
