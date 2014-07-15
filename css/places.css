@@ -27,8 +27,8 @@
 	position:relative;
 	top:-70px;
 	left:80px;
-	-moz-box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
-	box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.33);
+	-moz-box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.75);
+	box-shadow: 0px 0px 25px 0px rgba(50, 50, 50, 0.75);
 }
 
 

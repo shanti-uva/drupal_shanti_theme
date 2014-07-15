@@ -508,12 +508,8 @@
      </ul>    
     </nav>
   </section><!-- END menu -->
-  
-  
-  
-  
-  
-  
+  </div><!-- END wrap-all -->
+
 
   <footer class="container footer">
   	<div class="row">
@@ -522,8 +518,6 @@
 	    </div>
     </div>
   </footer>
-  </div><!-- END wrap-all -->
-
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
   <script type="text/javascript">window.jQuery || document.write('<script src="<?php print $theme_path; ?>/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
