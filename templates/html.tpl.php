@@ -13,8 +13,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shanti Kmaps</title>
   <meta name="description" content="template">
-  <script type="text/javascript" src="//use.typekit.net/oxg3src.js"></script> <!-- typekit -->
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script> <!-- typekit -->
+  <!-- typekit <script type="text/javascript" src="//use.typekit.net/oxg3src.js"></script> 
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>  end typekit 
+  -->
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
@@ -556,6 +557,22 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.dataTables.min.js"></script>
+
+	<script>
+		jQuery(document).ready(function(){
+					jQuery(".breadwrap").jBreadCrumbCustom({
+								animationDuration: 400,
+				        collapsedWidth: 9,
+				        easing: 'easeOutQuad',
+				        startingFrom: 2
+					});
+	
+	    $(window).bind('load orientationchange resize', jBreadCrumbCustom);
+		
+		});   
+	</script>
+
+
 
 </body>
 </html>
