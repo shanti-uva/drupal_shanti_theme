@@ -539,7 +539,7 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/dataTables.bootstrap.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/trunk8.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jbreadcrumb.js"></script>
-	<script type="text/javascript" src="<?php print $theme_path; ?>/js/equalheights.js"></script>
+	<script type="text/javascript" src="<?php print $theme_path; ?>/js/equalHeights.js"></script>
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
