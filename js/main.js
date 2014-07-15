@@ -238,3 +238,14 @@ jQuery(function ($) {
 });
 
 
+
+jQuery(function ($) {
+	$('.equal-height').matchHeight();
+
+	$('.content-resources a').click( function(){
+		$('.equal-height').each( function() {
+      	$(this).matchHeight._update();
+    });
+  });
+});
+

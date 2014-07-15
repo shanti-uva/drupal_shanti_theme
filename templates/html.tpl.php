@@ -134,7 +134,7 @@
     <div class="row row-offcanvas row-offcanvas-left">
     
     <!-- Column Resources  -->              
-    <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas">
+    <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas equal-height">
       <ul class="nav nav-pills nav-stacked">
         <li class="overview active"><a href="#tab-overview" data-toggle="pill">
         	<i class="icon shanticon-overview"></i>Overview</a>
@@ -182,7 +182,7 @@
     </aside> 
     
     <!-- Column Main  -->                   
-    <section  class="content-section col-xs-12 col-sm-9">
+    <section  class="content-section col-xs-12 col-sm-9 equal-height">
 	    <!-- button for responsive menu toggle -->
 	    <button type="button" class="btn btn-default btn-xs visible-xs view-resources" data-toggle="offcanvas">
 	    	<i class="fa"></i>
@@ -193,7 +193,7 @@
 	    
       <div class="tab-content">
       
-        <article class="tab-pane active" id="tab-overview">        
+        <article class="tab-pane active" id="tab-overview">
         </article>
 
         <article class="tab-pane" id="tab-subjects"> 
@@ -236,7 +236,7 @@
         </article>
       
       </div><!-- END tab-content -->
-    </section><!-- END content-page -->    
+    </section><!-- END content-section -->    
 
                   
     </div><!-- END row -->    
@@ -539,7 +539,7 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/dataTables.bootstrap.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/trunk8.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/menus/jbreadcrumb.js"></script>
-
+	<script type="text/javascript" src="<?php print $theme_path; ?>/js/equalheights.js"></script>
   <!-- Hashchange event -->
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/jquery.ba-hashchange.min.js"></script>
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/vendor/bootstrap-paginator.min.js"></script>
@@ -556,21 +556,6 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/js/kmap_places.js"></script>
   <?php endif ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.dataTables.min.js"></script>
-<script>
-jQuery(document).ready(function(){
-	$(".breadwrap").jBreadCrumbCustom({
-				animationDuration: 400,
-        collapsedWidth: 18,
-        easing: 'easeOutQuad',
-        startingFrom: 2
-	});
-	
-	$(".breadcrumb > li:eq(-n)").addClass("last");
 
-    $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-    
-    $(".breadcrumb > li").width().resize().jBreadCrumbCustom(".breadwrap").load;
-});
-</script>
 </body>
 </html>
