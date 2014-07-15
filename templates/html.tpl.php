@@ -567,8 +567,15 @@
 				        startingFrom: 2
 					});
 	
-	    $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-		
+	    // $(window).bind('load orientationchange resize', jBreadCrumbCustom);
+		  $(window).bind('load orientationchange resize', function() {
+					jQuery(".breadwrap").jBreadCrumbCustom({
+								animationDuration: 400,
+				        collapsedWidth: 9,
+				        easing: 'easeOutQuad',
+				        startingFrom: 2
+					});
+	 		});
 		});   
 	</script>
 
