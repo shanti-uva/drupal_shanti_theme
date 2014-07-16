@@ -499,7 +499,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .loading-container { margin: 40px auto; }
 .loading {
     border: 2px solid transparent;
-    border-color: transparent #fff transparent #FFF;
+    border-color: transparent #333 transparent #333;
     -moz-animation: rotate-loading 1s linear 0s infinite normal;
     -moz-transform-origin: 50% 50%;
     -o-animation: rotate-loading 1s linear 0s infinite normal;
@@ -510,7 +510,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     transform-origin: 50% 50%;
 }
 .loading-container:hover .loading {
-    border-color: transparent #E45635 transparent #E45635;
+    border-color: transparent #888 transparent #888;
 }
 .loading-container:hover .loading,
 .loading-container .loading {
@@ -525,12 +525,14 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     -o-animation: loading-text-opacity 2s linear 0s infinite normal;
     -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
     animation: loading-text-opacity 2s linear 0s infinite normal;
-    color: #ffffff;
+    color: #111;
     font-family: "Museo Sans", arial, sans-serif;
     font-size: 15px;
     font-weight: normal;
     opacity: 0;
     position: relative;
+    left:7px;
+    top:-10px;
     text-align: center;
     width: 130px;
 }
