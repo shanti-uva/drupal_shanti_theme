@@ -568,7 +568,7 @@
 					});
 	
 	    // $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-		  $(window).bind('load orientationchange resize', function() {
+		  $(".content-section").bind('resize', function() {
 					jQuery(".breadwrap").jBreadCrumbCustom({
 								animationDuration: 400,
 				        collapsedWidth: 9,

@@ -21,6 +21,11 @@
 }
 
 
+
+button.btn.btn-default.italic.renderGmaps.active{
+	color:#fff;
+	background:#777;
+}
 /* --- gmaps-buttons is example of class set on div wrapper ---*/
 .btn-group-gmaps{
 	display:inline-block;
