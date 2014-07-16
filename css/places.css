@@ -24,7 +24,7 @@
 
 button.btn.btn-default.italic.active{
 	color:#fff;
-	background:#777;
+	background:#606060;
 }
 /* --- gmaps-buttons is example of class set on div wrapper ---*/
 .btn-group-gmaps{
@@ -37,6 +37,6 @@ button.btn.btn-default.italic.active{
 }
 
 
-.modal-header button.close{ color:#777; font-size:3em;}
+.modal-header button.close{ color:#777; font-size:3em; position:relative; top:-10px;}
 
 
