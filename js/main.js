@@ -257,10 +257,10 @@ jQuery(function ($) {
 jQuery(function ($) {
 
 	jQuery(document).ready(function(){
-		$('.btn-group-gmaps > .renderGmaps').once().addClass('active');
+		$('.renderGmaps').addClass('active');
 	});
 	
-	$('.btn-group-gmaps > .btn').toggleClass('active');
+	$('.btn-group-gmaps').find('.btn').toggleClass('active');
 
 });
 
