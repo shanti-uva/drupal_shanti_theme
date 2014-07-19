@@ -240,7 +240,10 @@ jQuery(function ($) {
 
 
 jQuery(function ($) {
-	$('.equal-height').matchHeight();
+
+	jQuery(document).ready(function(){
+		$('.equal-height').matchHeight();
+	});
 
 	$('.content-resources a').click( function(){
 		$('.equal-height').each( function() {
@@ -248,4 +251,25 @@ jQuery(function ($) {
     });
   });
 });
+
+
+
+jQuery(function ($) {
+
+	jQuery(document).ready(function(){
+		$('.btn-group-gmaps > .renderGmaps').once().addClass('active');
+	});
+	
+	$('.btn-group-gmaps > .btn').toggleClass('active');
+
+});
+
+
+
+
+
+
+
+
+
 

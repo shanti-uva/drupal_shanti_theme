@@ -131,7 +131,7 @@ object.flip_label{ display:none;}
 .input-section .input-group #searchbutton:active, 
 .input-section .input-group #searchbutton.active{ color:#777;}
 /*--- clear all button ---*/
-.input-section .input-group .searchreset { 
+.input-section .input-group .btn.searchreset { 
 	border:none;
 	background:transparent;
 	background-image:none;
@@ -145,8 +145,10 @@ object.flip_label{ display:none;}
 	margin:0;
 	display:none;
 }
-.input-section .input-group .searchreset i.icon{ font-size:1.25em; color:#aaa; }
-.input-section .input-group .searchreset  i.icon:before{ font-family: 'shanticon'; content: "\e610"; }
+.input-section .input-group .btn.searchreset:active,
+.input-section .input-group .btn.searchreset.active{ box-shadow:none; background-image:none;}
+.input-section .input-group .btn.searchreset i.icon{ font-size:1.25em; color:#aaa; }
+.input-section .input-group .btn.searchreset  i.icon:before{ font-family: 'shanticon'; content: "\e610"; }
 
 .input-section .feature-group .feature-reset{
 	border:none;
