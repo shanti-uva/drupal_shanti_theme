@@ -240,7 +240,6 @@ jQuery(function ($) {
 
 
 jQuery(function ($) {
-
 	jQuery(document).ready(function(){
 		$('.equal-height').matchHeight();
 	});
@@ -251,21 +250,4 @@ jQuery(function ($) {
     });
   });
 });
-
-
-
-jQuery(function ($) {
-
-		$('button.renderGmaps').addClass('active');
-
-});
-
-
-
-
-
-
-
-
-
 
