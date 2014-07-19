@@ -256,11 +256,7 @@ jQuery(function ($) {
 
 jQuery(function ($) {
 
-	jQuery(document).ready(function(){
-		$('.renderGmaps').addClass('active');
-	});
-	
-	$('.btn-group-gmaps').find('.btn').toggleClass('active');
+		$('button.renderGmaps').addClass('active');
 
 });
 
