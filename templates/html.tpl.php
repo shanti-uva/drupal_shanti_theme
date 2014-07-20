@@ -571,7 +571,7 @@
 		  $(".content-section").bind('resize', function() {					
 					$('.equal-height').each( function() {
 								$(this).matchHeight._update();
-					}).delay(200);					
+					});					
 	 		});
 		});   
 	</script>
