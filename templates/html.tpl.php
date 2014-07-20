@@ -568,7 +568,7 @@
 					});
 	
 	    // $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-		  $(".content-section").height().bind('resize', function() {					
+		  $(".content-section").bind('resize', function() {					
 					$('.equal-height').each( function() {
 								$(this).matchHeight._update();
 					});					
