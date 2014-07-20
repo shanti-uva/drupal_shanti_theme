@@ -560,6 +560,9 @@
 
 	<script>
 		jQuery(document).ready(function(){
+		
+				$('.equal-height').matchHeight();
+		
 					jQuery(".breadwrap").jBreadCrumbCustom({
 								animationDuration: 400,
 				        collapsedWidth: 9,
