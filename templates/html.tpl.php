@@ -566,6 +566,15 @@
 				        easing: 'easeOutQuad',
 				        startingFrom: 2
 					});
+		});
+
+		jQuery(function ($) {	
+	    // $(window).bind('load orientationchange resize', jBreadCrumbCustom);
+		  $(".content-section").bind('resize', function() {					
+					$('.equal-height').each( function() {
+								$(this).matchHeight._update();
+					});					
+	 		});
 		});  
 	</script>
 
