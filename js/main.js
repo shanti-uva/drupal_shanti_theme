@@ -240,6 +240,7 @@ jQuery(function ($) {
 
 
 jQuery(function ($) {
+
 	jQuery(document).ready(function(){
 		$('.equal-height').matchHeight();
 	});
