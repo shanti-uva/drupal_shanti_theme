@@ -661,8 +661,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	color:#eee;
 	background:#dc3c47;
 	position: absolute;
-	right: 0px;
-	top: -4px;
+	right: 2px;
+	top: -3px;
 	z-index: 10;
 	font-family:'FontAwesome';
 	font-size:1.68em;
@@ -685,7 +685,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   color:#fff;
 	background: none;
 	font-size:1em;
-	position:relative; top:0;
+	position:relative; top:-2px;
 	margin-right: 0;
 	padding-right: 0;
 }
