@@ -553,7 +553,7 @@
 					 });
 						  
 			    // $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-				  $(".content-section").bind('resize', function() {					
+				  $(".content-section, .panel-group").bind('resize', function() {					
 								$('.equal-height').each( function() {
 										$(this).matchHeight._update();
 								});					
