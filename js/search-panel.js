@@ -363,7 +363,7 @@ jQuery(function ($) {
       },
       source: {
 //          url: "/fancy_nested.json",
-          url: Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('.nav li.lang input[name=radios]:checked').val(),
+          url: Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('nav li.form-group input[name=option2]:checked').val(),
           cache: false,
           debugDelay: 1000,
           timeout: 30000,
@@ -1084,8 +1084,6 @@ jQuery(function($) {
 });
 
 
-
-
 // *** SEARCH *** feature types
 jQuery(function ($) {
   // manually initiate dropdown w/bstrap
@@ -1102,16 +1100,13 @@ jQuery(function ($) {
 });
 
 
-
-
-
-
 /* Additions by Gerard Ketuma */
 
 // *** Change fancytree to accomodate different languagues ***
 jQuery(function($) {
-  $('.nav li.lang input[name=radios]').on('ifChecked', function(e) {
-    var newSource = Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('.nav li.lang input[name=radios]:checked').val();
+  $('nav li.form-group input[name=option2]').on('ifChecked', function(e) {
+    console.log("This should work");
+    var newSource = Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('nav li.form-group input[name=option2]:checked').val();
     $("#tree").fancytree("option", "source.url", newSource);
   });
 });
@@ -1124,6 +1119,12 @@ jQuery(function($) {
       var mHash = location.hash.split("#")[1] || 'features/2823';
       var mUrl = Settings.baseUrl + "/" + mHash + ".json";
       $.get(mUrl, processSubjectsData);
+
+      //Check the solr index for audio-video data
+      Settings.kmapIndex = mHash.split('/').pop();
+      var solrURL = 'http://drupal-index.shanti.virginia.edu/solr-test/kmindex/select?q=kmapid:' + Settings.kmapIndex + 
+      '&fq=&start=0&facets=on&group=true&group.field=bundle&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
+      $.get(solrURL, processSubjectsSolr);
     }
 
     if (location.pathname.indexOf('places') !== -1) {
@@ -1256,7 +1257,7 @@ function processSubjectsData(data) {
   }
 
   //Related Audio-Video (videos) section
-  if (data.feature.associated_resources.video_count > 0 || data.feature.id == 302) {
+  if (true) {
     $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count == 0 ? '1' : data.feature.associated_resources.video_count);
     $(".content-resources ul.nav-pills li.audio-video").show();
     $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
@@ -1284,6 +1285,22 @@ function processSubjectsData(data) {
   // $.get(testUrl, function(data) {
   //   console.log(data);
   // });
+}
+
+//Function to process solr index data
+function processSubjectsSolr(data) {
+  //Related Audio-Video (videos) section
+  if (data.grouped.bundle.matches > 0) {
+    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.grouped.bundle.matches == 0 ? '1' : data.grouped.bundle.matches);
+    $(".content-resources ul.nav-pills li.audio-video").show();
+    $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
+      var $tabAudioVideo = $("#tab-audio-video");
+      $tabAudioVideo.empty();
+      $tabAudioVideo.append('<h6>Audio/Videos</h6>');
+      var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + Settings.kmapIndex;
+      $.get(audioVideoUrl, relatedVideos);
+    });
+  }
 }
 
 function populateBreadcrumbs(bInd, bVal) {
@@ -1352,7 +1369,9 @@ function relatedPhotos(data) {
     contentPh += '<p><strong>Description:</strong></p>';
     contentPh += (rElm.descriptions.length > 0 ? rElm.descriptions[0].title : "");
     contentPh += '<p><strong>Copyright holder:</strong> ' + (rElm.copyrights.length > 0 ? rElm.copyrights[0].copyright_holder.title : "") + '</p>';
-    contentPh += '<p><strong>Photographer:</strong> ' + (rElm.photographer.hasOwnProperty('fullname') ? rElm.photographer.fullname : "") + '</p>';
+    if (rElm.photographer) {
+      contentPh += '<p><strong>Photographer:</strong> ' + (rElm.photographer.hasOwnProperty('fullname') ? rElm.photographer.fullname : "") + '</p>';
+    };
     contentPh += '</div>';
     contentPh += '</div>';
     contentPh += '</div>';
@@ -1539,10 +1558,28 @@ function relatedVideos(data) {
   var contentAV = '<div class="related-audio-video">';
 
   $.each(data.media, function(rInd, rElm) {
-    contentAV += '<div class="each-av">';
-    contentAV += '<a href="#pid' + rElm.nid + '" class="thumbnail" data-toggle="modal">';
-    contentAV += '<img src="' + rElm.thumbnail + '" alt="Video">';
+    contentAV += '<div class="shanti-thumbnail video col-lg-2 col-md-3 col-sm-4 col-xs-12">';
+    contentAV += '<div class="shanti-thumbnail-image shanti-field-video">';
+    contentAV += '<a href="#pid' + rElm.nid + '" class="shanti-thumbnail-link" data-toggle="modal">';
+    contentAV += '<img src="' + rElm.thumbnail + '/width/360/height/270/type/2/bgcolor/000000' + '" alt="Video" typeof="foaf:Image" class="k-no-rotate">';
+    contentAV += '<i class="shanticon-video thumbtype"></i>';
     contentAV += '</a>';
+    contentAV += '</div>';
+    contentAV += '<div class="shanti-thumbnail-info">';
+    contentAV += '<div class="shanti-thumbnail-field shanti-field-created">';
+    contentAV += '<span class="shanti-field-content">11 March 2014</span>';
+    contentAV += '<div class="shanti-thumbnail-field shanti-field-title">';
+    contentAV += '<span class="field-content">';
+    contentAV += '<a href="#pid' + rElm.nid + '" class="shanti-thumbnail-link" data-toggle="modal">';
+    contentAV += rElm.title;
+    contentAV += '</a>';
+    contentAV += '</span>';
+    contentAV += '</div>';
+    contentAV += '<div class="shanti-thumbnail-field shanti-field-duration">';
+    contentAV += '<span class="field-content"> 1 min 43 sec</span>';
+    contentAV += '</div>';
+    contentAV += '</div>';
+    contentAV += '</div>';
     contentAV += '</div>';
 
     //Modal for each video
@@ -1566,8 +1603,13 @@ function relatedVideos(data) {
   contentAV += '</div>';
 
   $("#tab-audio-video").append(contentAV);
-  $('.modal.video').on('hidden.bs.modal', function() {
-    $(".each-video-player")[0].pause();
+  
+  //Pause the video if modal window is closed.
+  $.each(data.media, function(rInd, rElm) {
+    var modalID = "#pid" + rElm.nid;
+    $(modalID).on('hidden.bs.modal', function() {
+      $(modalID + " .each-video-player")[0].pause();
+    });
   });
 }
 

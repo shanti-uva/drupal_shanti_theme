@@ -65,27 +65,7 @@
                     <input type="radio" name="radios" id="optionlang1" value="" checked>English</label>
                 </li>
                 <li class="form-group"><label class="radio-inline" for="optionlang2">
-                    <input type="radio" name="radios" id="optionlang2" value="simp.chi">Chi (Simp)</label>
-                </li>
-                <?php if(!$subject): ?>
-                <li class="form-group"><label class="radio-inline" for="optionlang3">
-                    <input type="radio" name="radios" id="optionlang3" value="trad.chi">Chi (Trad)</label>
-                </li>
-                <?php endif ?>
-                <li class="form-group"><label class="radio-inline" for="optionlang4">
-                    <input type="radio" name="radios" id="optionlang4" value="deva">Deva Script</label>
-                </li>
-                <li class="last form-group"><label class="radio-inline" for="optionlang5">
-                    <input type="radio" name="radios" id="optionlang5" value="roman.popular">Rom Pop</label>
-                </li>
-                <li class="last form-group"><label class="radio-inline" for="optionlang6">
-                    <input type="radio" name="radios" id="optionlang6" value="roman.scholar">Rom Sch</label>
-                </li>
-                <li class="last form-group"><label class="radio-inline" for="optionlang7">
-                    <input type="radio" name="radios" id="optionlang7" value="pri.tib.sec.chi">Tib Chi</label>
-                </li>
-                <li class="last form-group"><label class="radio-inline" for="optionlang8">
-                    <input type="radio" name="radios" id="optionlang8" value="pri.tib.sec.roman">Tib Rom</label>
+                    <input type="radio" name="radios" id="optionlang2" value="simp.chi">Tibet</label>
                 </li>
               </ul> 
             </form>            
@@ -468,25 +448,30 @@
             <!-- header -->
             <li class="drop-hdr"><em>Subject Language</em></li>
               <li class="form-group"><label class="radio-inline" for="option2a">
-                <input type="radio" name="option2" id="option2a" value="option2a">Chinese Characters (simplified)</label>
+                  <input type="radio" name="option2" id="option2a" value="undefined" checked>English</label>
               </li>
               <li class="form-group"><label class="radio-inline" for="option2b">
-                <input type="radio" name="option2" id="option2b" value="option2b">Chinese Characters (traditional)</label>
+                  <input type="radio" name="option2" id="option2b" value="simp.chi">Chinese Characters (simplified)</label>
               </li>
+              <?php if(!$subject): ?>
               <li class="form-group"><label class="radio-inline" for="option2c">
-                <input type="radio" name="option2" id="option2c" value="option2c">Devangiri Script</label>
+                  <input type="radio" name="option2" id="option2c" value="trad.chi">Chinese Characters (traditional)</label>
               </li>
+              <?php endif ?>
               <li class="form-group"><label class="radio-inline" for="option2d">
-                <input type="radio" name="option2" id="option2d" value="option2d" checked>Popular Standard (romanization)</label>
+                  <input type="radio" name="option2" id="option2d" value="deva">Devangiri Script</label>
               </li>
               <li class="form-group"><label class="radio-inline" for="option2e">
-                <input type="radio" name="option2" id="option2e" value="option2e">Scholarly Standard (romanization)</label>
-              </li>                   
+                  <input type="radio" name="option2" id="option2e" value="roman.popular">Popular Standard (romanization)</label>
+              </li>
               <li class="form-group"><label class="radio-inline" for="option2f">
-                <input type="radio" name="option2" id="option2f" value="option2f">Tibetan Script (simplified)</label>
-              </li>                   
+                  <input type="radio" name="option2" id="option2f" value="roman.scholar">Scholarly Standard (romanization)</label>
+              </li>
               <li class="form-group"><label class="radio-inline" for="option2g">
-                <input type="radio" name="option2" id="option2g" value="option2g">Tibetan Script (romanization)</label>
+                  <input type="radio" name="option2" id="option2g" value="pri.tib.sec.chi">Tibetan Script (simplified)</label>
+              </li>
+              <li class="form-group"><label class="radio-inline" for="option2h">
+                  <input type="radio" name="option2" id="option2h" value="pri.tib.sec.roman">Tibetan Script (romanization)</label>
               </li>
               <li class="form-group last"></li>
             

@@ -1101,6 +1101,83 @@ ul.menu-main>li>a:first-child {
 	line-height:1.5em; 
 	height:2.44em;
 }
+
+/*------------------------------------*/
+/*----- Audio/Video Thumbnails -------*/
+/*------------------------------------*/
+div.shanti-thumbnail { 
+  height: 270px;
+  width: 210px;
+  display: inline-block;
+  float: left;
+  padding: 0px;
+  margin: 16px;
+  border: solid 1px #eee;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+div.shanti-thumbnail div.shanti-thumbnail-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+div.shanti-thumbnail div.shanti-thumbnail-image img {
+  width: 100%;
+  border: solid 1px #eee;
+  border-radius: 5px 5px 0px 0px;
+  -webkit-border-radius: 5px 5px 0px 0px;
+  -moz-border-radius: 5px 5px 0px 0px;
+}
+
+div.shanti-thumbnail:hover {
+  background-color: #eee;
+  border-color: #ddd;
+}
+
+div.shanti-thumbnail div.shanti-thumbnail-info {
+  padding: 6px 10px 4px;
+  font-size: small;
+}
+
+div.shanti-field-created span.shanti-field-content {
+  color: #999;
+}
+
+div.shanti-thumbnail-field.shanti-field-title {
+  text-align: left;
+  line-height: 1.25em;
+  margin-top: 6px;
+}
+
+div.shanti-thumbnail-field.shanti-field-title a {
+  color: #333;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+/* Thumbnail icons */
+div.shanti-thumbnail-image i.thumbtype {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  /*background-color: rgba( 50, 204, 202, 0.8); #32ccca */
+  width: 25px;
+  height: 25px;
+  border: thin solid #aaa;
+  -webkit-border-radius: 3px;
+  color: white;
+  padding-left: 2px;
+  padding-top: 3px;
+}
+
+i.thumbtype {
+  background-color: rgba(50,204,202, 0.8) !important;
+}
+
+
+
+
 /*----------------------------*/
 /*----- END NAVIGATION -------*/
 /*----------------------------*/
