@@ -686,21 +686,20 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   left:-2px;
 }
 
-.breadwrap .breadcrumb li.active {
-
-}
-
-.breadwrap ol li.last{ 
-	font-weight:bold; 
+.breadwrap ol li.last,
+.breadwrap ol li:last-child{ 
   color:#fff;
 	background: none;
-	font-size:1.18em;
+	font-size:1em;
 	position:relative; top:-7px;
 	margin-right: 0;
 	padding-right: 0;
-	font-weight:bold;
 }
-
+.breadwrap ol li.last i:before,
+.breadwrap ol li:last-child i:before{
+	content: " ";
+	display:none;
+}
 /*-------------------------------------*/
 /*----- END Header/Banner Section -----*/
 /*-------------------------------------*/
