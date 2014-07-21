@@ -669,7 +669,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	font-family:'FontAwesome';
 	font-size:1.68em;
 	line-height:1em;
-	height: 0.68em;
+	height:1em;
 	width:0.56em;
 	font-weight:bold;
 	color:#eee;
@@ -691,7 +691,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   color:#fff;
 	background: none;
 	font-size:1em;
-	position:relative; top:-7px;
+	position:relative; top:0;
 	margin-right: 0;
 	padding-right: 0;
 }
