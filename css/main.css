@@ -579,7 +579,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   margin: 0 0 0 15px;
   padding: 0;
   display: block;
-  height: 21px;
+  height: 1.18em;
   overflow: hidden;
   width:96%;
   background:transparent;
@@ -611,7 +611,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   font-family: "Museo Sans", sans-serif;
   font-size:1.12em;
   line-height:1em;
-  height:21px;
+  height: 1.18em;
   padding:0;
   margin:0 4px 0 0;
   position:relative; top:-1px;
@@ -632,9 +632,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   display: inline-block;
   float: none;
   position: relative;
-  font-size: .88em;
-  height: 21px;
-  line-height: 21px;
+  font-size: 1em;
+  height: 1.18em;
+  line-height: 1.18em;
   overflow: hidden;
   margin: 0;
   padding: 0 18px 0 0;
@@ -645,11 +645,11 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   position: relative;
   overflow: hidden;
   float: left;
-  font-size: 1.1em;
+  font-size: 1.12em;
   color: #fff;
   text-decoration: none;
-	height: 21px;
-	line-height: 21px;
+	height: 1.18em;
+	line-height: 1.18em;
 	overflow: hidden;
 	float: left;
 	margin-right:2px;
