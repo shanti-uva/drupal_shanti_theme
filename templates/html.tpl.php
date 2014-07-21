@@ -559,23 +559,21 @@
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.dataTables.min.js"></script>
 
 	<script>	  
-	  jQuery(function ($) {	  
-	    // $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-		  $(".content-section").bind('resize', function() {					
-					$('.equal-height').each( function() {
-								$(this).matchHeight._update();
-					});					
-	 		});
-		});  
-
 		jQuery(document).ready(function(){		
 					jQuery(".breadwrap").jBreadCrumbCustom({
 								animationDuration: 400,
 				        collapsedWidth: 9,
 				        easing: 'easeOutQuad',
 				        startingFrom: 2
+					 });
+						  
+			    // $(window).bind('load orientationchange resize', jBreadCrumbCustom);
+				  $(".content-section").bind('resize', function() {					
+								$('.equal-height').each( function() {
+										$(this).matchHeight._update();
+								});					
 					});
-		});
+		}); 		
 	</script>
 
 
