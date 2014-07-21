@@ -576,7 +576,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	jBreadCrumbCustom Plugin Styles
 =======================================*/
 .breadwrap {
-  margin: 0 0 0 15px;
+  margin: 4px 0 0 15px;
   padding: 0;
   display: block;
   height: 1.18em;
@@ -642,8 +642,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 
 .breadwrap ol li a {
   display: block;
-  position: relative;
-  overflow: hidden;
   float: left;
   font-size: 1.12em;
   color: #fff;
@@ -651,8 +649,6 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	height: 1.18em;
 	line-height: 1.18em;
 	overflow: hidden;
-	float: left;
-	margin-right:2px;
 }
 
 .breadwrap ul li span.wholegrain,
@@ -664,9 +660,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .breadwrap ol li i{
 	color:#eee;
 	background:#dc3c47;
-	position: relative;
+	position: absolute;
 	right: 0px;
-	top: 0px;
+	top: -4px;
 	z-index: 10;
 	font-family:'FontAwesome';
 	font-size:1.68em;
@@ -680,8 +676,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .breadwrap ol li i:before{
 	content: "\f105";
   position:relative;
-  top:-5px;
-  left:-2px;
+  top:0;
+  left:0;
 }
 
 .breadwrap ol li.last,
