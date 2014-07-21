@@ -547,7 +547,7 @@
 		
 		jQuery(function ($) {
 							// $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-				  $(".content-section").bind('load  orientationchange resize', function() {					
+				  $(".content-section").on('load  orientationchange resize', function() {					
 								$(".equal-height").each( function() {
 										$(this).matchHeight._update();
 								});					
