@@ -1257,17 +1257,17 @@ function processSubjectsData(data) {
   }
 
   //Related Audio-Video (videos) section
-  if (true) {
-    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count == 0 ? '1' : data.feature.associated_resources.video_count);
-    $(".content-resources ul.nav-pills li.audio-video").show();
-    $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
-      var $tabAudioVideo = $("#tab-audio-video");
-      $tabAudioVideo.empty();
-      $tabAudioVideo.append('<h6>' + 'Videos in ' + data.feature.header + '</h6>');
-      var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + data.feature.id;
-      $.get(audioVideoUrl, relatedVideos);
-    });
-  }
+  // if (true) {
+  //   $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.feature.associated_resources.video_count == 0 ? '1' : data.feature.associated_resources.video_count);
+  //   $(".content-resources ul.nav-pills li.audio-video").show();
+  //   $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
+  //     var $tabAudioVideo = $("#tab-audio-video");
+  //     $tabAudioVideo.empty();
+  //     $tabAudioVideo.append('<h6>' + 'Videos in ' + data.feature.header + '</h6>');
+  //     var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + data.feature.id;
+  //     $.get(audioVideoUrl, relatedVideos);
+  //   });
+  // }
 
   //Related Texts section
   if (data.feature.associated_resources.document_count > 0) {
@@ -1289,6 +1289,8 @@ function processSubjectsData(data) {
 
 //Function to process solr index data
 function processSubjectsSolr(data) {
+  var data = $.parseJSON(data);
+
   //Related Audio-Video (videos) section
   if (data.grouped.bundle.matches > 0) {
     $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.grouped.bundle.matches == 0 ? '1' : data.grouped.bundle.matches);
@@ -1296,7 +1298,7 @@ function processSubjectsSolr(data) {
     $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
       var $tabAudioVideo = $("#tab-audio-video");
       $tabAudioVideo.empty();
-      $tabAudioVideo.append('<h6>Audio/Videos</h6>');
+      $tabAudioVideo.append('<h6>Audio/Video</h6>');
       var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + Settings.kmapIndex;
       $.get(audioVideoUrl, relatedVideos);
     });
