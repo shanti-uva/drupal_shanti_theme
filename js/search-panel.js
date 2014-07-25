@@ -1557,6 +1557,9 @@ function paginatedPhotos(data) {
 
 //Function to process and show related videos
 function relatedVideos(data) {
+  console.log(data);
+  var monthNames = [ "January", "February", "March", "April", "May", "June",
+                     "July", "August", "September", "October", "November", "December" ];
   var contentAV = '<div class="related-audio-video">';
 
   $.each(data.media, function(rInd, rElm) {
@@ -1569,7 +1572,10 @@ function relatedVideos(data) {
     contentAV += '</div>';
     contentAV += '<div class="shanti-thumbnail-info">';
     contentAV += '<div class="shanti-thumbnail-field shanti-field-created">';
-    contentAV += '<span class="shanti-field-content">11 March 2014</span>';
+    contentAV += '<span class="shanti-field-content">';
+    var date = new Date(parseInt(rElm.created) * 1000);
+    contentAV += date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+    contentAV += '</span>';
     contentAV += '<div class="shanti-thumbnail-field shanti-field-title">';
     contentAV += '<span class="field-content">';
     contentAV += '<a href="#pid' + rElm.nid + '" class="shanti-thumbnail-link" data-toggle="modal">';
@@ -1578,7 +1584,7 @@ function relatedVideos(data) {
     contentAV += '</span>';
     contentAV += '</div>';
     contentAV += '<div class="shanti-thumbnail-field shanti-field-duration">';
-    contentAV += '<span class="field-content"> 1 min 43 sec</span>';
+    contentAV += '<span class="field-content">' + rElm.duration.formatted + '</span>';
     contentAV += '</div>';
     contentAV += '</div>';
     contentAV += '</div>';
