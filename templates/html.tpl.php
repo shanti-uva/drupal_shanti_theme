@@ -13,9 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Shanti Kmaps</title>
   <meta name="description" content="template">
-  <!-- typekit <script type="text/javascript" src="//use.typekit.net/oxg3src.js"></script> 
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>  end typekit 
-  -->
+  <script type="text/javascript" src="//use.typekit.net/oxg3src.js"></script> 
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/css/bootstrap-theme.min.css">
   <link rel="stylesheet" href="<?php print $theme_path; ?>/fonts/font-awesome-4.0.3/css/font-awesome.min.css">
