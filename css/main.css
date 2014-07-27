@@ -718,7 +718,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 .content-resources {
   padding-left: 0;
   padding-right: 0;
-  width:190px;
+  width:13.5em;
   background:#fff;
   min-height:700px;
   height:100%;
@@ -1384,7 +1384,7 @@ i.thumbtype {
   #menu-main .panel-group,
   #menu-collections .panel-group{ padding:0 !important;}  
   
-  .content-resources { width:190px;}
+  .content-resources { width:13.5em;}
   .content-resources ul{ margin-top:25px;}
   
 	.content-resources ul.nav-pills li{ font-size: 1em; line-height: 1em; height: 2.63em;}
@@ -1451,7 +1451,7 @@ i.thumbtype {
 
   .navbar-header h1.navbar-title a span{ font-size:0.93em; position:relative; top:-5px; }
 
-  .main-content .content-section { max-width: 750px; }
+  .main-content .content-section { max-width: 47em; }
     
 	.collections ul li a { font-size: 0.68em; line-height:2em;}	
  	.collections h4 {
