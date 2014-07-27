@@ -239,16 +239,5 @@ jQuery(function ($) {
 
 
 
-jQuery(function ($) {
 
-	jQuery(document).ready(function(){
-		$('.equal-height').matchHeight();
-	});
-
-	$('.content-resources a').click( function(){
-		$('.equal-height').each( function() {
-      	$(this).matchHeight._update();
-    });
-  });
-});
 

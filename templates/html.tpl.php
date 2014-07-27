@@ -544,14 +544,7 @@
 
 	<script>	  
 		
-		jQuery(function ($) {
-							// $(window).bind('load orientationchange resize', jBreadCrumbCustom);
-				  $(".content-section, .panel").bind('load orientationchange resize', function() {					
-								$(".equal-height").each( function() {
-										$(this).matchHeight._update();
-								});					
-					});
-		});					
+$('.content-resources').height($('.content-resources').parent().height());					
 	</script>
 
 

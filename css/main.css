@@ -1,5 +1,5 @@
 html{ -webkit-font-smoothing: antialiased; overflow-y:scroll;}
-body{ font-family: 'museo sans',sans-serif; font-weight:normal; overflow: hidden;}
+body{ font-family: "Museo Sans",sans-serif; font-weight:normal; overflow: hidden;}
 body div.wrap-all{ position:relative;}
 *, *:before, *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box;}
 *:focus{ outline: 0 !important; /* outline: -2px auto -webkit-focus-ring-color !important; */}
