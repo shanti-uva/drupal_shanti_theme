@@ -7,6 +7,15 @@ function shanti_theme_preprocess_page(&$variables) {
   $variables['subject'] = preg_match('/subjects/', $_SERVER['REQUEST_URI']) === 1 ? true : false;
 
   $options = array(
+    'group' => CSS_THEME,
+  );
+
+  if (!$variables['subject']) {
+    drupal_add_css($variables['theme_path'] . '/css/places.css', $options);
+    drupal_add_css($variables['theme_path'] . '/css/openlayers.css', $options);
+  }
+
+  $options = array(
     'group' => JS_THEME,
     'scope' => 'footer'
   );
