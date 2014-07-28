@@ -32,10 +32,10 @@ function processPlacesData(data) {
   $("a[href='#tab-overview']").click();
 
   //Remove all elements from Breadcrumbs and start adding them again.
-  $("ol.breadCrumb li").remove();
-  $("ol.breadCrumb").append('<li><a href="">Places:</a></li>');
+  $("ol.breadcrumb li").remove();
+  $("ol.breadcrumb").append('<li><a href="">Places:</a></li>');
   $.each(data.feature.parents, populatePlacesBreadcrumbs);
-  $("ol.breadCrumb").append('<li>' + data.feature.header + '</li>');
+  $("ol.breadcrumb").append('<li>' + data.feature.header + '</li>');
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
   $(".content-resources ul.nav-pills li").hide();
@@ -285,7 +285,7 @@ function processPlacesData(data) {
 
 //Populate Breadcrumbs
 function populatePlacesBreadcrumbs(bInd, bVal) {
-  $breadcrumbOl = $("ol.breadCrumb");
+  $breadcrumbOl = $("ol.breadcrumb");
   $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
 }
 

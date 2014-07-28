@@ -2,3 +2,18 @@ name = Shanti Theme
 description = Theme used for the shanti application page embedded in a drupal site
 core = 7.x
 
+;;;;;;;;;;;;;;;;;;;;;
+;; Stylesheets
+;;;;;;;;;;;;;;;;;;;;;
+
+stylesheets[all][] =  css/bootstrap.min.css
+stylesheets[all][] =  css/bootstrap-theme.min.css
+stylesheets[all][] =  src/skin-bootstrap/ui.fancytree.css
+stylesheets[all][] =  css/utils.css
+stylesheets[all][] =  css/search-panel.css
+stylesheets[all][] =  css/main.css
+stylesheets[all][] =  css/additional.css
+stylesheets[all][] =  css/places.css
+stylesheets[all][] =  css/openlayers.css
+stylesheets[all][] =  fonts/shanticon/css/style.css
+stylesheets[all][] =  fonts/font-awesome-4.0.3/css/font-awesome.min.css
