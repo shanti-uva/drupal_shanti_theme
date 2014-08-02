@@ -34,8 +34,6 @@ jQuery(function ($) {
   $(document).click( function(){
       $('.menu-toggle').removeClass('show-topmenu');
       $('#menu').hide(100);
-      // $('.collections').slideUp(200);
-      // $(".collections").css('display','none');
   });  
         
 });
@@ -232,7 +230,7 @@ jQuery(function ($) {
 	// --- ajax call for collections list
 	$( "#kmaps-collections").load( "/sites/all/themes/shanti_theme/js/menus/menu-ajax.php .menu-collections > ul");  	
   $('body').on('click','.explore>a, .collections button',function(){
-       $(".collections").slideToggle(50);      
+       $(".collections").slideToggle(200);      
   });
     
 });
