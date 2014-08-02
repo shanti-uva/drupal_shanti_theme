@@ -60,7 +60,7 @@
       <div class="row">   
         <header class="col-xs-12 titlearea">
           <div role="banner">
-            <h1 class="page-title"><i class="icon <?php print $subject ? "shanticon-subjects" : "shanticon-places"; ?>"></i><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
+            <h1 class="page-title"><em><i class="icon <?php print $subject ? "shanticon-subjects" : "shanticon-places"; ?>"></i></em><span><?php print $subject ? "Collections" : "Earth"; ?></span></h1>
             <nav class="breadwrap" role="navigation">
               <ol class="breadcrumb">
                <li><a href=""><?php print $subject ? "Subjects:" : "Places"; ?></a></li>
