@@ -368,7 +368,6 @@ jQuery(function ($) {
           debugDelay: 1000,
           timeout: 30000,
           error: function(e) {
-              console.log(JSON.stringify(e));
               notify.warn("networkerror","Error retrieving tree from kmaps server.");
           }
       },
@@ -1115,6 +1114,10 @@ jQuery(function($) {
 // *** Hash Change events ***
 jQuery(function($) {
   $(window).hashchange( function() {
+    //check if we are in the overlay and quit
+    var hashToCheck = location.hash.split("#")[1];
+    if ( hashToCheck !== undefined && hashToCheck.indexOf('overlay') !== -1 ) { return; };
+
     if (location.pathname.indexOf('subjects') !== -1) {
       var mHash = location.hash.split("#")[1] || 'features/2823';
       var mUrl = Settings.baseUrl + "/" + mHash + ".json";
