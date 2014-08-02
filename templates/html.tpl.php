@@ -542,15 +542,6 @@
   <?php endif ?>
   <script type="text/javascript" src="<?php print $theme_path; ?>/src/jquery.dataTables.min.js"></script>
 
-	<script>
-	jQuery(function ($) {	  
-				  $(".content-section").bind('load orientationchange resize', function() {					
-		
-							$('.content-resources').height($('.content-resources').parent().height());
-							
-					});	
-	});						
-	</script>
 
 
 

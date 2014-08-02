@@ -46,10 +46,10 @@ object.flip_label{ display:none;}
 #kmaps-search.extruder .text{ border:none; padding:0; text-shadow:none; background:#f8f8f8; color:#333;}
 
 /*--- big search button inline styles are loaded via main.js with icon markup  */
-#kmaps-search.extruder.right .flap{ cursor:pointer; display:block; background:#fff; height:48px; width:45px; padding: 7px 0 7px 7px;margin:0 0 0 -7px; border-top-left-radius:44px;border-bottom-left-radius:44px;}
+#kmaps-search.extruder.right .flap{ cursor:pointer; display:block; background:#fff; height:48px; width:45px; padding: 7px 0 7px 7px;margin:0 0 0 -7px; border-top-left-radius:44px;border-bottom-left-radius:44px; background-clip: padding-box;}
 #kmaps-search.extruder.right .flap.on-flap{ border-collapse:separate;}
 #kmaps-search.extruder.right .flap span.flapLabel,
-#kmaps-search.extruder.right .flap.on-flap span.flapLabel{ width:37px !important;background:#505050; height:30px;display:block; padding:17px 38px 17px 0; margin:0;border-top-left-radius:20px;border-bottom-left-radius:20px;}
+#kmaps-search.extruder.right .flap.on-flap span.flapLabel{ width:37px !important;background:#505050; height:30px;display:block; padding:17px 38px 17px 0; margin:0;border-top-left-radius:20px;border-bottom-left-radius:20px; background-clip: padding-box;}
 #kmaps-search.extruder.right.isOpened .flap{ width:48px;}
 #kmaps-search.extruder.right.isOpened .flap.on-flap span.flapLabel{ width:30px !important;}
 /*----- css for the flap is inserted inline, see js/main ---*/
@@ -80,7 +80,7 @@ object.flip_label{ display:none;}
 /*--- START :: Search Panel :: Input & View ----*/
 /*----------------------------------------------*/
 .input-section{ padding:0;border: 1px solid #e0e0e0;display:block;width:100%;}
-.input-section .input-group input.form-control:first-child{ -webkit-border-bottom-right-radius: 25px;-webkit-border-top-right-radius: 25px;border-bottom-right-radius: 25px;border-top-right-radius: 25px;}
+.input-section .input-group input.form-control:first-child{ border-bottom-right-radius: 25px;border-top-right-radius: 25px; background-clip: padding-box;}
 .input-section .input-group{ padding: 0 12px 0 10px; display:block; width:100%; background:#f8f8f8;}
 .input-section .input-group input.form-control{
 	color:#777;
@@ -92,11 +92,10 @@ object.flip_label{ display:none;}
 	margin: 8px 0 0; 
 	padding:2px 60px 0 15px;
   width:100%;  
-  border-radius: 25px;
 	overflow: auto;
 	vertical-align:middle;
-	-webkit-box-shadow:0px 2px 5px #eee inset;
-	box-shadow:0px 2px 5px #eee inset; 
+	-webkit-box-shadow:0 2px 5px #eee inset;
+	box-shadow:0 2px 5px #eee inset; 
 	background: #fff;
 	-webkit-transition-property: all;
 	-webkit-transition-duration: 400ms;
@@ -120,6 +119,7 @@ object.flip_label{ display:none;}
   border-radius: 25px !important;
 	border-bottom-left-radius: 0 !important;
 	border-top-left-radius: 0 !important; 
+	background-clip: padding-box;
 	-webkit-box-shadow:none;
 	box-shadow:none;
 	background-clip: padding-box; /* Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners */
@@ -182,7 +182,7 @@ object.flip_label{ display:none;}
 .input-section label{ color:#444; font-size:13px; line-height:30px; height:28px; padding-right:0; margin-right:0;}
 
 /*--- toggle links for search panel ---*/
-.input-section .toggle-link{ background:#f8f8f8;color:#dc3c47;font-size:0.93em;display:block;text-align:right;font-weight:600; line-height:0.88em; height:1.12em; margin:0;padding:0 25px 0 0;text-decoration:none;font-family: "Minion-Pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
+.input-section .toggle-link{ background:#f8f8f8;color:#dc3c47;font-size:0.93em;display:block;text-align:right;font-weight:600; line-height:0.88em; height:1.12em; margin:0;padding:0 25px 0 0; text-decoration:none; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
 .input-section .toggle-link:hover{ text-decoration:none !important; color:#555;}
 .input-section .toggle-link i{ font-family:'FontAwesome'; }
 .input-section .toggle-link i.icon:before{ color:#dc3c47; font-family:'FontAwesome'; content:"\f067"; font-size:0.68em; margin-right:0.12em;}
@@ -246,7 +246,7 @@ object.flip_label{ display:none;}
 .input-section .feature-group label{ color:#555; padding:0;margin:0; font-size:0.88em; line-height:12px;height:15px;}
 
 /*--- the feature dropdown-menu ---*/
-.feature-group .dropdown-menu{ height:320px; overflow:auto; border-radius:12px; padding:0; top:46px; left:0; width:100%; min-width:220px;}
+.feature-group .dropdown-menu{ height:320px; overflow:auto; border-radius:12px; background-clip: padding-box; padding:0; top:46px; left:0; width:100%; min-width:220px;}
 /* .feature-group .dropdown-menu p{ font-size:.82em; line-height:normal; color:#222;}
 #kmaps-search .text .feature-message{ background-color:#fff; font-size:12px;padding:10px 17px 10px; margin:0; 
 border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
@@ -256,7 +256,7 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 .show-feature-tree .form-group.last{ /* padding-bottom:5px; */}
 /*--- bottom buttons ---*/
 .feature-submit{ padding:0 17px 7px; margin:0; border-top:1px solid #ccc; width:100%; background-color:#fff; height:40px; min-height:40px;
-	border-radius-bottom-left:12px; border-radius-bottom-right:12px; position:absolute; bottom:0; z-index:9999;
+	border-radius-bottom-left:12px; border-radius-bottom-right:12px;background-clip: padding-box;  position:absolute; bottom:0; z-index:9999;
 }
 
 .feature-group .tree-wrap{ height:312px; min-height:312px; /*--- height ---*/ padding:0; position:relative; }
@@ -349,8 +349,8 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 	background-image:none;
 	border: 1px solid #ccc;
 	border-radius:18px;  	
-	background-clip: padding-box; /* Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners */
-	overflow:hidden;
+  background-clip: padding-box;	
+  overflow:hidden;
 	vertical-align:middle;	
 	-webkit-box-shadow:0px 2px 5px #eee inset;
 	box-shadow:0px 2px 5px #eee inset;
@@ -408,7 +408,7 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 
 /*---- START list table view ----*/
 .view-section table.table-responsive{ text-align:center; border:none;}
-.view-section table.table-results{ border:none; font-size:13px; line-height:20px; margin:0 2%; margin-top:-9px !important; width:96%; font-family: "Minion-Pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
+.view-section table.table-results{ border:none; font-size:13px; line-height:20px; margin:0 2%; margin-top:-9px !important; width:96%; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;}
 .view-section table.table-results a{ font-style:italic;}
 
 .view-section table.table-results tbody>tr>td,
@@ -497,6 +497,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     position: relative; top:-200px;
     width: 130px;
     border-radius: 100%;
+    background-clip: padding-box;
 }
 .loading-container { margin: 40px auto; }
 .loading {
@@ -514,8 +515,8 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .loading-container:hover .loading {
     border-color: transparent #999 transparent #999;
 }
-.loading-container:hover .loading,
-.loading-container .loading {
+.loading-container .loading,
+.loading-container:hover .loading {
     -webkit-transition: all 0.5s ease-in-out;
     -moz-transition: all 0.5s ease-in-out;
     -ms-transition: all 0.5s ease-in-out;
@@ -528,7 +529,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     -webkit-animation: loading-text-opacity 2s linear 0s infinite normal;
     animation: loading-text-opacity 2s linear 0s infinite normal;
     color: #555;
-    font-family: "Museo Sans", arial, sans-serif;
+    font-family: "Museo Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
     font-size: 15px;
     font-weight: normal;
     opacity: 0;
@@ -555,7 +556,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 }
 .searchPop > .popover-title .kmapid-display:before { /* content: "" */ }
 .searchPop > .popover-content{
-	font-family:"Museo Sans",sans-serif;
+	font-family: "Museo Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
 	font-size: 0.75em;
 	padding-top:4px 12px;	
 }
@@ -564,7 +565,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	margin:5px 0 0;
 	font-size: 1.18em;
 	border-left:4px solid #f0f0f0;
-	font-family: "Minion-Pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+	font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
 }
 .searchPop > .popover-content > .kmap-path{
 	display:inline;
@@ -623,7 +624,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 /*------------------------------*/
 /*---- START :: Search Tree ----*/
 /*------------------------------*/
-.view-section ul.fancytree-container{ margin:0; background:transparent; border:none; font-family: "Minion-Pro", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
+.view-section ul.fancytree-container{ margin:0; background:transparent; border:none; font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif; }
 .view-section ul.fancytree-container ul{ padding-top:0; margin-top:0;}
 .view-section ul.fancytree-container li{ }
 
@@ -654,6 +655,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	float:left;
 	position:relative; top:5px; right:2px;
   border-radius: 50%;
+  background-clip: padding-box;
   width: 9px;
   height: 9px;
   display: block;
@@ -754,8 +756,8 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 	background-repeat: repeat-x;
 	border: 1px solid #ddd;
 	border-radius:25px;  	
+	background-clip: padding-box;
 	border-color: #eeee #eee #ddd;
-	background-clip: padding-box; /* Use "background-clip: padding-box" when using rounded corners to avoid the gradient bleeding through the corners */
 	overflow:hidden;
 	-webkit-box-shadow:none;
 	box-shadow:none;
@@ -772,7 +774,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 }
 
 /*--- dropdown ---*/
-.input-section .dropdown-menu.open{ border-radius:10px;}
+.input-section .dropdown-menu.open{ border-radius:10px; background-clip: padding-box;}
 .input-section .selectpicker .dropdown-menu>li>a span.text{ margin-right:0; padding-left:18px; overflow:hidden;}
 
 .input-section .bootstrap-select.btn-group{ margin-top:10px;margin-bottom:0;box-shadow:none;}
@@ -932,6 +934,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
   padding: .2em .25em .15em;
   border: solid 0.08em #eeeeee;
   border-radius: .1em;
+  background-clip: padding-box;
 }
 .icon.pull-left {
   margin-right: .3em;
