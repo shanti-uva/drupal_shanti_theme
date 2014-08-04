@@ -234,11 +234,11 @@ jQuery(function ($) {
   });
   
   
-  if($("breadcrumb > li > a:contains('Subjects')")) {
-	  $("breadcrumb li a").find("i").css('background','#dc3c47');
+  if($(".breadcrumb > li > a:contains('Subjects')")) {
+	  $(".breadcrumb li a").find("i").css('background','#dc3c47');
   }
-  if($("breadcrumb > li > a:contains('Places')")) {
-	  $("breadcrumb li a").find("i").css('background','#4CA6FB');
+  if($(".breadcrumb > li > a:contains('Places')")) {
+	  $(".breadcrumb li a").find("i").css('background','#4CA6FB');
   } 
     
 });
