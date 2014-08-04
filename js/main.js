@@ -232,6 +232,14 @@ jQuery(function ($) {
   $('body').on('click','.explore>a, .collections button',function(){
        $(".collections").slideToggle(200);      
   });
+  
+  
+  if($("breadCrumb > li > a:contains('Subjects')")) {
+	  $("breadCrumb li a").find("i").css('background','#dc3c47');
+  }
+  if($("breadCrumb > li > a:contains('Places')")) {
+	  $("breadCrumb li a").find("i").css('background','#4CA6FB');
+  } 
     
 });
 
