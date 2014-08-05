@@ -1125,8 +1125,7 @@ jQuery(function($) {
 
       //Check the solr index for audio-video data
       Settings.kmapIndex = mHash.split('/').pop();
-      var solrURL = 'http://drupal-index.shanti.virginia.edu/solr-test/kmindex/select?q=kmapid:' + Settings.kmapIndex + 
-      '&fq=&start=0&facets=on&group=true&group.field=bundle&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
+      var solrURL = 'http://drupal-index.shanti.virginia.edu/solr-test/kmindex/select?q=kmapid:subjects-' + Settings.kmapIndex + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
       $.get(solrURL, processSubjectsSolr);
     }
 
@@ -1295,14 +1294,14 @@ function processSubjectsSolr(data) {
   var data = $.parseJSON(data);
 
   //Related Audio-Video (videos) section
-  if (data.grouped.bundle.matches > 0) {
-    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.grouped.bundle.matches == 0 ? '1' : data.grouped.bundle.matches);
+  if (data.grouped.service.matches > 0) {
+    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.grouped.service.matches == 0 ? '1' : data.grouped.service.matches);
     $(".content-resources ul.nav-pills li.audio-video").show();
     $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
       var $tabAudioVideo = $("#tab-audio-video");
       $tabAudioVideo.empty();
       $tabAudioVideo.append('<h6>Audio/Video</h6>');
-      var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + Settings.kmapIndex;
+      var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + Settings.kmapIndex + '?rows=12';
       $.get(audioVideoUrl, relatedVideos);
     });
   }
@@ -1569,11 +1568,15 @@ function relatedVideos(data) {
     contentAV += '<div class="shanti-thumbnail video col-lg-2 col-md-3 col-sm-4 col-xs-12">';
     contentAV += '<div class="shanti-thumbnail-image shanti-field-video">';
     contentAV += '<a href="#pid' + rElm.nid + '" class="shanti-thumbnail-link" data-toggle="modal">';
+    contentAV += '<span class="overlay">';
+    contentAV += '<span class="icon"></span>';
+    contentAV += '</span>';
     contentAV += '<img src="' + rElm.thumbnail + '/width/360/height/270/type/2/bgcolor/000000' + '" alt="Video" typeof="foaf:Image" class="k-no-rotate">';
     contentAV += '<i class="shanticon-video thumbtype"></i>';
     contentAV += '</a>';
     contentAV += '</div>';
     contentAV += '<div class="shanti-thumbnail-info">';
+    contentAV += '<div class="body-wrap">';
     contentAV += '<div class="shanti-thumbnail-field shanti-field-created">';
     contentAV += '<span class="shanti-field-content">';
     var date = new Date(parseInt(rElm.created) * 1000);
@@ -1591,6 +1594,9 @@ function relatedVideos(data) {
     contentAV += '</div>';
     contentAV += '</div>';
     contentAV += '</div>';
+    contentAV += '<div class="footer-wrap">';
+    contentAV += '</div>';
+    contentAV += '</div>';
     contentAV += '</div>';
 
     //Modal for each video
@@ -1603,7 +1609,7 @@ function relatedVideos(data) {
     contentAV += '</div>';
     contentAV += '<div class="modal-body">';
     contentAV += '<video class="each-video-player" controls name="media">';
-    contentAV += '<source src="' + rElm.video_url + '" type="video/mp4" />';
+    contentAV += '<source src="' + rElm.mb_url + '" type="video/mp4" />';
     contentAV += '</video>';
     contentAV += '</div>';
     contentAV += '</div>';
