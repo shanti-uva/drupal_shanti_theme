@@ -492,7 +492,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
   margin: 10px 0 15px !important;
   letter-spacing: 0.32em;
 }
-.collections button.close {
+.collections button {
   color: #fff;
   background:transparent;
   background-image:none;
@@ -514,7 +514,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none}
 	transition: color 200ms;
 	font-family:'shanticon';
 }
-.collections button.close:hover {
+.collections button:hover {
 	color: #fff;
 }
 /*--- END collections panel ---*/
