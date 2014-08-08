@@ -182,7 +182,7 @@ function decorateElementWithPopover(elem, node) {
                 if (description_count) counts.append("<span class='associated'><i class='icon shanticon-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
                 if (place_count) counts.append("<span class='associated'><i class='icon shanticon-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
                 if (picture_count) counts.append("<span class='associated'><i class='icon shanticon-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
-                if (video_count) counts.append("<span class='associated'><i class='icon shanticon-audiovideo'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
+                if (video_count) counts.append("<span class='associated'><i class='icon shanticon-audio-video'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
                 if (document_count) counts.append("<span class='associated'><i class='icon shanticon-texts'></i><span class='badge' + (document_count)?' alert-success':'>" + document_count + "</span></span>");
 
             }
@@ -587,10 +587,12 @@ jQuery(function($) {
 });
 
 
+
+// -------------------------
 // -------------------------
 // *** BEGIN feature trees
 // -------------------------
-
+// -------------------------
 var feature1_filterUtil = {
     feature1_clearFilter: function() {
         if ($('#feature-tree1').fancytree('getActiveNode')) {
