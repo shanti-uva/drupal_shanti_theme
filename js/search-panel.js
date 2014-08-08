@@ -1609,7 +1609,7 @@ function relatedVideos(data) {
     contentAV += '</div>';
     contentAV += '<div class="modal-body">';
     contentAV += '<video class="each-video-player" controls name="media">';
-    contentAV += '<source src="' + rElm.mb_url + '" type="video/mp4" />';
+    contentAV += '<source src="' + rElm.video_url + '" type="video/mp4" />';
     contentAV += '</video>';
     contentAV += '</div>';
     contentAV += '</div>';
