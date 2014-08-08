@@ -242,11 +242,11 @@ jQuery(function ($) {
   } 
     
 
-	if($("body").hasClass("pages-subjects")) {
+	if($("body").hasClass("page-subjects")) {
 		$(".feature-group").css('display','none');
 		$(".select-type").css('display','block');
-	}
-	if($("body").hasClass("pages-places")) {
+	} else {
+	if($("body").hasClass("page-places")) {
 		$(".feature-group").css('display','block');
 		$(".select-type").css('display','none');
 	}
