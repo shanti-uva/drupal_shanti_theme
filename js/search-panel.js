@@ -1559,7 +1559,6 @@ function paginatedPhotos(data) {
 
 //Function to process and show related videos
 function relatedVideos(data) {
-  console.log(data);
   var monthNames = [ "January", "February", "March", "April", "May", "June",
                      "July", "August", "September", "October", "November", "December" ];
   var contentAV = '<div class="related-audio-video">';
