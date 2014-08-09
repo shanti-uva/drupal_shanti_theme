@@ -57,18 +57,26 @@ jQuery(function($) {
   function kmaps_searchHeight() {
     var height = $(window).height();
     var kmapsrch = (height) - 80;
-    var viewheight = (height) -  211;
-		// var advHeight = $(".advanced-view").show().height();
-    var comboHeight = (viewheight) - 126;
-    
+  
+  // *** subjects search    
+    var subjects-viewheight = (height) -  211;
+    var subjects-comboHeight = (viewheight) - 126;
+  // *** places search
+    var places-viewheight = (height) -  290;
+    var places-comboHeight = (viewheight) - 200;
+        
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);
     
-    viewheight = parseInt(viewheight) + 'px';
-    comboHeight = parseInt(comboHeight) + 'px';
-    $(".view-wrap").css('height', viewheight);
-		$(".view-wrap.short-wrap").css('height', comboHeight);
-            
+    subjects-viewheight = parseInt(subjects-viewheight) + 'px';
+    subjects-comboHeight = parseInt(subjects-comboHeight) + 'px';
+    $(".page-subjects .view-wrap").css('height', subjects-viewheight);
+		$(".page-subjects .view-wrap.short-wrap").css('height', subjects-comboHeight);
+
+    places-viewheight = parseInt(places-viewheight) + 'px';
+    places-comboHeight = parseInt(places-comboHeight) + 'px';
+    $(".page-places .view-wrap").css('height', places-viewheight);
+		$(".page-places .view-wrap.short-wrap").css('height', places-comboHeight);           
   } 
 
 	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
