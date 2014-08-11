@@ -25,6 +25,7 @@ jQuery(function ($) {
 
 
 
+
 jQuery(function($) {
 	 // call bootstrap-select
   $(".selectpicker").selectpicker({ // see other selectpicker settings in related html markup in search panel
@@ -48,42 +49,58 @@ jQuery(function($) {
       $(".advanced-view").slideToggle('fast');
       $(".advanced-view").toggleClass("show-options");
       $(".view-wrap").toggleClass("short-wrap"); // ----- toggle class for managing view-section height      
-      kmaps_searchHeight();
+      kmaps_placesHeight();
+      kmaps_subjectsHeight();
   }); 
   
   // $("advanced-view").css('height','275px'); 
   
 // *** SEARCH *** adapt search panel height to viewport
-  function kmaps_searchHeight() {
+  function kmaps_placesHeight() {
+    var height = $(window).height();
+    var kmapsrch = (height) - 80;
+
+  // *** places search
+    var places_viewHeight = (height) -  211;
+    var places_comboHeight = (places_viewHeight) - 200;
+        
+    kmapsrch = parseInt(kmapsrch) + 'px';
+    $("#kmaps-search").find(".text").css('height',kmapsrch);
+
+    places_viewHeight = parseInt(places_viewHeight) + 'px';
+    places_comboHeight = parseInt(places_comboHeight) + 'px';
+    $(".page-places .view-wrap").css('height', places_viewHeight);
+		$(".page-places .view-wrap.short-wrap").css('height', places_comboHeight);           
+  } 
+
+
+// *** SEARCH *** adapt search panel height to viewport
+  function kmaps_subjectsHeight() {
     var height = $(window).height();
     var kmapsrch = (height) - 80;
   
   // *** subjects search    
-    var subjects-viewheight = (height) -  211;
-    var subjects-comboHeight = (viewheight) - 126;
-  // *** places search
-    var places-viewheight = (height) -  290;
-    var places-comboHeight = (viewheight) - 200;
+    var subjects_viewHeight = (height) -  211;
+    var subjects_comboHeight = (subjects_viewHeight) - 126;
         
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);
     
-    subjects-viewheight = parseInt(subjects-viewheight) + 'px';
+    subjects_viewHeight = parseInt(subjects_viewHeight) + 'px';
     subjects-comboHeight = parseInt(subjects-comboHeight) + 'px';
-    $(".page-subjects .view-wrap").css('height', subjects-viewheight);
+    $(".page-subjects .view-wrap").css('height', subjects_viewHeight);
 		$(".page-subjects .view-wrap.short-wrap").css('height', subjects-comboHeight);
-
-    places-viewheight = parseInt(places-viewheight) + 'px';
-    places-comboHeight = parseInt(places-comboHeight) + 'px';
-    $(".page-places .view-wrap").css('height', places-viewheight);
-		$(".page-places .view-wrap.short-wrap").css('height', places-comboHeight);           
-  } 
-
+          
+  }
+    
 	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
-    kmaps_searchHeight();
-    $(window).bind('load orientationchange resize', kmaps_searchHeight);
-
+    kmaps_placesHeight();
+    $(window).bind('load orientationchange resize', kmaps_placesHeight);
+	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
+    kmaps_subjectsHeight();
+    $(window).bind('load orientationchange resize', kmaps_subjectsHeight);
 });
+
 
 
 
@@ -1135,14 +1152,15 @@ jQuery(function($) {
 
       //Check the solr index for audio-video data
       Settings.kmapIndex = mHash.split('/').pop();
-      var solrURL = 'http://drupal-index.shanti.virginia.edu/solr-test/kmindex/select?q=kmapid:subjects-' + Settings.kmapIndex + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
-      $.get(solrURL, processSubjectsSolr);
     }
 
     if (location.pathname.indexOf('places') !== -1) {
       var mHash = location.hash.split("#")[1] || 'features/13735';
       var mUrl = Settings.placesUrl + "/" + mHash + ".json";
       $.get(mUrl, processPlacesData);
+
+      //Check the solr index for audio-video data
+      Settings.kmapIndex = mHash.split('/').pop();
     }
   });
 
@@ -1192,6 +1210,10 @@ function processSubjectsData(data) {
 
   //First Hide all the elements from the left hand navigation and then show relevant ones
   $(".content-resources ul.nav-pills li").hide();
+
+  //Proces the solr index for more left hand content
+  var solrURL = 'http://drupal-index.shanti.virginia.edu/solr-test/kmindex/select?q=kmapid:subjects-' + Settings.kmapIndex + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
+  $.get(solrURL, processSubjectsSolr);
 
   //Get the element that we want and display to overview.
   //Show overview tab on the left hand column
@@ -1569,6 +1591,8 @@ function paginatedPhotos(data) {
 
 //Function to process and show related videos
 function relatedVideos(data) {
+  console.log(data);
+
   var monthNames = [ "January", "February", "March", "April", "May", "June",
                      "July", "August", "September", "October", "November", "December" ];
   var contentAV = '<div class="related-audio-video">';
