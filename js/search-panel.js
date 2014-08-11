@@ -1,9 +1,9 @@
 var Settings = {
      type: location.pathname.indexOf('subjects') !== -1 ? "subjects" : "places",
-     baseUrl: location.pathname.indexOf('subjects') !== -1 ? "http://subjects.kmaps.virginia.edu" : "http://places.kmaps.virginia.edu",
+     baseUrl: location.pathname.indexOf('subjects') !== -1 ? "http://dev-subjects.kmaps.virginia.edu" : "http://dev-places.kmaps.virginia.edu",
      mmsUrl: "http://dev-mms.thlib.org",
-     placesUrl: "http://places.kmaps.virginia.edu",
-     subjectsUrl: "http://subjects.kmaps.virginia.edu",
+     placesUrl: "http://dev-places.kmaps.virginia.edu",
+     subjectsUrl: "http://dev-subjects.kmaps.virginia.edu",
      placesPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/places',
      subjectsPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/subjects'
 }
