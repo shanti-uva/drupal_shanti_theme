@@ -88,7 +88,7 @@ jQuery(function($) {
   
   // *** subjects search    
     var subjects_viewHeight = (height) -  211;
-    var subjects_comboHeight = (subjects_viewHeight) - 126;
+    var subjects_comboHeight = (subjects_viewHeight) - 136;
         
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);
