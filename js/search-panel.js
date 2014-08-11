@@ -1,8 +1,9 @@
 var Settings = {
-     baseUrl: location.pathname.indexOf('subjects') !== -1 ? "http://dev-subjects.kmaps.virginia.edu" : "http://dev-places.kmaps.virginia.edu",
+     type: location.pathname.indexOf('subjects') !== -1 ? "subjects" : "places",
+     baseUrl: location.pathname.indexOf('subjects') !== -1 ? "http://subjects.kmaps.virginia.edu" : "http://places.kmaps.virginia.edu",
      mmsUrl: "http://dev-mms.thlib.org",
-     placesUrl: "http://dev-places.kmaps.virginia.edu",
-     subjectsUrl: "http://dev-subjects.kmaps.virginia.edu",
+     placesUrl: "http://places.kmaps.virginia.edu",
+     subjectsUrl: "http://subjects.kmaps.virginia.edu",
      placesPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/places',
      subjectsPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/subjects'
 }
@@ -716,7 +717,7 @@ jQuery(function($) {
       }
     },
     url: Settings.baseUrl + "/features/fancy_nested.json",
-    // source: {url: "http://dev-places.kmaps.virginia.edu/features/list.json", debugDelay: 1000},
+    // source: {url: "http://places.kmaps.virginia.edu/features/list.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
