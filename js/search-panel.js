@@ -23,7 +23,7 @@ jQuery(function ($) {
 
 });
 
-//Removed code goes here. Variable names cannot have dashes (-) in them.
+//Removed code goes here. Variable names should not have dashes (-) in them.
 
 // *** SEARCH *** corrections for widths
 jQuery(function($) {
