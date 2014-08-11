@@ -690,8 +690,8 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    url: Settings.baseUrl + "/features/fancy_nested.json",
-    // source: {url: "http://places.kmaps.virginia.edu/features/list.json", debugDelay: 1000},
+    // url: Settings.baseUrl + "/features/fancy_nested.json",
+    source: {url: "http://places.kmaps.virginia.edu/features/list.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
