@@ -69,7 +69,7 @@ jQuery(function($) {
 
   // *** places search
     var places_viewHeight = (height) -  211;
-    var places_comboHeight = (places_viewHeight) - 200;
+    var places_comboHeight = (places_viewHeight) - 210;
         
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);
@@ -88,7 +88,7 @@ jQuery(function($) {
   
   // *** subjects search    
     var subjects_viewHeight = (height) -  211;
-    var subjects_comboHeight = (subjects_viewHeight) - 146;
+    var subjects_comboHeight = (subjects_viewHeight) - 126;
         
     kmapsrch = parseInt(kmapsrch) + 'px';
     $("#kmaps-search").find(".text").css('height',kmapsrch);
