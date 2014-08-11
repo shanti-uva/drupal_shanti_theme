@@ -619,7 +619,7 @@ jQuery(function($) {
     $("button.searchreset").hide();
     $(".alert").hide();
         searchUtil.clearSearch();
-        tree.clearFilter();
+        $('#tree').fancytree().clearFilter();
   });
 
 });
