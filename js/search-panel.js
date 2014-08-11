@@ -23,7 +23,80 @@ jQuery(function ($) {
 
 });
 
-//Removed code goes here. Variable names should not have dashes (-) in them.
+jQuery(function($) {
+	 // call bootstrap-select
+  $(".selectpicker").selectpicker({ // see other selectpicker settings in related html markup in search panel
+			iconBase: 'icon',
+	    noneSelectedText: 'SEARCH RESOURCES',
+	    noneResultsText: 'No results match',
+	    countSelectedText: 'Searching <em>({0})</em> Resource Types'
+  });
+  // $(".selectpicker").selectpicker("val", ['Essays','Photos']);
+  // $('.selectpicker').selectpicker('selectAll');
+  // --- set custom shanti resource icons
+	$(".selectpicker li a").find("i:eq(1)").removeClass("icon");
+	$(".selectpicker li a").find("i:eq(1)").addClass("glyphicon");		
+	
+	$(".selectpicker>li>a i.check-mark").css('display','inline-block');
+	
+		
+  // --- advanced search toggle icons, open/close, view change height
+  $(".advanced-link").click(function () {
+      $(this).toggleClass("show-advanced",'fast');
+      $(".advanced-view").slideToggle('fast');
+      $(".advanced-view").toggleClass("show-options");
+      $(".view-wrap").toggleClass("short-wrap"); // ----- toggle class for managing view-section height      
+      kmaps_placesHeight();
+      kmaps_subjectsHeight();
+  }); 
+  
+  // $("advanced-view").css('height','275px'); 
+  
+// *** SEARCH *** adapt search panel height to viewport
+  function kmaps_placesHeight() {
+    var height = $(window).height();
+    var kmapsrch = (height) - 80;
+
+  // *** places search
+    var places_viewHeight = (height) -  211;
+    var places_comboHeight = (places_viewHeight) - 210;
+        
+    kmapsrch = parseInt(kmapsrch) + 'px';
+    $("#kmaps-search").find(".text").css('height',kmapsrch);
+
+    places_viewHeight = parseInt(places_viewHeight) + 'px';
+    places_comboHeight = parseInt(places_comboHeight) + 'px';
+    $(".page-places .view-wrap").css('height', places_viewHeight);
+		$(".page-places .view-wrap.short-wrap").css('height', places_comboHeight);           
+  } 
+
+
+// *** SEARCH *** adapt search panel height to viewport
+  function kmaps_subjectsHeight() {
+    var height = $(window).height();
+    var kmapsrch = (height) - 80;
+  
+  // *** subjects search    
+    var subjects_viewHeight = (height) -  211;
+    var subjects_comboHeight = (subjects_viewHeight) - 126;
+        
+    kmapsrch = parseInt(kmapsrch) + 'px';
+    $("#kmaps-search").find(".text").css('height',kmapsrch);
+    
+    subjects_viewHeight = parseInt(subjects_viewHeight) + 'px';
+    subjects_comboHeight = parseInt(subjects_comboHeight) + 'px';
+    $(".page-subjects .view-wrap").css('height', subjects_viewHeight);
+		$(".page-subjects .view-wrap.short-wrap").css('height', subjects_comboHeight);
+          
+  }
+    
+	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
+    kmaps_placesHeight();
+    $(window).bind('load orientationchange resize', kmaps_placesHeight);
+	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
+    kmaps_subjectsHeight();
+    $(window).bind('load orientationchange resize', kmaps_subjectsHeight);
+});
 
 // *** SEARCH *** corrections for widths
 jQuery(function($) {
