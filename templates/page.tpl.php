@@ -28,7 +28,7 @@
                     <input type="radio" name="radios" id="optionlang1" value="" checked>English</label>
                 </li>
                 <li class="form-group"><label class="radio-inline" for="optionlang2">
-                    <input type="radio" name="radios" id="optionlang2" value="simp.chi">Tibet</label>
+                    <input type="radio" name="radios" id="optionlang2" value="simp.chi">Tibetan</label>
                 </li>
               </ul> 
             </form>            

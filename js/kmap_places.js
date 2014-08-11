@@ -40,6 +40,10 @@ function processPlacesData(data) {
   //First Hide all the elements from the left hand navigation and then show relevant ones
   $(".content-resources ul.nav-pills li").hide();
 
+  //Proces the solr index for more left hand content
+  var solrURL = 'http://drupal-index.shanti.virginia.edu/solr-test/kmindex/select?q=kmapid:places-' + Settings.kmapIndex + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
+  $.get(solrURL, processSubjectsSolr);
+
   //Get the element that we want and display to overview.
   //Show overview tab on the left hand column
   var $tabOverview = $("#tab-overview");
