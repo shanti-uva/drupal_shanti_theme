@@ -24,16 +24,6 @@ jQuery(function ($) {
 
 });
 
-
-
-
-
-
-
-
-
-
-
 jQuery(function($) {
 	 // call bootstrap-select
   $(".selectpicker").selectpicker({ // see other selectpicker settings in related html markup in search panel
@@ -108,14 +98,6 @@ jQuery(function($) {
     kmaps_subjectsHeight();
     $(window).bind('load orientationchange resize', kmaps_subjectsHeight);
 });
-
-
-
-
-
-
-
-
 
 // *** SEARCH *** corrections for widths
 jQuery(function($) {
