@@ -239,6 +239,10 @@ var searchUtil = {
             node.setExpanded(false);
         });
         $('table.table-results').dataTable().fnDestroy();
+
+
+
+
         $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
         $('table.table-results').dataTable();
 
@@ -481,7 +485,7 @@ jQuery(function ($) {
                         if (this.feature_types && this.feature_types.length > 0) {
                             resultHash[this.id] = this.feature_types[0].title;
                         } else {
-                            resultHash[this.id] = true;
+                            resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unknown";
                         }
                     });
 
@@ -503,8 +507,6 @@ jQuery(function ($) {
 
                     $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
                     //                    $('div.th div div.table-responsive table.table-results tr').not(':first').remove();
-
-                    // NEED TO REBUILD THE LIST TO HAVE VARIABLE COLUMNS
 
                     // populate list
                     var table = $('div.listview div div.table-responsive table.table-results');
@@ -558,6 +560,8 @@ jQuery(function ($) {
 
   //    $('.table-v').on('shown.bs.tab', function() { $('.title-field').trunk8(); });
     $('.listview').on('shown.bs.tab', function() {
+        var header = (location.pathname.indexOf('subjects') !== -1)?"<th>Name</th><th>Root Category</th>":"<th>Name</th><th>Feature Type</th>";
+        $('div.listview div div.table-responsive table.table-results tr:has(th):not(:has(td))').html(header);
         $(".title-field").trunk8({ tooltip:false });
         if ($('.row_selected')[0]) {
             if ($('.listview')) {
