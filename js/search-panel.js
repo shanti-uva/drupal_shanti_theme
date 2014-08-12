@@ -768,8 +768,8 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    url: Settings.baseUrl + "/features/fancy_nested.json",
-    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    // url: Settings.baseUrl + "/features/fancy_nested.json",
+    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -845,8 +845,8 @@ jQuery(function($) {
         // loading: "icon-spinner icon-spin"
       }
     },
-    url: Settings.baseUrl + "/features/fancy_nested.json",
-    // source: {url: "/sites/all/themes/drupal_shanti_theme/js/fancy_nested.json", debugDelay: 1000},
+    // url: Settings.baseUrl + "/features/fancy_nested.json",
+    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
