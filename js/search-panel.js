@@ -691,7 +691,7 @@ jQuery(function($) {
       }
     },
     // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://places.kmaps.virginia.edu/features/list.json", debugDelay: 1000},
+    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
