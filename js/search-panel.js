@@ -1260,7 +1260,7 @@ function processSubjectsData(data) {
   }
 
   //Related Photos (picture) section
-  if (data.feature.associated_resources.picture_count > 0 || data.feature.id == 1300) {
+  /**if (data.feature.associated_resources.picture_count > 0) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
     $(".content-resources ul.nav-pills li.photos").show();
     $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
@@ -1282,7 +1282,7 @@ function processSubjectsData(data) {
         $('li.photos i').removeClass('fa fa-spinner fa-spin').addClass('icon shanticon-photos');
       });
     });
-  }
+  } **/
 
   //Related Audio-Video (videos) section
   // if (true) {
@@ -1319,18 +1319,27 @@ function processSubjectsData(data) {
 function processSubjectsSolr(data) {
   var data = $.parseJSON(data);
 
-  //Related Audio-Video (videos) section
-  if (data.grouped.service.matches > 0) {
-    $("ul.nav li a[href='#tab-audio-video'] .badge").text(data.grouped.service.matches == 0 ? '1' : data.grouped.service.matches);
-    $(".content-resources ul.nav-pills li.audio-video").show();
-    $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
-      var $tabAudioVideo = $("#tab-audio-video");
-      $tabAudioVideo.empty();
-      $tabAudioVideo.append('<h6>Audio/Video</h6>');
-      var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + Settings.kmapIndex + '?rows=12';
-      $.get(audioVideoUrl, relatedVideos);
-    });
-  }
+  $.each(data.grouped.service.groups, function(solrIndex, solrSection) {
+    //Related Audio-Video (videos) section
+    if (solrSection.groupValue == "mediabas" && solrSection.doclist.numFound > 0) {
+      $("ul.nav li a[href='#tab-audio-video'] .badge").text(solrSection.doclist.numFound);
+      $(".content-resources ul.nav-pills li.audio-video").show();
+      $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
+        var $tabAudioVideo = $("#tab-audio-video");
+        $tabAudioVideo.empty();
+        $tabAudioVideo.append('<h6>Audio/Video</h6>');
+        var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + Settings.kmapIndex + '?rows=12';
+        $.get(audioVideoUrl, relatedVideos);
+      });
+    }
+
+    //Related Photos section
+    if (solrSection.groupValue == "sharedshelf" && solrSection.doclist.numFound > 0) {
+      $("ul.nav li a[href='#tab-photos'] .badge").text(solrSection.doclist.numFound);
+      $(".content-resources ul.nav-pills li.photos").show();
+    }
+  });
+
 }
 
 function populateBreadcrumbs(bInd, bVal) {
