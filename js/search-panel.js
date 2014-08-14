@@ -646,7 +646,7 @@ jQuery(function($) {
     extensions: ["glyph", "edit", "filter"],
     checkbox: true,
     selectMode: 3, // multiselect enabled
-    minExpandLevel: 2,
+    // minExpandLevel: 2,
     select: function(event, data) {
         // Get a list of all selected nodes, and convert to a key array:
         var selKeys = $.map(data.tree.getSelectedNodes(), function(node){
@@ -674,25 +674,18 @@ jQuery(function($) {
       },
     glyph: {
       map: {
-        // doc: "glyphicon glyphicon-file",
-        // docOpen: "glyphicon glyphicon-file",
         checkbox: "glyphicon glyphicon-unchecked",
         checkboxSelected: "glyphicon glyphicon-check",
         checkboxUnknown: "glyphicon glyphicon-share",
         error: "glyphicon glyphicon-warning-sign",
         expanderClosed: "glyphicon glyphicon-plus-sign",
         expanderLazy: "glyphicon glyphicon-plus-sign",
-        // expanderLazy: "glyphicon glyphicon-expand",
         expanderOpen: "glyphicon glyphicon-minus-sign",
-        // expanderOpen: "glyphicon glyphicon-collapse-down",
-        // folder: "glyphicon glyphicon-folder-close",
-        // folderOpen: "glyphicon glyphicon-folder-open",
         loading: "glyphicon glyphicon-refresh"
-        // loading: "icon-spinner icon-spin"
       }
     },
-    // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
+    url: Settings.baseUrl + "/features/20/fancy_nested.json",
+    // source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -752,25 +745,18 @@ jQuery(function($) {
       },
     glyph: {
       map: {
-        // doc: "glyphicon glyphicon-file",
-        // docOpen: "glyphicon glyphicon-file",
         checkbox: "glyphicon glyphicon-unchecked",
         checkboxSelected: "glyphicon glyphicon-check",
         checkboxUnknown: "glyphicon glyphicon-share",
         error: "glyphicon glyphicon-warning-sign",
         expanderClosed: "glyphicon glyphicon-plus-sign",
         expanderLazy: "glyphicon glyphicon-plus-sign",
-        // expanderLazy: "glyphicon glyphicon-expand",
         expanderOpen: "glyphicon glyphicon-minus-sign",
-        // expanderOpen: "glyphicon glyphicon-collapse-down",
-        // folder: "glyphicon glyphicon-folder-close",
-        // folderOpen: "glyphicon glyphicon-folder-open",
         loading: "glyphicon glyphicon-refresh"
-        // loading: "icon-spinner icon-spin"
       }
     },
-    // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
+    url: Settings.baseUrl + "/features/20/fancy_nested.json",
+    // source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -829,25 +815,18 @@ jQuery(function($) {
       },
     glyph: {
       map: {
-        // doc: "glyphicon glyphicon-file",
-        // docOpen: "glyphicon glyphicon-file",
         checkbox: "glyphicon glyphicon-unchecked",
         checkboxSelected: "glyphicon glyphicon-check",
         checkboxUnknown: "glyphicon glyphicon-share",
         error: "glyphicon glyphicon-warning-sign",
         expanderClosed: "glyphicon glyphicon-plus-sign",
         expanderLazy: "glyphicon glyphicon-plus-sign",
-        // expanderLazy: "glyphicon glyphicon-expand",
         expanderOpen: "glyphicon glyphicon-minus-sign",
-        // expanderOpen: "glyphicon glyphicon-collapse-down",
-        // folder: "glyphicon glyphicon-folder-close",
-        // folderOpen: "glyphicon glyphicon-folder-open",
         loading: "glyphicon glyphicon-refresh"
-        // loading: "icon-spinner icon-spin"
       }
     },
-    // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
+    url: Settings.baseUrl + "/features/20/fancy_nested.json",
+    // source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
