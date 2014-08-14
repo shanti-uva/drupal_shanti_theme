@@ -646,6 +646,7 @@ jQuery(function($) {
     extensions: ["glyph", "edit", "filter"],
     checkbox: true,
     selectMode: 3, // multiselect enabled
+    minExpandLevel: 2,
     select: function(event, data) {
         // Get a list of all selected nodes, and convert to a key array:
         var selKeys = $.map(data.tree.getSelectedNodes(), function(node){
