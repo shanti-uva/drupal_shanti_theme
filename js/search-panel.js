@@ -691,7 +691,7 @@ jQuery(function($) {
       }
     },
     // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
+    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -769,7 +769,7 @@ jQuery(function($) {
       }
     },
     // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
+    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -846,7 +846,7 @@ jQuery(function($) {
       }
     },
     // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
+    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
