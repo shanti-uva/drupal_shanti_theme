@@ -5,7 +5,8 @@ var Settings = {
      placesUrl: "http://places.kmaps.virginia.edu",
      subjectsUrl: "http://subjects.kmaps.virginia.edu",
      placesPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/places',
-     subjectsPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/subjects'
+     subjectsPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/subjects',
+     mediabaseURL: "http://mediabase.drupal-dev.shanti.virginia.edu"
 }
 
 // *** SEARCH *** initiate sliding container
@@ -385,7 +386,7 @@ jQuery(function ($) {
       },
       activate: function(event, data) {
         //alert(JSON.stringify(data.node.title));
-        window.location.hash = "features/" + data.node.key;
+        window.location.hash = "id=" + data.node.key;
       },
       focus: function(event, data){ data.node.scrollIntoView(true); },
       renderNode: function(event,data) {
@@ -691,7 +692,7 @@ jQuery(function($) {
       }
     },
     // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
+    source: {url: "http://subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -769,7 +770,7 @@ jQuery(function($) {
       }
     },
     // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
+    source: {url: "http://subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -846,7 +847,7 @@ jQuery(function($) {
       }
     },
     // url: Settings.baseUrl + "/features/fancy_nested.json",
-    source: {url: "http://dev-subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
+    source: {url: "http://subjects.kmaps.virginia.edu/features/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -1127,31 +1128,31 @@ jQuery(function($) {
 
 // *** Hash Change events ***
 jQuery(function($) {
-  $(window).hashchange( function() {
+  $(window).bind('hashchange', function(e) {
+    var hash_obj = $.deparam.fragment();
+    //Set the hash to the global settings object
+    Settings.hash_obj = hash_obj;
+    var fragment = $.param.fragment();
     //check if we are in the overlay and quit
-    var hashToCheck = location.hash.split("#")[1];
-    if ( hashToCheck !== undefined && hashToCheck.indexOf('overlay') !== -1 ) { return; };
+    if ( fragment !== undefined && fragment.indexOf('overlay') !== -1 ) { return; };
 
     if (location.pathname.indexOf('subjects') !== -1) {
-      var mHash = location.hash.split("#")[1] || 'features/2823';
-      var mUrl = Settings.baseUrl + "/" + mHash + ".json";
+      Settings.app = 'subject';
+      var mHash = hash_obj.id || '2823';
+      var mUrl = Settings.baseUrl + "/features/" + mHash + ".json";
       $.get(mUrl, processSubjectsData);
-
-      //Check the solr index for audio-video data
-      Settings.kmapIndex = mHash.split('/').pop();
     }
 
     if (location.pathname.indexOf('places') !== -1) {
-      var mHash = location.hash.split("#")[1] || 'features/13735';
-      var mUrl = Settings.placesUrl + "/" + mHash + ".json";
+      Settings.app = 'place';
+      var mHash = hash_obj.id || '13735';
+      var mUrl = Settings.placesUrl + "/features/" + mHash + ".json";
       $.get(mUrl, processPlacesData);
-
-      //Check the solr index for audio-video data
-      Settings.kmapIndex = mHash.split('/').pop();
     }
+
   });
 
-  $(window).trigger('hashchange');
+  $(window).trigger( 'hashchange' );
 });
 
 /**
@@ -1165,6 +1166,13 @@ function processSubjectsData(data) {
     shanti_related_counts: data.feature.associated_resources,
     shanti_id: data.feature.id
   };
+
+  //Remove all content from show related pages
+  $('.show-related-pages').empty();
+  $('.content-section article.tab-pane').empty();
+
+  //Removes previous binds for the show related tabs.
+  $('a[href="#tab-overview"]').unbind('show.bs.tab');
 
   //Removes previous binds for the show related tabs.
   $('a[href="#tab-subjects"]').unbind('show.bs.tab');
@@ -1187,8 +1195,11 @@ function processSubjectsData(data) {
   //Change the page title to that of the new page being loaded
   $(".page-title span").html(data.feature.header);
 
+  //Remove all the active classes from the pills so that their bind functions can trigger
+  $(".content-resources ul.nav-pills li").removeClass("active");
+
   //Make the overview tab the default tab on URL Change.
-  $("a[href='#tab-overview']").click();
+  //$("a[href='#tab-overview']").click();
 
   //Remove all elements from Breadcrumbs and start adding them again.
   $("ol.breadcrumb li").remove();
@@ -1199,25 +1210,37 @@ function processSubjectsData(data) {
   $(".content-resources ul.nav-pills li").hide();
 
   //Proces the solr index for more left hand content
-  var solrURL = 'http://drupal-index.shanti.virginia.edu/solr-test/kmindex/select?q=kmapid:subjects-' + Settings.kmapIndex + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
+  var solrURL = 'http://kidx.shanti.virginia.edu/solr/kmindex/select?q=kmapid:subjects-' + Settings.hash_obj.id + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
   $.get(solrURL, processSubjectsSolr);
 
   //Get the element that we want and display to overview.
   //Show overview tab on the left hand column
-  var $tabOverview = $("#tab-overview");
-  $tabOverview.empty();
-  $tabOverview.append('<h6>' + data.feature.header + '</h6>');
-  if (data.feature.summaries.length > 0) {$tabOverview.append(data.feature.summaries[0].content)}
-  if (data.feature.illustrations.length > 0 && data.feature.illustrations[0].type != 'external') {
-    $.get(data.feature.illustrations[0].url, showOverviewImage);
+  if (data.feature) {
+    $(".content-resources ul.nav-pills li.overview").show();
+    $('a[href="#tab-overview"]').one('show.bs.tab', function(e) {
+      //Push a state to the url hash so we can bookmark it
+      $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
+      $.bbq.removeState('nid');
+
+      var $tabOverview = $("#tab-overview");
+      $tabOverview.empty();
+      $tabOverview.append('<h6>' + data.feature.header + '</h6>');
+      if (data.feature.summaries.length > 0) {$tabOverview.append(data.feature.summaries[0].content)}
+      if (data.feature.illustrations.length > 0 && data.feature.illustrations[0].type != 'external') {
+        $.get(data.feature.illustrations[0].url, showOverviewImage);
+      }
+    });
   }
-  $(".content-resources ul.nav-pills li.overview").show();
 
   //Related content section
   if (data.feature.associated_resources.related_feature_count > 0) {
     $("ul.nav li a[href='#tab-subjects'] .badge").text(data.feature.associated_resources.related_feature_count);
     $(".content-resources ul.nav-pills li.subjects").show();
     $('a[href="#tab-subjects"]').one('show.bs.tab', function(e) {
+      //Push a state to the url hash so we can bookmark it
+      $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
+      $.bbq.removeState('nid');
+
       var $tabRelated = $("#tab-subjects");
       $tabRelated.empty();
       $tabRelated.append('<h6>' + data.feature.header + '</h6>');
@@ -1231,6 +1254,10 @@ function processSubjectsData(data) {
     $("ul.nav li a[href='#tab-essays'] .badge").text(data.feature.associated_resources.description_count);
     $(".content-resources ul.nav-pills li.essays").show();
     $('a[href="#tab-essays"]').one('show.bs.tab', function(e) {
+      //Push a state to the url hash so we can bookmark it
+      $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
+      $.bbq.removeState('nid');
+      
       var $tabEssays = $("#tab-essays");
       $tabEssays.empty();
       var essaysURL = Settings.baseUrl + '/features/' + data.feature.id + '/descriptions.json';
@@ -1243,6 +1270,10 @@ function processSubjectsData(data) {
     $("ul.nav li a[href='#tab-places'] .badge").text(data.feature.associated_resources.place_count);
     $(".content-resources ul.nav-pills li.places").show();
     $('a[href="#tab-places"]').one('show.bs.tab', function(e) {
+      //Push a state to the url hash so we can bookmark it
+      $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
+      $.bbq.removeState('nid');
+      
       var $tabPlaces = $("#tab-places");
       $tabPlaces.empty();
       $tabPlaces.append('<h6>Features Associated with ' + data.feature.header + '</h6>');
@@ -1253,10 +1284,14 @@ function processSubjectsData(data) {
   }
 
   //Related Photos (picture) section
-  /**if (data.feature.associated_resources.picture_count > 0) {
+  if (data.feature.associated_resources.picture_count > 0) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
     $(".content-resources ul.nav-pills li.photos").show();
     $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
+      //Push a state to the url hash so we can bookmark it
+      $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
+      $.bbq.removeState('nid');
+
       var $tabPhotos = $("#tab-photos");
       $tabPhotos.empty();
       $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
@@ -1275,7 +1310,7 @@ function processSubjectsData(data) {
         $('li.photos i').removeClass('fa fa-spinner fa-spin').addClass('icon shanticon-photos');
       });
     });
-  } **/
+  }
 
   //Related Audio-Video (videos) section
   // if (true) {
@@ -1295,6 +1330,10 @@ function processSubjectsData(data) {
     $("ul.nav li a[href='#tab-texts'] .badge").text(data.feature.associated_resources.document_count);
     $(".content-resources ul.nav-pills li.texts").show();
     $('a[href="#tab-texts"]').one('show.bs.tab', function(e) {
+      //Push a state to the url hash so we can bookmark it
+      $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
+      $.bbq.removeState('nid');
+      
       var $tabTexts = $("#tab-texts");
       $tabTexts.empty();
       $tabTexts.append('<h6>Texts in ' + data.feature.header + '</h6>');
@@ -1312,32 +1351,49 @@ function processSubjectsData(data) {
 function processSubjectsSolr(data) {
   var data = $.parseJSON(data);
 
+  $('a[href="#tab-audio-video"]').unbind('show.bs.tab');
+
   $.each(data.grouped.service.groups, function(solrIndex, solrSection) {
     //Related Audio-Video (videos) section
-    if (solrSection.groupValue == "mediabas" && solrSection.doclist.numFound > 0) {
+    if (solrSection.groupValue == "mediabase" && solrSection.doclist.numFound > 0) {
       $("ul.nav li a[href='#tab-audio-video'] .badge").text(solrSection.doclist.numFound);
       $(".content-resources ul.nav-pills li.audio-video").show();
       $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
-        var $tabAudioVideo = $("#tab-audio-video");
-        $tabAudioVideo.empty();
-        $tabAudioVideo.append('<h6>Audio/Video</h6>');
-        var audioVideoUrl = 'http://mediabase.drupal-dev.shanti.virginia.edu/services/subject/' + Settings.kmapIndex + '?rows=12';
-        $.get(audioVideoUrl, relatedVideos);
+        //Push a state to the url hash so we can bookmark it
+        $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
+        $.bbq.removeState('nid');
+
+        if (!e.relatedTarget) {
+          var $tabAudioVideo = $("#tab-audio-video");
+          $tabAudioVideo.empty();
+          $tabAudioVideo.append('<h6>Audio/Video</h6>');
+          var audioVideoUrl = Settings.mediabaseURL + '/services/' + Settings.app + '/' + Settings.hash_obj.id + '?rows=12';
+          $.get(audioVideoUrl, relatedVideos);
+        }
+
       });
     }
 
     //Related Photos section
-    if (solrSection.groupValue == "sharedshelf" && solrSection.doclist.numFound > 0) {
-      $("ul.nav li a[href='#tab-photos'] .badge").text(solrSection.doclist.numFound);
-      $(".content-resources ul.nav-pills li.photos").show();
-    }
+    // if (solrSection.groupValue == "sharedshelf" && solrSection.doclist.numFound > 0) {
+    //   $("ul.nav li a[href='#tab-photos'] .badge").text(solrSection.doclist.numFound);
+    //   $(".content-resources ul.nav-pills li.photos").show();
+    // }
   });
+
+  //Load default tab
+  if (Settings.hash_obj.nid) {
+    var pageURL = Settings.mediabaseURL + '/api/v1/media/node/' + Settings.hash_obj.nid + '.json';
+    $.get(pageURL, showAudioVideoPage);
+  } else {
+    $('.content-resources').find('a[href="#' + (Settings.hash_obj.que || 'tab-overview') + '"]').tab('show');
+  }
 
 }
 
 function populateBreadcrumbs(bInd, bVal) {
   $breadcrumbOl = $("ol.breadcrumb");
-  $breadcrumbOl.append('<li><a href="#features/' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
+  $breadcrumbOl.append('<li><a href="#id=' + bVal.id + '">' + bVal.header + '</a><i class="fa fa-angle-right"></i></li>');
 }
 
 function showOverviewImage(data) {
@@ -1371,6 +1427,8 @@ function relatedResources(data) {
 
 //Function to populate photos tab
 function relatedPhotos(data) {
+
+  console.log(data);
   
   var contentPh = '<div class="related-photos">';
 
@@ -1593,10 +1651,12 @@ function relatedVideos(data) {
                      "July", "August", "September", "October", "November", "December" ];
   var contentAV = '<div class="related-audio-video">';
 
+  var current_url = $.param.fragment();
+
   $.each(data.media, function(rInd, rElm) {
     contentAV += '<div class="shanti-thumbnail video col-lg-2 col-md-3 col-sm-4 col-xs-12">';
     contentAV += '<div class="shanti-thumbnail-image shanti-field-video">';
-    contentAV += '<a href="#pid' + rElm.nid + '" class="shanti-thumbnail-link" data-toggle="modal">';
+    contentAV += '<a href="#' + current_url + '&nid=' + rElm.nid + '" class="shanti-thumbnail-link">';
     contentAV += '<span class="overlay">';
     contentAV += '<span class="icon"></span>';
     contentAV += '</span>';
@@ -1613,7 +1673,7 @@ function relatedVideos(data) {
     contentAV += '</span>';
     contentAV += '<div class="shanti-thumbnail-field shanti-field-title">';
     contentAV += '<span class="field-content">';
-    contentAV += '<a href="#pid' + rElm.nid + '" class="shanti-thumbnail-link" data-toggle="modal">';
+    contentAV += '<a href="#' + current_url + '&nid=' + rElm.nid + '" class="shanti-thumbnail-link">';
     contentAV += rElm.title;
     contentAV += '</a>';
     contentAV += '</span>';
@@ -1627,20 +1687,192 @@ function relatedVideos(data) {
     contentAV += '</div>';
     contentAV += '</div>';
     contentAV += '</div>';
+  });
 
-    //Modal for each video
-    contentAV += '<div class="modal video fade" tabindex="-1" role="dialog" id="pid' + rElm.nid + '">';
-    contentAV += '<div class="modal-dialog">';
-    contentAV += '<div class="modal-content">';
-    contentAV += '<div class="modal-header">';
-    contentAV += '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>';
-    contentAV += '<h4 class="modal-title" id="myModalLabel">' + (rElm.title ? rElm.title : "") + '</h4>';
+  contentAV += '</div>';
+
+  var avURL = Settings.mediabaseURL + '/services/' + Settings.app + '/' + Settings.hash_obj.id + '?rows=12';
+  var total_pages = parseInt(data.total / data.rows);
+
+  contentAV += '<ul id="photo-pagination">';
+  contentAV += '<li class="first-page"><a href="' + avURL + '&pg=1' + '">&lt;&lt;</a></li>';
+  contentAV += '<li class="previous-page"><a href="' + avURL + '&pg=1' + '">&lt;</a></li>';
+  contentAV += '<li>PAGE</li>';
+  contentAV += '<li><input type="text" value="1" class="page-input"></li>';
+  contentAV += '<li>OF ' + total_pages + '</li>';
+  contentAV += '<li class="next-page"><a href="' + avURL + '&pg=2' + '">&gt;</a></li>';
+  contentAV += '<li class="last-page"><a href="' + avURL + '&page=' + total_pages + '">&gt;&gt;</a></li>';
+  contentAV += '</ul>';
+  contentAV += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
+
+  $("#tab-audio-video").append(contentAV);
+
+  //Add the event listener for the first-page element
+  $("li.first-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    $.ajax({
+      url: currentTarget,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedVideos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val('1');
+      $('li.previous-page a').attr('href', currentTarget);
+      var nextTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1) + 2;
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the previous-page element
+  $("li.previous-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
+    var newpage = parseInt($('li input.page-input').val()) - 1;
+    if (newpage < 1) { newpage = 1; }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(total_pages) ? total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedVideos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $(e.currentTarget).attr('href', previousTarget);
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the next-page element
+  $("li.next-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
+    var newpage = parseInt($('li input.page-input').val()) + 1;
+    if (newpage > parseInt(total_pages)) { newpage = parseInt(total_pages); }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(total_pages) ? total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedVideos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $(e.currentTarget).attr('href', nextTarget);
+    });
+  });
+
+  //Add the listener for the pager text input element
+  $("li input.page-input").change(function(e) {
+    e.preventDefault();
+    var currentTarget = avURL + '&pg=';
+    var newpage = parseInt($(this).val());
+    if (newpage > parseInt(total_pages)) { newpage = parseInt(total_pages); }
+    if (newpage < 1) { newpage = 1; }
+    var currentURL = currentTarget + newpage;
+    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
+    var nextTarget = currentTarget + ((newpage + 1) > parseInt(total_pages) ? total_pages : (newpage + 1));
+    $.ajax({
+      url: currentURL,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedVideos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $('li.next-page a').attr('href', nextTarget);
+    });
+  });
+
+  //Add the event listener for the last-page element
+  $("li.last-page a").click(function(e) {
+    e.preventDefault();
+    var currentTarget = $(e.currentTarget).attr('href');
+    var newpage = parseInt(total_pages);
+    var previousTarget = avURL + (newpage - 1);
+    $.ajax({
+      url: currentTarget,
+      beforeSend: function(xhr) {
+        $('.paginated-spin i.fa').addClass('fa-spin');
+        $('.paginated-spin').show();
+      }
+    })
+    .done(paginatedVideos)
+    .always(function() {
+      $('.paginated-spin i').removeClass('fa-spin');
+      $('.paginated-spin').hide();
+      $('li input.page-input').val(newpage);
+      $('li.previous-page a').attr('href', previousTarget);
+      $('li.next-page a').attr('href', currentTarget);
+    });
+  });
+}
+
+//Function to process and show paginated videos
+function paginatedVideos(data) {
+  var monthNames = [ "January", "February", "March", "April", "May", "June",
+                     "July", "August", "September", "October", "November", "December" ];
+  var contentAV = '<div class="related-audio-video">';
+
+  var current_url = $.param.fragment();
+
+  $.each(data.media, function(rInd, rElm) {
+    contentAV += '<div class="shanti-thumbnail video col-lg-2 col-md-3 col-sm-4 col-xs-12">';
+    contentAV += '<div class="shanti-thumbnail-image shanti-field-video">';
+    contentAV += '<a href="#' + current_url + '&nid=' + rElm.nid + '" class="shanti-thumbnail-link">';
+    contentAV += '<span class="overlay">';
+    contentAV += '<span class="icon"></span>';
+    contentAV += '</span>';
+    contentAV += '<img src="' + rElm.thumbnail + '/width/360/height/270/type/2/bgcolor/000000' + '" alt="Video" typeof="foaf:Image" class="k-no-rotate">';
+    contentAV += '<i class="shanticon-video thumbtype"></i>';
+    contentAV += '</a>';
     contentAV += '</div>';
-    contentAV += '<div class="modal-body">';
-    contentAV += '<video class="each-video-player" controls name="media">';
-    contentAV += '<source src="' + rElm.video_url + '" type="video/mp4" />';
-    contentAV += '</video>';
+    contentAV += '<div class="shanti-thumbnail-info">';
+    contentAV += '<div class="body-wrap">';
+    contentAV += '<div class="shanti-thumbnail-field shanti-field-created">';
+    contentAV += '<span class="shanti-field-content">';
+    var date = new Date(parseInt(rElm.created) * 1000);
+    contentAV += date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+    contentAV += '</span>';
+    contentAV += '<div class="shanti-thumbnail-field shanti-field-title">';
+    contentAV += '<span class="field-content">';
+    contentAV += '<a href="#' + current_url + '&nid=' + rElm.nid + '" class="shanti-thumbnail-link">';
+    contentAV += rElm.title;
+    contentAV += '</a>';
+    contentAV += '</span>';
     contentAV += '</div>';
+    contentAV += '<div class="shanti-thumbnail-field shanti-field-duration">';
+    contentAV += '<span class="field-content">' + rElm.duration.formatted + '</span>';
+    contentAV += '</div>';
+    contentAV += '</div>';
+    contentAV += '</div>';
+    contentAV += '<div class="footer-wrap">';
     contentAV += '</div>';
     contentAV += '</div>';
     contentAV += '</div>';
@@ -1648,15 +1880,7 @@ function relatedVideos(data) {
 
   contentAV += '</div>';
 
-  $("#tab-audio-video").append(contentAV);
-  
-  //Pause the video if modal window is closed.
-  $.each(data.media, function(rInd, rElm) {
-    var modalID = "#pid" + rElm.nid;
-    $(modalID).on('hidden.bs.modal', function() {
-      $(modalID + " .each-video-player")[0].pause();
-    });
-  });
+  $("#tab-audio-video .related-audio-video").empty().html(contentAV);
 }
 
 //Function to process and show related texts
@@ -1768,6 +1992,21 @@ function relatedEssays(data) {
   contentES += '</div>';
 
   $("#tab-essays").append(contentES);
+
+}
+
+//Show related page for the audio/video elements
+function showAudioVideoPage(data) {
+  var $tabAudioVideo = $('.show-related-pages');
+  $tabAudioVideo.empty();
+  var audioVideoContent = '';
+  audioVideoContent += '<h6>' + data.title + ' </h6>';
+  audioVideoContent += '<video controls class="img img-responsive">';
+  audioVideoContent += '<source src="http://cdnapi.kaltura.com/p/381832/sp/38183200/playManifest/entryId/' + (data.type == "video" ? data.field_video.und[0].entryid : data.field_audio.und[0].entryid) + '/format/url/protocol/http" type="video/mp4">'
+  audioVideoContent += '</video>';
+  $tabAudioVideo.append(audioVideoContent);
+
+  $(".content-resources a[href='#" + Settings.hash_obj.que + "']").parent().addClass('active');
 }
 
 function processPhotos(mtext) {

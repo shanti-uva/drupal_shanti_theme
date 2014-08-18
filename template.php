@@ -38,7 +38,7 @@ function shanti_theme_preprocess_page(&$variables) {
   drupal_add_js($variables['theme_path'] . '/src/trunk8.min.js', $options);
   drupal_add_js($variables['theme_path'] . '/js/menus/jbreadcrumb.js', $options);
   drupal_add_js($variables['theme_path'] . '/js/equalHeights.js', $options);
-  drupal_add_js($variables['theme_path'] . '/js/vendor/jquery.ba-hashchange.min.js', $options);
+  drupal_add_js($variables['theme_path'] . '/js/vendor/jquery.ba-bbq.min.js', $options);
   drupal_add_js($variables['theme_path'] . '/js/vendor/bootstrap-paginator.min.js', $options);
   drupal_add_js($variables['theme_path'] . '/js/vendor/bootstrap-paginator.min.js', $options);
 

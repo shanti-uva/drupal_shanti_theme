@@ -76,7 +76,7 @@
         <!-- Column Resources  -->              
         <aside class="content-resources col-xs-6 col-sm-3 sidebar-offcanvas equal-height">
           <ul class="nav nav-pills nav-stacked">
-            <li class="overview active"><a href="#tab-overview" data-toggle="pill">
+            <li class="overview"><a href="#tab-overview" data-toggle="pill">
               <i class="icon shanticon-overview"></i>Overview</a>
             </li>
             <li class="subjects"><a href="#tab-subjects" data-toggle="pill">
@@ -133,7 +133,7 @@
           
           <div class="tab-content">
           
-            <article class="tab-pane active" id="tab-overview">
+            <article class="tab-pane" id="tab-overview">
             </article>
 
             <article class="tab-pane" id="tab-subjects"> 
@@ -173,6 +173,9 @@
             </article>
 
             <article class="tab-pane" id="tab-sources">
+            </article>
+
+            <article class="show-related-pages">
             </article>
           
           </div><!-- END tab-content -->
