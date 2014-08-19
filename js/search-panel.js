@@ -685,7 +685,8 @@ jQuery(function($) {
         loading: "glyphicon glyphicon-refresh"
       }
     },
-    url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
+    // url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
+    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -755,7 +756,8 @@ jQuery(function($) {
         loading: "glyphicon glyphicon-refresh"
       }
     },
-    url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
+    // url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
+    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
@@ -824,7 +826,8 @@ jQuery(function($) {
         loading: "glyphicon glyphicon-refresh"
       }
     },
-    url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
+    // url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
+    source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
     filter: {
         mode: "hide"
     },
