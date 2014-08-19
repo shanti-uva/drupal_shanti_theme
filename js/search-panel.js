@@ -685,8 +685,7 @@ jQuery(function($) {
         loading: "glyphicon glyphicon-refresh"
       }
     },
-    url: Settings.baseUrl + "/features/20/fancy_nested.json",
-    // source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
+    url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
     filter: {
         mode: "hide"
     },
@@ -709,7 +708,7 @@ jQuery(function($) {
         return false;
       }
     },
-    cookieId: "feature1tree", // set cookies for features, the second fancytree
+    cookieId: "feature1tree", // set cookies
     idPrefix: "feature1tree"
   });
 
@@ -756,8 +755,7 @@ jQuery(function($) {
         loading: "glyphicon glyphicon-refresh"
       }
     },
-    url: Settings.baseUrl + "/features/20/fancy_nested.json",
-    // source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
+    url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
     filter: {
         mode: "hide"
     },
@@ -780,7 +778,7 @@ jQuery(function($) {
         return false;
       }
     },
-    cookieId: "feature2tree", // set cookies for features, the second fancytree
+    cookieId: "feature2tree", // set cookies
     idPrefix: "feature2tree"
   });
 
@@ -826,8 +824,7 @@ jQuery(function($) {
         loading: "glyphicon glyphicon-refresh"
       }
     },
-    url: Settings.baseUrl + "/features/20/fancy_nested.json",
-    // source: {url: "http://subjects.kmaps.virginia.edu/features/20/fancy_nested.json", debugDelay: 1000},
+    url: Settings.subjectsUrl + "/features/20/fancy_nested.json",
     filter: {
         mode: "hide"
     },
@@ -850,7 +847,7 @@ jQuery(function($) {
         return false;
       }
     },
-    cookieId: "feature3tree", // set cookies for features, the second fancytree
+    cookieId: "feature3tree", // set cookies
     idPrefix: "feature3tree"
   });
   // ----------------------------------
