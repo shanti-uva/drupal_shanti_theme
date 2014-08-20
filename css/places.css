@@ -40,3 +40,4 @@ button.btn.btn-default.italic.active{
 .modal-header button.close{ color:#777; font-size:5em !important; position:relative; top:0;}
 
 
+.panel-group .panel{ -webkit-box-shadow:0 0 5px rgba(0,0,0, 0.125); box-shadow:0 0 5px rgba(0,0,0, 0.125); border-collapse:separate;}
