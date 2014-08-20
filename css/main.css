@@ -605,6 +605,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 	background:#fff;
 	-webkit-transition: background-color 200ms;
 	transition: background-color 200ms;
+	font-family: "Museo Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; 
+	font-weight:bold; 
+	font-weight:700;
 }
 .content-resources ul.nav-pills li a,
 .content-resources ul.nav-pills li a:hover {
