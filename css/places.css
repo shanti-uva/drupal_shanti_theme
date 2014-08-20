@@ -37,6 +37,6 @@ button.btn.btn-default.italic.active{
 }
 
 
-.modal-header button.close{ color:#777; font-size:5em; position:relative; top:0;}
+.modal-header button.close{ color:#777; font-size:5em !important; position:relative; top:0;}
 
 
