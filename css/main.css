@@ -528,6 +528,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 	position:relative; top:0;
 	margin-right: 0;
 	padding-right: 0;
+	height: 1.18em;
+  line-height: 1.32em;
 }
 .breadwrap ol li.last i,
 .breadwrap ol li:last-child i{ 
