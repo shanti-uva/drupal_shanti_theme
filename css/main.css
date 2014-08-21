@@ -491,7 +491,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 	overflow: hidden;
 	font-weight:bold;
 }
-.breadwrap ol li a:hover{ text-decoration:underline;}
+.breadwrap ol li a:hover{ color:#fff;}
 .breadwrap ul li span.wholegrain,
 .breadwrap ol li span.wholegrain {
   display: block;
@@ -520,8 +520,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   top:0;
   left:0;
 }
-.breadwrap ol li.last-child a{ font-weightL:normal; color:#eee;}
-.breadwrap ol li.last-child a:hover{ text-decoration:none;}
+.breadwrap ol li.last-child a{ color:#fff;}
+.breadwrap ol li.last-child a:hover{ }
 /*
 .breadwrap ol li.last a{ line-height:1.32em}
 .breadwrap ol li.last,
