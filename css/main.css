@@ -520,8 +520,8 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   top:0;
   left:0;
 }
-.breadwrap ol li.last a{ font-weightL:normal; color:#eee;}
-.breadwrap ol li.last a:hover{ text-decoration:none;}
+.breadwrap ol li.last-child a{ font-weightL:normal; color:#eee;}
+.breadwrap ol li.last-child a:hover{ text-decoration:none;}
 /*
 .breadwrap ol li.last a{ line-height:1.32em}
 .breadwrap ol li.last,
