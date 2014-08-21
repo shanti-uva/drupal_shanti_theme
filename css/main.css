@@ -416,7 +416,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 	jBreadCrumbCustom Plugin Styles
 =======================================*/
 .breadwrap {
-  margin: .32em 0 0 2em;
+  margin: .18em 0 0 15px;
   padding: 0;
   display: block;
   height: 1.18em;
@@ -449,16 +449,14 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 .breadwrap .breadcrumb li.first,
 .breadwrap .breadcrumb li:first-child{
   font-family: "Museo Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
-  font-size:1.32em;
-  height: 1.5em;
-  line-height:1.5em;
+  font-size:1.12em;
+  line-height:1em;
+  height: 1.18em;
   padding:0;
-  margin:0 0.68em 0 0;
+  margin:0 4px 0 0;
+  position:relative; top:-1px;
   font-style:normal;
-  font-weight:500;
-  position:relative;
-  top:0;
-  color:#f5f5f5;
+  font-weight:700;
 }
 .breadwrap ol:before,
 .breadwrap ol:after {
@@ -474,29 +472,25 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   display: inline-block;
   float: none;
   position: relative;
-  font-size: 1.25em;
-  height: 1.5em;
-  line-height: 1.06em;
+  font-size: 1em;
+  height: 1.18em;
+  line-height: 1.18em;
   overflow: hidden;
   margin: 0;
   padding: 0 18px 0 0;
-  text-shadow:0 0 1px rgba(50,50,50, 0.225);
 }
 
 .breadwrap ol li a {
   display: block;
   float: left;
-  font-size: 0.92em;
-  color: #f0f0f0;
+  font-size: 1.12em;
+  color: #fff;
   text-decoration: none;
-	height: 1.5em;
-	line-height: 1.06em;
+	height: 1.18em;
+	line-height: 1.18em;
 	overflow: hidden;
-	margin:0;
-	padding:0;
-	font-weight:bold;
 }
-.breadwrap ol li a:hover{ color:#fff; }
+
 .breadwrap ul li span.wholegrain,
 .breadwrap ol li span.wholegrain {
   display: block;
@@ -530,12 +524,10 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 .breadwrap ol li:last-child{ 
   color:#fff;
 	background: none;
-	position:relative; top: -0.82em;
+	font-size:1em;
+	position:relative; top:0;
 	margin-right: 0;
 	padding-right: 0;
-	height: 1.5em;
-	line-height: 1em;
-	font-size:1.18em;
 }
 .breadwrap ol li.last i,
 .breadwrap ol li:last-child i{ 
