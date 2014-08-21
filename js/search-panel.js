@@ -398,6 +398,103 @@ jQuery(function ($) {
       idPrefix: "kmaps1tree"
    });
 
+
+    // Render the search results into the dataTable
+    // This presumes the results are a list of a certain structure
+    //
+    var renderSearchResults = function (ret) {
+//              //      ("json: " + JSON.stringify(resultHash));
+
+        var txt = $("#searchform").val();
+        var resultHash = {};
+        $(ret.features).each(function () {
+            console.log(JSON.stringify(this));
+            if (this.feature_types && this.feature_types.length > 0) {
+                // for places, list the feature type
+                resultHash[this.id] = this.feature_types[0].title;
+            } else {
+                resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unknown";
+            }
+        });
+
+        var tree = $('#tree').fancytree('getTree').applyFilter(function (node) {
+            return (typeof resultHash[node.key] !== 'undefined');
+        });
+        // $('span.fancytree-match').removeClass('fancytree-match');
+        $('span.fancytree-title').highlight(txt, { element: 'mark' });
+        // Retrieve matches
+        var list = $('#tree').fancytree('getRootNode').findAll(function (n) {
+            return n.match;
+        });
+
+        if (list.length === 0) {
+            notify.warn("warnnoresults", "There are no matches.  <br>Try to modify your search.");
+        }
+
+        // clear the current list.
+
+        $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
+        //                    $('div.th div div.table-responsive table.table-results tr').not(':first').remove();
+
+        // populate list
+        var table = $('div.listview div div.table-responsive table.table-results');
+        $.each(list, function (x, y) {
+            table.find('tbody').append(
+                decorateElementWithPopover(
+                    $('<tr>')
+                        .append($('<td>')
+                            .append(
+                                $('<span class="title-field">').text(y.title).attr('kid', y.key)
+                                    .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false }))
+                        )
+                        .append($('<td><div>' + resultHash[y.key] + '</div></td>')),y
+                )
+            );
+        });
+
+        $("table.table-results tbody tr").click(function (event) {
+            var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
+            $('.row_selected').removeClass('row_selected');
+            $(event.target).closest('tr').addClass('row_selected');
+            $("#tree").animate({ scrollTop: 0 }, "slow");
+            $('#tree')
+                .fancytree('getTree')
+                .activateKey(
+                    kid
+                ).scrollIntoView();
+        });
+
+        $('table.table-results').dataTable();
+
+    };
+
+
+    function maskSearchResults( isMasked ) {
+        var showhide = (isMasked)?'show':'hide';
+        $('.view-section>.tab-content').overlayMask(showhide);
+    }
+
+    function searchClassicKmaps(txt, searchargs) {
+        var searchurl = Settings.baseUrl + "/features/by_fields/" + txt + ".json?per_page=3000" + $.param(searchargs);
+//            console.log("Search URL = " + searchurl);
+        $.ajax({
+            type: "GET",
+            url: searchurl,
+            dataType: "json",
+            timeout: 30000,
+            error: function (e) {
+                notify.warn("searcherror", "Error retrieving search: " + e.statusText + " (" + e.status + ")");
+            },
+            beforeSend: function () {
+                maskSearchResults(true);
+            },
+            success: renderSearchResults,
+            complete: function () {
+                maskSearchResults(false);
+            }
+        });
+    }
+
     var handleSearch = function handleSearch() {
         // clear previous styling
         // (can't simply unwrap because that leaves text nodes in extraneous chunks)
@@ -416,15 +513,11 @@ jQuery(function ($) {
             notify.warn('warntooshort', 'Search string must be ' + SEARCH_MIN_LENGTH + ' characters or longer.');
         } else {
             notify.clear();
-
             // notify.warn('debug',$('#termscope')[0].checked);
-
            //  var nameck = $('#termscope')[0].checked?1:0; 05-28 markf
 
             var sumck = $('#summaryscope')[0].checked?1:0;
-
             var essck = $('#essayscope')[0].checked?1:0;
-
             var searchargs = {
                 // name: nameck,
                 caption: sumck,
@@ -434,86 +527,7 @@ jQuery(function ($) {
             };
 
             $('table.table-results').dataTable().fnDestroy();
-
-            var searchurl = Settings.baseUrl + "/features/by_fields/" + txt + ".json?per_page=3000" + $.param(searchargs);
-//            console.log("Search URL = " + searchurl);
-            $.ajax({
-                type: "GET",
-                url: searchurl,
-                dataType: "json",
-                timeout: 30000,
-                error: function (e) {
-                    notify.warn("searcherror","Error retrieving search: " + e.statusText + " (" + e.status + ")");
-                },
-                beforeSend: function() { $('.view-section>.tab-content').overlayMask('show') },
-                success: function (ret) {
-//              //      ("json: " + JSON.stringify(resultHash));
-
-                    var txt = $("#searchform").val();
-                    var resultHash = {};
-                    $(ret.features).each(function () {
-                        console.log(JSON.stringify(this));
-                        if (this.feature_types && this.feature_types.length > 0) {
-                            resultHash[this.id] = this.feature_types[0].title;
-                        } else {
-                            resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unknown";
-                        }
-                    });
-
-                    var tree = $('#tree').fancytree('getTree').applyFilter(function (node) {
-                        return (typeof resultHash[node.key] !== 'undefined');
-                    });
-                    // $('span.fancytree-match').removeClass('fancytree-match');
-                    $('span.fancytree-title').highlight(txt, { element: 'mark' });
-                    // Retrieve matches
-                    var list = $('#tree').fancytree('getRootNode').findAll(function (n) {
-                        return n.match;
-                    });
-
-                    if (list.length === 0) {
-                        notify.warn("warnnoresults", "There are no matches.  <br>Try to modify your search.");
-                    }
-
-                    // clear the current list.
-
-                    $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
-                    //                    $('div.th div div.table-responsive table.table-results tr').not(':first').remove();
-
-                    // populate list
-                    var table = $('div.listview div div.table-responsive table.table-results');
-                    $.each(list, function (x, y) {
-                        table.find('tbody').append(
-                            decorateElementWithPopover(
-                              $('<tr>')
-                                .append($('<td>')
-                                    .append(
-                                        $('<span class="title-field">').text(y.title).attr('kid', y.key)
-                                            .highlight(txt, { element: 'mark' }).trunk8({ tooltip: false }))
-                                    )
-                                .append($('<td><div>' + resultHash[y.key] + '</div></td>')),y
-                            )
-                        );
-                    });
-
-                    $("table.table-results tbody tr").click(function (event) {
-                        var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
-                        $('.row_selected').removeClass('row_selected');
-                        $(event.target).closest('tr').addClass('row_selected');
-                        $("#tree").animate({ scrollTop: 0 }, "slow");
-                        $('#tree')
-                            .fancytree('getTree')
-                            .activateKey(
-                                kid
-                            ).scrollIntoView();
-                    });
-
-                    $('table.table-results').dataTable();
-
-                },
-                complete: function() {
-                    $('.view-section>.tab-content').overlayMask('hide');
-                }
-            });
+            searchClassicKmaps(txt, searchargs);
             return false;
         }
     };
@@ -525,7 +539,7 @@ jQuery(function ($) {
     var code = (e.keyCode ? e.keyCode : e.which);
     if (code === 13) {
         e.preventDefault();
-  handleSearch();
+        handleSearch();
     }
   });
 
@@ -594,7 +608,7 @@ jQuery(function($) {
     $("button.searchreset").hide();
     $(".alert").hide();
         searchUtil.clearSearch();
-        $('#tree').fancytree().clearFilter();
+        $('#tree').fancytree("getTree").clearFilter();
   });
 
 });
