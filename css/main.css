@@ -484,7 +484,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   display: block;
   float: left;
   font-size: 1.12em;
-  color: #ddd;
+  color: #f0f0f0;
   text-decoration: none;
 	height: 1.18em;
 	line-height: 1.18em;
@@ -520,7 +520,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   top:0;
   left:0;
 }
-.breadwrap ol li.last-child a{ color:#fff;}
+.breadwrap ol li.last-child a{ color:#f0f0f0;}
 .breadwrap ol li.last-child a:hover{ }
 /*
 .breadwrap ol li.last a{ line-height:1.32em}
