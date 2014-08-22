@@ -282,6 +282,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   color: #fff;
   text-transform: uppercase;
   padding: 0;  
+  font-weight: bold; 
   font-weight: 700;
   border-bottom:1px solid #777;
   white-space:nowrap;
@@ -298,12 +299,12 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   text-align:center;
   list-style-type: none;
   margin-bottom:15px !important;
-  float:left;
 }
 .collections ul li {
   margin: 0;
   float:left;
   line-height:4.5em;
+  width:20%;
 }
 .collections ul li a { 
   color: #aaa;
@@ -416,7 +417,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 	jBreadCrumbCustom Plugin Styles
 =======================================*/
 .breadwrap {
-  margin: .32em 0 0 15px;
+  margin: .32em 0 0 2em;
   padding: 0;
   display: block;
   height: 1.18em;
@@ -472,18 +473,31 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   display: inline-block;
   float: none;
   position: relative;
-  font-size: 1em;
-  height: 1.18em;
-  line-height: 1.18em;
+  font-size: 1.25em;
+  height: 1.75em;
+  line-height: 1.06em;
   overflow: hidden;
   margin: 0;
   padding: 0 18px 0 0;
+  text-shadow:0 0 1px rgba(50,50,50, 0.225);
 }
-
+.breadwrap .breadcrumb li:first-child{
+  font-family: "Museo Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+  font-size:1.32em;
+  height: 1.75em;
+  line-height:1.5em;
+  padding:0;
+  margin:0 0.68em 0 0;
+  font-style:normal;
+  font-weight:500;
+  position:relative;
+  top:0;
+  color:#f5f5f5;
+}
 .breadwrap ol li a {
   display: block;
   float: left;
-  font-size: 1.12em;
+  font-size: 0.92em;
   color: #f0f0f0;
   text-decoration: none;
 	height: 1.18em;
@@ -491,7 +505,9 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 	overflow: hidden;
 	font-weight:bold;
 }
-.breadwrap ol li a:hover{ color:#fff;}
+.breadwrap ol li a:hover{ color:#fff; }
+.breadwrap .breadcrumb li:first-child a{ margin-right:-0.32em;}
+
 .breadwrap ul li span.wholegrain,
 .breadwrap ol li span.wholegrain {
   display: block;
@@ -521,28 +537,16 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
   left:0;
 }
 .breadwrap ol li.last-child a{ color:#f0f0f0;}
-.breadwrap ol li.last-child a:hover{ }
-/*
-.breadwrap ol li.last a{ line-height:1.32em}
-.breadwrap ol li.last,
-.breadwrap ol li:last-child{ 
-  color:#fff;
-	background: none;
-	font-size:1em;
-	position:relative; top:0;
-	margin-right: 0;
-	padding-right: 0;
-}
-*/
-.breadwrap ol li.last i,
+
 .breadwrap ol li:last-child i{ 
 	background:transparent;
 }
-.breadwrap ol li.last i:before,
+
+.breadwrap ol li:first-child i:before,
 .breadwrap ol li:last-child i:before{
 	content: " ";
 	display:none;
-	background: none;
+	background: transparent;
 	width:0;
 	height:0;
 }
@@ -1504,6 +1508,7 @@ div.messages ul li {
   border-radius:0; 
   width:100%; 
 }
+.panel.panel-default { overflow:visible; }
 .panel-default .panel-heading{
 	background-image:none;
 	background:#f2f2f2;
