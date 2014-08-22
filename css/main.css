@@ -22,7 +22,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 /*--- make heights equal of main two content columns, resources and content columns ---*/
 
 .main-content {
-  color: #444;
+  color: #333;
   position:relative;
   margin-left: 0;
   margin-right: 0;
@@ -38,7 +38,7 @@ a,a:visited,a:hover,a:focus{text-decoration:none;color: #5a65d1;}
 
 /*--- content elements ---*/
 .main-content h1, .main-content h2, .main-content h3, .main-content h4, .main-content h5, .main-content h6{ 
-	font-family: "Museo Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; font-weight:normal; font-weight:500;
+	color: #444; font-family: "Museo Sans", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif; font-weight:normal; font-weight:500;
 }
 
 .main-content input.form-control{
