@@ -12,19 +12,20 @@
           <li class="menu-collections active">
               <a href="#">Kmaps Collections <span class="fa arrow"></span></a>
 			          <ul>
+			            <li><a href="http://shanti.virginia.edu/"><i class="icon shanticon-overview"></i>Overview</a></li>
 			            <li><a href="<?php print $theme_path; ?>subjects"><i class="icon shanticon-subjects"></i>Subjects</a></li>
 			            <li><a href="<?php print $theme_path; ?>places"><i class="icon shanticon-places"></i>Places</a></li>
-			            <li><a href="#"><i class="icon shanticon-agents"></i>Agents</a></li>
+			            <li><a href="http://essays.drupal-dev.shanti.virginia.edu/"><i class="icon shanticon-texts"></i>Texts</a></li>
+			            <li><a href="http://csc.opentactics.com/csc-search?field_zotero_collections=All"><i class="icon shanticon-sources"></i>Sources</a></li>
+			            <li><a href="http://mediabase.drupal-dev.shanti.virginia.edu/"><i class="icon shanticon-audio-video"></i>Audio-Video</a></li>
+			            <li><a href="http://mms.thlib.org/"><i class="icon shanticon-photos"></i>Photos</a></li>
+			            <li><a href="http://shiva.drupal-dev.shanti.virginia.edu/"><i class="icon shanticon-visuals"></i>Visuals</a></li>
+			            <!--<li><a href="#"><i class="icon shanticon-agents"></i>Agents</a></li>
 			            <li><a href="#"><i class="icon shanticon-events"></i>Events</a></li>
-			            <li><a href="#"><i class="icon shanticon-photos"></i>Photos</a></li>
-			            <li><a href="#"><i class="icon shanticon-audio-video"></i>Audio-Video</a></li>
-			            <li><a href="#"><i class="icon shanticon-visuals"></i>Visuals</a></li>
 			            <li><a href="#"><i class="icon shanticon-essays"></i>Essays</a></li>
-			            <li><a href="#"><i class="icon shanticon-texts"></i>Texts</a></li>
 			            <li><a href="#"><i class="icon shanticon-maps"></i>Maps</a></li>
 			            <li><a href="#"><i class="icon shanticon-community"></i>Community</a></li>
-			            <li><a href="#"><i class="icon shanticon-terms"></i>Terms</a></li>
-			            <li><a href="#"><i class="icon shanticon-sources"></i>Sources</a></li>
+			            <li><a href="#"><i class="icon shanticon-terms"></i>Terms</a></li>-->
 			            <li class="bottom-trim"></li>
 								</ul>
           </li>
