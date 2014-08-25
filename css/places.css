@@ -42,7 +42,7 @@ button.btn.btn-default.italic.active{
 
 .panel-group .panel{ -webkit-box-shadow:0 0 5px rgba(0,0,0, 0.125); box-shadow:0 0 5px rgba(0,0,0, 0.125); border-collapse:separate;}
 
-.breadcrumb li i{ color:#4ca6fb;}
+.breadcrumb li a i{ background:#4ca6fb;}
 
 .breadcrumb li:last-child{ 
 	position:relative;
