@@ -44,4 +44,15 @@ button.btn.btn-default.italic.active{
 
 .breadcrumb li i{ color:#4ca6fb;}
 
-.breadcrumb li:last-child{ height:1.5em; line-height:1.25em;}
+.breadcrumb li:last-child{ 
+	position:relative;
+	top:-0.93em;
+}
+
+
+
+
+
+
+
+
