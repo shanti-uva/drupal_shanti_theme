@@ -5,5 +5,6 @@ dist
 .DS_Store
 ._.DS_Store
 ._*
+.project
 app/bower_components
 test/bower_components

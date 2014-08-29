@@ -15,7 +15,7 @@ jQuery(function ($) {
   $('#menu ul>li, #menu h2').css('text-align','left');
   $('#menu ul>li.levelHolderClass.rtl').css('text-align','right');
 
-
+	$('.collections button').addClass('close');
   // --- close the menu on outside click except button
   $('.menu-toggle').click( function(event){
       event.stopPropagation();
