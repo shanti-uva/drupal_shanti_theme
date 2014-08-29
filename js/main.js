@@ -83,7 +83,7 @@ jQuery(function ($) {
           label_text = label.text();
 
       label.remove();
-      self.iCheck({
+      self.icheck({
           checkboxClass: "icheckbox_minimal-red",
           radioClass: "iradio_minimal-red",
           insert: "<div class='icheck_line-icon'></div>" + label_text
@@ -142,7 +142,7 @@ jQuery(function ($) {
           label = self.next(),
           label_text = label.text();
 					label.remove();
-					self.iCheck({
+					self.icheck({
 	          // checkboxClass: "icheckbox_minimal-red",
 	          radioClass: "iradio_minimal-red",
 	          insert: "<div class='icheck_line-icon'></div>" + label_text
