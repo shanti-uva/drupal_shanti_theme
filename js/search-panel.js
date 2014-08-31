@@ -304,9 +304,7 @@ jQuery(function ($) {
 
 
 
-$(".dataTables_filter > lable").text(function () {
-    return $(this).text().replace("Search:", "Filter:"); 
-});​​​​​
+
 
 
     // set the dataTable defaults
@@ -466,6 +464,10 @@ $(".dataTables_filter > lable").text(function () {
         $('table.table-results').dataTable();
 
     };
+    
+    $(".dataTables_filter > label").text(function () {
+    		return $(this).text().replace("Search:", "Filter:"); 
+		});​​​​​
 
 
     function maskSearchResults( isMasked ) {
