@@ -450,14 +450,16 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 
 
-.view-section .dataTables_info { font-size: 0.82em;margin-left: 10px; padding-top:0; padding-bottom:0;}
+.view-section .dataTables_info { font-size: 0.82em; margin-left: 10px; padding-top:0; padding-bottom:0;}
+
+.view-section div.dataTables_filter{ position:relative; top:10px; right:10px;}
 .view-section div.dataTables_filter input{
 	line-height:22px; 
 	height:22px; 
 	padding:0 15px; 
-	margin:2px 0;
+	margin:-3px 0 0 5px;
 	color:#666;
-	 width:100px;
+	width:120px;
 	background: #fff;
 	background-image:none;
 	border: 1px solid #ccc;
