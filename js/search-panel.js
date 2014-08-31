@@ -314,6 +314,7 @@ jQuery(function ($) {
 //            "<'row'>",
 //        "iTabIndex": 1,
         "oLanguage": {
+            "sSearch": "Filter:",
             "sEmptyTable": "No results.  Enter new search query above.",
                 "sScrollY": "300px",
                 "sScrollX": "100%",
