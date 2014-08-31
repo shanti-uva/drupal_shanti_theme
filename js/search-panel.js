@@ -304,7 +304,9 @@ jQuery(function ($) {
 
 
 
-
+$(".dataTables_filter > lable").text(function () {
+    return $(this).text().replace("Search:", "Filter:"); 
+});​​​​​
 
 
     // set the dataTable defaults
