@@ -314,8 +314,8 @@ jQuery(function ($) {
 //            "<'row'>",
 //        "iTabIndex": 1,
         "oLanguage": {
-            "sSearch": "Filter:",
             "sEmptyTable": "No results.  Enter new search query above.",
+            "sSearch": "Filter: ",
                 "sScrollY": "300px",
                 "sScrollX": "100%",
                 "sScrollXInner": "150%",
@@ -341,6 +341,8 @@ jQuery(function ($) {
         "fnInitComplete": function() {
             $('.title-field').trunk8({ tooltip:false }); // .popover();
         }
+        
+        $('.dataTables_filter input:text').focus();
     });
 
     $("#tree").fancytree({
