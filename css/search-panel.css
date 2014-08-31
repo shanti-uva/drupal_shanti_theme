@@ -454,13 +454,13 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 .view-section div.dataTables_filter{ position:relative; top:10px; right:10px;}
 .view-section div.dataTables_filter input{
-	line-height:22px; 
 	font-size: 0.92em;
-	height:22px; 
-	padding:0 12px; 
+	line-height:1.32em; 
+	height:1.32em; 
+	padding:0 10px; 
 	margin:-3px 0 0 5px;
 	color:#666;
-	width:120px;
+	width:8em;
 	background: #fff;
 	background-image:none;
 	border: 1px solid #ccc;
