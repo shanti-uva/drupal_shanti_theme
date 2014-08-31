@@ -308,27 +308,22 @@ jQuery(function ($) {
 
 
     // set the dataTable defaults
-    $.extend( true, $.fn.dataTable.defaults,        {
-//        "sDom": "<'row'<'col-xs-6'i><'col-xs-6'p>>" +
-//            "t" +
-//            "<'row'>",
-//        "iTabIndex": 1,
-        "oLanguage": {
-            "sEmptyTable": "No results.  Enter new search query above.",
-            "sSearch": "Filter: ",
-                "sScrollY": "300px",
-                "sScrollX": "100%",
-                "sScrollXInner": "150%",
-                "bScrollCollapse": true,
-              "bPaginate": false
-//  "oPaginate": {
-//                "sPrevious": "&lt;",
-//                "sNext": "&gt;"
-//            }
+    $.extend( true, $.fn.dataTable.defaults, {
+				"sScrollY": "300px",
+				"sScrollX": "100%",
+				"sScrollXInner": "150%",
+				"bScrollCollapse": true,
+				"bPaginate": false
         },
+        
         "oPaginate": false,
         "bPaginate": false,
-        // this hides the pagination navigation when there is only one page.
+           
+        "oLanguage": {
+            "sSearch": "Filter:",
+            "sEmptyTable": "No results.  Enter new search query above."
+        }
+
         "fnDrawCallback": function() {
 //            var dtable = $('table.table-results').dataTable();
 //            if (dtable.fnSettings().fnRecordsDisplay() <= dtable.fnSettings()._iDisplayLength) {
@@ -342,7 +337,6 @@ jQuery(function ($) {
             $('.title-field').trunk8({ tooltip:false }); // .popover();
         }
         
-        $('.dataTables_filter input:text').focus();
     });
 
     $("#tree").fancytree({
