@@ -303,7 +303,10 @@ jQuery(function ($) {
     };
 
 
-    /**
+
+
+
+
     // set the dataTable defaults
     $.extend( true, $.fn.dataTable.defaults, {
 				"sScrollY": "300px",
@@ -335,8 +338,6 @@ jQuery(function ($) {
         }
         
     });
-
-    **/
 
     $("#tree").fancytree({
       extensions: ["glyph", "filter"],
@@ -608,8 +609,6 @@ jQuery(function($) {
   });
 
 });
-
-
 
 
 
@@ -1156,8 +1155,7 @@ function processSubjectsData(data) {
   //Global variable to hold all the related resources count
   shanti = {
     shanti_related_counts: data.feature.associated_resources,
-    shanti_id: data.feature.id,
-    shanti_data: data
+    shanti_id: data.feature.id
   };
 
   //Remove all content from show related pages
@@ -1229,7 +1227,7 @@ function processSubjectsData(data) {
   if (data.feature.associated_resources.related_feature_count > 0) {
     $("ul.nav li a[href='#tab-subjects'] .badge").text(data.feature.associated_resources.related_feature_count);
     $(".content-resources ul.nav-pills li.subjects").show();
-    $('a[href="#tab-subjects"]').unbind('show.bs.tab').one('show.bs.tab', function(e) {
+    $('a[href="#tab-subjects"]').one('show.bs.tab', function(e) {
       //Push a state to the url hash so we can bookmark it
       $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
       $.bbq.removeState('nid');
@@ -1246,7 +1244,7 @@ function processSubjectsData(data) {
   if (data.feature.associated_resources.description_count > 0) {
     $("ul.nav li a[href='#tab-essays'] .badge").text(data.feature.associated_resources.description_count);
     $(".content-resources ul.nav-pills li.essays").show();
-    $('a[href="#tab-essays"]').unbind('show.bs.tab').one('show.bs.tab', function(e) {
+    $('a[href="#tab-essays"]').one('show.bs.tab', function(e) {
       //Push a state to the url hash so we can bookmark it
       $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
       $.bbq.removeState('nid');
@@ -1262,13 +1260,14 @@ function processSubjectsData(data) {
   if (data.feature.associated_resources.place_count > 0) {
     $("ul.nav li a[href='#tab-places'] .badge").text(data.feature.associated_resources.place_count);
     $(".content-resources ul.nav-pills li.places").show();
-    $('a[href="#tab-places"]').unbind('show.bs.tab').one('show.bs.tab', function(e) {
+    $('a[href="#tab-places"]').one('show.bs.tab', function(e) {
       //Push a state to the url hash so we can bookmark it
       $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
       $.bbq.removeState('nid');
-
+      
       var $tabPlaces = $("#tab-places");
       $tabPlaces.empty();
+      $tabPlaces.append('<h6>Features Associated with ' + data.feature.header + '</h6>');
       var placesURL = Settings.placesUrl + '/topics/' + data.feature.id + '.json';
       shanti.placesURL = placesURL;
       $.get(placesURL, relatedPlaces);
@@ -1279,7 +1278,7 @@ function processSubjectsData(data) {
   if (data.feature.associated_resources.picture_count > 0) {
     $("ul.nav li a[href='#tab-photos'] .badge").text(data.feature.associated_resources.picture_count);
     $(".content-resources ul.nav-pills li.photos").show();
-    $('a[href="#tab-photos"]').unbind('show.bs.tab').one('show.bs.tab', function(e) {
+    $('a[href="#tab-photos"]').one('show.bs.tab', function(e) {
       //Push a state to the url hash so we can bookmark it
       $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
       $.bbq.removeState('nid');
@@ -1321,7 +1320,7 @@ function processSubjectsData(data) {
   if (data.feature.associated_resources.document_count > 0) {
     $("ul.nav li a[href='#tab-texts'] .badge").text(data.feature.associated_resources.document_count);
     $(".content-resources ul.nav-pills li.texts").show();
-    $('a[href="#tab-texts"]').unbind('show.bs.tab').one('show.bs.tab', function(e) {
+    $('a[href="#tab-texts"]').one('show.bs.tab', function(e) {
       //Push a state to the url hash so we can bookmark it
       $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
       $.bbq.removeState('nid');
@@ -1350,7 +1349,7 @@ function processSubjectsSolr(data) {
     if (solrSection.groupValue == "mediabase" && solrSection.doclist.numFound > 0) {
       $("ul.nav li a[href='#tab-audio-video'] .badge").text(solrSection.doclist.numFound);
       $(".content-resources ul.nav-pills li.audio-video").show();
-      $('a[href="#tab-audio-video"]').unbind('show.bs.tab').one('show.bs.tab', function(e) {
+      $('a[href="#tab-audio-video"]').one('show.bs.tab', function(e) {
         //Push a state to the url hash so we can bookmark it
         $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
         $.bbq.removeState('nid');
@@ -1378,7 +1377,7 @@ function processSubjectsSolr(data) {
     var pageURL = Settings.mediabaseURL + '/api/v1/media/node/' + Settings.hash_obj.nid + '.json';
     $.get(pageURL, showAudioVideoPage);
   } else {
-    $('.content-resources').find('a[href="#' + (Settings.hash_obj.que || 'tab-overview') + '"]').click();
+    $('.content-resources').find('a[href="#' + (Settings.hash_obj.que || 'tab-overview') + '"]').tab('show');
   }
 
 }
@@ -1404,10 +1403,11 @@ function relatedResources(data) {
   var $tabRelated = $("#tab-subjects");
   var contentR = '<ul class="list-unstyled list-group">';
   $.each(data.feature_relation_types, function(rInd, rElm) {
-    contentR += '<li class="list-group-item">' + capitaliseFirstLetter(rElm.label) + " (" + rElm.features.length + "):";
+    contentR += '<li class="list-group-item">' + capitaliseFirstLetter(rElm.label) + ' the following ' + 
+    (rElm.features.length == 1 ? "subject (1):" : "subjects (" + rElm.features.length + "):");
     contentR += '<ul class="list-group">';
     $.each(rElm.features, function(rrInd, rrElm) {
-      contentR += '<li class="list-group-item"><a href="#id=' + rrElm.id + '&que=tab-overview">' + rrElm.header + ' (From the General Perspective)</a></li>';
+      contentR += '<li class="list-group-item"><a href="#features/' + rrElm.id + '">' + rrElm.header + ' (From the General Perspective)</a></li>';
     });
     contentR += '</ul>';
     contentR += '</li>';
@@ -1909,161 +1909,45 @@ function relatedTexts(data) {
 
 //Function to process and show related places
 function relatedPlaces(data) {
-  $("#tab-places").empty();
-
-  var contentPl = '<h6>Features Associated with ' + shanti.shanti_data.feature.header + '</h6>';
-
-  contentPl += '<ul class="related-places">';
+  var contentPl = '<ul class="related-places">';
   $.each(data.features, function(rInd, rElm) {
     contentPl += '<li>';
-    contentPl += '<a href="' + Settings.placesPath + '#id=' + rElm.id + '&que=tab-overview">';
+    contentPl += '<a href="' + Settings.placesUrl + '/features/' + rElm.id + '">';
     contentPl += rElm.header;
     contentPl += '</a>';
     contentPl += '</li>';
   });
   contentPl += '</ul>';
   contentPl += '<ul id="places-pagination"></ul>';
-
-  var avURL = Settings.placesUrl + '/topics/' + shanti.shanti_data.feature.id + '.json';
-  var total_pages = data.total_pages;
-
-  contentPl += '<ul id="photo-pagination">';
-  contentPl += '<li class="first-page"><a href="' + avURL + '?page=1' + '">&lt;&lt;</a></li>';
-  contentPl += '<li class="previous-page"><a href="' + avURL + '?page=1' + '">&lt;</a></li>';
-  contentPl += '<li>PAGE</li>';
-  contentPl += '<li><input type="text" value="1" class="page-input"></li>';
-  contentPl += '<li>OF ' + total_pages + '</li>';
-  contentPl += '<li class="next-page"><a href="' + avURL + '?page=2' + '">&gt;</a></li>';
-  contentPl += '<li class="last-page"><a href="' + avURL + '?page=' + total_pages + '">&gt;&gt;</a></li>';
-  contentPl += '</ul>';
-  contentPl += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
-
   $("#tab-places").append(contentPl);
 
-  //Add the event listener for the first-page element
-  $("li.first-page a").click(function(e) {
-    e.preventDefault();
-    var currentTarget = $(e.currentTarget).attr('href');
-    $.ajax({
-      url: currentTarget,
-      beforeSend: function(xhr) {
-        $('.paginated-spin i.fa').addClass('fa-spin');
-        $('.paginated-spin').show();
-      }
-    })
-    .done(paginatedPlaces)
-    .always(function() {
-      $('.paginated-spin i').removeClass('fa-spin');
-      $('.paginated-spin').hide();
-      $('li input.page-input').val('1');
-      $('li.previous-page a').attr('href', currentTarget);
-      var nextTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1) + 2;
-      $('li.next-page a').attr('href', nextTarget);
-    });
-  });
-
-  //Add the listener for the previous-page element
-  $("li.previous-page a").click(function(e) {
-    e.preventDefault();
-    var currentTarget = $(e.currentTarget).attr('href');
-    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
-    var newpage = parseInt($('li input.page-input').val()) - 1;
-    if (newpage < 1) { newpage = 1; }
-    var currentURL = currentTarget + newpage;
-    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
-    var nextTarget = currentTarget + ((newpage + 1) > parseInt(total_pages) ? total_pages : (newpage + 1));
-    $.ajax({
-      url: currentURL,
-      beforeSend: function(xhr) {
-        $('.paginated-spin i.fa').addClass('fa-spin');
-        $('.paginated-spin').show();
-      }
-    })
-    .done(paginatedPlaces)
-    .always(function() {
-      $('.paginated-spin i').removeClass('fa-spin');
-      $('.paginated-spin').hide();
-      $('li input.page-input').val(newpage);
-      $(e.currentTarget).attr('href', previousTarget);
-      $('li.next-page a').attr('href', nextTarget);
-    });
-  });
-
-  //Add the listener for the next-page element
-  $("li.next-page a").click(function(e) {
-    e.preventDefault();
-    var currentTarget = $(e.currentTarget).attr('href');
-    currentTarget = currentTarget.substr(0, currentTarget.lastIndexOf('=') + 1);
-    var newpage = parseInt($('li input.page-input').val()) + 1;
-    if (newpage > parseInt(total_pages)) { newpage = parseInt(total_pages); }
-    var currentURL = currentTarget + newpage;
-    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
-    var nextTarget = currentTarget + ((newpage + 1) > parseInt(total_pages) ? total_pages : (newpage + 1));
-    $.ajax({
-      url: currentURL,
-      beforeSend: function(xhr) {
-        $('.paginated-spin i.fa').addClass('fa-spin');
-        $('.paginated-spin').show();
-      }
-    })
-    .done(paginatedPlaces)
-    .always(function() {
-      $('.paginated-spin i').removeClass('fa-spin');
-      $('.paginated-spin').hide();
-      $('li input.page-input').val(newpage);
-      $('li.previous-page a').attr('href', previousTarget);
-      $(e.currentTarget).attr('href', nextTarget);
-    });
-  });
-
-  //Add the listener for the pager text input element
-  $("li input.page-input").change(function(e) {
-    e.preventDefault();
-    var currentTarget = avURL + '&pg=';
-    var newpage = parseInt($(this).val());
-    if (newpage > parseInt(total_pages)) { newpage = parseInt(total_pages); }
-    if (newpage < 1) { newpage = 1; }
-    var currentURL = currentTarget + newpage;
-    var previousTarget = currentTarget + ((newpage - 1) < 1 ? 1 : (newpage - 1));
-    var nextTarget = currentTarget + ((newpage + 1) > parseInt(total_pages) ? total_pages : (newpage + 1));
-    $.ajax({
-      url: currentURL,
-      beforeSend: function(xhr) {
-        $('.paginated-spin i.fa').addClass('fa-spin');
-        $('.paginated-spin').show();
-      }
-    })
-    .done(paginatedPlaces)
-    .always(function() {
-      $('.paginated-spin i').removeClass('fa-spin');
-      $('.paginated-spin').hide();
-      $('li input.page-input').val(newpage);
-      $('li.previous-page a').attr('href', previousTarget);
-      $('li.next-page a').attr('href', nextTarget);
-    });
-  });
-
-  //Add the event listener for the last-page element
-  $("li.last-page a").click(function(e) {
-    e.preventDefault();
-    var currentTarget = $(e.currentTarget).attr('href');
-    var newpage = parseInt(total_pages);
-    var previousTarget = avURL + (newpage - 1);
-    $.ajax({
-      url: currentTarget,
-      beforeSend: function(xhr) {
-        $('.paginated-spin i.fa').addClass('fa-spin');
-        $('.paginated-spin').show();
-      }
-    })
-    .done(paginatedPlaces)
-    .always(function() {
-      $('.paginated-spin i').removeClass('fa-spin');
-      $('.paginated-spin').hide();
-      $('li input.page-input').val(newpage);
-      $('li.previous-page a').attr('href', previousTarget);
-      $('li.next-page a').attr('href', currentTarget);
-    });
+  $("#places-pagination").bootstrapPaginator({
+    size: "large",
+    bootstrapMajorVersion: 3,
+    currentPage: 1,
+    numberOfPages: 5,
+    totalPages: data.total_pages,
+    pageUrl: function(type, page, current) {
+      return shanti.placesURL + '?page=' + page;
+    },
+    onPageClicked: function(e, origEvent, type, page) {
+      origEvent.preventDefault();
+      e.stopImmediatePropagation();
+      var currentTarget = $(e.currentTarget);
+      $.ajax({
+        url: shanti.placesURL + '?page=' + page,
+        beforeSend: function(xhr) {
+          $('.paginated-spin i.fa').addClass('fa-spin');
+          $('.paginated-spin').show();
+        }
+      })
+      .done(paginatedPlaces)
+      .always(function() {
+        $('.paginated-spin i').removeClass('fa-spin');
+        currentTarget.bootstrapPaginator("show", page);
+        $('.paginated-spin').hide();
+      });
+    }
   });
 }
 
@@ -2074,7 +1958,7 @@ function paginatedPlaces(data) {
   var contentPl = '';
   $.each(data.features, function(rInd, rElm) {
     contentPl += '<li>';
-    contentPl += '<a href="' + Settings.placesPath + '#id=' + rElm.id + '&que=tab-overview">';
+    contentPl += '<a href="' + Settings.placesUrl + '/features/' + rElm.id + '">';
     contentPl += rElm.header;
     contentPl += '</a>';
     contentPl += '</li>';
@@ -2149,8 +2033,3 @@ function capitaliseFirstLetter(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-
-
-jQuery(function($) {
-	$(".dataTables_filter").find("label").replaceText("Search", "Filter");
-});
