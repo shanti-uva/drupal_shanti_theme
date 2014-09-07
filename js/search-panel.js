@@ -609,6 +609,10 @@ jQuery(function($) {
 
 });
 
+jQuery(function($) {
+	$('.dataTables_filter > label').replaceText('Search', 'Filter');
+});
+
 
 
 // -------------------------
@@ -2146,4 +2150,6 @@ function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+
 
