@@ -609,9 +609,7 @@ jQuery(function($) {
 
 });
 
-jQuery(function($) {
-	$('.dataTables_filter').find('label').replaceText('Search', 'Filter');
-});
+
 
 
 
@@ -2153,3 +2151,6 @@ function capitaliseFirstLetter(string)
 
 
 
+jQuery(function($) {
+	$(".dataTables_filter").find("label").replaceText("Search", "Filter");
+});
