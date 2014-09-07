@@ -26,6 +26,10 @@ jQuery(function ($) {
 });
 
 jQuery(function($) {
+	$(".dataTables_filter").find("label").replaceText("Search", "Filter");
+});
+
+jQuery(function($) {
 	 // call bootstrap-select
   $(".advanced-view .selectpicker").selectpicker({ // see other selectpicker settings in related html markup in search panel
 			iconBase: 'icon',
