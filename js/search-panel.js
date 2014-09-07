@@ -25,9 +25,7 @@ jQuery(function ($) {
 
 });
 
-jQuery(function($) {
-	$(".dataTables_filter").find("label").replaceText("Search", "Filter");
-});
+
 
 jQuery(function($) {
 	 // call bootstrap-select
