@@ -610,7 +610,7 @@ jQuery(function($) {
 });
 
 jQuery(function($) {
-	$('.dataTables_filter > label').replaceText('Search', 'Filter');
+	$('.dataTables_filter').find('label').replaceText('Search', 'Filter');
 });
 
 
