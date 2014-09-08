@@ -189,12 +189,13 @@ function decorateElementWithPopover(elem, node) {
                 var video_count = Number($(xml).find('video_count').text());
                 var document_count = Number($(xml).find('document_count').text());
 
-                if (related_count) counts.html("<span class='associated'><i class='icon shanticon-sources'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
-                if (description_count) counts.append("<span class='associated'><i class='icon shanticon-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
-                if (place_count) counts.append("<span class='associated'><i class='icon shanticon-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
-                if (picture_count) counts.append("<span class='associated'><i class='icon shanticon-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
-                if (video_count) counts.append("<span class='associated'><i class='icon shanticon-audio-video'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
-                if (document_count) counts.append("<span class='associated'><i class='icon shanticon-texts'></i><span class='badge' + (document_count)?' alert-success':'>" + document_count + "</span></span>");
+								if (document_count) counts.append("<span class='associated'><i class='icon shanticon-texts'></i><span class='badge' + (document_count)?' alert-success':'>" + document_count + "</span></span>");
+								if (video_count) counts.append("<span class='associated'><i class='icon shanticon-audio-video'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
+								if (picture_count) counts.append("<span class='associated'><i class='icon shanticon-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
+								if (place_count) counts.append("<span class='associated'><i class='icon shanticon-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
+								if (description_count) counts.append("<span class='associated'><i class='icon shanticon-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
+								if (related_count) counts.html("<span class='associated'><i class='icon shanticon-sources'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
+
             }
         });
     });
@@ -1209,7 +1210,7 @@ function processSubjectsData(data) {
   //Show overview tab on the left hand column
   if (data.feature) {
     $(".content-resources ul.nav-pills li.overview").show();
-    $('a[href="#tab-overview"]').unbind('show.bs.tab').one('show.bs.tab', function(e) {
+    $('a[href="#tab-overview"]').one('show.bs.tab', function(e) {
       //Push a state to the url hash so we can bookmark it
       $.bbq.pushState({que: $(e.target).attr('href').substr(1)});
       $.bbq.removeState('nid');
@@ -1401,9 +1402,6 @@ function showOverviewImage(data) {
 //Function to populate related tab
 function relatedResources(data) {
   var $tabRelated = $("#tab-subjects");
-  $tabRelated.empty();
-  $tabRelated.append('<h6>' + shanti.shanti_data.feature.header + '</h6>');
-
   var contentR = '<ul class="list-unstyled list-group">';
   $.each(data.feature_relation_types, function(rInd, rElm) {
     contentR += '<li class="list-group-item">' + capitaliseFirstLetter(rElm.label) + " (" + rElm.features.length + "):";
@@ -1929,14 +1927,14 @@ function relatedPlaces(data) {
   var avURL = Settings.placesUrl + '/topics/' + shanti.shanti_data.feature.id + '.json';
   var total_pages = data.total_pages;
 
-  contentPl += '<ul id="photo-pagination" class="pager">';
-  contentPl += '<li class="first-page pager-first first"><a href="' + avURL + '?page=1' + '"><i class="icon"></i></a></li>';
-  contentPl += '<li class="previous-page pager-previous"><a href="' + avURL + '?page=1' + '"><i class="icon"></i></a></li>';
+  contentPl += '<ul id="photo-pagination">';
+  contentPl += '<li class="first-page"><a href="' + avURL + '?page=1' + '">&lt;&lt;</a></li>';
+  contentPl += '<li class="previous-page"><a href="' + avURL + '?page=1' + '">&lt;</a></li>';
   contentPl += '<li>PAGE</li>';
-  contentPl += '<li class="pager-current widget"><input type="text" value="1" class="page-input"></li>';
+  contentPl += '<li><input type="text" value="1" class="page-input"></li>';
   contentPl += '<li>OF ' + total_pages + '</li>';
-  contentPl += '<li class="next-page pager-next"><a href="' + avURL + '?page=2' + '"><i class="icon"></i></a></li>';
-  contentPl += '<li class="last-page pager-last last"><a href="' + avURL + '?page=' + total_pages + '"><i class="icon"></i></a></li>';
+  contentPl += '<li class="next-page"><a href="' + avURL + '?page=2' + '">&gt;</a></li>';
+  contentPl += '<li class="last-page"><a href="' + avURL + '?page=' + total_pages + '">&gt;&gt;</a></li>';
   contentPl += '</ul>';
   contentPl += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
 
@@ -2021,7 +2019,7 @@ function relatedPlaces(data) {
   //Add the listener for the pager text input element
   $("li input.page-input").change(function(e) {
     e.preventDefault();
-    var currentTarget = avURL + '?page=';
+    var currentTarget = avURL + '&pg=';
     var newpage = parseInt($(this).val());
     if (newpage > parseInt(total_pages)) { newpage = parseInt(total_pages); }
     if (newpage < 1) { newpage = 1; }
@@ -2050,7 +2048,7 @@ function relatedPlaces(data) {
     e.preventDefault();
     var currentTarget = $(e.currentTarget).attr('href');
     var newpage = parseInt(total_pages);
-    var previousTarget = avURL + '?page=' + (newpage - 1);
+    var previousTarget = avURL + (newpage - 1);
     $.ajax({
       url: currentTarget,
       beforeSend: function(xhr) {
