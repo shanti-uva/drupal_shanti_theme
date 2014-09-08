@@ -23,6 +23,8 @@ jQuery(function ($) {
       top: 0
   });
 
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
 });
 
 jQuery(function($) {
@@ -86,6 +88,13 @@ jQuery(function($) {
 	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
     kmaps_subjectsHeight();
     $(window).bind('load orientationchange resize', kmaps_subjectsHeight);
+
+
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
+
 });
 
 // *** SEARCH *** corrections for widths
@@ -116,7 +125,11 @@ jQuery(function($) {
   $("button.view-resources").click( function() {
           $(this).toggleClass( "show",'fast' );
    });
-  
+
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
 });
 
 
@@ -141,6 +154,11 @@ jQuery(function($) {
       $(this).removeClass('on-hover');
       }
   );
+
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
 });
 
 function decorateElementWithPopover(elem, node) {
@@ -209,13 +227,13 @@ var searchUtil = {
         $('#tree').fancytree("getRootNode").visit(function (node) {
             node.setExpanded(false);
         });
-        $('table.table-results').dataTable().fnDestroy();
+//        $('div.listview div div.table-responsive table.table-results').dataTable().fnDestroy();
 
 
 
 
         $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
-        $('table.table-results').dataTable();
+//        $('div.listview div div.table-responsive table.table-results').dataTable();
 
         // "unwrap" the <mark>ed text
         $('span.fancytree-title').each(
@@ -305,9 +323,12 @@ jQuery(function ($) {
 
 
 
-
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
 
     // set the dataTable defaults
+
+    if ($.fn.dataTable)
     $.extend( true, $.fn.dataTable.defaults,        {
 //        "sDom": "<'row'<'col-xs-6'i><'col-xs-6'p>>" +
 //            "t" +
@@ -399,11 +420,14 @@ jQuery(function ($) {
    });
 
 
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
     // Render the search results into the dataTable
     // This presumes the results are a list of a certain structure
     //
     var renderSearchResults = function (ret) {
-//              //      ("json: " + JSON.stringify(resultHash));
+        console.log("JSON: " + JSON.stringify(resultHash));
 
         var txt = $("#searchform").val();
         var resultHash = {};
@@ -413,7 +437,7 @@ jQuery(function ($) {
                 // for places, list the feature type
                 resultHash[this.id] = this.feature_types[0].title;
             } else {
-                resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unknown";
+                resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unblown: " + JSON.stringify(this);
             }
         });
 
@@ -452,19 +476,16 @@ jQuery(function ($) {
             );
         });
 
-        $("table.table-results tbody tr").click(function (event) {
+        $("table.table-results").on('click','tbody tr',function (event) {
+            console.log ("TR CLICKED " + event);
             var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
             $('.row_selected').removeClass('row_selected');
             $(event.target).closest('tr').addClass('row_selected');
             $("#tree").animate({ scrollTop: 0 }, "slow");
-            $('#tree')
-                .fancytree('getTree')
-                .activateKey(
-                    kid
-                ).scrollIntoView();
+            $("#tree").fancytree('getTree').activateKey(kid).scrollIntoView();
         });
 
-        $('table.table-results').dataTable();
+//        $('div.listview div div.table-responsive table.table-results').dataTable();
 
     };
 
@@ -494,6 +515,9 @@ jQuery(function ($) {
             }
         });
     }
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
 
     var handleSearch = function handleSearch() {
         // clear previous styling
@@ -526,22 +550,32 @@ jQuery(function ($) {
                 description: essck
             };
 
-            $('table.table-results').dataTable().fnDestroy();
+//            $('table.table-results').dataTable().fnDestroy();
             searchClassicKmaps(txt, searchargs);
             return false;
         }
     };
 
-    $("#searchbutton").click(handleSearch);
-  $('#searchform').attr('autocomplete','off'); // turn off browser autocomplete
-  $("form.form").submit(handleSearch);
-  $("#searchform").keyup( function(e) {
-    var code = (e.keyCode ? e.keyCode : e.which);
-    if (code === 13) {
-        e.preventDefault();
-        handleSearch();
+    $('#searchform').attr('autocomplete','off'); // turn off browser autocomplete
+
+    if (false) {
+        // classic search
+        $("#searchbutton").click(handleSearch);
+        $("form.form").submit(handleSearch);
+        $("#searchform").keyup(function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code === 13) {
+                e.preventDefault();
+                handleSearch();
+            }
+        });
+    } else {
+
+
+
     }
-  });
+
+
 
   //    $('.table-v').on('shown.bs.tab', function() { $('.title-field').trunk8(); });
     $('.listview').on('shown.bs.tab', function() {
@@ -572,6 +606,9 @@ jQuery(function ($) {
   //       'mouseenter': function () { $(this).trunk8('revert'); },
   //        'mouseout': function () { $(this).trunk8({ tooltip:false }).popover(); }
   //    },'.title-field');
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
 
 });
 
@@ -1148,6 +1185,140 @@ jQuery(function($) {
 
   $(window).trigger( 'hashchange' );
 });
+
+
+
+
+
+
+
+jQuery(function($) {
+
+    var Manager;
+    $(function () {
+
+        AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget.extend({
+            afterRequest: function () {
+                $(this.target).empty();
+                for (var i = 0, l = this.manager.response.response.docs.length; i < l; i++) {
+                    var doc = this.manager.response.response.docs[i];
+                    $(this.target).append(this.template(doc));
+                }
+
+                $(this.target).find('tr').popover(
+                    {
+                        "template": '<div class="popover searchPop" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+                    }
+                );
+
+                $(this.target).on('click','tr',function (event) {
+                    console.log ("TR CLICKED " + event);
+                    var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
+                    $('.row_selected').removeClass('row_selected');
+                    $(event.target).closest('tr').addClass('row_selected');
+                    $("#tree").animate({ scrollTop: 0 }, "slow");
+
+                    // Note that in the solr index the kid is of the form "places-12345", whereas the
+                    // original form used with fancytree is "12345", so we need to make this adjustment here.
+                    $("#tree").fancytree('getTree').activateKey(kid.split('-')[1]).scrollIntoView();
+                });
+            },
+
+            template: function (doc) {
+
+                // alert(JSON.stringify(doc));
+                var snippet = '';
+                if (doc.header.length > 300) {
+                    snippet += doc.header.substring(0, 300);
+                    snippet += '<span style="display:none;">' + doc.header.substring(300);
+                    snippet += '</span> <a href="#" class="more">more</a>';
+                }
+                else {
+                    snippet += doc.header;
+                }
+
+                console.log(JSON.stringify(doc,undefined,2));
+
+                var path = "<div class='kmap-path'>/" + $.makeArray(doc.ancestors.map(function (x) {
+                    return x;
+                })).join("/") + "</div>";
+                var caption = ((doc.caption_eng)?doc.caption_eng:"");
+                var kmapid = "<span class='kmapid-display'>" + doc.id + "</span>";
+                var lazycounts = "<div class='counts-display'>...</div>";
+                var content = path + caption + "<div class='info-wrap' id='infowrap" + doc.id +"'>" + lazycounts + "</div>";
+                var title =  doc.header + kmapid;
+
+                var info = (doc.feature_types)?doc.feature_types[0]:doc.ancestors[0];
+                var output = '<tr rel="popover" class="title-field" kid="'+ doc.id +
+                        '" title="'+ title +
+                        '" data-content="'+ content +
+                        '" >';
+
+                output += '<td><span>' + doc.header +' </span></td>';
+                output += '<td id="links_' + doc.id + '" class="links">' + info + '</td>';
+                output += '</tr>';
+                return output;
+
+            }
+        });
+
+        Manager = new AjaxSolr.Manager({
+            solrUrl: 'http://kidx.shanti.virginia.edu/solr/termindex/'
+        });
+        Manager.addWidget(new AjaxSolr.ResultWidget({
+            id: 'result',
+            target: 'div.listview div div.table-responsive table.table-results'
+        }));
+
+        Manager.addWidget(new AjaxSolr.TextWidget({
+            id: 'textsearch',
+            target: '#searchform'
+        }));
+
+        Manager.init();
+        Manager.store.addByValue('rows', 10);
+        Manager.store.addByValue('q', 'name:*');
+        Manager.store.addByValue('fq', 'tree:' + Settings.type);
+        Manager.store.addByValue('sort', 'header asc');
+        Manager.store.addByValue('df', 'name');
+        Manager.doRequest();
+
+        Manager.addWidget(new AjaxSolr.PagerWidget({
+            id: 'pager',
+            target: '#pager',
+            prevLabel: '&lt;',
+            nextLabel: '&gt;',
+            innerWindow: 1,
+            renderHeader: function (perPage, offset, total) {
+                $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
+            }
+        }));
+    });
+
+    //  add listeners for changes in advanced search
+
+
+
+    $('.advanced-view').find('input').on('ifChecked', function(event){
+        console.dir(event);
+        Manager.doRequest();
+    });
+
+
+
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0)).events);
+
+}(jQuery));
+
+
+
+
+
+
+
+
 
 /**
  * Function that will process the returned data and create the various sections of the page.

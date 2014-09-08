@@ -194,7 +194,7 @@
             <form class="form">
              <fieldset>                       
                 <div class="search-group">                        
-                    <div class="input-group">
+                    <div class="input-group" id="searcharea">
                         <input type="text" class="form-control kms" id="searchform" placeholder="Enter Search...">
                         <span class="input-group-btn">
                           <button type="button" class="btn btn-default" id="searchbutton"><i class="icon"></i></button>
@@ -213,24 +213,24 @@
                <div id="notification-wrapper"></div>
                     
                <section class="advanced-view" style="display:none;">                                              
-                      <div class="form-group"> 
-                        <label class="radio-inline" for="radios-0">
-                          <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+                      <div class="form-group" id="searchScopeGroup">
+                        <label class="radio-inline" for="scopeAll">
+                          <input type="radio" name="scope" id="scopeAll" value="all" checked="checked">
                             All Text</label> 
-                        <label class="radio-inline" for="radios-1">
-                          <input type="radio" name="radios" id="radios-1" value="2">
+                        <label class="radio-inline" for="scopeName">
+                          <input type="radio" name="scope" id="scopeName" value="name">
                             Name </label> 
                       </div>
                                                   
-                      <div class="form-group">
-                        <label class="radio-inline" for="radios-2">
-                          <input type="radio" name="radios2" id="radios-2" value="3" checked="checked">
+                      <div class="form-group" id="searchAnchorGroup">
+                        <label class="radio-inline" for="anchorContains">
+                          <input type="radio" name="anchor" id="anchorContains" value="contains" checked="checked">
                             Contains</label> 
-                        <label class="radio-inline" for="radios-3">
-                          <input type="radio" name="radios2" id="radios-3" value="4">
+                        <label class="radio-inline" for="anchorStartsWith">
+                          <input type="radio" name="anchor" id="anchorStartsWith" value="startsWith">
                             Starts With</label>
-                        <label class="radio-inline" for="radios-4">
-                          <input type="radio" name="radios2" id="radios-4" value="5">
+                        <label class="radio-inline" for="anchorExact">
+                          <input type="radio" name="anchor" id="anchorExact" value="exact">
                             Exactly</label>                             
                       </div>
  
@@ -331,30 +331,33 @@
             <ul class="nav nav-tabs">
               <li class="treeview active"><a href=".treeview" data-toggle="tab"><i class="icon shanticon-tree"></i>Tree</a></li>
               <li class="listview"><a href=".listview" data-toggle="tab"><i class="icon shanticon-list"></i>List</a></li>
-            </ul>           
-            <div class="tab-content">
-                              
-              <!-- TAB - tree view -->
-              <div class="treeview tab-pane active">        
-                  <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>              
-              </div>          
-              <!-- TAB - list view -->
-              <div class="listview tab-pane">   
-                <div class="view-wrap"> <!-- view-wrap controls container height -->              
-                  <div class="table-responsive">
-                     <table class="table table-condensed table-results">
-                      <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Feature Type</th>
-                          </tr>
-                      </thead>
-                      <tbody></tbody>
-                     </table>                                   
+            </ul>
+              <div class="tab-content">
+                  <!-- TAB - tree view -->
+                  <div class="treeview tab-pane active">
+                      <div id="tree" class="view-wrap"><!-- view-wrap controls tree container height --></div>
                   </div>
-                </div>
+                  <!-- TAB - list view -->
+                  <div class="listview tab-pane">
+                      <div id="pager">pager blank</div>
+
+                      <div class="view-wrap"> <!-- view-wrap controls container height -->
+                          <div class="table-responsive">
+                              <table class="table table-condensed table-results">
+                                  <thead>
+                                  <tr>
+                                      <th>Name</th>
+                                      <th>Feature Type</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody></tbody>
+                              </table>
+                              <div id="pager-header">header</div>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>                        
+
           </section><!-- END view section -->
       </section><!-- END kmaps-search -->
    

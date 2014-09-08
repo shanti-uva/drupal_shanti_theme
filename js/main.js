@@ -250,4 +250,17 @@ jQuery(function ($) {
 		$(".feature-group").css('display','block');
 		$(".select-type").css('display','none');
 	}
+
+
+
+
+
+
+    console.log("THIS IS AFTER ALL");
+    console.dir($._data($('#searchy').get(0)));
+
+
 });
+
+
+

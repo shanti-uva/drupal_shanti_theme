@@ -1216,3 +1216,13 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 
 
 
+
+
+
+/* yuji's search widget stuff */
+#pager li, .links li {
+    list-style-type: none;
+    display: inline;
+}
+
+
