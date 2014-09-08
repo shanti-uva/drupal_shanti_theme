@@ -118,11 +118,13 @@ jQuery(function ($) {
 });
 
 
-
-
-
-
-
+/**
+jQuery(function ($) {
+    $(".dataTables_filter > label").text(function () {
+    		return $(this).text().replace("Search:", "Filter:"); 
+		});​​​​​
+});
+**/
 
 
 // *** SEARCH *** initiate sliding container, toggle collections & search options

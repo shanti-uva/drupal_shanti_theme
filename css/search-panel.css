@@ -312,7 +312,7 @@ border-bottom:1px solid #ccc; position:relative; z-index:99999;} */
 
 
 .feature-submit .btn.btn-default{ /*--- the select button ---*/
-	font-size:0.75em; background-color:#dc3c47;color:#fff; padding:3px 13px 2px; margin-top:7px; background-image:none;-webkit-box-shadow:none;box-shadow:none;text-transform:uppercase;text-shadow:none;
+	font-size:0.75em; background-color:#dc3c47;color:#fff; padding:3px 13px 2px; margin-top:7px; background-image:none; border:none; -webkit-box-shadow:none !important;box-shadow:none !important;text-transform:uppercase;text-shadow:none;
 }
 .feature-submit .btn.btn-default>span{ }
 .feature-submit .btn.btn-default.clear-form{ /*--- the clear button ---*/
@@ -444,9 +444,48 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 .view-section .pagination>li>a, 
 .pagination>li>span { padding:7px 9px;}
 .view-section .pagination { margin:4px 0 2px 15px; }
-.view-section .dataTables_info { font-size: 1.3em;margin-left: 10px; padding-top:0; padding-bottom:0;}
 .view-section .row { margin-right: 0;/*margin-left: 0em;*/}
 /* .listview td.sorting_1 { min-width: 12em;} */
+
+
+
+
+.view-section .dataTables_info { font-size: 0.82em; margin-left: 1em; margin-bottom:20px;}
+.view-section .dataTables_length label{ margin-left:10px;}
+
+.view-section .dataTables_filter label{ position:relative; top:0; margin-right:10px;}
+.view-section div.dataTables_filter input{
+	font-size: 0.92em;
+	line-height:1.32em; 
+	height:1.32em; 
+	padding:0 10px; 
+	margin:0 0 0 5px;
+	position:relative; 
+	top:-2px;
+	color:#666;
+	width:8em;
+	background: #fff;
+	background-image:none;
+	border: 1px solid #ccc;
+	border-radius:15px;  	
+	background-clip: padding-box;
+	overflow:hidden;
+	vertical-align:middle;	
+	-webkit-box-shadow:0px 2px 5px #eee inset;
+	box-shadow:0px 2px 5px #eee inset;
+	border-collapse: separate; /* fix for ie9 shadow */
+}
+.view-section div.dataTables_filter input:hover{ border: 1px solid #ccc; color:#777;}
+.view-section div.dataTables_filter input:focus{ border: 1px solid #9097d3; -webkit-box-shadow: 0 0 4px #949bd8; box-shadow: 0 0 4px #949bd8;}
+
+
+
+
+
+
+
+
+
 
 
 

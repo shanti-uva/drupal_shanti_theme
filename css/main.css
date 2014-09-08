@@ -1768,7 +1768,88 @@ div.messages ul li {
 /*---------------------------------------------------*/
 
 
+/* Pager */
 
+input.pagerer-page{ /* the input for page count */
+  border:none;  
+  padding-top: 0.12em;
+  line-height:1.25em;
+  color: #6d7afc;
+  -webkit-box-shadow: 0 0 3px rgba(50, 50, 50, 0.4);
+  box-shadow: 0 0 3px rgba(50, 50, 50, 0.4);
+  border-collapse: separate;
+  border-radius:2px;
+  background-clip: padding-box; 
+  width:2.68em;
+}
+input.pagerer-page:focus{
+  background:#fff;
+}
+
+ul.pager{
+  margin:0;
+  display:inline;
+  text-align:right;
+  float:right;
+}
+ul.pager li{ padding:0 1px; line-height:1.12em;}
+ul.pager li>a{
+  color:#aaa;
+  padding:0.12em 0.5em;
+  margin:0;
+  background:transparent;
+  border:none;
+  border-radius:0.18em;
+  background-clip: padding-box; 
+  display:inline-block;
+  position:relative;
+  top:0;
+  border:none !important;
+}
+ul.pager li>a:hover{
+  color:#333;
+  -webkit-box-shadow: 0 0 3px rgba(50, 50, 50, 0.4);
+  box-shadow: 0 0 3px rgba(50, 50, 50, 0.4);
+  border-collapse: separate; /* fix for ie9 shadow */
+  border:none !important;
+}
+ul.pager li>a:active{ -webkit-box-shadow:none;box-shadow:none;}
+
+ul.pager li>a i{ color:#999; position:relative; top: 0.12em}
+ul.pager li>a:hover i{ color:#444;}
+
+ul.pager .pager-first>a,
+ul.pager .pager-last>a{ padding:0.06em 0.5em;}
+
+.pager-first i,
+.pager-previous i,
+.pager-next i,
+.pager-last i{
+  font-family:'shanticon';
+  height:1em;
+  width:1em;
+  font-size:1em;
+  line-height:1em;
+  color:#222;
+  display:inline-block;
+  background:transparent;
+}
+.pager-first i:before{ content:"\e63d"; }
+.pager-previous i:before { content:"\e640"; }
+.pager-next i:before { content:"\e63f"; }
+.pager-last i:before { content:"\e63e"; }
+
+.pager-first,
+.pager-last{ position:relative;top:1px;}
+.pager-first i,
+.pager-last i{ font-size:1.25em;}
+
+
+.pager-next{ margin-left:.38em;}
+.pager-previous{ margin-right:.38em;}
+
+
+/* End Pager */
 
 
 
