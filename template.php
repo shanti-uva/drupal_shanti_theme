@@ -50,6 +50,7 @@ function shanti_theme_preprocess_page(&$variables) {
     drupal_add_js($variables['theme_path'] . '/js/ajax-solr/core/Parameter.js', $options);
     drupal_add_js($variables['theme_path'] . '/js/ajax-solr/widgets/jquery/PagerWidget.js', $options);
     drupal_add_js($variables['theme_path'] . '/js/ajax-solr/widgets/jquery/TextWidget.js', $options);
+    drupal_add_js($variables['theme_path'] . '/js/ajax-solr/widgets/jquery/FancyTreeUpdatingWidget.js', $options);
 
 
     if (!$variables['subject']) {

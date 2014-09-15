@@ -339,7 +339,7 @@
                   </div>
                   <!-- TAB - list view -->
                   <div class="listview tab-pane">
-                      <div id="pager">pager blank</div>
+                      <div id="pager" class="pagination"></div>
 
                       <div class="view-wrap"> <!-- view-wrap controls container height -->
                           <div class="table-responsive">
@@ -352,7 +352,7 @@
                                   </thead>
                                   <tbody></tbody>
                               </table>
-                              <div id="pager-header">header</div>
+                              <div id="pager-header"></div>
                           </div>
                       </div>
                   </div>
