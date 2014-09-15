@@ -170,13 +170,13 @@ function decorateElementWithPopover(elem, node) {
         return x.title;
     })).join("/") + "</div>";
     var txt = $('#searchform').val();
-    var caption = $((node.data.caption)?node.data.caption:"").text();
+    var caption = ((node.data.caption)?node.data.caption:"");
     var kmapid = "<span class='kmapid-display'>" + node.key + "</span>";
     var lazycounts = "<div class='counts-display'>...</div>";
     jQuery(elem).popover({
             html: true,
             content: function() {
-                return path + "<p class='popover-caption'>" + caption + "</p><div class='info-wrap' id='infowrap" + node.key +"'>" + lazycounts + "</div>";
+                return path + caption + "<div class='info-wrap' id='infowrap" + node.key +"'>" + lazycounts + "</div>";
             },
             title: function() {
                 return node.title + kmapid;
@@ -287,7 +287,7 @@ jQuery(function ($) {
     const SEARCH_MIN_LENGTH = 2;
 
     // set the popover defaults
-    $.fn.popover.Constructor.DEFAULTS.trigger = 'click';
+    $.fn.popover.Constructor.DEFAULTS.trigger = 'hover';
     $.fn.popover.Constructor.DEFAULTS.placement = 'left';
     $.fn.popover.Constructor.DEFAULTS.html = true;
     $.fn.popover.Constructor.DEFAULTS.delay.hide = '5000';
@@ -1295,16 +1295,21 @@ jQuery(function($) {
                     snippet += doc.header;
                 }
 
-                // console.log(JSON.stringify(doc,undefined,2));
+//                console.log(JSON.stringify(doc,undefined,2));
+
+                console.log(doc.ancestors);
 
                 var path = "<div class='kmap-path'>/" + $.makeArray(doc.ancestors.map(function (x) {
                     return x;
                 })).join("/") + "</div>";
-                var caption = $((doc.caption_eng)?doc.caption_eng:"").text();
+
+                console.log("PATH = " + path);
+
+                var caption = ((doc.caption_eng)?doc.caption_eng:"");
                 var localid = doc.id.replace('subjects-','').replace('places-',''); // shave the kmaps name from the id.
                 var kmapid = "<span class='kmapid-display'>" + localid + "</span>";
                 var lazycounts = "<div class='counts-display'>...</div>";
-                var content = path + "<p class='caption'>" + caption + "</p><div class='info-wrap' id='infowrap" + localid +"'>" + lazycounts + "</div>";
+                var content = path + caption + "<div class='info-wrap' id='infowrap" + localid +"'>" + lazycounts + "</div>";
                 var title =  doc.header + kmapid;
 
                 var info = (doc.feature_types)?doc.feature_types[0]:doc.ancestors[0];
