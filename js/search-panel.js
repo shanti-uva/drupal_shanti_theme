@@ -1558,7 +1558,6 @@ function processSubjectsData(data) {
 
       var $tabPhotos = $("#tab-photos");
       $tabPhotos.empty();
-      $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
       var photosURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/pictures.json?per_page=30";
       shanti.photosURL = photosURL;
       shanti.feature_id = data.feature.id;
@@ -1690,9 +1689,9 @@ function relatedResources(data) {
 
 //Function to populate photos tab
 function relatedPhotos(data) {
-
-  console.log(data);
-  
+  var $tabPhotos = $("#tab-photos");
+  $tabPhotos.empty();
+  $tabPhotos.append('<h6>Photographs in ' + shanti.shanti_data.feature.header + '</h6>');  
   var contentPh = '<div class="related-photos">';
 
   //First get and show photos from sharedshelf
