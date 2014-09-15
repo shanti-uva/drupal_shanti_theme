@@ -3,7 +3,8 @@ function processPlacesData(data) {
   //Global variable to hold all the related resources count
   shantiPlaces = {
     places_id: data.feature.id,
-    places_header: data.feature.header
+    places_header: data.feature.header,
+    shanti_places_data: data
   };
 
   //Remove all content from show related pages
@@ -291,7 +292,6 @@ function processPlacesData(data) {
 
       var $tabPhotos = $("#tab-photos");
       $tabPhotos.empty();
-      $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
       var photosURL = Settings.mmsUrl + "/places/" + data.feature.id + "/pictures.json?per_page=30";
       shantiPlaces.photosURL = photosURL;
       shantiPlaces.feature_id = data.feature.id;
@@ -336,6 +336,9 @@ function populatePlacesBreadcrumbs(bInd, bVal) {
 
 //Function to show related photos in places
 function relatedPlacesPhotos(data) {
+  var $tabPhotos = $("#tab-photos");
+  $tabPhotos.empty();
+  $tabPhotos.append('<h6>Photographs in ' + shantiPlaces.shanti_places_data.feature.header + '</h6>');
   
   var contentPh = '<div class="related-photos">';
 
