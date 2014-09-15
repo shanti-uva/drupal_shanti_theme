@@ -23,6 +23,8 @@ jQuery(function ($) {
       top: 0
   });
 
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
 });
 
 
@@ -88,6 +90,13 @@ jQuery(function($) {
 	 // --- autoadjust the height of search panel, call function TEMP placed in bottom of equalheights js
     kmaps_subjectsHeight();
     $(window).bind('load orientationchange resize', kmaps_subjectsHeight);
+
+
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
+
 });
 
 // *** SEARCH *** corrections for widths
@@ -95,7 +104,7 @@ jQuery(function($) {
 
   $("#kmaps-search div.text").resizable({ handles: "w",
           resize: function (event, ui) {
-              $('.title-field').trunk8({ tooltip:false });
+             $("table.table-results tbody td span").trunk8({ tooltip:false });
           }
       }); // --- initiate jquery resize
 
@@ -118,7 +127,11 @@ jQuery(function($) {
   $("button.view-resources").click( function() {
           $(this).toggleClass( "show",'fast' );
    });
-  
+
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
 });
 
 
@@ -143,13 +156,20 @@ jQuery(function($) {
       $(this).removeClass('on-hover');
       }
   );
+
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
 });
 
 function decorateElementWithPopover(elem, node) {
+
     jQuery(elem).attr('rel', 'popover');
     var path = "<div class='kmap-path'>/" + $.makeArray(node.getParentList(false, true).map(function (x) {
         return x.title;
     })).join("/") + "</div>";
+    var txt = $('#searchform').val();
     var caption = ((node.data.caption)?node.data.caption:"");
     var kmapid = "<span class='kmapid-display'>" + node.key + "</span>";
     var lazycounts = "<div class='counts-display'>...</div>";
@@ -169,6 +189,10 @@ function decorateElementWithPopover(elem, node) {
         var counts = $("#infowrap" + node.key + " .counts-display");
         // console.log(counts.html());
         // alert(node.key + " --- " + counts);
+
+        var txt = $('#searchform').val();
+        $('.popover-caption').highlight(txt, { element: 'mark'});
+
         $.ajax({
             type: "GET",
             url: Settings.baseUrl + "/features/" + node.key + ".xml",
@@ -189,12 +213,12 @@ function decorateElementWithPopover(elem, node) {
                 var video_count = Number($(xml).find('video_count').text());
                 var document_count = Number($(xml).find('document_count').text());
 
-                if (related_count) counts.html("<span class='associated'><i class='icon shanticon-sources'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
-                if (description_count) counts.append("<span class='associated'><i class='icon shanticon-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
-                if (place_count) counts.append("<span class='associated'><i class='icon shanticon-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
-                if (picture_count) counts.append("<span class='associated'><i class='icon shanticon-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
+                counts.html("");
                 if (video_count) counts.append("<span class='associated'><i class='icon shanticon-audio-video'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
-                if (document_count) counts.append("<span class='associated'><i class='icon shanticon-texts'></i><span class='badge' + (document_count)?' alert-success':'>" + document_count + "</span></span>");
+                if (picture_count) counts.append("<span class='associated'><i class='icon shanticon-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
+                if (place_count) counts.append("<span class='associated'><i class='icon shanticon-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
+                if (description_count) counts.append("<span class='associated'><i class='icon shanticon-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
+                if (related_count) counts.append("<span class='associated'><i class='icon shanticon-"+ Settings.type  +"'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
 
             }
         });
@@ -211,13 +235,13 @@ var searchUtil = {
         $('#tree').fancytree("getRootNode").visit(function (node) {
             node.setExpanded(false);
         });
-        $('table.table-results').dataTable().fnDestroy();
+//        $('div.listview div div.table-responsive table.table-results').dataTable().fnDestroy();
 
 
 
 
         $('div.listview div div.table-responsive table.table-results tr').not(':first').remove();
-        $('table.table-results').dataTable();
+//        $('div.listview div div.table-responsive table.table-results').dataTable();
 
         // "unwrap" the <mark>ed text
         $('span.fancytree-title').each(
@@ -260,7 +284,7 @@ var notify = {
 jQuery(function ($) {
 
     // search min length
-    const SEARCH_MIN_LENGTH = 3;
+    const SEARCH_MIN_LENGTH = 2;
 
     // set the popover defaults
     $.fn.popover.Constructor.DEFAULTS.trigger = 'hover';
@@ -305,14 +329,30 @@ jQuery(function ($) {
     };
 
 
-    /**
+
+/*
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
     // set the dataTable defaults
-    $.extend( true, $.fn.dataTable.defaults, {
-				"sScrollY": "300px",
-				"sScrollX": "100%",
-				"sScrollXInner": "150%",
-				"bScrollCollapse": true,
-				"bPaginate": false
+
+    if ($.fn.dataTable)
+    $.extend( true, $.fn.dataTable.defaults,        {
+//        "sDom": "<'row'<'col-xs-6'i><'col-xs-6'p>>" +
+//            "t" +
+//            "<'row'>",
+//        "iTabIndex": 1,
+        "oLanguage": {
+            "sEmptyTable": "No results.  Enter new search query above.",
+                "sScrollY": "300px",
+                "sScrollX": "100%",
+                "sScrollXInner": "150%",
+                "bScrollCollapse": true,
+              "bPaginate": false
+//  "oPaginate": {
+//                "sPrevious": "&lt;",
+//                "sNext": "&gt;"
+//            }
         },
         
         "oPaginate": false,
@@ -354,7 +394,8 @@ jQuery(function ($) {
 
           var listitem = $(".title-field[kid='" + data.node.key + "']");
           $('.row_selected').removeClass('row_selected');
-          $(listitem).closest('tr').addClass('row_selected')
+          $(listitem).closest('tr').addClass('row_selected');
+          window.location.hash = "id=" + data.node.key;
       },
       glyph: {
           map: {
@@ -380,11 +421,13 @@ jQuery(function ($) {
           timeout: 30000,
           error: function(e) {
               notify.warn("networkerror","Error retrieving tree from kmaps server.");
+          },
+          beforeSend: function() {
+              maskSearchResults(true);
+          },
+          complete: function() {
+              maskSearchResults(false);
           }
-      },
-      activate: function(event, data) {
-        //alert(JSON.stringify(data.node.title));
-        window.location.hash = "id=" + data.node.key;
       },
       focus: function(event, data){ data.node.scrollIntoView(true); },
       renderNode: function(event,data) {
@@ -397,11 +440,14 @@ jQuery(function ($) {
    });
 
 
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
+
     // Render the search results into the dataTable
     // This presumes the results are a list of a certain structure
     //
     var renderSearchResults = function (ret) {
-//              //      ("json: " + JSON.stringify(resultHash));
+        console.log("JSON: " + JSON.stringify(resultHash));
 
         var txt = $("#searchform").val();
         var resultHash = {};
@@ -411,7 +457,7 @@ jQuery(function ($) {
                 // for places, list the feature type
                 resultHash[this.id] = this.feature_types[0].title;
             } else {
-                resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unknown";
+                resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unblown: " + JSON.stringify(this);
             }
         });
 
@@ -450,19 +496,16 @@ jQuery(function ($) {
             );
         });
 
-        $("table.table-results tbody tr").click(function (event) {
+        $("table.table-results").on('click','tbody tr',function (event) {
+            console.log ("TR CLICKED " + event);
             var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
             $('.row_selected').removeClass('row_selected');
             $(event.target).closest('tr').addClass('row_selected');
             $("#tree").animate({ scrollTop: 0 }, "slow");
-            $('#tree')
-                .fancytree('getTree')
-                .activateKey(
-                    kid
-                ).scrollIntoView();
+            $("#tree").fancytree('getTree').activateKey(kid).scrollIntoView();
         });
 
-        $('table.table-results').dataTable();
+//        $('div.listview div div.table-responsive table.table-results').dataTable();
 
     };
 
@@ -470,6 +513,11 @@ jQuery(function ($) {
     function maskSearchResults( isMasked ) {
         var showhide = (isMasked)?'show':'hide';
         $('.view-section>.tab-content').overlayMask(showhide);
+    }
+
+    function maskTree (isMasked) {
+        var showhide = (isMasked)?'show':'hide';
+        $('#tree').overlayMask(showhide);
     }
 
     function searchClassicKmaps(txt, searchargs) {
@@ -488,10 +536,15 @@ jQuery(function ($) {
             },
             success: renderSearchResults,
             complete: function () {
-                maskSearchResults(false);
+                // For now, we are letting fancytree unmask everything, because it will be the slowest step.
+                // eventually we can refine it so that the list and search interface is not masked unnecessarily.
+                // maskSearchResults(false);
             }
         });
     }
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
 
     var handleSearch = function handleSearch() {
         // clear previous styling
@@ -524,31 +577,53 @@ jQuery(function ($) {
                 description: essck
             };
 
-            $('table.table-results').dataTable().fnDestroy();
+//            $('table.table-results').dataTable().fnDestroy();
             searchClassicKmaps(txt, searchargs);
             return false;
         }
     };
 
-    $("#searchbutton").click(handleSearch);
-  $('#searchform').attr('autocomplete','off'); // turn off browser autocomplete
-  $("form.form").submit(handleSearch);
-  $("#searchform").keyup( function(e) {
-    var code = (e.keyCode ? e.keyCode : e.which);
-    if (code === 13) {
-        e.preventDefault();
-        handleSearch();
+    $('#searchform').attr('autocomplete','off'); // turn off browser autocomplete
+
+    if (false) {
+        // classic search
+        $("#searchbutton").click(handleSearch);
+        $("form.form").submit(handleSearch);
+        $("#searchform").keyup(function (e) {
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code === 13) {
+                e.preventDefault();
+                handleSearch();
+            }
+        });
+    } else {
+
+
+
     }
-  });
+
+
 
   //    $('.table-v').on('shown.bs.tab', function() { $('.title-field').trunk8(); });
     $('.listview').on('shown.bs.tab', function() {
+
+        if ($('div.listview div div.table-responsive table.table-results tr td').length == 0) {
+            notify.warn("warnnoresults", "Enter a search above.");
+        }
+
         var header = (location.pathname.indexOf('subjects') !== -1)?"<th>Name</th><th>Root Category</th>":"<th>Name</th><th>Feature Type</th>";
         $('div.listview div div.table-responsive table.table-results tr:has(th):not(:has(td))').html(header);
-        $(".title-field").trunk8({ tooltip:false });
+        $("table.table-results tbody td span").trunk8({ tooltip:false });
+
         if ($('.row_selected')[0]) {
             if ($('.listview')) {
-                $('.listview').scrollTo($('.row_selected')[0]);
+                var me = $('div.listview').find('.row_selected');
+                var myWrapper = me.closest('.view-wrap');
+                var scrollt = me.offset().top;
+
+                myWrapper.animate({
+                    scrollTop: scrollt
+                }, 2000);
             }
         }
     });
@@ -570,6 +645,9 @@ jQuery(function ($) {
   //       'mouseenter': function () { $(this).trunk8('revert'); },
   //        'mouseout': function () { $(this).trunk8({ tooltip:false }).popover(); }
   //    },'.title-field');
+
+//    console.log(new Error().stack);
+//    console.dir($._data($('#searchy').get(0).events));
 
 });
 
@@ -1146,6 +1224,200 @@ jQuery(function($) {
 
   $(window).trigger( 'hashchange' );
 });
+
+
+
+
+
+
+
+jQuery(function($) {
+
+    // Adding all the "widgets" to the manager and attaching them to dom elements.
+
+    var Manager;
+    $(function () {
+
+        AjaxSolr.ResultWidget = AjaxSolr.AbstractWidget.extend({
+
+            afterRequest: function () {
+
+                $(this.target).empty();
+
+
+                // Add the header row!
+
+                var header = (location.pathname.indexOf('subjects') !== -1)?"<th>Name</th><th>Root Category</th>":"<th>Name</th><th>Feature Type</th>";
+                $(this.target).append('<thead><tr>'+ header +'</tr></thead>');
+
+                // Add a body!
+
+                var body = $(this.target).append('<tbody></tbody>');
+
+                for (var i = 0, l = this.manager.response.response.docs.length; i < l; i++) {
+                    var doc = this.manager.response.response.docs[i];
+                    body.append(this.template(doc));
+                }
+
+                $(this.target).find('tr').popover(
+                    {
+                        "template": '<div class="popover searchPop" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="content"></div></div>'
+                    }
+                );
+
+                $(this.target).on('click','tr',function (event) {
+                    console.log ("TR CLICKED " + event);
+                    var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
+                    $('.row_selected').removeClass('row_selected');
+                    $(event.target).closest('tr').addClass('row_selected');
+                    $("#tree").animate({ scrollTop: 0 }, "slow");
+                    $("#tree").fancytree('getTree').activateKey(kid).scrollIntoView();
+                });
+
+
+                var txt = $('#searchform').val();
+                console.log("text = " + txt);
+
+                // trunk8 as needed.  REALLY there should be one place for adding trunk8 on changes
+                $("table.table-results tbody td span").highlight(txt, { element: 'mark' }).trunk8({ tooltip:false });
+            },
+
+            template: function (doc) {
+
+                // alert(JSON.stringify(doc));
+                var snippet = '';
+                if (doc.header.length > 300) {
+                    snippet += doc.header.substring(0, 300);
+                    snippet += '<span style="display:none;">' + doc.header.substring(300);
+                    snippet += '</span> <a href="#" class="more">more</a>';
+                }
+                else {
+                    snippet += doc.header;
+                }
+
+//                console.log(JSON.stringify(doc,undefined,2));
+
+                console.log(doc.ancestors);
+
+                var path = "<div class='kmap-path'>/" + $.makeArray(doc.ancestors.map(function (x) {
+                    return x;
+                })).join("/") + "</div>";
+
+                console.log("PATH = " + path);
+
+                var caption = ((doc.caption_eng)?doc.caption_eng:"");
+                var localid = doc.id.replace('subjects-','').replace('places-',''); // shave the kmaps name from the id.
+                var kmapid = "<span class='kmapid-display'>" + localid + "</span>";
+                var lazycounts = "<div class='counts-display'>...</div>";
+                var content = path + caption + "<div class='info-wrap' id='infowrap" + localid +"'>" + lazycounts + "</div>";
+                var title =  doc.header + kmapid;
+
+                var info = (doc.feature_types)?doc.feature_types[0]:doc.ancestors[0];
+                var output = '<tr rel="popover" class="title-field" kid="'+ localid +
+                        '" title="'+ title +
+                        '" data-content="'+ content +
+                        '" >';
+
+                output += '<td><span>' + doc.header +' </span></td>';
+                output += '<td id="links_' + localid + '" class="links"><span>' + info + '</span></td>';
+                output += '</tr>';
+                return output;
+            }
+        });
+
+        Manager = new AjaxSolr.Manager({
+            solrUrl: 'http://kidx.shanti.virginia.edu/solr/termindex/'
+        });
+        Manager.addWidget(new AjaxSolr.ResultWidget({
+            id: 'result',
+            target: 'div.listview div div.table-responsive table.table-results'
+        }));
+
+        Manager.addWidget(new AjaxSolr.TextWidget({
+            id: 'textsearch',
+            target: '#searchform'
+        }));
+
+        Manager.init();
+        Manager.store.addByValue('rows', 10);
+        Manager.store.addByValue('q', 'name:*');
+        Manager.store.addByValue('fq', 'tree:' + Settings.type);
+        Manager.store.addByValue('sort', 'header asc');
+        Manager.store.addByValue('df', 'name');
+        // Manager.doRequest();
+
+        Manager.addWidget(new AjaxSolr.PagerWidget({
+            id: 'pager',
+            target: '#pager',
+            prevLabel: '&laquo;',
+            nextLabel: '&raquo;',
+            innerWindow: 1,
+            renderHeader: function (perPage, offset, total) {
+                $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
+            }
+        }));
+
+        Manager.addWidget(new AjaxSolr.FancyTreeUpdatingWidget({
+            id: 'fancytree',
+            target: '#tree'
+        }));
+
+
+        $('div.listview').on('shown.bs.popover',function(x) {
+            var kid = x.target.attributes['kid'].nodeValue;
+            console.log("kid = " + kid);
+            var counts = $("#infowrap" + kid + " .counts-display");
+            var solrURL = 'http://kidx.shanti.virginia.edu/solr/kmindex/select?q=kmapid:' + Settings.type + '-' + kid + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
+
+            console.log("getting " + solrURL);
+            $.get(solrURL,function(json) {
+                var data = JSON.parse(json);
+                $.each(data.grouped.service.groups,function(x,y) {
+                   console.log("groupValue: " + y.groupValue);
+                    console.log("numFound: " + y.doclist.numfound);
+                });
+            });
+
+            $.ajax({
+                type: "GET",
+                url: Settings.baseUrl + "/features/" + kid + ".xml",
+                dataType: "xml",
+                timeout: 30000,
+                beforeSend: function(){
+                    counts.html("<span class='assoc-resources-loading'>loading...</span>");
+                },
+                error: function(e) {
+                    counts.html("<i class='glyphicon glyphicon-warning-sign' title='"+ e.statusText);
+                },
+                success: function (xml) {
+                    // force the counts to be evaluated as numbers.
+                    var related_count = Number($(xml).find('related_feature_count').text());
+                    var description_count = Number($(xml).find('description_count').text());
+                    var place_count = Number($(xml).find('place_count').text());
+                    var picture_count = Number($(xml).find('picture_count').text());
+                    var video_count = Number($(xml).find('video_count').text());
+                    var document_count = Number($(xml).find('document_count').text());
+
+                    counts.html("");
+                    if (video_count) counts.append("<span class='associated'><i class='icon shanticon-audio-video'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
+                    if (picture_count) counts.append("<span class='associated'><i class='icon shanticon-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
+                    if (place_count) counts.append("<span class='associated'><i class='icon shanticon-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
+                    if (description_count) counts.append("<span class='associated'><i class='icon shanticon-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
+                    if (related_count) counts.append("<span class='associated'><i class='icon shanticon-"+ Settings.type  +"'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
+
+                }
+            });
+        });
+    });
+}(jQuery));
+
+
+
+
+
+
+
+
 
 /**
  * Function that will process the returned data and create the various sections of the page.

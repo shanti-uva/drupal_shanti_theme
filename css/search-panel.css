@@ -728,7 +728,7 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
     top: 0;
 }
 .view-section tr.row_selected {
-    display: block;
+    /* display: block; */
     background: #fff;
     -webkit-box-shadow: 0 0 3px 0 #aaa;
     box-shadow: 0 0 3px 0 #aaa;
@@ -1253,5 +1253,15 @@ table.dataTable thead .sorting_asc{ background:none;border:none;width:0;min-widt
 /***** END Fonts ******/
 /*----------------------*/
 
+
+
+
+
+
+/* yuji's search widget stuff */
+#pager li, .links li {
+    list-style-type: none;
+    display: inline;
+}
 
 
