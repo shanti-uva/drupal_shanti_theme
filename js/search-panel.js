@@ -457,7 +457,7 @@ jQuery(function ($) {
                 // for places, list the feature type
                 resultHash[this.id] = this.feature_types[0].title;
             } else {
-                resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"unblown: " + JSON.stringify(this);
+                resultHash[this.id] = (this.ancestors)?this.ancestors.features[0].header:"";
             }
         });
 
@@ -1391,6 +1391,11 @@ jQuery(function($) {
                     counts.html("<i class='glyphicon glyphicon-warning-sign' title='"+ e.statusText);
                 },
                 success: function (xml) {
+
+                    // Deal with both sources?
+                    // kmaps and the override with solr?
+                    // Remember that document order is reverse of display order (OH CSS-hell!).
+                    
                     // force the counts to be evaluated as numbers.
                     var related_count = Number($(xml).find('related_feature_count').text());
                     var description_count = Number($(xml).find('description_count').text());
