@@ -1,7 +1,7 @@
 var Settings = {
      type: location.pathname.indexOf('subjects') !== -1 ? "subjects" : "places",
      baseUrl: location.pathname.indexOf('subjects') !== -1 ? "http://subjects.kmaps.virginia.edu" : "http://places.kmaps.virginia.edu",
-     mmsUrl: "http://dev-mms.thlib.org",
+     mmsUrl: "http://mms.thlib.org",
      placesUrl: "http://places.kmaps.virginia.edu",
      subjectsUrl: "http://subjects.kmaps.virginia.edu",
      placesPath: location.origin + location.pathname.substring(0, location.pathname.lastIndexOf('/')) + '/places',
@@ -1559,7 +1559,6 @@ function processSubjectsData(data) {
 
       var $tabPhotos = $("#tab-photos");
       $tabPhotos.empty();
-      $tabPhotos.append('<h6>Photographs in ' + data.feature.header + '</h6>');
       var photosURL = Settings.mmsUrl + "/topics/" + data.feature.id + "/pictures.json?per_page=30";
       shanti.photosURL = photosURL;
       shanti.feature_id = data.feature.id;
@@ -1691,9 +1690,9 @@ function relatedResources(data) {
 
 //Function to populate photos tab
 function relatedPhotos(data) {
-
-  console.log(data);
-  
+  var $tabPhotos = $("#tab-photos");
+  $tabPhotos.empty();
+  $tabPhotos.append('<h6>Photographs in ' + shanti.shanti_data.feature.header + '</h6>');  
   var contentPh = '<div class="related-photos">';
 
   //First get and show photos from sharedshelf
