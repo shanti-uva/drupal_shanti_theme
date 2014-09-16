@@ -1261,8 +1261,10 @@ jQuery(function($) {
 
                 $(this.target).find('tr').popover(
                     {
-                        "template": '<div class="popover searchPop" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="content"></div></div>'
+                        "template": '<div class="popover searchPop" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
                     }
+
+                    // '<div class="popover" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
                 );
 
                 $(this.target).on('click','tr',function (event) {
@@ -1317,7 +1319,6 @@ jQuery(function($) {
                         '" title="'+ title +
                         '" data-content="'+ content +
                         '" >';
-
                 output += '<td><span>' + doc.header +' </span></td>';
                 output += '<td id="links_' + localid + '" class="links"><span>' + info + '</span></td>';
                 output += '</tr>';

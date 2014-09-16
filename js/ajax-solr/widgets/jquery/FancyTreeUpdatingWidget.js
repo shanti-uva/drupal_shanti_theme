@@ -114,6 +114,8 @@ AjaxSolr.FancyTreeUpdatingWidget = AjaxSolr.AbstractWidget.extend(
           self.manager.executeRequest(self.servlet, 'json.nl=map&fl=id&rows=300000&' + self.tmpstore.string(), function (data) {
               console.dir(data);
 
+
+
               var resultHash = {};
               $(data.response.docs).each( function(z,x) {
 //              console.log("hashing:  " + x.id + "   " + x.id.split('-')[1]);
@@ -125,6 +127,14 @@ AjaxSolr.FancyTreeUpdatingWidget = AjaxSolr.AbstractWidget.extend(
               } else {
                   notify.clear();
               }
+
+              // clear the highlighting
+              $('span.fancytree-title').has("mark").each(
+                  function() {
+                    console.log("found: " + this);
+                    $(this).text($(this).text());
+                  }
+              );
 
               maskTree(true);
               var tree = $('#tree').fancytree('getTree').applyFilter(function (node) {
