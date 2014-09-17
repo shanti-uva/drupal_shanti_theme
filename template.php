@@ -11,7 +11,7 @@ function shanti_theme_preprocess_page(&$variables) {
   );
 
   if (!$variables['subject']) {
-    drupal_add_css($variables['theme_path'] . '/css/places.css', $options);
+    drupal_add_css($variables['theme_path'] . '/css/shanti-places.css', $options);
     drupal_add_css($variables['theme_path'] . '/css/openlayers.css', $options);
   }
 
@@ -61,12 +61,12 @@ function shanti_theme_preprocess_page(&$variables) {
   }
 
   drupal_add_js($variables['theme_path'] . '/js/inset-map.js', $options);
-  drupal_add_js($variables['theme_path'] . '/js/search-panel.js', $options);
-  drupal_add_js($variables['theme_path'] . '/js/main.js', $options);
+  drupal_add_js($variables['theme_path'] . '/js/shanti-main-sj.js', $options);
+  drupal_add_js($variables['theme_path'] . '/js/shanti-main.js', $options);
   drupal_add_js($variables['theme_path'] . '/js/vendor/modernizr-2.6.2.min.js', $options);
 
   if (!$variables['subject']) {
-    drupal_add_js($variables['theme_path'] . '/js/kmap_places.js', $options);
+    drupal_add_js($variables['theme_path'] . '/js/shanti-main-pl.js', $options);
   }
 
 //    drupal_add_js($variables['theme_path'] . '/src/jquery.dataTables.min.js', $options);
