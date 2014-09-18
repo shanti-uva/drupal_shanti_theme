@@ -1353,6 +1353,7 @@ jQuery(function($) {
             prevLabel: '&laquo;',
             nextLabel: '&raquo;',
             innerWindow: 1,
+            outerWindow: 0,
             renderHeader: function (perPage, offset, total) {
                 $('#pager-header').html($('<span></span>').text('displaying ' + Math.min(total, offset + 1) + ' to ' + Math.min(total, offset + perPage) + ' of ' + total));
             }
