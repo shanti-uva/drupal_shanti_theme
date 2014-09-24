@@ -228,6 +228,7 @@ function decorateElementWithPopover(elem, node) {
 
 var searchUtil = {
     clearSearch: function() {
+//        console.log("BANG: searchUtil.clearSearch()");
         if ($('#tree').fancytree('getActiveNode')) {
             $('#tree').fancytree('getActiveNode').setActive(false);
         }
@@ -429,7 +430,7 @@ jQuery(function ($) {
               maskSearchResults(false);
           }
       },
-      focus: function(event, data){ data.node.scrollIntoView(true); },
+      focus: function(event, data){ /* data.node.scrollIntoView(true); */ },
       renderNode: function(event,data) {
           if (!data.node.isStatusNode) {
               decorateElementWithPopover(data.node.span, data.node);
@@ -447,12 +448,12 @@ jQuery(function ($) {
     // This presumes the results are a list of a certain structure
     //
     var renderSearchResults = function (ret) {
-        console.log("JSON: " + JSON.stringify(resultHash));
+//        console.log("JSON: " + JSON.stringify(resultHash));
 
         var txt = $("#searchform").val();
         var resultHash = {};
         $(ret.features).each(function () {
-            console.log(JSON.stringify(this));
+//            console.log(JSON.stringify(this));
             if (this.feature_types && this.feature_types.length > 0) {
                 // for places, list the feature type
                 resultHash[this.id] = this.feature_types[0].title;
@@ -497,12 +498,12 @@ jQuery(function ($) {
         });
 
         $("table.table-results").on('click','tbody tr',function (event) {
-            console.log ("TR CLICKED " + event);
+//            console.log ("TR CLICKED " + event);
             var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
             $('.row_selected').removeClass('row_selected');
             $(event.target).closest('tr').addClass('row_selected');
             $("#tree").animate({ scrollTop: 0 }, "slow");
-            $("#tree").fancytree('getTree').activateKey(kid).scrollIntoView();
+            $("#tree").fancytree('getTree').activateKey(kid); /* .scrollIntoView(); */
         });
 
 //        $('div.listview div div.table-responsive table.table-results').dataTable();
@@ -683,8 +684,9 @@ jQuery(function($) {
     $(kms).attr("placeholder",$(kms).data("holder"));
     $("button.searchreset").hide();
     $(".alert").hide();
-        searchUtil.clearSearch();
-        $('#tree').fancytree("getTree").clearFilter();
+//    console.log("clearFilter()");
+    $('#tree').fancytree("getTree").clearFilter();
+    searchUtil.clearSearch();
   });
 
 });
@@ -1189,7 +1191,7 @@ jQuery(function ($) {
 // *** Change fancytree to accomodate different languagues ***
 jQuery(function($) {
   $('nav li.form-group input[name=option2]').on('ifChecked', function(e) {
-    console.log("This should work");
+//    console.log("This should work");
     var newSource = Settings.baseUrl + "/features/fancy_nested.json?view_code=" + $('nav li.form-group input[name=option2]:checked').val();
     $("#tree").fancytree("option", "source.url", newSource);
   });
@@ -1268,17 +1270,17 @@ jQuery(function($) {
                 );
 
                 $(this.target).on('click','tr',function (event) {
-                    console.log ("TR CLICKED " + event);
+//                    console.log ("TR CLICKED " + event);
                     var kid = $(event.target).closest('.title-field').attr('kid') || $($(event.target).find('.title-field')[0]).attr('kid');
                     $('.row_selected').removeClass('row_selected');
                     $(event.target).closest('tr').addClass('row_selected');
                     $("#tree").animate({ scrollTop: 0 }, "slow");
-                    $("#tree").fancytree('getTree').activateKey(kid).scrollIntoView();
+                    $("#tree").fancytree('getTree').activateKey(kid); /* .scrollIntoView(); */
                 });
 
 
                 var txt = $('#searchform').val();
-                console.log("text = " + txt);
+//                console.log("text = " + txt);
 
                 // trunk8 as needed.  REALLY there should be one place for adding trunk8 on changes
                 $("table.table-results tbody td span").highlight(txt, { element: 'mark' }).trunk8({ tooltip:false });
@@ -1299,18 +1301,25 @@ jQuery(function($) {
 
 //                console.log(JSON.stringify(doc,undefined,2));
 
-                console.log(doc.ancestors);
+//                console.log(doc.ancestors);
 
                 var path = "<div class='kmap-path'>/" + $.makeArray(doc.ancestors.map(function (x) {
                     return x;
                 })).join("/") + "</div>";
 
-                console.log("PATH = " + path);
+//                console.log("PATH = " + path);
 
                 var caption = ((doc.caption_eng)?doc.caption_eng:"");
                 var localid = doc.id.replace('subjects-','').replace('places-',''); // shave the kmaps name from the id.
                 var kmapid = "<span class='kmapid-display'>" + localid + "</span>";
-                var lazycounts = "<div class='counts-display'>...</div>";
+                var lazycounts = "<div class='counts-display'>" +
+                    "<span class='assoc-resources-loading'>loading...</span>" +
+                    "<span style='display: none;' class='associated'><i class='icon shanticon-audio-video'></i><span class='badge alert-success'>0</span></span>" +
+                    "<span style='display: none;' class='associated'><i class='icon shanticon-photos'></i><span class='badge alert-success'>0</span></span>" +
+                    "<span style='display: none;' class='associated'><i class='icon shanticon-places'></i><span class='badge alert-success'>0</span></span>" +
+                    "<span style='display: none;' class='associated'><i class='icon shanticon-essays'></i><span class='badge alert-success'>0</span></span>" +
+                    "<span style='display: none;' class='associated'><i class='icon shanticon-subjects'></i><span class='badge alert-success'>0</span></span>" +
+                    "</div>";
                 var content = path + caption + "<div class='info-wrap' id='infowrap" + localid +"'>" + lazycounts + "</div>";
                 var title =  doc.header + kmapid;
 
@@ -1367,16 +1376,16 @@ jQuery(function($) {
 
         $('div.listview').on('shown.bs.popover',function(x) {
             var kid = x.target.attributes['kid'].nodeValue;
-            console.log("kid = " + kid);
-            var counts = $("#infowrap" + kid + " .counts-display");
+//            console.log("kid = " + kid);
+            var countsElem = $("#infowrap" + kid + " .counts-display");
             var solrURL = 'http://kidx.shanti.virginia.edu/solr/kmindex/select?q=kmapid:' + Settings.type + '-' + kid + '&fq=&start=0&facets=on&group=true&group.field=service&group.facet=true&group.ngroups=true&group.limit=0&wt=json';
 
-            console.log("getting " + solrURL);
+//            console.log("getting " + solrURL);
             $.get(solrURL,function(json) {
                 var data = JSON.parse(json);
                 $.each(data.grouped.service.groups,function(x,y) {
-                   console.log("groupValue: " + y.groupValue);
-                    console.log("numFound: " + y.doclist.numfound);
+//                   console.log("groupValue: " + y.groupValue);
+//                    console.log("numFound: " + y.doclist.numfound);
                 });
             });
 
@@ -1385,35 +1394,64 @@ jQuery(function($) {
                 url: Settings.baseUrl + "/features/" + kid + ".xml",
                 dataType: "xml",
                 timeout: 30000,
-                beforeSend: function(){
-                    counts.html("<span class='assoc-resources-loading'>loading...</span>");
+                beforeSend: function() {
+                    countsElem.find('.assoc-resources-loading').show();
+                    countsElem.find('.associated').hide();
                 },
                 error: function(e) {
-                    counts.html("<i class='glyphicon glyphicon-warning-sign' title='"+ e.statusText);
+                    countsElem.html("<i class='glyphicon glyphicon-warning-sign' title='"+ e.statusText);
                 },
                 success: function (xml) {
 
                     // Deal with both sources?
                     // kmaps and the override with solr?
                     // Remember that document order is reverse of display order (OH CSS-hell!).
-                    
+
+//                    console.log("SUCCESS");
+//                    console.log(xml);
+                    // alert(xml);
+
                     // force the counts to be evaluated as numbers.
-                    var related_count = Number($(xml).find('related_feature_count').text());
-                    var description_count = Number($(xml).find('description_count').text());
-                    var place_count = Number($(xml).find('place_count').text());
-                    var picture_count = Number($(xml).find('picture_count').text());
-                    var video_count = Number($(xml).find('video_count').text());
+                    var subject_count = (Settings.type === 'subjects')?Number($(xml).find('related_feature_count').text()):Number($(xml).find('subject_count').text());
+                    var essay_count = Number($(xml).find('description_count').text());  // This will be overridden.
+                    var place_count = (Settings.type === 'places')?Number($(xml).find('related_feature_count').text()):Number($(xml).find('place_count').text());
+                    var picture_count = Number($(xml).find('picture_count').text()); // this will be overridden
+                    var video_count = Number($(xml).find('video_count').text()); // this will be overridden
                     var document_count = Number($(xml).find('document_count').text());
 
-                    counts.html("");
-                    if (video_count) counts.append("<span class='associated'><i class='icon shanticon-audio-video'></i><span class='badge' + (video_count)?' alert-success':'>" + video_count + "</span></span>");
-                    if (picture_count) counts.append("<span class='associated'><i class='icon shanticon-photos'></i><span class='badge' + (picture_count)?' alert-success':'>" + picture_count + "</span></span>");
-                    if (place_count) counts.append("<span class='associated'><i class='icon shanticon-places'></i><span class='badge' + (place_count)?' alert-success':'>" + place_count + "</span></span>");
-                    if (description_count) counts.append("<span class='associated'><i class='icon shanticon-essays'></i><span class='badge' + (description_count)?' alert-success':'>" + description_count + "</span></span>");
-                    if (related_count) counts.append("<span class='associated'><i class='icon shanticon-"+ Settings.type  +"'></i><span class='badge' + (related_count)?' alert-success':''>" + related_count + "</span></span>");
-
+                    update_counts(countsElem, { videos: video_count, photos: picture_count, places: place_count, essays: essay_count, subjects: subject_count });
                 }
             });
+
+            function update_counts(elem, counts) {
+
+                if (typeof(counts.videos) != "undefined") {
+                    var av = elem.find('i.shanticon-audio-video ~ span.badge');
+                    (counts.videos) ? av.html(counts.videos).parent().show() : av.parent().hide();
+                }
+
+                if (typeof(counts.photos) != "undefined") {
+                    var photos = elem.find('i.shanticon-photos ~ span.badge');
+                    (counts.photos) ? photos.html(counts.photos).parent().show() : photos.parent().hide();
+                }
+
+                if (typeof(counts.places) != "undefined") {
+                    var places = elem.find('i.shanticon-places ~ span.badge');
+                    (counts.places) ? places.html(counts.places).parent().show() : places.parent().hide();
+                }
+
+                if (typeof(counts.essays) != "undefined") {
+                    var essays = elem.find('i.shanticon-essays ~ span.badge');
+                    (counts.essays) ? essays.html(counts.essays).parent().show : essays.parent().hide();
+                }
+
+                if (typeof(counts.subjects) != "undefined") {
+                    var subjects = elem.find('i.shanticon-subjects ~ span.badge');
+                    (counts.subjects) ? subjects.html(counts.subjects).parent().show() : subjects.parent().hide();
+                }
+
+                elem.find('.assoc-resources-loading').hide();
+            }
         });
     });
 }(jQuery));
