@@ -377,14 +377,14 @@ function relatedPlacesPhotos(data) {
   });
 
   contentPh += '</div>';
-  contentPh += '<ul id="photo-pagination" class="pager">';
-  contentPh += '<li class="first-page pager-first first"><a href="' + shantiPlaces.photosURL + '&page=1' + '"><i class="icon"></i></a></li>';
-  contentPh += '<li class="previous-page pager-previous"><a href="' + shantiPlaces.photosURL + '&page=1' + '"><i class="icon"></i></a></li>';
+  contentPh += '<ul id="photo-pagination">';
+  contentPh += '<li class="first-page"><a href="' + shantiPlaces.photosURL + '&page=1' + '">&lt;&lt;</a></li>';
+  contentPh += '<li class="previous-page"><a href="' + shantiPlaces.photosURL + '&page=1' + '">&lt;</a></li>';
   contentPh += '<li>PAGE</li>';
-  contentPh += '<li class="pager-current widget"><input type="text" value="1" class="page-input"></li>';
+  contentPh += '<li><input type="text" value="1" class="page-input"></li>';
   contentPh += '<li>OF ' + shantiPlaces.total_pages + '</li>';
-  contentPh += '<li class="next-page pager-next"><a href="' + shantiPlaces.photosURL + '&page=2' + '"><i class="icon"></i></a></li>';
-  contentPh += '<li class="last-page pager-last last"><a href="' + shantiPlaces.photosURL + '&page=' + shantiPlaces.total_pages + '"><i class="icon"></i></a></li>';
+  contentPh += '<li class="next-page"><a href="' + shantiPlaces.photosURL + '&page=2' + '">&gt;</a></li>';
+  contentPh += '<li class="last-page"><a href="' + shantiPlaces.photosURL + '&page=' + shantiPlaces.total_pages + '">&gt;&gt;</a></li>';
   contentPh += '</ul>';
   contentPh += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
   $("#tab-photos").append(contentPh);

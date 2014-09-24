@@ -1775,14 +1775,14 @@ function relatedPhotos(data) {
   });
 
   contentPh += '</div>';
-  contentPh += '<ul id="photo-pagination" class="pager">';
-  contentPh += '<li class="first-page pager-first first"><a href="' + shanti.photosURL + '&page=1' + '"><i class="icon"></i></a></li>';
-  contentPh += '<li class="previous-page pager-previous"><a href="' + shanti.photosURL + '&page=1' + '"><i class="icon"></i></a></li>';
+  contentPh += '<ul id="photo-pagination">';
+  contentPh += '<li class="first-page"><a href="' + shanti.photosURL + '&page=1' + '">&lt;&lt;</a></li>';
+  contentPh += '<li class="previous-page"><a href="' + shanti.photosURL + '&page=1' + '">&lt;</a></li>';
   contentPh += '<li>PAGE</li>';
-  contentPh += '<li class="pager-current widget"><input type="text" value="1" class="page-input"></li>';
+  contentPh += '<li><input type="text" value="1" class="page-input"></li>';
   contentPh += '<li>OF ' + data.topic.total_pages + '</li>';
-  contentPh += '<li class="next-page pager-next"><a href="' + shanti.photosURL + '&page=2' + '"><i class="icon"></i></a></li>';
-  contentPh += '<li class="last-page pager-last last"><a href="' + shanti.photosURL + '&page=' + data.topic.total_pages + '"><i class="icon"></i></a></li>';
+  contentPh += '<li class="next-page"><a href="' + shanti.photosURL + '&page=2' + '">&gt;</a></li>';
+  contentPh += '<li class="last-page"><a href="' + shanti.photosURL + '&page=' + data.topic.total_pages + '">&gt;&gt;</a></li>';
   contentPh += '</ul>';
   contentPh += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
   $("#tab-photos").append(contentPh);
@@ -2000,14 +2000,14 @@ function relatedVideos(data) {
   var avURL = Settings.mediabaseURL + '/services/' + Settings.app + '/' + Settings.hash_obj.id + '?rows=12';
   var total_pages = parseInt(data.total / data.rows);
 
-  contentAV += '<ul id="photo-pagination" class="pager">';
-  contentAV += '<li class="first-page pager-first first"><a href="' + avURL + '&pg=1' + '"><i class="icon"></i></a></li>';
-  contentAV += '<li class="previous-page pager-previous"><a href="' + avURL + '&pg=1' + '"><i class="icon"></i></a></li>';
+  contentAV += '<ul id="photo-pagination">';
+  contentAV += '<li class="first-page"><a href="' + avURL + '&pg=1' + '">&lt;&lt;</a></li>';
+  contentAV += '<li class="previous-page"><a href="' + avURL + '&pg=1' + '">&lt;</a></li>';
   contentAV += '<li>PAGE</li>';
-  contentAV += '<li class="pager-current widget"><input type="text" value="1" class="page-input"></li>';
+  contentAV += '<li><input type="text" value="1" class="page-input"></li>';
   contentAV += '<li>OF ' + total_pages + '</li>';
-  contentAV += '<li class="next-page pager-next"><a href="' + avURL + '&pg=2' + '"><i class="icon"></i></a></li>';
-  contentAV += '<li class="last-page pager-last last"><a href="' + avURL + '&pg=' + total_pages + '"><i class="icon"></i></a></li>';
+  contentAV += '<li class="next-page"><a href="' + avURL + '&pg=2' + '">&gt;</a></li>';
+  contentAV += '<li class="last-page"><a href="' + avURL + '&page=' + total_pages + '">&gt;&gt;</a></li>';
   contentAV += '</ul>';
   contentAV += '<div class="paginated-spin"><i class="fa fa-spinner"></i></div>';
 
