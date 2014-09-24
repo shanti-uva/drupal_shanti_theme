@@ -9,11 +9,11 @@ const SEARCH_MIN_LENGTH = 2;
     AjaxSolr.TextWidget = AjaxSolr.AbstractTextWidget.extend({
         init: function () {
             var self = this;
-            console.log("TEXTWIDGET: " + $(this.target))
-            console.dir($(this.target));
+//            console.log("TEXTWIDGET: " + $(this.target))
+//            console.dir($(this.target));
 
             $(this.target).on('keyup', function (e) {
-                console.log("keyup " + e);
+//                console.log("keyup " + e);
                 // alert("blurt");
                 if (e.which == 13) {
                     var value = $(this).val();
@@ -29,9 +29,9 @@ const SEARCH_MIN_LENGTH = 2;
 
                             // Process advanced search
 
-                            console.log("SEARCH GROUP:" + $('#searchAnchorGroup'));
-                            console.log("SEARCH ANCHOR: " + $('#searchAnchorGroup div.checked > input').val());
-                            console.log("SEARCH SCOPE: " + $('#searchScopeGroup div.checked > input').val());
+//                            console.log("SEARCH GROUP:" + $('#searchAnchorGroup'));
+//                            console.log("SEARCH ANCHOR: " + $('#searchAnchorGroup div.checked > input').val());
+//                            console.log("SEARCH SCOPE: " + $('#searchScopeGroup div.checked > input').val());
 
                             var anchor = $('#searchAnchorGroup div.checked > input').val();
                             var scope = $('#searchScopeGroup div.checked > input').val();
@@ -52,11 +52,11 @@ const SEARCH_MIN_LENGTH = 2;
 
                             switch (scope) {
                                 case 'name':
-                                    console.log("name scope");
+//                                    console.log("name scope");
                                     self.manager.store.addByValue('df', 'name');
                                     break;
                                 case 'all':
-                                    console.log('all scope');
+//                                    console.log('all scope');
                                     self.manager.store.addByValue('df', 'text');
                                     break;
                                 default:
@@ -66,12 +66,12 @@ const SEARCH_MIN_LENGTH = 2;
 
                         // alert("search " + value);
 
-                        console.log("TEXTWIDGET: search " + value);
+//                        console.log("TEXTWIDGET: search " + value);
 
 
                         self.set(value);
                         if (value /* && self.set(value) */) {
-                            console.log("TEXTWIDGET: do Request " + value);
+//                            console.log("TEXTWIDGET: do Request " + value);
                             self.doRequest();
                         }
 
@@ -81,15 +81,19 @@ const SEARCH_MIN_LENGTH = 2;
 
             $("button.searchreset").click( function() {
                     if (self.clear()) {
-                        self.doRequest();
+                        self.doRequest();  // OOPS!  DON'T do the request.
                     };
-                    return true; // allow other listeners to fire.
+                    return true; // allow other listeners to fire?
                 }
-
             );
         },
 
+        beforeRequest: function() {
+//            console.log("TextWidget: beforeRequest()");
+        },
+
         afterRequest: function () {
+//            console.log("TextWidget: afterRequest()");
             $(this.target).find('input').val('');
         }
     });
