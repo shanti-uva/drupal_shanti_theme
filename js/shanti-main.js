@@ -164,11 +164,6 @@ jQuery(function ($) {
               setTimeout(function() { $("#searchform").trigger(e); }, 300);
           });
 
-
-
-
-
-
       },
       onExtClose:function(){},
       top: 0
