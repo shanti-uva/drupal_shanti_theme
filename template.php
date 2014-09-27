@@ -70,8 +70,6 @@ function shanti_theme_preprocess_page(&$variables) {
   }
 
     drupal_add_js($variables['theme_path'] . '/js/shanti-search.js', $options);
-
 //    drupal_add_js($variables['theme_path'] . '/src/jquery.dataTables.min.js', $options);
-
 
 }
